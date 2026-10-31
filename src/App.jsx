@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import LandingPage from './components/LandingPage';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
+import AppDashboard from './components/AppDashboard';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -15,12 +16,19 @@ export default function App() {
     return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
 
-  if (currentPath === '/privacy') {
+  // Standardize trailing slashes
+  const cleanPath = currentPath.replace(/\/$/, '') || '/';
+
+  if (cleanPath === '/privacy') {
     return <PrivacyPolicy />;
   }
 
-  if (currentPath === '/terms') {
+  if (cleanPath === '/terms') {
     return <TermsOfService />;
+  }
+
+  if (cleanPath === '/app') {
+    return <AppDashboard />;
   }
 
   return <LandingPage />;
