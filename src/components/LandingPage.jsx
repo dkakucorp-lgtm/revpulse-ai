@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 
 export default function LandingPage() {
-  // Stripe Payment Links (replace placeholders when live links are ready)
+  // Stripe Payment Links
   const STRIPE_STARTER_LINK = "https://buy.stripe.com/your_starter_link_here";
   const STRIPE_PRO_LINK = "https://buy.stripe.com/your_pro_link_here";
 
@@ -30,7 +30,6 @@ export default function LandingPage() {
       id: "hvac",
       label: "HVAC, Plumbing & Electrical",
       icon: Wrench,
-      badgeText: "Built for HVAC, Plumbers & Electricians",
       heroHeadline: "Turn Emergency Service Calls & Fee Complaints Into 5-Star Reviews",
       subHeadline: "Stop letting diagnostic fee complaints or scheduling delays hurt your rating. RevPulse AI handles home service feedback with speed, tact, and professionalism.",
       sampleReviews: [
@@ -54,7 +53,6 @@ export default function LandingPage() {
       id: "dental",
       label: "Dental & Medical Practices",
       icon: Stethoscope,
-      badgeText: "Built for Dentists, Doctors & Clinics",
       heroHeadline: "Turn Patient Feedback & Wait Time Complaints Into 5-Star Reputation",
       subHeadline: "Navigate delicate patient experiences with empathetic, HIPAA-conscious review responses generated automatically in seconds.",
       sampleReviews: [
@@ -78,7 +76,6 @@ export default function LandingPage() {
       id: "auto",
       label: "Auto Repair & Body Shops",
       icon: Car,
-      badgeText: "Built for Auto Repair & Detailing",
       heroHeadline: "Turn Parts Delays & Repair Estimates Into Loyal Repeat Customers",
       subHeadline: "Build ultimate trust with car owners by addressing pricing queries, warranty details, and labor estimates with transparent, AI-drafted replies.",
       sampleReviews: [
@@ -102,7 +99,6 @@ export default function LandingPage() {
       id: "medspa",
       label: "MedSpas, Salons & Aesthetics",
       icon: Scissors,
-      badgeText: "Built for MedSpas, Salons & Aesthetics",
       heroHeadline: "Turn Client Consultations & Service Feedback Into 5-Star Glamour",
       subHeadline: "Maintain a luxury brand image with warm, stylish, and high-touch review responses that encourage repeat bookings and referral business.",
       sampleReviews: [
@@ -126,7 +122,6 @@ export default function LandingPage() {
       id: "roofing",
       label: "Roofing, Solar & Construction",
       icon: Home,
-      badgeText: "Built for Roofing, Solar & General Contractors",
       heroHeadline: "Turn Project Quotes & Storm Cleanup Feedback Into Big-Ticket Contracts",
       subHeadline: "Showcase your craftsmanship and reliability on high-value jobs by handling contractor reviews with confidence and clarity.",
       sampleReviews: [
@@ -150,7 +145,6 @@ export default function LandingPage() {
       id: "legal",
       label: "Legal, Financial & Insurance",
       icon: Scale,
-      badgeText: "Built for Attorneys & Financial Services",
       heroHeadline: "Turn Client Consultations Into High-Authority Professional Trust",
       subHeadline: "Maintain strict legal standards while protecting your reputation with measured, dignified, and professional AI-generated replies.",
       sampleReviews: [
@@ -174,7 +168,6 @@ export default function LandingPage() {
       id: "general",
       label: "All Other Local Service Businesses",
       icon: Briefcase,
-      badgeText: "Built for All Local Service Providers",
       heroHeadline: "Turn Every Review Into 5-Star Local Reputation Growth",
       subHeadline: "Stop spending hours drafting replies. RevPulse AI generates tailored, brand-perfect responses to Google, Yelp, and Facebook reviews in seconds.",
       sampleReviews: [
@@ -202,7 +195,6 @@ export default function LandingPage() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedReply, setGeneratedReply] = useState("");
 
-  // Check URL query parameter on load (e.g. revpulse.tools?industry=dental)
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const ind = params.get('industry');
@@ -263,8 +255,284 @@ export default function LandingPage() {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-indigo-600/20 blur-[120px] rounded-full pointer-events-none" />
         
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          
-          {/* Dynamic Industry Selector Dropdown */}
           <div className="inline-flex flex-col sm:flex-row items-center gap-3 bg-slate-900/90 border border-indigo-500/30 p-2 sm:px-4 sm:py-2 rounded-2xl mb-8 shadow-xl">
             <span className="text-xs font-semibold text-indigo-300 uppercase tracking-wider flex items-center gap-1.5">
               <ActiveIcon className="w-4 h-4 text-indigo-400" /> Select Your Industry:
+            </span>
+            <div className="relative w-full sm:w-auto">
+              <select
+                value={selectedIndustry}
+                onChange={handleIndustryChange}
+                className="w-full sm:w-auto bg-slate-950 border border-slate-700 hover:border-indigo-500 text-white text-xs font-bold rounded-lg px-3 py-1.5 pr-8 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              >
+                {Object.values(industryProfiles).map((ind) => (
+                  <option key={ind.id} value={ind.id}>
+                    {ind.label}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            </div>
+          </div>
+          
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6">
+            {activeProfile.heroHeadline.split('5-Star')[0]}
+            <span className="bg-gradient-to-r from-indigo-400 via-purple-300 to-indigo-200 bg-clip-text text-transparent">
+              5-Star {activeProfile.heroHeadline.split('5-Star')[1] || 'Reputation'}
+            </span>
+          </h1>
+          
+          <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+            {activeProfile.subHeadline}
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a 
+              href="#pricing" 
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-8 py-4 rounded-xl text-base transition shadow-xl shadow-indigo-600/25"
+            >
+              Start Free Trial <ArrowRight className="w-5 h-5" />
+            </a>
+            <a 
+              href="#demo" 
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-semibold px-8 py-4 rounded-xl text-base transition"
+            >
+              Test Live Demo
+            </a>
+          </div>
+
+          <div className="mt-12 flex items-center justify-center gap-8 text-xs text-slate-500">
+            <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-indigo-400" /> No API Key Required</span>
+            <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-indigo-400" /> Setup in 2 Minutes</span>
+            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-indigo-400" /> Custom Voice Rules</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Demo Section */}
+      <section id="demo" className="py-20 bg-slate-900/50 border-y border-slate-800/80 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/20 bg-indigo-500/10 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-3">
+              <ActiveIcon className="w-3.5 h-3.5" /> Tailored for {activeProfile.label}
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">See How RevPulse Responds</h2>
+            <p className="text-slate-400 text-sm sm:text-base">Select a sample review below to test how RevPulse drafts custom responses for your industry.</p>
+          </div>
+
+          <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
+            <div className="flex flex-wrap gap-3 mb-6">
+              {activeProfile.sampleReviews.map((rev, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => handleGenerate(idx)}
+                  className={`px-4 py-2 rounded-lg text-xs font-medium transition border ${
+                    selectedReviewIdx === idx 
+                      ? 'bg-indigo-600/10 border-indigo-500 text-indigo-300' 
+                      : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
+                  }`}
+                >
+                  {rev.rating}-Star {rev.source} ({rev.author})
+                </button>
+              ))}
+            </div>
+
+            <div className="bg-slate-900 border border-slate-800/80 rounded-xl p-5 mb-6">
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-semibold text-white text-sm">{activeProfile.sampleReviews[selectedReviewIdx].author}</span>
+                <div className="flex text-amber-400">
+                  {[...Array(activeProfile.sampleReviews[selectedReviewIdx].rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400" />
+                  ))}
+                </div>
+              </div>
+              <p className="text-slate-300 text-sm italic">"{activeProfile.sampleReviews[selectedReviewIdx].text}"</p>
+            </div>
+
+            <div className="bg-slate-900/40 border border-indigo-500/20 rounded-xl p-5 relative min-h-[120px] flex flex-col justify-center">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5" /> AI Drafted Response
+                </span>
+                <button 
+                  onClick={() => handleGenerate(selectedReviewIdx)}
+                  className="text-xs text-slate-400 hover:text-white transition"
+                >
+                  Regenerate
+                </button>
+              </div>
+
+              {isGenerating ? (
+                <div className="text-sm text-slate-500 animate-pulse">Drafting optimal response using {activeProfile.label} guidelines...</div>
+              ) : (
+                <p className="text-slate-200 text-sm leading-relaxed">{generatedReply || activeProfile.sampleReviews[selectedReviewIdx].reply}</p>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section id="features" className="py-24 px-6 max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-white mb-4">Engineered for Local Business Owners</h2>
+          <p className="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
+            Everything you need to maintain top-tier ratings and turn negative feedback into positive customer experiences across any service industry.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+            <div className="bg-indigo-600/10 border border-indigo-500/20 w-10 h-10 rounded-xl flex items-center justify-center text-indigo-400 mb-4">
+              <Zap className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-2">1.4s Instant Drafting</h3>
+            <p className="text-slate-400 text-sm leading-relaxed">
+              No typing needed. Paste any review and generate professional, empathetic, or promotional responses in seconds.
+            </p>
+          </div>
+
+          <div className="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+            <div className="bg-indigo-600/10 border border-indigo-500/20 w-10 h-10 rounded-xl flex items-center justify-center text-indigo-400 mb-4">
+              <MessageSquareText className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-2">Custom Brand Voice & Scenarios</h3>
+            <p className="text-slate-400 text-sm leading-relaxed">
+              Define custom rules for diagnostic fees, late policies, refund guidelines, or clinic protocols on the Pro plan.
+            </p>
+          </div>
+
+          <div className="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+            <div className="bg-indigo-600/10 border border-indigo-500/20 w-10 h-10 rounded-xl flex items-center justify-center text-indigo-400 mb-4">
+              <Building2 className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-2">Multi-Location Support</h3>
+            <p className="text-slate-400 text-sm leading-relaxed">
+              Easily manage reviews across multiple branches, service zones, or store locations from one unified dashboard.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="py-24 bg-slate-900/40 border-t border-slate-800/80 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-white mb-4">Simple, Transparent Pricing</h2>
+            <p className="text-slate-400 text-sm sm:text-base">No hidden setup fees. Upgrade or cancel anytime.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Starter Plan */}
+            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-8 flex flex-col justify-between hover:border-slate-700 transition">
+              <div>
+                <div className="text-slate-400 font-medium text-sm mb-2">Starter Plan</div>
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className="text-4xl font-extrabold text-white">$29</span>
+                  <span className="text-slate-400 text-sm">/ month</span>
+                </div>
+                <p className="text-slate-400 text-xs mb-6 pb-6 border-b border-slate-800">
+                  Ideal for single-location local service businesses getting started with AI.
+                </p>
+
+                <ul className="space-y-3.5 mb-8 text-sm text-slate-300">
+                  <li className="flex items-center gap-3"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Up to 50 AI Responses / mo</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Single Business Location</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Google, Yelp & Facebook Support</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Standard AI Tone Presets</li>
+                </ul>
+              </div>
+
+              <a 
+                href={STRIPE_STARTER_LINK}
+                className="w-full text-center bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-semibold py-3 rounded-xl text-sm transition"
+              >
+                Choose Starter
+              </a>
+            </div>
+
+            {/* Pro Plan */}
+            <div className="bg-slate-950 border-2 border-indigo-500 rounded-2xl p-8 flex flex-col justify-between relative shadow-2xl shadow-indigo-500/10">
+              <div className="absolute -top-3.5 right-6 bg-indigo-600 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                Most Popular
+              </div>
+
+              <div>
+                <div className="text-indigo-400 font-medium text-sm mb-2">Pro Plan</div>
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className="text-4xl font-extrabold text-white">$79</span>
+                  <span className="text-slate-400 text-sm">/ month</span>
+                </div>
+                <p className="text-slate-400 text-xs mb-6 pb-6 border-b border-slate-800">
+                  For growing businesses & franchises needing full brand control and unlimited scale.
+                </p>
+
+                <ul className="space-y-3.5 mb-8 text-sm text-slate-300">
+                  <li className="flex items-center gap-3"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Unlimited AI Responses</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Multi-Location Support</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Custom Scenarios & Voice Rules</li>
+                  <li className="flex items-center gap-3"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Priority 24/7 Email Support</li>
+                </ul>
+              </div>
+
+              <a 
+                href={STRIPE_PRO_LINK}
+                className="w-full text-center bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 rounded-xl text-sm transition shadow-lg shadow-indigo-600/30"
+              >
+                Choose Pro Plan
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 px-6 max-w-4xl mx-auto">
+        <h2 className="text-2xl font-bold text-white text-center mb-10">Frequently Asked Questions</h2>
+        <div className="space-y-6">
+          <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-xl">
+            <h3 className="font-semibold text-white mb-2 flex items-center gap-2">
+              <HelpCircle className="w-4 h-4 text-indigo-400" /> Do I need technical experience to use this?
+            </h3>
+            <p className="text-slate-400 text-sm">
+              Not at all. You simply paste the customer review into RevPulse, click "Generate AI Reply," and copy the generated response straight to Google, Yelp, or Facebook.
+            </p>
+          </div>
+
+          <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-xl">
+            <h3 className="font-semibold text-white mb-2 flex items-center gap-2">
+              <HelpCircle className="w-4 h-4 text-indigo-400" /> How does Custom Scenario training work on the Pro Plan?
+            </h3>
+            <p className="text-slate-400 text-sm">
+              You can set specific guidelines (e.g., how to explain diagnostic fees, late arrival policies, or refund rules). RevPulse automatically incorporates these guidelines into every generated reply.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-slate-800/80 py-10 px-6 bg-slate-950">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="text-center md:text-left">
+            <div className="font-bold text-lg text-white mb-1">
+              RevPulse<span className="text-indigo-400">.tools</span>
+            </div>
+            <p className="text-xs text-slate-500">
+              AI review management for local service providers.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-6 text-xs text-slate-400">
+            <a href="/privacy" className="hover:text-white transition">Privacy Policy</a>
+            <a href="/terms" className="hover:text-white transition">Terms of Service</a>
+            <a href="mailto:support@revpulse.tools" className="hover:text-white transition">Support: support@revpulse.tools</a>
+          </div>
+        </div>
+
+        <div className="mt-8 pt-6 border-t border-slate-900 text-center text-[11px] text-slate-600">
+          © {new Date().getFullYear()} RevPulse AI. All rights reserved. Registered at revpulse.tools.
+        </div>
+      </footer>
+    </div>
+  );
+}
