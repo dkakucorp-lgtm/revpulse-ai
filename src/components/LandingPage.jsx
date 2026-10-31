@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Sparkles, 
   CheckCircle2, 
@@ -8,42 +8,227 @@ import {
   ShieldCheck, 
   MessageSquareText, 
   ArrowRight,
-  HelpCircle
+  HelpCircle,
+  ChevronDown,
+  Wrench,
+  Stethoscope,
+  Car,
+  Scissors,
+  Home,
+  Scale,
+  Utensils,
+  Dog,
+  Briefcase
 } from 'lucide-react';
 
 export default function LandingPage() {
-  // Stripe Payment Links (replace placeholders when live links are ready)
+  // Stripe Payment Links
   const STRIPE_STARTER_LINK = "https://buy.stripe.com/your_starter_link_here";
   const STRIPE_PRO_LINK = "https://buy.stripe.com/your_pro_link_here";
 
-  // Interactive Demo State
-  const [selectedReview, setSelectedReview] = useState(0);
+  // Industry Profile Data Engine
+  const industryProfiles = {
+    hvac: {
+      id: "hvac",
+      label: "HVAC, Plumbing & Electrical",
+      icon: Wrench,
+      badgeText: "Built for HVAC, Plumbers & Electricians",
+      heroHeadline: "Turn Emergency Service Calls & Fee Complaints Into 5-Star Reviews",
+      subHeadline: "Stop letting diagnostic fee complaints or scheduling delays hurt your rating. RevPulse AI handles home service feedback with speed, tact, and professionalism.",
+      sampleReviews: [
+        {
+          author: "Sarah Jenkins",
+          rating: 5,
+          source: "Google Review",
+          text: "Amazing service! The HVAC technician arrived right on time, explained the AC issue clearly, and fixed it before the afternoon heat. Highly recommended!",
+          reply: "Hi Sarah! Thank you so much for the 5-star review. We're thrilled our technician could get your AC back up and running promptly. We appreciate your trust and look forward to serving you again!"
+        },
+        {
+          author: "Michael R.",
+          rating: 2,
+          source: "Yelp Review",
+          text: "Overpriced. They charged a $95 fee just to inspect the system, and the repair quote was higher than expected.",
+          reply: "Hi Michael, thank you for sharing your feedback. Our $95 diagnostic fee covers a thorough multi-point inspection by certified technicians and is always credited 100% toward any repair work performed. We'd love to review your quote with you—please reach out to us directly at support@revpulse.tools."
+        }
+      ]
+    },
+    dental: {
+      id: "dental",
+      label: "Dental & Medical Practices",
+      icon: Stethoscope,
+      badgeText: "Built for Dentists, Doctors & Clinics",
+      heroHeadline: "Turn Patient Feedback & Wait Time Complaints Into 5-Star Reputation",
+      subHeadline: "Navigate delicate patient experiences with empathetic, HIPAA-conscious review responses generated automatically in seconds.",
+      sampleReviews: [
+        {
+          author: "Elena Rostova",
+          rating: 5,
+          source: "Google Review",
+          text: "Dr. Smith and the staff were incredible! I've always had severe dental anxiety, but they made my crown replacement completely pain-free and comfortable.",
+          reply: "Thank you so much Elena for your kind words! We know dental visits can be stressful, so hearing that our team made you feel completely at ease means the world to us. We look forward to seeing you at your next checkup!"
+        },
+        {
+          author: "David K.",
+          rating: 2,
+          source: "Google Review",
+          text: "Waited 45 minutes past my scheduled appointment time before being called back to the chair.",
+          reply: "Hi David, thank you for bringing this to our attention. While emergency dental cases can occasionally create unexpected delays in our schedule, we deeply respect your time. Please contact our office manager directly so we can ensure a smoother experience for your next visit."
+        }
+      ]
+    },
+    auto: {
+      id: "auto",
+      label: "Auto Repair & Body Shops",
+      icon: Car,
+      badgeText: "Built for Auto Repair & Detailing",
+      heroHeadline: "Turn Parts Delays & Repair Estimates Into Loyal Repeat Customers",
+      subHeadline: "Build ultimate trust with car owners by addressing pricing queries, warranty details, and labor estimates with transparent, AI-drafted replies.",
+      sampleReviews: [
+        {
+          author: "Marcus Vance",
+          rating: 5,
+          source: "Google Review",
+          text: "Got my brake pads and rotors replaced here. Fast turn-around, transparent pricing with no hidden charges, and the car drives like new!",
+          reply: "Thanks Marcus! We appreciate your business and are glad to hear your car is driving smoothly. Safety and transparent pricing are our top priorities—drive safe!"
+        },
+        {
+          author: "Jason T.",
+          rating: 2,
+          source: "Yelp Review",
+          text: "Repair took two days longer than estimated because they had to order a part.",
+          reply: "Hi Jason, thank you for your feedback. We apologize for the extended wait time while sourcing OEM parts for your vehicle. We strive to provide accurate timelines and will work on communicating shipping delays even more proactively in the future."
+        }
+      ]
+    },
+    medspa: {
+      id: "medspa",
+      label: "MedSpas, Salons & Aesthetics",
+      icon: Scissors,
+      badgeText: "Built for MedSpas, Salons & Aesthetics",
+      heroHeadline: "Turn Client Consultations & Service Feedback Into 5-Star Glamour",
+      subHeadline: "Maintain a luxury brand image with warm, stylish, and high-touch review responses that encourage repeat bookings and referral business.",
+      sampleReviews: [
+        {
+          author: "Jessica M.",
+          rating: 5,
+          source: "Google Review",
+          text: "The hydrafacial with Amanda was incredible! My skin is glowing, and the clinic atmosphere is so relaxing.",
+          reply: "Thank you so much Jessica! We're thrilled to hear you enjoyed your hydrafacial session with Amanda. We can't wait to welcome you back for your next self-care day!"
+        },
+        {
+          author: "Rachel B.",
+          rating: 2,
+          source: "Yelp Review",
+          text: "Had to reschedule my appointment due to a traffic delay and was charged a $50 late cancellation fee.",
+          reply: "Hi Rachel, thank you for sharing your thoughts. Our 24-hour cancellation policy helps us respect our providers' schedules, but we completely understand that traffic emergencies happen. Please reach out to our desk manager so we can apply a credit toward your rescheduled visit."
+        }
+      ]
+    },
+    roofing: {
+      id: "roofing",
+      label: "Roofing, Solar & Construction",
+      icon: Home,
+      badgeText: "Built for Roofing, Solar & General Contractors",
+      heroHeadline: "Turn Project Quotes & Storm Cleanup Feedback Into Big-Ticket Contracts",
+      subHeadline: "Showcase your craftsmanship and reliability on high-value jobs by handling contractor reviews with confidence and clarity.",
+      sampleReviews: [
+        {
+          author: "Robert Chen",
+          rating: 5,
+          source: "Google Review",
+          text: "Replaced our storm-damaged roof in two days. The crew did a full magnetic sweep for nails on the lawn afterward. Super professional!",
+          reply: "Thank you Robert! Protecting your property and making sure your lawn is spotless post-installation is our standard. We appreciate your recommendation!"
+        },
+        {
+          author: "Chris P.",
+          rating: 2,
+          source: "Google Review",
+          text: "Initial quote was detailed, but crew arrived two hours late on day one due to weather.",
+          reply: "Hi Chris, thank you for your feedback. Weather safety is crucial for our roofing crews, but we apologize for not notifying you earlier in the morning regarding the delayed start. We appreciate your patience and are glad the rest of the installation went seamlessly."
+        }
+      ]
+    },
+    legal: {
+      id: "legal",
+      label: "Legal, Financial & Insurance",
+      icon: Scale,
+      badgeText: "Built for Attorneys & Financial Services",
+      heroHeadline: "Turn Client Consultations Into High-Authority Professional Trust",
+      subHeadline: "Maintain strict legal standards while protecting your reputation with measured, dignified, and professional AI-generated replies.",
+      sampleReviews: [
+        {
+          author: "Daniel K.",
+          rating: 5,
+          source: "Google Review",
+          text: "Handled my business contract dispute swiftly and saved us thousands in potential court costs. Truly exceptional representation.",
+          reply: "Thank you Daniel for your feedback. Providing strategic, cost-effective guidance for local business owners is our primary goal. It was a pleasure representing your firm."
+        },
+        {
+          author: "Anonymous User",
+          rating: 2,
+          source: "Google Review",
+          text: "Called for a consultation and felt the retainer fee structure wasn't explained clearly enough upfront.",
+          reply: "Thank you for bringing this to our attention. We aim for complete clarity regarding our fee structures and retainers prior to engagement. We welcome the opportunity to discuss your concerns directly—please reach out to our office manager."
+        }
+      ]
+    },
+    general: {
+      id: "general",
+      label: "All Other Local Service Businesses",
+      icon: Briefcase,
+      badgeText: "Built for All Local Service Providers",
+      heroHeadline: "Turn Every Review Into 5-Star Local Reputation Growth",
+      subHeadline: "Stop spending hours drafting replies. RevPulse AI generates tailored, brand-perfect responses to Google, Yelp, and Facebook reviews in seconds.",
+      sampleReviews: [
+        {
+          author: "Sarah Jenkins",
+          rating: 5,
+          source: "Google Review",
+          text: "Amazing customer service! Prompt, polite, and resolved my issue on the very first try. Highly recommended!",
+          reply: "Hi Sarah! Thank you so much for the 5-star review. We're thrilled we could take care of everything for you promptly. We appreciate your business and look forward to working with you again!"
+        },
+        {
+          author: "Michael R.",
+          rating: 2,
+          source: "Yelp Review",
+          text: "Pricing was higher than estimated, and it took longer than originally promised.",
+          reply: "Hi Michael, thank you for sharing your feedback. We strive to provide transparent estimates and clear timelines. We'd love the opportunity to review your experience with you—please contact our management team directly at support@revpulse.tools."
+        }
+      ]
+    }
+  };
+
+  // State Management
+  const [selectedIndustry, setSelectedIndustry] = useState("hvac");
+  const [selectedReviewIdx, setSelectedReviewIdx] = useState(0);
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedReply, setGeneratedReply] = useState("");
 
-  const sampleReviews = [
-    {
-      author: "Sarah Jenkins",
-      rating: 5,
-      source: "Google Review",
-      text: "Amazing service! The technician arrived right on time, explained the issue clearly, and resolved our problem before the hot afternoon. Highly recommended!",
-      reply: "Hi Sarah! Thank you so much for the 5-star review. We're thrilled our technician could get everything taken care of promptly. We appreciate your business and look forward to serving you again!"
-    },
-    {
-      author: "Michael R.",
-      rating: 2,
-      source: "Yelp Review",
-      text: "Overpriced for what was done. They charged $95 fee just to inspect the system, and the quote for the job was double another local place.",
-      reply: "Hi Michael, thank you for sharing your feedback. Our $95 diagnostic fee covers a thorough multi-point inspection by certified technicians and is always credited directly toward any repair work performed. We'd love the opportunity to review your estimate with you—please contact our team directly at support@revpulse.tools."
+  // Check URL query parameter on load (e.g. revpulse.tools?industry=dental)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const ind = params.get('industry');
+    if (ind && industryProfiles[ind]) {
+      setSelectedIndustry(ind);
     }
-  ];
+  }, []);
+
+  const activeProfile = industryProfiles[selectedIndustry] || industryProfiles.general;
+  const ActiveIcon = activeProfile.icon;
+
+  const handleIndustryChange = (e) => {
+    const newInd = e.target.value;
+    setSelectedIndustry(newInd);
+    setSelectedReviewIdx(0);
+    setGeneratedReply("");
+  };
 
   const handleGenerate = (index) => {
-    setSelectedReview(index);
+    setSelectedReviewIdx(index);
     setIsGenerating(true);
     setGeneratedReply("");
     setTimeout(() => {
-      setGeneratedReply(sampleReviews[index].reply);
+      setGeneratedReply(activeProfile.sampleReviews[index].reply);
       setIsGenerating(false);
     }, 600);
   };
@@ -76,23 +261,41 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 md:pt-32 md:pb-24 px-6 overflow-hidden">
+      <section className="relative pt-16 pb-16 md:pt-28 md:pb-24 px-6 overflow-hidden">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-indigo-600/20 blur-[120px] rounded-full pointer-events-none" />
         
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-8">
-            <Sparkles className="w-3.5 h-3.5" /> Built for HVAC, Dental, Auto & All Local Service Pros
+          
+          {/* Dynamic Industry Selector Dropdown */}
+          <div className="inline-flex flex-col sm:flex-row items-center gap-3 bg-slate-900/90 border border-indigo-500/30 p-2 sm:px-4 sm:py-2 rounded-2xl mb-8 shadow-xl">
+            <span className="text-xs font-semibold text-indigo-300 uppercase tracking-wider flex items-center gap-1.5">
+              <ActiveIcon className="w-4 h-4 text-indigo-400" /> Select Your Industry:
+            </span>
+            <div className="relative w-full sm:w-auto">
+              <select
+                value={selectedIndustry}
+                onChange={handleIndustryChange}
+                className="w-full sm:w-auto bg-slate-950 border border-slate-700 hover:border-indigo-500 text-white text-xs font-bold rounded-lg px-3 py-1.5 pr-8 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              >
+                {Object.values(industryProfiles).map((ind) => (
+                  <option key={ind.id} value={ind.id}>
+                    {ind.label}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            </div>
           </div>
           
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6">
-            Turn Customer Reviews Into <br className="hidden sm:inline" />
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6">
+            {activeProfile.heroHeadline.split('5-Star')[0]}
             <span className="bg-gradient-to-r from-indigo-400 via-purple-300 to-indigo-200 bg-clip-text text-transparent">
-              5-Star Reputation Growth
+              5-Star {activeProfile.heroHeadline.split('5-Star')[1] || 'Reputation'}
             </span>
           </h1>
           
-          <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
-            Stop spending hours drafting review responses. Whether you run a plumbing firm, dental office, auto shop, or home service business, RevPulse AI generates tailored, brand-perfect replies in seconds.
+          <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+            {activeProfile.subHeadline}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -106,13 +309,13 @@ export default function LandingPage() {
               href="#demo" 
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-semibold px-8 py-4 rounded-xl text-base transition"
             >
-              See Live Demo
+              Test Live Demo
             </a>
           </div>
 
           <div className="mt-12 flex items-center justify-center gap-8 text-xs text-slate-500">
             <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-indigo-400" /> No API Key Required</span>
-            <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-indigo-400" /> Instant Setup in 2 Mins</span>
+            <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-indigo-400" /> Setup in 2 Minutes</span>
             <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-indigo-400" /> Custom Voice Rules</span>
           </div>
         </div>
@@ -122,19 +325,22 @@ export default function LandingPage() {
       <section id="demo" className="py-20 bg-slate-900/50 border-y border-slate-800/80 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Try the AI Reply Generator</h2>
-            <p className="text-slate-400 text-sm sm:text-base">Select a sample review below to test how RevPulse drafts professional responses instantly.</p>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/20 bg-indigo-500/10 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-3">
+              <ActiveIcon className="w-3.5 h-3.5" /> Tailored for {activeProfile.label}
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">See How RevPulse Responds</h2>
+            <p className="text-slate-400 text-sm sm:text-base">Select a sample review below to test how RevPulse drafts custom responses for your industry.</p>
           </div>
 
           <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
             {/* Review Selection Tabs */}
             <div className="flex flex-wrap gap-3 mb-6">
-              {sampleReviews.map((rev, idx) => (
+              {activeProfile.sampleReviews.map((rev, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleGenerate(idx)}
                   className={`px-4 py-2 rounded-lg text-xs font-medium transition border ${
-                    selectedReview === idx 
+                    selectedReviewIdx === idx 
                       ? 'bg-indigo-600/10 border-indigo-500 text-indigo-300' 
                       : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
                   }`}
@@ -147,14 +353,14 @@ export default function LandingPage() {
             {/* Selected Review Card */}
             <div className="bg-slate-900 border border-slate-800/80 rounded-xl p-5 mb-6">
               <div className="flex items-center justify-between mb-2">
-                <span className="font-semibold text-white text-sm">{sampleReviews[selectedReview].author}</span>
+                <span className="font-semibold text-white text-sm">{activeProfile.sampleReviews[selectedReviewIdx].author}</span>
                 <div className="flex text-amber-400">
-                  {[...Array(sampleReviews[selectedReview].rating)].map((_, i) => (
+                  {[...Array(activeProfile.sampleReviews[selectedReviewIdx].rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-amber-400" />
                   ))}
                 </div>
               </div>
-              <p className="text-slate-300 text-sm italic">"{sampleReviews[selectedReview].text}"</p>
+              <p className="text-slate-300 text-sm italic">"{activeProfile.sampleReviews[selectedReviewIdx].text}"</p>
             </div>
 
             {/* AI Output Box */}
@@ -164,7 +370,7 @@ export default function LandingPage() {
                   <Sparkles className="w-3.5 h-3.5" /> AI Drafted Response
                 </span>
                 <button 
-                  onClick={() => handleGenerate(selectedReview)}
+                  onClick={() => handleGenerate(selectedReviewIdx)}
                   className="text-xs text-slate-400 hover:text-white transition"
                 >
                   Regenerate
@@ -172,9 +378,9 @@ export default function LandingPage() {
               </div>
 
               {isGenerating ? (
-                <div className="text-sm text-slate-500 animate-pulse">Drafting optimal response using custom guidelines...</div>
+                <div className="text-sm text-slate-500 animate-pulse">Drafting optimal response using {activeProfile.label} guidelines...</div>
               ) : (
-                <p className="text-slate-200 text-sm leading-relaxed">{generatedReply || sampleReviews[selectedReview].reply}</p>
+                <p className="text-slate-200 text-sm leading-relaxed">{generatedReply || activeProfile.sampleReviews[selectedReviewIdx].reply}</p>
               )}
             </div>
           </div>
@@ -184,7 +390,7 @@ export default function LandingPage() {
       {/* Features Grid */}
       <section id="features" className="py-24 px-6 max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-white mb-4">Engineered for Every Service Provider</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">Engineered for Local Business Owners</h2>
           <p className="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
             Everything you need to maintain top-tier ratings and turn negative feedback into positive customer experiences across any service industry.
           </p>
@@ -207,7 +413,7 @@ export default function LandingPage() {
             </div>
             <h3 className="text-lg font-semibold text-white mb-2">Custom Brand Voice & Scenarios</h3>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Define custom response rules for negative reviews, refund policies, diagnostic fees, or special offers.
+              Define custom rules for diagnostic fees, late policies, refund guidelines, or clinic protocols on the Pro plan.
             </p>
           </div>
 
@@ -260,7 +466,7 @@ export default function LandingPage() {
               </a>
             </div>
 
-            {/* Pro Plan (Highlighted) */}
+            {/* Pro Plan */}
             <div className="bg-slate-950 border-2 border-indigo-500 rounded-2xl p-8 flex flex-col justify-between relative shadow-2xl shadow-indigo-500/10">
               <div className="absolute -top-3.5 right-6 bg-indigo-600 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                 Most Popular
@@ -313,4 +519,16 @@ export default function LandingPage() {
               <HelpCircle className="w-4 h-4 text-indigo-400" /> How does Custom Scenario training work on the Pro Plan?
             </h3>
             <p className="text-slate-400 text-sm">
-              You can set specific guidelines (e.g., how to explain diagnostic fees, late arrival policies, or refund rules).
+              You can set specific guidelines (e.g., how to explain diagnostic fees, late arrival policies, or refund rules). RevPulse automatically incorporates these guidelines into every generated reply.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500">
+        <p>© {new Date().getFullYear()} RevPulse AI. All rights reserved. Registered at revpulse.tools.</p>
+      </footer>
+    </div>
+  );
+}
