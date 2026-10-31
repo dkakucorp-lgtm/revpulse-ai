@@ -27,7 +27,7 @@ export default function TermsOfService() {
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-6 py-16">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-6">
-          <ShieldCheck className="w-4 h-4 text-indigo-400 text-indigo-400" /> Terms & Conditions
+          <ShieldCheck className="w-4 h-4 text-indigo-400" /> Terms & Conditions
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">Terms of Service</h1>
@@ -44,9 +44,9 @@ export default function TermsOfService() {
           <section className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 sm:p-8">
             <h2 className="text-lg font-bold text-white mb-3">2. Subscriptions & Billing</h2>
             <ul className="list-disc pl-5 space-y-2 text-slate-400">
-              "><strong className="text-slate-200">Billing Tiers:</strong> Subscription plans (Starter at $29/mo, Pro at $79/mo) are billed on a recurring monthly schedule via Stripe.</li>
-              "><strong className="text-slate-200">Cancellation:</strong> Users can cancel their active recurring subscription at any time via the customer billing portal or by contacting support prior to the next billing cycle.</li>
-              "><strong className="text-slate-200">Refunds:</strong> Subscription payments are non-refundable except where explicitly required by applicable regional law or billing disputes approved by management.</li>
+              <li><strong className="text-slate-200">Billing Tiers:</strong> Subscription plans (Starter at $29/mo, Pro at $79/mo) are billed on a recurring monthly schedule via Stripe.</li>
+              <li><strong className="text-slate-200">Cancellation:</strong> Users can cancel their active recurring subscription at any time via the customer billing portal or by contacting support prior to the next billing cycle.</li>
+              <li><strong className="text-slate-200">Refunds:</strong> Subscription payments are non-refundable except where explicitly required by applicable regional law or billing disputes approved by management.</li>
             </ul>
           </section>
 

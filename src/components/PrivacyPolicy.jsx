@@ -40,9 +40,9 @@ export default function PrivacyPolicy() {
               RevPulse AI ("we," "our," or "us") collects minimal personal and operational information necessary to provide our artificial intelligence review management services:
             </p>
             <ul className="list-disc pl-5 space-y-2 text-slate-400">
-              "><strong className="text-slate-200">Account & Billing Data:</strong> Name, email address, and subscription status collected via Stripe payment processing.</li>
-              "><strong className="text-slate-200">Customer Review Inputs:</strong> Review text, star ratings, and custom brand guidelines submitted directly by users into the app.</li>
-              "><strong className="text-slate-200">Technical Logs:</strong> Browser type, IP address, and basic usage analytics to maintain system security and uptime.</li>
+              <li><strong className="text-slate-200">Account & Billing Data:</strong> Name, email address, and subscription status collected via Stripe payment processing.</li>
+              <li><strong className="text-slate-200">Customer Review Inputs:</strong> Review text, star ratings, and custom brand guidelines submitted directly by users into the app.</li>
+              <li><strong className="text-slate-200">Technical Logs:</strong> Browser type, IP address, and basic usage analytics to maintain system security and uptime.</li>
             </ul>
           </section>
 
@@ -50,9 +50,9 @@ export default function PrivacyPolicy() {
             <h2 className="text-lg font-bold text-white mb-3">2. How We Use Your Information</h2>
             <p className="mb-3">Your data is strictly used for operational purposes:</p>
             <ul className="list-disc pl-5 space-y-2 text-slate-400">
-              ">To process and generate tailored review responses using AI model endpoints.</li>
-              ">To process subscription payments and handle customer support inquiries.</li>
-              ">To maintain and improve the security, performance, and functionality of revpulse.tools.</li>
+              <li>To process and generate tailored review responses using AI model endpoints.</li>
+              <li>To process subscription payments and handle customer support inquiries.</li>
+              <li>To maintain and improve the security, performance, and functionality of revpulse.tools.</li>
             </ul>
           </section>
 
