@@ -12,13 +12,13 @@ import {
   Sliders,
   ShieldCheck,
   Zap,
-  Trash2
+  AlertCircle
 } from 'lucide-react';
 
 export default function AppDashboard() {
   const [activeTab, setActiveTab] = useState('generator'); // 'generator' | 'rules' | 'history'
   
-  // Generator State
+  // Generator Form State
   const [platform, setPlatform] = useState('Google');
   const [rating, setRating] = useState(5);
   const [customerName, setCustomerName] = useState('');
@@ -26,15 +26,16 @@ export default function AppDashboard() {
   const [tone, setTone] = useState('Professional & Empathetic');
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedReply, setGeneratedReply] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [copied, setCopied] = useState(false);
 
-  // Custom Scenario Rules State (Pro Feature)
+  // Custom Scenario Rules State
   const [businessName, setBusinessName] = useState('Apex HVAC & Plumbing');
   const [diagnosticFeeRule, setDiagnosticFeeRule] = useState('Our $95 service call fee is 100% credited toward any completed repair work.');
   const [cancellationRule, setCancellationRule] = useState('24-hour notice required for rescheduling without fee.');
   const [contactEmail, setContactEmail] = useState('support@apexhvac.com');
 
-  // History State
+  // Session History State
   const [history, setHistory] = useState([
     {
       id: 1,
@@ -47,43 +48,57 @@ export default function AppDashboard() {
     }
   ]);
 
-  // Response Generation Handler
-  const handleGenerate = () => {
+  // Live Serverless AI Generation Handler
+  const handleGenerate = async () => {
     if (!reviewText.trim()) return;
     
     setIsGenerating(true);
     setGeneratedReply('');
+    setErrorMessage('');
 
-    // Simulated AI response generation with brand rules applied
-    setTimeout(() => {
-      let response = '';
-      const name = customerName.trim() || 'Valued Customer';
+    const scenarioRules = `${diagnosticFeeRule ? `Diagnostic Fee Policy: ${diagnosticFeeRule}\n` : ''}${cancellationRule ? `Cancellation Policy: ${cancellationRule}\n` : ''}Escalation Email: ${contactEmail}`;
 
-      if (rating >= 4) {
-        response = `Hi ${name}, thank you so much for the 5-star review on ${platform}! The team at ${businessName} is thrilled to hear about your great experience. We truly appreciate your business and look forward to serving you again!`;
-      } else {
-        response = `Hi ${name}, thank you for sharing your feedback regarding your experience with ${businessName}. We take all feedback seriously. ${
-          diagnosticFeeRule ? `Please note: ${diagnosticFeeRule} ` : ''
-        }We would love the opportunity to make things right for you—please reach out to us directly at ${contactEmail}.`;
+    try {
+      const response = await fetch('/api/generate-reply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          platform,
+          rating,
+          customerName,
+          reviewText,
+          tone,
+          businessName,
+          scenarioRules,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to generate response.');
       }
 
-      setGeneratedReply(response);
-      setIsGenerating(false);
+      setGeneratedReply(data.reply);
 
-      // Add to session history
+      // Save to Session History
       setHistory(prev => [
         {
           id: Date.now(),
           date: 'Just now',
           platform,
           rating,
-          customer: name,
+          customer: customerName.trim() || 'Customer',
           review: reviewText,
-          reply: response
+          reply: data.reply
         },
         ...prev
       ]);
-    }, 800);
+    } catch (err) {
+      setErrorMessage(err.message || 'Error generating AI reply. Please check your network connection.');
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const handleCopy = (text) => {
@@ -98,7 +113,7 @@ export default function AppDashboard() {
       <header className="border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <a href="/" className="flex items-center gap-2 text-slate-400 hover:text-white transition mr-2">
+            <a href="/" className="flex items-center gap-2 text-slate-400 hover:text-white transition mr-2" title="Return to Home">
               <ArrowLeft className="w-4 h-4" />
             </a>
             <div className="bg-indigo-600 p-2 rounded-xl text-white shadow-lg shadow-indigo-500/20">
@@ -194,6 +209,7 @@ export default function AppDashboard() {
                       {[1, 2, 3, 4, 5].map((star) => (
                         <button
                           key={star}
+                          type="button"
                           onClick={() => setRating(star)}
                           className={`p-1.5 rounded-lg transition ${rating >= star ? 'text-amber-400' : 'text-slate-600'}`}
                         >
@@ -245,9 +261,10 @@ export default function AppDashboard() {
 
                 {/* Action Button */}
                 <button
+                  type="button"
                   onClick={handleGenerate}
                   disabled={isGenerating || !reviewText.trim()}
-                  className="w-full bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-semibold py-3.5 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20 mt-2"
+                  className="w-full bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-semibold py-3.5 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20 mt-2 cursor-pointer"
                 >
                   <Zap className="w-4 h-4" />
                   {isGenerating ? 'Drafting Response...' : 'Generate AI Response'}
@@ -264,8 +281,9 @@ export default function AppDashboard() {
                   </h2>
                   {generatedReply && (
                     <button
+                      type="button"
                       onClick={() => handleCopy(generatedReply)}
-                      className="inline-flex items-center gap-1.5 text-xs font-medium text-indigo-400 hover:text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1.5 rounded-lg transition"
+                      className="inline-flex items-center gap-1.5 text-xs font-medium text-indigo-400 hover:text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1.5 rounded-lg transition cursor-pointer"
                     >
                       {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                       {copied ? 'Copied!' : 'Copy Response'}
@@ -273,11 +291,16 @@ export default function AppDashboard() {
                   )}
                 </div>
 
-                <div className="bg-slate-950 border border-slate-800 rounded-xl p-5 min-h-[220px] flex items-center justify-center">
+                <div className="bg-slate-950 border border-slate-800 rounded-xl p-5 min-h-[220px] flex items-center justify-center relative">
                   {isGenerating ? (
                     <div className="text-slate-500 text-sm animate-pulse flex items-center gap-2">
                       <Sparkles className="w-4 h-4 text-indigo-400 animate-spin" />
                       Applying {businessName} scenario rules...
+                    </div>
+                  ) : errorMessage ? (
+                    <div className="text-rose-400 text-sm text-center flex flex-col items-center gap-2 p-4">
+                      <AlertCircle className="w-5 h-5 text-rose-500" />
+                      <span>{errorMessage}</span>
                     </div>
                   ) : generatedReply ? (
                     <p className="text-slate-200 text-sm leading-relaxed">{generatedReply}</p>
@@ -357,8 +380,9 @@ export default function AppDashboard() {
 
               <div className="pt-4 border-t border-slate-800 flex justify-end">
                 <button
+                  type="button"
                   onClick={() => setActiveTab('generator')}
-                  className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-6 py-2.5 rounded-xl transition shadow-lg shadow-indigo-600/20"
+                  className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-6 py-2.5 rounded-xl transition shadow-lg shadow-indigo-600/20 cursor-pointer"
                 >
                   Save Rules & Go to Generator
                 </button>
@@ -392,8 +416,9 @@ export default function AppDashboard() {
 
                   <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-800/80">
                     <button
+                      type="button"
                       onClick={() => handleCopy(item.reply)}
-                      className="inline-flex items-center gap-1.5 text-xs text-indigo-400 hover:text-indigo-300 transition"
+                      className="inline-flex items-center gap-1.5 text-xs text-indigo-400 hover:text-indigo-300 transition cursor-pointer"
                     >
                       <Copy className="w-3.5 h-3.5" /> Copy Reply
                     </button>
