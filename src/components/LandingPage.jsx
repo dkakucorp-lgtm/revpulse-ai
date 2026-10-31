@@ -526,9 +526,25 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500">
-        <p>© {new Date().getFullYear()} RevPulse AI. All rights reserved. Registered at revpulse.tools.</p>
-      </footer>
+<footer className="border-t border-slate-800/80 py-10 px-6 bg-slate-950">
+  <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div className="text-center md:text-left">
+      <div className="font-bold text-lg text-white mb-1">
+        RevPulse<span className="text-indigo-400">.tools</span>
+      </div>
+      <p className="text-xs text-slate-500">
+        AI review management for local service providers.
+      </p>
     </div>
-  );
-}
+
+    <div className="flex items-center gap-6 text-xs text-slate-400">
+      <a href="/privacy" className="hover:text-white transition">Privacy Policy</a>
+      <a href="/terms" className="hover:text-white transition">Terms of Service</a>
+      <a href="mailto:support@revpulse.tools" className="hover:text-white transition">Support: support@revpulse.tools</a>
+    </div>
+  </div>
+
+  <div className="mt-8 pt-6 border-t border-slate-900 text-center text-[11px] text-slate-600">
+    © {new Date().getFullYear()} RevPulse AI. All rights reserved. Registered at revpulse.tools.
+  </div>
+</footer>
