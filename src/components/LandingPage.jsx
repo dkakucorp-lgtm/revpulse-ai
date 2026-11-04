@@ -2,7 +2,7 @@ import React from 'react';
 
 // REPLACE THESE WITH YOUR COPIED STRIPE PAYMENT LINKS FROM YOUR DASHBOARD
 const STRIPE_STARTER_LINK = "https://buy.stripe.com/your_actual_starter_link";
-const STRIPE_PRO_LINK = "Phttps://buy.stripe.com/your_actual_pro_link";
+const STRIPE_PRO_LINK = "https://buy.stripe.com/your_actual_pro_link";
 
 export default function LandingPage() {
   return (
