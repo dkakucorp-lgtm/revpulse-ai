@@ -1,219 +1,270 @@
 import React, { useState } from 'react';
-import { 
-  Sparkles, 
-  Copy, 
-  Check, 
-  Settings, 
-  MessageSquare, 
-  History, 
-  Building2, 
-  Star, 
-  ArrowLeft,
-  Sliders,
-  ShieldCheck,
-  Zap,
-  AlertCircle
-} from 'lucide-react';
 
 export default function AppDashboard() {
-  const [activeTab, setActiveTab] = useState('generator'); // 'generator' | 'rules' | 'history'
-  
-  // Generator Form State
-  const [platform, setPlatform] = useState('Google');
-  const [rating, setRating] = useState(5);
+  // Navigation State
+  const [activeTab, setActiveTab] = useState('generator'); // 'generator' | 'voice' | 'rules' | 'history'
+
+  // Review Generator Form State
+  const [industryKey, setIndustryKey] = useState('hvac');
+  const [platform, setPlatform] = useState('Google Business');
+  const [rating, setRating] = useState(1);
   const [customerName, setCustomerName] = useState('');
-  const [reviewText, setReviewText] = useState('');
+  const [reviewText, setReviewText] = useState('Tech showed up fine but charged me $95 just to look at the AC unit!');
   const [tone, setTone] = useState('Professional & Empathetic');
   const [isGenerating, setIsGenerating] = useState(false);
-  const [generatedReply, setGeneratedReply] = useState('');
+  const [draftedResponse, setDraftedResponse] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [copied, setCopied] = useState(false);
 
-  // Custom Scenario Rules State
-  const [businessName, setBusinessName] = useState('Apex HVAC & Plumbing');
-  const [diagnosticFeeRule, setDiagnosticFeeRule] = useState('Our $95 service call fee is 100% credited toward any completed repair work.');
-  const [cancellationRule, setCancellationRule] = useState('24-hour notice required for rescheduling without fee.');
-  const [contactEmail, setContactEmail] = useState('support@apexhvac.com');
+  // Voice & Back-Office Partner State
+  const [directPrice, setDirectPrice] = useState('$2.80 / lb');
+  const [retailPrice, setRetailPrice] = useState('$3.50 / lb');
+  const [businessNotes, setBusinessNotes] = useState(
+    'We supply #6 x 1-1/4 fine thread bugle head and wafer modified truss head screws. Offer active framing crews in Orange County a free 5-lb bucket drop-off on jobsites.'
+  );
+  const [testPhoneNumber, setTestPhoneNumber] = useState('');
+  const [contractorNameInput, setContractorNameInput] = useState('');
+  const [isCalling, setIsCalling] = useState(false);
+  const [callStatus, setCallStatus] = useState('');
 
-  // Session History State
+  // History State
   const [history, setHistory] = useState([
     {
       id: 1,
-      date: 'Just now',
-      platform: 'Google',
-      rating: 5,
-      customer: 'Sarah J.',
-      review: 'Fast service! Technicians fixed our AC in under an hour.',
-      reply: 'Hi Sarah! Thank you for the 5-star review. We are glad our team could restore your cooling promptly. We appreciate your trust!'
-    }
+      date: 'Today, 2:15 PM',
+      platform: 'Google Business',
+      rating: 1,
+      snippet: 'Charged me $95 just to look at the AC unit...',
+      response: 'Dear Valued Customer, Thank you for your feedback. We understand that our $95 diagnostic fee can be surprising; however, this fee is fully credited toward any repairs made during your visit...',
+    },
   ]);
 
-  // Live Serverless AI Generation Handler
-  const handleGenerate = async () => {
-    if (!reviewText.trim()) return;
-    
+  // Handle Review Reply Generation
+  const handleGenerateReply = async (e) => {
+    e.preventDefault();
     setIsGenerating(true);
-    setGeneratedReply('');
     setErrorMessage('');
-
-    const scenarioRules = `${diagnosticFeeRule ? `Diagnostic Fee Policy: ${diagnosticFeeRule}\n` : ''}${cancellationRule ? `Cancellation Policy: ${cancellationRule}\n` : ''}Escalation Email: ${contactEmail}`;
+    setDraftedResponse('');
 
     try {
-      const response = await fetch('/api/generate-reply', {
+      const res = await fetch('/api/generate-reply', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          industryKey,
           platform,
           rating,
           customerName,
           reviewText,
           tone,
-          businessName,
-          scenarioRules,
         }),
       });
 
-      const data = await response.json();
+      const data = await res.json();
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to generate response.');
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to generate AI response.');
       }
 
-      setGeneratedReply(data.reply);
-
-      // Save to Session History
-      setHistory(prev => [
+      setDraftedResponse(data.reply);
+      setHistory((prev) => [
         {
           id: Date.now(),
           date: 'Just now',
           platform,
           rating,
-          customer: customerName.trim() || 'Customer',
-          review: reviewText,
-          reply: data.reply
+          snippet: reviewText.slice(0, 45) + '...',
+          response: data.reply,
         },
-        ...prev
+        ...prev,
       ]);
     } catch (err) {
-      setErrorMessage(err.message || 'Error generating AI reply. Please check your network connection.');
+      setErrorMessage(err.message || 'Something went wrong. Please check your OpenAI setup.');
     } finally {
       setIsGenerating(false);
     }
   };
 
-  const handleCopy = (text) => {
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  // Handle Voice Call Dispatch Trigger
+  const handleTriggerVoiceCall = async (e) => {
+    e.preventDefault();
+    if (!testPhoneNumber) {
+      alert('Please enter a phone number to test the outbound voice agent.');
+      return;
+    }
+
+    setIsCalling(true);
+    setCallStatus('Initiating serverless voice agent pipeline...');
+
+    try {
+      const res = await fetch('/api/make-call', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          customerPhone: testPhoneNumber,
+          contractorName: contractorNameInput || 'Contractor',
+          directPrice,
+          retailPrice,
+          businessNotes,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Voice dispatch failed.');
+
+      setCallStatus(`Call dispatched successfully! (Call ID: ${data.callId || 'VAPI_LIVE'})`);
+    } catch (err) {
+      setCallStatus(`Demo Mode: Call dispatch logic ready. (${err.message})`);
+    } finally {
+      setIsCalling(false);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
-      {/* App Header */}
-      <header className="border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md sticky top-0 z-50">
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased">
+      {/* Top Header */}
+      <header className="border-b border-slate-800 bg-slate-900/60 backdrop-blur-md sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <a href="/" className="flex items-center gap-2 text-slate-400 hover:text-white transition mr-2" title="Return to Home">
-              <ArrowLeft className="w-4 h-4" />
-            </a>
-            <div className="bg-indigo-600 p-2 rounded-xl text-white shadow-lg shadow-indigo-500/20">
-              <Sparkles className="w-5 h-5" />
+          <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white shadow-md shadow-indigo-600/30">
+              R
             </div>
-            <span className="font-bold text-xl tracking-tight text-white">
+            <span className="font-bold text-lg text-white tracking-tight">
               RevPulse<span className="text-indigo-400">.tools</span>
             </span>
-            <span className="hidden sm:inline-block bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ml-2">
-              App Dashboard
+            <span className="bg-indigo-950 border border-indigo-800 text-indigo-300 text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full ml-2">
+              Back-Office Suite
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="text-right hidden sm:block">
-              <div className="text-xs font-semibold text-white">{businessName}</div>
-              <div className="text-[11px] text-slate-400">Pro Subscription</div>
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 bg-emerald-950/60 border border-emerald-800/60 rounded-full px-3 py-1">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="text-xs font-medium text-emerald-300">7-Day Free Trial Active</span>
             </div>
-            <div className="w-9 h-9 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-center text-indigo-400 font-bold text-sm">
-              <Building2 className="w-4 h-4" />
+            <div className="text-right hidden sm:block">
+              <span className="block text-xs font-semibold text-white">Apex Supply & Services</span>
+              <span className="block text-[10px] text-slate-400">Executive Account</span>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Main Container */}
+      {/* Main Content Area */}
       <main className="max-w-7xl mx-auto px-6 py-8">
-        
         {/* Navigation Tabs */}
-        <div className="flex border-b border-slate-800 mb-8 gap-8">
+        <div className="flex flex-wrap items-center gap-2 border-b border-slate-800 pb-4 mb-8">
           <button
             onClick={() => setActiveTab('generator')}
-            className={`pb-4 text-sm font-semibold flex items-center gap-2 border-b-2 transition ${
+            className={`px-4 py-2 rounded-xl text-sm font-semibold transition ${
               activeTab === 'generator'
-                ? 'border-indigo-500 text-indigo-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                : 'text-slate-400 hover:text-white bg-slate-900/40 border border-slate-800/80'
             }`}
           >
-            <MessageSquare className="w-4 h-4" /> Review Generator
+            💬 Review Generator
+          </button>
+
+          <button
+            onClick={() => setActiveTab('voice')}
+            className={`px-4 py-2 rounded-xl text-sm font-semibold transition flex items-center space-x-2 ${
+              activeTab === 'voice'
+                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                : 'text-slate-400 hover:text-white bg-slate-900/40 border border-slate-800/80'
+            }`}
+          >
+            <span>🎙️ Back-Office & Voice Partner</span>
+            <span className="bg-indigo-400 text-slate-950 text-[10px] font-extrabold px-1.5 py-0.5 rounded-md uppercase">
+              New
+            </span>
           </button>
 
           <button
             onClick={() => setActiveTab('rules')}
-            className={`pb-4 text-sm font-semibold flex items-center gap-2 border-b-2 transition ${
+            className={`px-4 py-2 rounded-xl text-sm font-semibold transition ${
               activeTab === 'rules'
-                ? 'border-indigo-500 text-indigo-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                : 'text-slate-400 hover:text-white bg-slate-900/40 border border-slate-800/80'
             }`}
           >
-            <Settings className="w-4 h-4" /> Custom Scenario Rules
+            ⚙️ Custom Scenario Rules
           </button>
 
           <button
             onClick={() => setActiveTab('history')}
-            className={`pb-4 text-sm font-semibold flex items-center gap-2 border-b-2 transition ${
+            className={`px-4 py-2 rounded-xl text-sm font-semibold transition ${
               activeTab === 'history'
-                ? 'border-indigo-500 text-indigo-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                : 'text-slate-400 hover:text-white bg-slate-900/40 border border-slate-800/80'
             }`}
           >
-            <History className="w-4 h-4" /> Response History ({history.length})
+            🕒 Response History ({history.length})
           </button>
         </div>
 
         {/* TAB 1: REVIEW GENERATOR */}
         {activeTab === 'generator' && (
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Input Form Card */}
-            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8">
-              <h2 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-                <Sliders className="w-5 h-5 text-indigo-400" /> Review Input Details
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Form Column */}
+            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-xl">
+              <h2 className="text-lg font-bold text-white mb-6 flex items-center justify-between">
+                <span>Review Input Details</span>
+                <span className="text-xs text-indigo-400 font-normal">Matrix Integrated</span>
               </h2>
 
-              <div className="space-y-5">
+              <form onSubmit={handleGenerateReply} className="space-y-5">
+                {/* Industry Selection */}
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                    Industry Vertical
+                  </label>
+                  <select
+                    value={industryKey}
+                    onChange={(e) => setIndustryKey(e.target.value)}
+                    className="w-full bg-slate-950 border border-slate-800 text-white text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-indigo-500 transition"
+                  >
+                    <option value="hvac">HVAC, Plumbing & Electrical</option>
+                    <option value="dental">Dental & Medical Practices</option>
+                    <option value="auto">Auto Repair & Body Shops</option>
+                    <option value="medspa">MedSpas, Salons & Aesthetics</option>
+                    <option value="roofing">Roofing, Solar & Construction</option>
+                    <option value="legal">Legal, Financial & Insurance</option>
+                    <option value="general">General Local Business</option>
+                  </select>
+                </div>
+
                 {/* Platform & Star Rating */}
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Platform</label>
+                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                      Platform
+                    </label>
                     <select
                       value={platform}
                       onChange={(e) => setPlatform(e.target.value)}
                       className="w-full bg-slate-950 border border-slate-800 text-white text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-indigo-500 transition"
                     >
-                      <option value="Google">Google Business</option>
+                      <option value="Google Business">Google Business</option>
                       <option value="Yelp">Yelp</option>
-                      <option value="Facebook">Facebook Reviews</option>
+                      <option value="Facebook Reviews">Facebook Reviews</option>
+                      <option value="Direct Feedback">Direct Email / Web</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Star Rating</label>
-                    <div className="flex bg-slate-950 border border-slate-800 rounded-xl p-1.5 justify-around">
+                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                      Star Rating
+                    </label>
+                    <div className="flex items-center space-x-1 pt-1.5">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <button
-                          key={star}
                           type="button"
+                          key={star}
                           onClick={() => setRating(star)}
-                          className={`p-1.5 rounded-lg transition ${rating >= star ? 'text-amber-400' : 'text-slate-600'}`}
+                          className={`text-xl transition ${
+                            star <= rating ? 'text-amber-400 scale-110' : 'text-slate-700 hover:text-slate-500'
+                          }`}
                         >
-                          <Star className={`w-5 h-5 ${rating >= star ? 'fill-amber-400' : ''}`} />
+                          ★
                         </button>
                       ))}
                     </div>
@@ -222,214 +273,248 @@ export default function AppDashboard() {
 
                 {/* Customer Name */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Customer Name (Optional)</label>
+                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                    Customer Name (Optional)
+                  </label>
                   <input
                     type="text"
-                    placeholder="e.g. Sarah Jenkins"
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
+                    placeholder="e.g. Sarah Jenkins"
                     className="w-full bg-slate-950 border border-slate-800 text-white text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-indigo-500 transition"
                   />
                 </div>
 
-                {/* Raw Review Text */}
+                {/* Review Text Area */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Paste Customer Review</label>
+                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                    Paste Customer Review
+                  </label>
                   <textarea
                     rows={4}
-                    placeholder="Paste the customer's raw review here..."
                     value={reviewText}
                     onChange={(e) => setReviewText(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 text-white text-sm rounded-xl p-3.5 focus:outline-none focus:border-indigo-500 transition resize-none"
+                    className="w-full bg-slate-950 border border-slate-800 text-white text-sm rounded-xl p-3.5 focus:outline-none focus:border-indigo-500 transition"
+                    placeholder="Paste the full customer review here..."
+                    required
                   />
                 </div>
 
-                {/* Tone Selector */}
+                {/* Tone Preset */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Tone Preset</label>
+                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                    Tone Preset
+                  </label>
                   <select
                     value={tone}
                     onChange={(e) => setTone(e.target.value)}
                     className="w-full bg-slate-950 border border-slate-800 text-white text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-indigo-500 transition"
                   >
                     <option value="Professional & Empathetic">Professional & Empathetic</option>
-                    <option value="Warm & Enthusiastic">Warm & Enthusiastic</option>
-                    <option value="Direct & Firm">Direct & Firm (Fee Disputes)</option>
-                    <option value="Concise">Short & Concise</option>
+                    <option value="Direct & Firm">Direct & Firm (Policy Focused)</option>
+                    <option value="Warm & Grateful">Warm & Grateful (For 5-Star Reviews)</option>
+                    <option value="De-escalation Executive">De-escalation Executive</option>
                   </select>
                 </div>
 
-                {/* Action Button */}
                 <button
-                  type="button"
-                  onClick={handleGenerate}
-                  disabled={isGenerating || !reviewText.trim()}
-                  className="w-full bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-semibold py-3.5 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20 mt-2 cursor-pointer"
+                  type="submit"
+                  disabled={isGenerating}
+                  className="w-full py-3.5 bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold rounded-xl text-sm shadow-lg shadow-indigo-600/30 transition disabled:opacity-50"
                 >
-                  <Zap className="w-4 h-4" />
-                  {isGenerating ? 'Drafting Response...' : 'Generate AI Response'}
+                  {isGenerating ? 'Drafting Response with Industry Matrix...' : '⚡ Generate AI Response'}
                 </button>
-              </div>
+              </form>
             </div>
 
-            {/* AI Output Card */}
-            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+            {/* Response Output Column */}
+            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                    <Sparkles className="w-5 h-5 text-indigo-400" /> Drafted AI Response
-                  </h2>
-                  {generatedReply && (
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-lg font-bold text-white">Drafted AI Response</h2>
+                  {draftedResponse && (
                     <button
-                      type="button"
-                      onClick={() => handleCopy(generatedReply)}
-                      className="inline-flex items-center gap-1.5 text-xs font-medium text-indigo-400 hover:text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1.5 rounded-lg transition cursor-pointer"
+                      onClick={() => navigator.clipboard.writeText(draftedResponse)}
+                      className="text-xs font-semibold text-indigo-400 hover:text-indigo-300 bg-indigo-950/60 border border-indigo-800/60 rounded-lg px-3 py-1.5 transition"
                     >
-                      {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                      {copied ? 'Copied!' : 'Copy Response'}
+                      📋 Copy Response
                     </button>
                   )}
                 </div>
 
-                <div className="bg-slate-950 border border-slate-800 rounded-xl p-5 min-h-[220px] flex items-center justify-center relative">
-                  {isGenerating ? (
-                    <div className="text-slate-500 text-sm animate-pulse flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-indigo-400 animate-spin" />
-                      Applying {businessName} scenario rules...
-                    </div>
-                  ) : errorMessage ? (
-                    <div className="text-rose-400 text-sm text-center flex flex-col items-center gap-2 p-4">
-                      <AlertCircle className="w-5 h-5 text-rose-500" />
-                      <span>{errorMessage}</span>
-                    </div>
-                  ) : generatedReply ? (
-                    <p className="text-slate-200 text-sm leading-relaxed">{generatedReply}</p>
-                  ) : (
-                    <p className="text-slate-500 text-sm text-center">
-                      Paste a review on the left and click <strong className="text-slate-400">"Generate AI Response"</strong> to draft your reply.
+                {errorMessage && (
+                  <div className="bg-red-950/50 border border-red-800/80 text-red-200 text-xs p-4 rounded-xl mb-4">
+                    ⚠️ {errorMessage}
+                  </div>
+                )}
+
+                {draftedResponse ? (
+                  <div className="bg-slate-950 border border-slate-800 rounded-xl p-5 text-slate-200 text-sm leading-relaxed whitespace-pre-wrap font-normal">
+                    {draftedResponse}
+                  </div>
+                ) : (
+                  <div className="h-64 bg-slate-950/40 border border-dashed border-slate-800 rounded-xl flex items-center justify-center text-center p-6">
+                    <p className="text-slate-500 text-sm">
+                      Select your industry vertical, paste a review, and click <br />
+                      <span className="text-indigo-400 font-medium">"Generate AI Response"</span> to see the live output.
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              <div className="pt-6 border-t border-slate-800/80 mt-6">
+                <p className="text-xs text-slate-500">
+                  💡 <span className="text-slate-400 font-medium">Pro-Tip:</span> High-star reviews trigger automated referral requests, while 1-star reviews trigger diagnostic fee policy rules.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 2: BACK-OFFICE & VOICE PARTNER */}
+        {activeTab === 'voice' && (
+          <div className="space-y-8">
+            {/* Executive Partner Digest Banner */}
+            <div className="bg-gradient-to-r from-indigo-950 via-slate-900 to-slate-950 border border-indigo-800/60 rounded-2xl p-6 shadow-xl">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                  <div className="inline-flex items-center space-x-2 bg-indigo-900/60 text-indigo-300 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
+                    <span>🤝 Embedded Back-Office Desk</span>
+                  </div>
+                  <h2 className="text-2xl font-extrabold text-white">Your Dedicated AI Sales & Operations Partner</h2>
+                  <p className="text-slate-300 text-sm mt-1 max-w-2xl">
+                    We don't just give you a tool—we research your market, craft your high-converting price hooks, and manage automated voice outreach to contractors.
+                  </p>
+                </div>
+
+                <div className="bg-slate-950/80 border border-slate-800 rounded-xl p-4 text-right min-w-[200px]">
+                  <span className="text-xs text-slate-400 block font-medium">Weekly Time Saved</span>
+                  <span className="text-2xl font-black text-indigo-400">14.5 Hours</span>
+                  <span className="text-[10px] text-emerald-400 block mt-0.5">End-of-Week Digest Sent</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Voice & Pricing Matrix Builder */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Configuration Inputs */}
+              <div className="lg:col-span-2 bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
+                <h3 className="text-lg font-bold text-white border-b border-slate-800 pb-3">
+                  Contractor Cold Outreach & Price Hook Matrix
+                </h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                      Your Direct Wholesale Price
+                    </label>
+                    <input
+                      type="text"
+                      value={directPrice}
+                      onChange={(e) => setDirectPrice(e.target.value)}
+                      className="w-full bg-slate-950 border border-slate-800 text-white text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-indigo-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                      Retail Yard Benchmark Price
+                    </label>
+                    <input
+                      type="text"
+                      value={retailPrice}
+                      onChange={(e) => setRetailPrice(e.target.value)}
+                      className="w-full bg-slate-950 border border-slate-800 text-white text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-indigo-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                    Raw Business Details / Voice Intake Notes
+                  </label>
+                  <textarea
+                    rows={4}
+                    value={businessNotes}
+                    onChange={(e) => setBusinessNotes(e.target.value)}
+                    className="w-full bg-slate-950 border border-slate-800 text-white text-sm rounded-xl p-3.5 focus:outline-none focus:border-indigo-500"
+                  />
+                  <p className="text-xs text-slate-500 mt-1.5">
+                    Our back-office AI ingests these raw notes and generates custom phone call scripts, SMS follow-ups, and objection handlers automatically.
+                  </p>
+                </div>
+
+                {/* Dispatch Test Call Panel */}
+                <div className="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                  <h4 className="text-sm font-bold text-indigo-300 flex items-center space-x-2">
+                    <span>📞 Test Live AI Outbound Call Hook</span>
+                  </h4>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input
+                      type="text"
+                      placeholder="Contractor Name (e.g. Mike)"
+                      value={contractorNameInput}
+                      onChange={(e) => setContractorNameInput(e.target.value)}
+                      className="bg-slate-900 border border-slate-800 text-white text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-indigo-500"
+                    />
+
+                    <input
+                      type="tel"
+                      placeholder="Phone Number (+1 407...)"
+                      value={testPhoneNumber}
+                      onChange={(e) => setTestPhoneNumber(e.target.value)}
+                      className="bg-slate-900 border border-slate-800 text-white text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-indigo-500"
+                    />
+                  </div>
+
+                  <button
+                    onClick={handleTriggerVoiceCall}
+                    disabled={isCalling}
+                    className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-sm shadow-lg shadow-emerald-600/20 transition disabled:opacity-50"
+                  >
+                    {isCalling ? 'Dispatching Call...' : '🚀 Dispatch AI Voice Call Now'}
+                  </button>
+
+                  {callStatus && (
+                    <p className="text-xs text-center text-indigo-300 font-mono bg-indigo-950/60 p-2.5 rounded-lg border border-indigo-800/40">
+                      {callStatus}
                     </p>
                   )}
                 </div>
               </div>
 
-              {/* Tips Footer */}
-              <div className="mt-6 pt-6 border-t border-slate-800/80 text-xs text-slate-500 flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-indigo-400 shrink-0" />
-                <span>Tip: You can edit or fine-tune custom policy rules in the <strong>Custom Scenario Rules</strong> tab.</span>
-              </div>
-            </div>
-          </div>
-        )}
+              {/* Script Strategy Preview */}
+              <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+                <div>
+                  <h3 className="text-lg font-bold text-white border-b border-slate-800 pb-3 mb-4">
+                    Generated Call Script Strategy
+                  </h3>
 
-        {/* TAB 2: CUSTOM SCENARIO RULES */}
-        {activeTab === 'rules' && (
-          <div className="max-w-3xl mx-auto bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8">
-            <div className="mb-8">
-              <h2 className="text-xl font-bold text-white mb-2">Custom Brand & Scenario Rules</h2>
-              <p className="text-slate-400 text-sm">
-                These rules automatically shape every generated AI response to align with your business policies.
-              </p>
-            </div>
+                  <div className="space-y-4 text-xs leading-relaxed text-slate-300">
+                    <div className="bg-slate-950 border border-slate-800 p-3.5 rounded-xl">
+                      <span className="font-bold text-indigo-400 block mb-1">Opening Sentence (Hook):</span>
+                      "Hey {contractorNameInput || '[Contractor]'}, quick call from RevPulse Supply—we just brought wholesale framing screws to town at {directPrice} delivered to your site. Want us to drop off a free 5lb test bucket this Thursday?"
+                    </div>
 
-            <div className="space-y-6">
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Business Name</label>
-                <input
-                  type="text"
-                  value={businessName}
-                  onChange={(e) => setBusinessName(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 text-white text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-indigo-500 transition"
-                />
-              </div>
+                    <div className="bg-slate-950 border border-slate-800 p-3.5 rounded-xl">
+                      <span className="font-bold text-emerald-400 block mb-1">If They Mention Retail Pricing ({retailPrice}):</span>
+                      "I hear you! That's why we save local framing crews ~$400/month by shipping direct. We'll leave 5 lbs on site so your crew can test torque before spending a penny."
+                    </div>
 
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                  Diagnostic / Inspection Fee Policy Rule
-                </label>
-                <textarea
-                  rows={2}
-                  value={diagnosticFeeRule}
-                  onChange={(e) => setDiagnosticFeeRule(e.target.value)}
-                  placeholder="e.g. Our $95 diagnostic fee is 100% credited toward completed repairs."
-                  className="w-full bg-slate-950 border border-slate-800 text-white text-sm rounded-xl p-3.5 focus:outline-none focus:border-indigo-500 transition resize-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                  Cancellation / Rescheduling Policy Rule
-                </label>
-                <textarea
-                  rows={2}
-                  value={cancellationRule}
-                  onChange={(e) => setCancellationRule(e.target.value)}
-                  placeholder="e.g. 24-hour notice required for rescheduling."
-                  className="w-full bg-slate-950 border border-slate-800 text-white text-sm rounded-xl p-3.5 focus:outline-none focus:border-indigo-500 transition resize-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Contact Email for Escalations</label>
-                <input
-                  type="email"
-                  value={contactEmail}
-                  onChange={(e) => setContactEmail(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 text-white text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-indigo-500 transition"
-                />
-              </div>
-
-              <div className="pt-4 border-t border-slate-800 flex justify-end">
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('generator')}
-                  className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-6 py-2.5 rounded-xl transition shadow-lg shadow-indigo-600/20 cursor-pointer"
-                >
-                  Save Rules & Go to Generator
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* TAB 3: RESPONSE HISTORY */}
-        {activeTab === 'history' && (
-          <div className="max-w-4xl mx-auto space-y-4">
-            {history.length === 0 ? (
-              <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-12 text-center text-slate-500 text-sm">
-                No generated responses in this session yet.
-              </div>
-            ) : (
-              history.map((item) => (
-                <div key={item.id} className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
-                  <div className="flex items-center justify-between mb-3 text-xs text-slate-400">
-                    <span className="font-semibold text-indigo-400">{item.platform} • {item.rating}-Star</span>
-                    <span>{item.date}</span>
-                  </div>
-
-                  <div className="bg-slate-950 border border-slate-800/80 rounded-xl p-4 mb-4 text-xs italic text-slate-300">
-                    "{item.review}"
-                  </div>
-
-                  <div className="text-sm text-slate-200 mb-4 leading-relaxed">
-                    {item.reply}
-                  </div>
-
-                  <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-800/80">
-                    <button
-                      type="button"
-                      onClick={() => handleCopy(item.reply)}
-                      className="inline-flex items-center gap-1.5 text-xs text-indigo-400 hover:text-indigo-300 transition cursor-pointer"
-                    >
-                      <Copy className="w-3.5 h-3.5" /> Copy Reply
-                    </button>
+                    <div className="bg-slate-950 border border-slate-800 p-3.5 rounded-xl">
+                      <span className="font-bold text-amber-400 block mb-1">Automated SMS Action:</span>
+                      Fires an immediate text via Twilio with a 1-click delivery drop off request sheet.
+                    </div>
                   </div>
                 </div>
-              ))
-            )}
+
+                <div className="pt-4 border-t border-slate-800 text-[11px] text-slate-500">
+                  Updated automatically by RevPulse Back-Office Engine.
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
-      </main>
-    </div>
-  );
-}
+        {/* TAB 3: CUSTOM SCENARIO RULES
