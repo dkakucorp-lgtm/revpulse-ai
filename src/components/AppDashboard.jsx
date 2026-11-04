@@ -517,4 +517,58 @@ export default function AppDashboard() {
           </div>
         )}
 
-        {/* TAB 3: CUSTOM SCENARIO RULES
+        {/* TAB 3: CUSTOM SCENARIO RULES */}
+        {activeTab === 'rules' && (
+          <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-xl max-w-4xl mx-auto space-y-6">
+            <div>
+              <h2 className="text-lg font-bold text-white">Custom Scenario Rules Builder</h2>
+              <p className="text-slate-400 text-sm">
+                Fine-tune how AI handles specific operational policies (e.g., diagnostic fees, warranty returns, late arrivals).
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <div className="bg-slate-950 border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">Diagnostic Fee Credit Rule</h4>
+                  <p className="text-xs text-slate-400">Always remind negative reviewers that the service fee applies to repairs.</p>
+                </div>
+                <span className="text-xs bg-emerald-950 text-emerald-300 border border-emerald-800 px-3 py-1 rounded-full font-semibold">Active</span>
+              </div>
+
+              <div className="bg-slate-950 border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-white">HIPAA & Medical Compliance Rule</h4>
+                  <p className="text-xs text-slate-400">Never confirm or reveal patient health details in dental responses.</p>
+                </div>
+                <span className="text-xs bg-emerald-950 text-emerald-300 border border-emerald-800 px-3 py-1 rounded-full font-semibold">Active</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 4: RESPONSE HISTORY */}
+        {activeTab === 'history' && (
+          <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-xl max-w-5xl mx-auto space-y-6">
+            <h2 className="text-lg font-bold text-white">Recent Response & Call Activity</h2>
+
+            <div className="space-y-4">
+              {history.map((item) => (
+                <div key={item.id} className="bg-slate-950 border border-slate-800 p-5 rounded-xl space-y-3">
+                  <div className="flex justify-between items-center text-xs text-slate-400">
+                    <span className="font-semibold text-indigo-400">{item.platform}</span>
+                    <span>{item.date}</span>
+                  </div>
+                  <p className="text-xs text-slate-300 italic font-mono">"{item.snippet}"</p>
+                  <p className="text-sm text-slate-200 bg-slate-900/80 p-3.5 rounded-lg border border-slate-800">
+                    {item.response}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </main>
+    </div>
+  );
+}
