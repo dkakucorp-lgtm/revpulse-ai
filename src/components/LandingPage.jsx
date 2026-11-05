@@ -13,7 +13,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img 
-              src="/logo.png" 
+              src="logo.png" 
               alt="RevPulse Logo" 
               className="w-10 h-10 rounded-xl object-cover bg-indigo-950 flex-shrink-0 shadow-lg shadow-indigo-500/30" 
             />
@@ -204,7 +204,7 @@ export default function LandingPage() {
                     </svg>
                     Multi-location Business Management
                   </li>
-                  <li className="li flex items-center">
+                  <li className="flex items-center">
                     <svg className="w-4 h-4 text-indigo-400 mr-2.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
