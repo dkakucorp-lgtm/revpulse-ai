@@ -1,9 +1,8 @@
 import React from 'react';
-import logoImage from '../assets/logo.png';
 
-// REPLACE THESE WITH YOUR COPIED STRIPE PAYMENT LINKS FROM YOUR DASHBOARD
-const STRIPE_STARTER_LINK = "https://buy.stripe.com/your_actual_starter_link";
-const STRIPE_PRO_LINK = "https://buy.stripe.com/your_actual_pro_link";
+// YOUR ACTUAL LIVE STRIPE PAYMENT LINKS
+const STRIPE_STARTER_LINK = "https://buy.stripe.com/bJeaEWauvcphcfVaA02cg04";
+const STRIPE_PRO_LINK = "https://buy.stripe.com/9B6fZgbyz0GzbbR7nO2cg03";
 
 export default function LandingPage() {
   return (
@@ -14,7 +13,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img 
-              src={logoImage} 
+              src="/logo.png" 
               alt="RevPulse Logo" 
               className="w-10 h-10 rounded-xl object-cover bg-indigo-950 flex-shrink-0 shadow-lg shadow-indigo-500/30" 
             />
