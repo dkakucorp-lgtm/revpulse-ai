@@ -1,29 +1,28 @@
 export default async function handler(req, res) {
-    // Allow only POST requests
     if (req.method !== 'POST') {
       res.setHeader('Allow', ['POST']);
       return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
     }
   
-    const PHONE_NUMBER_ID = 'bcfd68be-6cde-470a-81b0-c064ffd46eec'; // Free native Vapi line
-    const BUILD_MARKER = 'native-vapi-number-2026-11-05-a';
+    // Fallback to your native free line ID if the env variable isn't read yet
+    const PHONE_NUMBER_ID = process.env.VAPI_PHONE_NUMBER_ID || 'bcfd68be-6cde-470a-81b0-c064ffd46eec';
+    const ASSISTANT_ID = process.env.VAPI_ASSISTANT_ID || 'fb665d9a-886c-48c6-a678-b118fb668de8';
+    const VAPI_KEY = process.env.VAPI_API_KEY;
   
-    console.log({
-      build: BUILD_MARKER,
-      vapiPhoneNumberId: PHONE_NUMBER_ID,
-      route: 'make-call'
-    });
+    if (!VAPI_KEY) {
+      return res.status(500).json({ success: false, error: 'VAPI_API_KEY is missing from Vercel environment variables.' });
+    }
   
     try {
       const response = await fetch('https://api.vapi.ai/call', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_VAPI_API_KEY}`,
+          'Authorization': `Bearer ${VAPI_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           phoneNumberId: PHONE_NUMBER_ID,
-          assistantId: 'fb665d9a-886c-48c6-a678-b118fb668de8',
+          assistantId: ASSISTANT_ID,
           customer: {
             number: '+13212763473',
           },
@@ -35,14 +34,12 @@ export default async function handler(req, res) {
       if (!response.ok) {
         return res.status(response.status).json({
           success: false,
-          build: BUILD_MARKER,
           error: vapiData.message || 'Failed to initiate call with Vapi'
         });
       }
   
       return res.status(200).json({
         success: true,
-        build: BUILD_MARKER,
         phoneNumberIdUsed: PHONE_NUMBER_ID,
         vapiResponse: vapiData
       });
@@ -51,7 +48,6 @@ export default async function handler(req, res) {
       console.error('Server error dispatching call:', err);
       return res.status(500).json({
         success: false,
-        build: BUILD_MARKER,
         error: err.message
       });
     }
