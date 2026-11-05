@@ -100,7 +100,7 @@ export default function AppDashboard() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          customerPhone: testPhoneNumber,
+          phoneNumber: testPhoneNumber, // Corrected key to match api/make-call.js
           contractorName: contractorNameInput || 'Contractor',
           directPrice,
           retailPrice,
