@@ -12,9 +12,11 @@ export default function LandingPage() {
       <nav className="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-indigo-500/30">
-              <span className="text-white font-black text-xl tracking-wider">R</span>
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="RevPulse Logo" 
+              className="w-10 h-10 rounded-xl object-contain shadow-lg shadow-indigo-500/30" 
+            />
             <span className="font-bold text-xl tracking-tight text-white">
               RevPulse<span className="text-indigo-400">.tools</span>
             </span>
