@@ -100,7 +100,7 @@ export default function AppDashboard() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          phoneNumber: testPhoneNumber, // Corrected key to match api/make-call.js
+          phoneNumber: testPhoneNumber,
           contractorName: contractorNameInput || 'Contractor',
           directPrice,
           retailPrice,
@@ -121,13 +121,15 @@ export default function AppDashboard() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased">
-      {/* Top Header */}
+      {/* Top Header with High-Resolution Logo Mark */}
       <header className="border-b border-slate-800 bg-slate-900/60 backdrop-blur-md sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white shadow-md shadow-indigo-600/30">
-              R
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="RevPulse Logo" 
+              className="w-9 h-9 rounded-xl object-contain shadow-md shadow-indigo-600/30" 
+            />
             <span className="font-bold text-lg text-white tracking-tight">
               RevPulse<span className="text-indigo-400">.tools</span>
             </span>
