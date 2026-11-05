@@ -1,4 +1,5 @@
 import React from 'react';
+import logoImage from '../assets/logo.png';
 
 // REPLACE THESE WITH YOUR COPIED STRIPE PAYMENT LINKS FROM YOUR DASHBOARD
 const STRIPE_STARTER_LINK = "https://buy.stripe.com/your_actual_starter_link";
@@ -13,7 +14,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img 
-              src="logo.png" 
+              src={logoImage} 
               alt="RevPulse Logo" 
               className="w-10 h-10 rounded-xl object-cover bg-indigo-950 flex-shrink-0 shadow-lg shadow-indigo-500/30" 
             />
