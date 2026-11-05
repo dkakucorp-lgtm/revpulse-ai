@@ -17,7 +17,7 @@ export default function MakeCall() {
         },
         body: JSON.stringify({
           // Native Vapi Phone Number ID (bypasses Twilio SIP Trunking & 403 errors)
-          phoneNumberId: 'bcf468be-6cde-476a-a1b6-c87e-d06efd388e44',
+          phoneNumberId: 'bcfd68be-6cde-470a-81b0-c064ffd46eec',
           
           // Your existing RevPulse Outbound Assistant ID
           assistantId: 'fb665d9a-886c-48c6-a678-b118fb668de8',
