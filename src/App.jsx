@@ -3,6 +3,7 @@ import LandingPage from './components/LandingPage';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
 import AppDashboard from './components/AppDashboard';
+import KakuAssistant from './components/KakuAssistant';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -16,20 +17,22 @@ export default function App() {
     return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
 
-  // Standardize trailing slashes
   const cleanPath = currentPath.replace(/\/$/, '') || '/';
 
+  let currentView = <LandingPage />;
   if (cleanPath === '/privacy') {
-    return <PrivacyPolicy />;
+    currentView = <PrivacyPolicy />;
+  } else if (cleanPath === '/terms') {
+    currentView = <TermsOfService />;
+  } else if (cleanPath === '/app') {
+    currentView = <AppDashboard />;
   }
 
-  if (cleanPath === '/terms') {
-    return <TermsOfService />;
-  }
-
-  if (cleanPath === '/app') {
-    return <AppDashboard />;
-  }
-
-  return <LandingPage />;
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased relative">
+      {currentView}
+      {/* Global Floating Kaku AI Mascot */}
+      <KakuAssistant />
+    </div>
+  );
 }
