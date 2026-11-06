@@ -110,7 +110,9 @@ export default function LandingPage() {
             </div>
 
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
-              <div className="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center font-bold mb-4">🤖</div>
+              <div className="w-12 h-12 rounded-xl bg-indigo-950 border border-indigo-500/40 overflow-hidden flex items-center justify-center mb-4 shadow-md">
+                <img src="/kaku-mascot.png" alt="Kaku AI Mascot" className="w-full h-full object-cover" />
+              </div>
               <h3 className="text-lg font-bold text-white mb-2">Kaku AI Strategist</h3>
               <p className="text-slate-400 text-xs leading-relaxed">Chat with Kaku right inside your dashboard for real-time reputation advice and custom pricing hooks.</p>
             </div>
