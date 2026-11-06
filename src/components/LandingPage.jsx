@@ -56,7 +56,7 @@ export default function LandingPage() {
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-indigo-950/60 border border-indigo-800/50 text-indigo-300 text-xs font-semibold mb-8 backdrop-blur-sm">
             <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>AI Review Management Built for Local Service Businesses</span>
+            <span>AI Review Management & Outbound Voice Built for Local Service Businesses</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-6">
@@ -67,7 +67,7 @@ export default function LandingPage() {
           </h1>
 
           <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
-            Automate policy-compliant, empathetic responses to Google and Yelp customer reviews in seconds. Embedded with deep industry intelligence for HVAC, Dental, Auto Repair, MedSpas, and Contractors.
+            Automate policy-compliant, empathetic responses to Google and Yelp customer reviews and dispatch automated Vapi/Twilio voice calls in seconds. Embedded with deep industry intelligence.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
@@ -92,21 +92,24 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-extrabold text-white mb-4">Built for Local Service Dominance</h2>
-            <p className="text-slate-400 max-w-xl mx-auto text-sm">Everything local contractors and clinics need to maintain stellar online ratings effortlessly.</p>
+            <p className="text-slate-400 max-w-xl mx-auto text-sm">Everything local contractors and clinics need to maintain stellar online ratings and automate outreach.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
               <div className="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center font-bold mb-4">⚡</div>
               <h3 className="text-lg font-bold text-white mb-2">Instant AI Responses</h3>
               <p className="text-slate-400 text-xs leading-relaxed">Generate empathetic, policy-compliant review replies tailored to Google and Yelp guidelines in under 3 seconds.</p>
             </div>
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-              <div className="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center font-bold mb-4">🛡️</div>
-              <h3 className="text-lg font-bold text-white mb-2">Compliance Guardrails</h3>
-              <p className="text-slate-400 text-xs leading-relaxed">Built-in vertical filters prevent privacy violations (like HIPAA for dental clinics) and cost disputes.</p>
+            
+            <div className="bg-slate-900 border-2 border-indigo-500/60 rounded-2xl p-6 shadow-xl relative">
+              <div className="absolute -top-3 right-4 bg-indigo-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Vapi / Twilio</div>
+              <div className="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center font-bold mb-4">📞</div>
+              <h3 className="text-lg font-bold text-white mb-2">Automated Voice Calls</h3>
+              <p className="text-slate-400 text-xs leading-relaxed">Dispatch automated Vapi voice call queues to follow up with clients or prospects instantly using your custom phone numbers.</p>
             </div>
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
               <div className="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center font-bold mb-4">🤖</div>
               <h3 className="text-lg font-bold text-white mb-2">Kaku AI Strategist</h3>
               <p className="text-slate-400 text-xs leading-relaxed">Chat with Kaku right inside your dashboard for real-time reputation advice and custom pricing hooks.</p>
@@ -146,7 +149,7 @@ export default function LandingPage() {
                 <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Compliance Note:</span>
                 <p className="text-xs text-slate-300 mt-1">{industryKnowledgeData[selectedIndustry].complianceNotes}</p>
               </div>
-              <div className="mb-4">
+              <div>
                 <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Key Terminology:</span>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {industryKnowledgeData[selectedIndustry].commonKeywords.map((kw, i) => (
@@ -213,7 +216,7 @@ export default function LandingPage() {
       <AuthModal 
         isOpen={isAuthOpen} 
         onClose={() => setIsAuthOpen(false)} 
-        onLoginSuccess={(user) => {
+        onLoginSuccess={() => {
           window.location.href = '/app';
         }} 
       />

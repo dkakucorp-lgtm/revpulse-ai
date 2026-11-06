@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import KakuAssistant from './KakuAssistant';
 import OutboundCallWidget from './OutboundCallWidget';
 import { industryKnowledgeData } from '../data/industryKnowledge';
 
@@ -58,27 +57,34 @@ export default function AppDashboard() {
       <main className="flex-1 max-w-7xl w-full mx-auto p-6 space-y-8">
         
         {/* Navigation Tabs */}
-        <div className="flex space-x-2 border-b border-slate-800 pb-4">
-          <button
-            onClick={() => setActiveTab('overview')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition ${
-              activeTab === 'overview'
-                ? 'bg-indigo-600 text-white shadow-md'
-                : 'bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800'
-            }`}
-          >
-            Review Generator & Matrices
-          </button>
-          <button
-            onClick={() => setActiveTab('outbound')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition ${
-              activeTab === 'outbound'
-                ? 'bg-indigo-600 text-white shadow-md'
-                : 'bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800'
-            }`}
-          >
-            Outbound Voice Queue (Vapi)
-          </button>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+          <div className="flex space-x-3">
+            <button
+              onClick={() => setActiveTab('overview')}
+              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center space-x-2 ${
+                activeTab === 'overview'
+                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                  : 'bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800'
+              }`}
+            >
+              <span>⚡ Review Generator & Matrices</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('outbound')}
+              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center space-x-2 ${
+                activeTab === 'outbound'
+                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                  : 'bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800'
+              }`}
+            >
+              <span>📞 Outbound Voice Call Queue (Vapi)</span>
+            </button>
+          </div>
+
+          <div className="hidden lg:flex items-center space-x-2 text-xs text-slate-400 bg-slate-900/60 px-3.5 py-2 rounded-xl border border-slate-800">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Twilio SIP Trunk: Active (+13213523645)</span>
+          </div>
         </div>
 
         {activeTab === 'overview' ? (
@@ -181,14 +187,11 @@ export default function AppDashboard() {
             </div>
           </div>
         ) : (
-          <div className="max-w-xl mx-auto">
+          <div className="max-w-xl mx-auto py-6">
             <OutboundCallWidget />
           </div>
         )}
       </main>
-
-      {/* Floating Kaku AI Mascot Chat Widget */}
-      <KakuAssistant />
     </div>
   );
 }
