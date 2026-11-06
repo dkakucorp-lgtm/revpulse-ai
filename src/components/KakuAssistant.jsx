@@ -16,7 +16,6 @@ export default function KakuAssistant() {
     const query = input;
     setInput('');
 
-    // Simulate intelligent Kaku response based on local service expertise
     setTimeout(() => {
       let replyText = "I've logged that strategy note. For best results on Google and Yelp, keep responses empathetic, acknowledge specific details without violating privacy, and offer an offline resolution channel.";
       
@@ -38,18 +37,23 @@ export default function KakuAssistant() {
       {!isOpen ? (
         <button
           onClick={() => setIsOpen(true)}
-          className="flex items-center space-x-3 px-5 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-2xl shadow-xl shadow-indigo-600/30 transition transform hover:-scale-105"
+          className="group relative flex items-center justify-center w-16 h-16 bg-indigo-600 hover:bg-indigo-500 rounded-full shadow-2xl shadow-indigo-600/50 transition transform hover:scale-105 border-2 border-indigo-400/50 overflow-hidden"
+          title="Chat with Kaku AI"
         >
-          <span className="flex h-3 w-3 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>Ask Kaku AI</span>
+          <img 
+            src="/logo.png" 
+            alt="Kaku AI Mascot" 
+            className="w-full h-full object-cover group-hover:scale-110 transition duration-300" 
+          />
+          <span className="absolute top-0 right-0 w-4 h-4 bg-emerald-400 border-2 border-slate-950 rounded-full animate-pulse"></span>
         </button>
       ) : (
         <div className="w-80 sm:w-96 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden max-h-[500px]">
           {/* Header */}
           <div className="bg-slate-950 px-4 py-3.5 border-b border-slate-800 flex items-center justify-between">
-            <div className="flex items-center space-x-2.5">
-              <div className="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-white text-xs shadow-md">
-                K
+            <div className="flex items-center space-x-3">
+              <div className="w-9 h-9 rounded-xl bg-indigo-950 overflow-hidden border border-indigo-500/40 flex-shrink-0 shadow-md">
+                <img src="/logo.png" alt="Kaku" className="w-full h-full object-cover" />
               </div>
               <div>
                 <h4 className="text-sm font-bold text-white leading-tight">Kaku AI Advisor</h4>
@@ -66,7 +70,7 @@ export default function KakuAssistant() {
             </button>
           </div>
 
-          {/* Messages Container */}
+          {/* Messages */}
           <div className="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs">
             {messages.map((msg, index) => (
               <div
@@ -86,7 +90,7 @@ export default function KakuAssistant() {
             ))}
           </div>
 
-          {/* Input Box */}
+          {/* Input */}
           <form onSubmit={handleSend} className="p-3 bg-slate-950 border-t border-slate-800 flex items-center space-x-2">
             <input
               type="text"
