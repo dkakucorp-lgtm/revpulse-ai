@@ -14,14 +14,14 @@ export default function LandingPage() {
       
       {/* Top Navigation */}
       <nav className="border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center space-x-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+          <div className="flex items-center space-x-2 sm:space-x-3">
             <img 
               src="/logo.png" 
               alt="RevPulse Logo" 
-              className="w-10 h-10 rounded-xl object-cover bg-indigo-950 flex-shrink-0 shadow-lg shadow-indigo-500/30 border border-indigo-500/30" 
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-cover bg-indigo-950 flex-shrink-0 shadow-lg shadow-indigo-500/30 border border-indigo-500/30" 
             />
-            <span className="font-bold text-xl tracking-tight text-white">
+            <span className="font-bold text-lg sm:text-xl tracking-tight text-white whitespace-nowrap">
               RevPulse<span className="text-indigo-400">.tools</span>
             </span>
           </div>
@@ -33,18 +33,18 @@ export default function LandingPage() {
             <a href="/manual" className="hover:text-white transition">User Manual</a>
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             <button
               onClick={() => setIsAuthOpen(true)}
-              className="px-5 py-2.5 text-sm font-semibold text-slate-300 hover:text-white transition"
+              className="hidden sm:inline-block px-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-300 hover:text-white transition whitespace-nowrap"
             >
               Sign In
             </button>
             <button
               onClick={() => setIsAuthOpen(true)}
-              className="px-5 py-2.5 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl transition shadow-lg shadow-indigo-600/30"
+              className="px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl transition shadow-lg shadow-indigo-600/30 whitespace-nowrap"
             >
-              Start 7-Day Free Trial
+              Start Free Trial
             </button>
           </div>
         </div>
@@ -236,7 +236,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Pricing Section (Bundled Review & Voice Tiers) */}
+      {/* Pricing Section */}
       <section id="pricing" className="py-24 px-6 bg-slate-900/40 border-t border-slate-800/80">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
