@@ -1,110 +1,53 @@
-// src/data/industryKnowledge.js
-export const industryKnowledgeBase = {
-    hvac: {
-      id: "hvac",
-      label: "HVAC, Plumbing & Electrical",
-      regulatoryRules: "State contractor licensing compliance. EPA Section 608 refrigerant handling safety. Diagnostic fee credit disclaimers.",
-      complaintPatterns: [
-        "Diagnostic / service call fee complaints",
-        "Broad arrival windows (8 AM - 12 PM)",
-        "Post-repair breakdown recurrence",
-        "Price vs DIY material cost expectations"
-      ],
-      scenarioGuidelines: `
-  - Explain that diagnostic fees cover truck roll, certified technician dispatch, and full system safety inspection.
-  - Reassure clients that diagnostic fees are 100% credited toward completed repairs.
-  - De-escalate arrival delays by highlighting safety protocols and unforeseen emergency repair complexity on prior jobs.
-      `
-    },
-    dental: {
-      id: "dental",
-      label: "Dental & Medical Practices",
-      regulatoryRules: "STRICT HIPAA & HITECH COMPLIANCE: Never confirm patient identity, treatment details, or medical history in public replies.",
-      complaintPatterns: [
-        "Long lobby wait times past appointment time",
-        "Unexpected out-of-network balance billing",
-        "Dental procedure discomfort or anxiety",
-        "Insurance pre-authorization delays"
-      ],
-      scenarioGuidelines: `
-  - Maintain strict HIPAA compliance: use generic terms ("our patients", "our office standard").
-  - Show deep empathy for dental anxiety or procedural discomfort.
-  - Direct insurance billing disputes off public forums to the practice manager directly via private email or phone.
-      `
-    },
-    auto: {
-      id: "auto",
-      label: "Auto Repair & Body Shops",
-      regulatoryRules: "Written estimate laws. OEM vs aftermarket part disclosures. Environmental disposal fee compliance.",
-      complaintPatterns: [
-        "Supply chain shipping delays on specialty OEM parts",
-        "Labor rate vs parts cost misunderstandings",
-        "Additional repairs discovered during teardown inspection",
-        "Warranty coverage scope queries"
-      ],
-      scenarioGuidelines: `
-  - Explain supply chain part lead times transparently while emphasizing quality standards.
-  - Reinforce that multi-point inspections catch hidden safety issues before vehicles hit the road.
-  - Highlight nationwide parts & labor warranty protections.
-      `
-    },
-    medspa: {
-      id: "medspa",
-      label: "MedSpas, Salons & Aesthetics",
-      regulatoryRules: "Practitioner licensure distinctions (RN/NP vs Esthetician). Medical director oversight. Deposit forfeiture disclaimers.",
-      complaintPatterns: [
-        "24-hour late cancellation fee enforcement",
-        "Procedure outcome vs client aesthetic expectation",
-        "Touch-up appointment pricing queries"
-      ],
-      scenarioGuidelines: `
-  - Maintain a warm, luxury, high-touch brand tone.
-  - Uphold cancellation policies firmly but offer policy exceptions as credits toward future service bookings.
-  - Invite clients back for a complimentary post-treatment assessment with the practitioner.
-      `
-    },
-    roofing: {
-      id: "roofing",
-      label: "Roofing, Solar & Construction",
-      regulatoryRules: "Building permit regulations. HOA guidelines. Insurance claim supplement procedures.",
-      complaintPatterns: [
-        "Weather-related project delays",
-        "Debris / nail cleanup on lawn or driveway",
-        "Estimate adjustments due to hidden deck wood rot"
-      ],
-      scenarioGuidelines: `
-  - Reassure clients about property protection standards (e.g., magnetic lawn sweeps for nails).
-  - Explain how crew safety and weather conditions dictate roof installation timelines.
-  - Frame scope changes as essential structural integrity measures.
-      `
-    },
-    legal: {
-      id: "legal",
-      label: "Legal, Financial & Insurance",
-      regulatoryRules: "State Bar advertising ethics. Strict confidentiality. No attorney-client privilege creation in public responses.",
-      complaintPatterns: [
-        "Retainer fee structure and billable hour confusion",
-        "Case communication update frequency",
-        "Consultation outcome dissatisfaction"
-      ],
-      scenarioGuidelines: `
-  - Maintain a formal, dignified, high-authority tone.
-  - Never discuss case specifics or admit liability in public forums.
-  - Offer direct consultation with managing partners to review fee structures or case milestones.
-      `
-    },
-    general: {
-      id: "general",
-      label: "All Other Local Service Businesses",
-      regulatoryRules: "Standard consumer protection transparency.",
-      complaintPatterns: [
-        "Pricing expectations vs service delivery",
-        "Communication response turnaround",
-        "Scheduling conflicts"
-      ],
-      scenarioGuidelines: `
-  - Maintain professional, solution-oriented customer service.
-  - Address concerns directly and provide direct escalation channels.
-      `
-    }
-  };
+// Industry Knowledge Matrices for RevPulse AI
+export const industryKnowledgeData = {
+  hvac: {
+    id: 'hvac',
+    name: 'HVAC & Mechanical Contractors',
+    complianceNotes: 'Avoid diagnostic cost disputes; emphasize emergency response times and seasonal maintenance transparency.',
+    commonKeywords: ['seer rating', 'refrigerant', 'compressor', 'ductwork', 'preventative maintenance', 'emergency dispatch'],
+    samplePrompts: [
+      "Thank you for trusting us with your system replacement. Our NATE-certified technicians always prioritize transparent pricing and safe refrigerant handling.",
+      "We apologize for the delay during the peak heatwave. Our dispatch team is committed to faster emergency response windows."
+    ]
+  },
+  dental: {
+    id: 'dental',
+    name: 'Dental & Orthodontic Clinics',
+    complianceNotes: 'HIPAA compliance: Never confirm patient clinical details or treatment specifics in public review replies.',
+    commonKeywords: ['gentle care', 'hygiene', 'whitening', 'crown', 'patient comfort', 'insurance processing'],
+    samplePrompts: [
+      "Thank you for your kind words about our clinic environment! Dr. Smith and our team always strive to make every visit stress-free.",
+      "We appreciate your feedback regarding scheduling. Our front desk team is working to streamline appointment confirmations."
+    ]
+  },
+  autoRepair: {
+    id: 'autoRepair',
+    name: 'Auto Repair & Body Shops',
+    complianceNotes: 'Reference digital inspection transparency, warranty guarantees, and OEM parts compliance.',
+    commonKeywords: ['diagnostic', 'brake pads', 'transmission', 'warranty', 'transparent estimate', 'oem parts'],
+    samplePrompts: [
+      "Thanks for bringing your vehicle to us! We believe in transparent digital inspections so you always know your vehicle's health before we start work.",
+      "We appreciate your patience while waiting for specialized parts. All our repairs are backed by our nationwide parts warranty."
+    ]
+  },
+  medspa: {
+    id: 'medspa',
+    name: 'MedSpas & Aesthetics',
+    complianceNotes: 'Focus on sterile environments, certified master aestheticians, and personalized consultation plans.',
+    commonKeywords: ['botox', 'filler', 'rejuvenation', 'consultation', 'skincare regimen', 'licensed practitioner'],
+    samplePrompts: [
+      "Thank you for sharing your glow-up experience! Our master practitioners customize every treatment to your skin's exact needs.",
+      "We value your feedback and would love to discuss your treatment progression during your next complimentary follow-up."
+    ]
+  },
+  generalContractor: {
+    id: 'generalContractor',
+    name: 'General Contractors & Remodeling',
+    complianceNotes: 'Address timeline management, dust containment protocols, and transparent change-order documentation.',
+    commonKeywords: ['framing', 'drywall', 'finish carpentry', 'project manager', 'clean-up', 'punch list'],
+    samplePrompts: [
+      "Thank you for trusting us with your home remodel. Our crew takes pride in daily job-site clean-up and transparent milestone tracking.",
+      "We appreciate your note on the punch list timeline. Our project manager is coordinating the final details to ensure 100% satisfaction."
+    ]
+  }
+};
