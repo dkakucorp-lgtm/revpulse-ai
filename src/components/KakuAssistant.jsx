@@ -41,7 +41,7 @@ export default function KakuAssistant() {
           title="Chat with Kaku AI"
         >
           <img 
-            src="/logo.png" 
+            src="/kaku-mascot.png" 
             alt="Kaku AI Mascot" 
             className="w-full h-full object-cover group-hover:scale-110 transition duration-300" 
           />
@@ -53,7 +53,7 @@ export default function KakuAssistant() {
           <div className="bg-slate-950 px-4 py-3.5 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-9 h-9 rounded-xl bg-indigo-950 overflow-hidden border border-indigo-500/40 flex-shrink-0 shadow-md">
-                <img src="/logo.png" alt="Kaku" className="w-full h-full object-cover" />
+                <img src="/kaku-mascot.png" alt="Kaku Mascot" className="w-full h-full object-cover" />
               </div>
               <div>
                 <h4 className="text-sm font-bold text-white leading-tight">Kaku AI Advisor</h4>
