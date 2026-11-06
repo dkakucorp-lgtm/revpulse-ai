@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import LandingPage from './components/LandingPage';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
+import UserManual from './components/UserManual';
 import AppDashboard from './components/AppDashboard';
 import KakuAssistant from './components/KakuAssistant';
 
@@ -24,6 +25,8 @@ export default function App() {
     currentView = <PrivacyPolicy />;
   } else if (cleanPath === '/terms') {
     currentView = <TermsOfService />;
+  } else if (cleanPath === '/manual') {
+    currentView = <UserManual />;
   } else if (cleanPath === '/app') {
     currentView = <AppDashboard />;
   }
