@@ -236,7 +236,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* Pricing Section (Bundled Review & Voice Tiers) */}
       <section id="pricing" className="py-24 px-6 bg-slate-900/40 border-t border-slate-800/80">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -265,7 +265,7 @@ export default function LandingPage() {
                   </li>
                   <li className="flex items-center space-x-2">
                     <span className="text-emerald-400 font-bold">✓</span>
-                    <span>Standard Vapi Voice Queue Support</span>
+                    <span><strong>50</strong> Vapi Automated Voice Calls / mo</span>
                   </li>
                 </ul>
               </div>
@@ -300,7 +300,7 @@ export default function LandingPage() {
                   </li>
                   <li className="flex items-center space-x-2">
                     <span className="text-emerald-400 font-bold">✓</span>
-                    <span>Multi-location matrix management</span>
+                    <span><strong>500+</strong> Vapi Automated Voice Calls / mo</span>
                   </li>
                 </ul>
               </div>
