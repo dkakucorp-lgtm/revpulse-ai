@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import logoImage from './logo.PNG';
+import kakuMascot from './kaku-mascot.png';
 
 export default function RevPulsePlatform() {
   const [activeTab, setActiveTab] = useState('landing');
@@ -58,9 +60,9 @@ export default function RevPulsePlatform() {
       <header className="border-b border-gray-800 bg-gray-900/50 backdrop-blur sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-8">
-            <a href="https://www.revpulse.tools" className="text-xl font-extrabold tracking-tight text-white flex items-center space-x-2">
-              <span className="bg-blue-600 text-white px-2 py-0.5 rounded text-sm">RP</span>
-              <span>RevPulse</span>
+            <a href="https://www.revpulse.tools" className="flex items-center space-x-3 group">
+              <img src={logoImage} alt="RevPulse Logo" className="w-8 h-8 rounded-lg object-contain shadow-md" />
+              <span className="text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition">RevPulse</span>
             </a>
             <nav className="hidden md:flex space-x-6 text-sm text-gray-300">
               <button onClick={() => setActiveTab('landing')} className={`hover:text-white transition ${activeTab === 'landing' ? 'text-blue-400 font-semibold' : ''}`}>Features</button>
@@ -70,7 +72,7 @@ export default function RevPulsePlatform() {
           </div>
           
           <div className="flex items-center space-x-4">
-            {/* Expanded Multilingual Selector Dropdown (US, MENA, Europe) */}
+            {/* Expanded Multilingual Selector Dropdown (US, Europe, MENA) */}
             <select 
               value={selectedLanguage} 
               onChange={(e) => setSelectedLanguage(e.target.value)}
@@ -130,16 +132,23 @@ export default function RevPulsePlatform() {
             </p>
           </section>
 
-          {/* Multi-Industry Selector & Interactive Demo */}
+          {/* Multi-Industry Selector & Interactive Demo with Kaku Mascot */}
           <section className="py-12 px-6 max-w-4xl mx-auto">
             <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 md:p-8 shadow-2xl relative">
               
-              {/* Kaku Mascot Floating Callout */}
-              <div className="absolute -top-6 -right-2 md:right-4 bg-blue-600 text-white text-xs px-3 py-1.5 rounded-full shadow-lg flex items-center space-x-2 border border-blue-400">
-                <span>🤖 Kaku: Try switching industries!</span>
+              {/* Properly Positioned Kaku Mascot Badge */}
+              <div className="absolute -top-10 left-6 flex items-center space-x-3 bg-gray-900 border border-blue-500/50 px-4 py-2 rounded-2xl shadow-xl z-10">
+                <img src={kakuMascot} alt="Kaku AI Mascot" className="w-9 h-9 rounded-xl object-cover shadow-md border border-blue-400/40" />
+                <div>
+                  <div className="text-xs font-bold text-white flex items-center space-x-1">
+                    <span>Kaku Assistant</span>
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  </div>
+                  <div className="text-[11px] text-gray-400">Switch industries below to test live drafts!</div>
+                </div>
               </div>
 
-              <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
+              <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4 pt-4">
                 <h3 className="text-lg font-bold text-white">⚡ Interactive Review Safeguard Demo</h3>
                 
                 {/* Industry Selector Tabs */}
@@ -154,7 +163,7 @@ export default function RevPulsePlatform() {
                       }}
                       className={`px-3 py-1.5 rounded-lg text-xs font-medium transition ${
                         selectedVertical === key 
-                          ? 'bg-blue-600 text-white' 
+                          ? 'bg-blue-600 text-white shadow-md' 
                           : 'bg-gray-800 text-gray-400 hover:text-white'
                       }`}
                     >
