@@ -4,6 +4,11 @@ export default function RevPulsePlatform() {
   const [activeTab, setActiveTab] = useState('landing');
   const [selectedVertical, setSelectedVertical] = useState('hvac');
   const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authMode, setAuthMode] = useState('signin'); // 'signin' or 'signup'
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
   const [sampleReview, setSampleReview] = useState("Terrible experience! Called for an AC repair on Tuesday, technician arrived 3 hours late, and the bill was double the estimate. Never using them again!");
   const [aiResponse, setAiResponse] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -40,8 +45,15 @@ export default function RevPulsePlatform() {
     }, 800);
   };
 
+  const handleAuthSubmit = (e) => {
+    e.preventDefault();
+    alert(`Successfully ${authMode === 'signin' ? 'signed in' : 'registered'} as ${email}! Redirecting to workspace...`);
+    setShowAuthModal(false);
+    setActiveTab('app');
+  };
+
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100 font-sans">
+    <div className="min-h-screen bg-gray-950 text-gray-100 font-sans relative">
       {/* Minimalist Navigation Header */}
       <header className="border-b border-gray-800 bg-gray-900/50 backdrop-blur sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -58,21 +70,30 @@ export default function RevPulsePlatform() {
           </div>
           
           <div className="flex items-center space-x-4">
-            {/* Multilingual Selector Dropdown */}
+            {/* Expanded Multilingual Selector Dropdown (US, MENA, Europe) */}
             <select 
               value={selectedLanguage} 
               onChange={(e) => setSelectedLanguage(e.target.value)}
-              className="bg-gray-800 text-gray-300 text-xs rounded-lg px-2.5 py-1.5 border border-gray-700 focus:outline-none">
+              className="hidden sm:block bg-gray-800 text-gray-300 text-xs rounded-lg px-2.5 py-1.5 border border-gray-700 focus:outline-none">
               <option value="en">🌐 English (US)</option>
-              <option value="ar">العربية (MENA)</option>
-              <option value="es">Español</option>
-              <option value="ur">اردو</option>
+              <option value="fr">🇫🇷 Français (France)</option>
+              <option value="it">🇮🇹 Italiano (Italy)</option>
+              <option value="nl">🇳🇱 Nederlands (Dutch)</option>
+              <option value="es">🇪🇸 Español</option>
+              <option value="ar">🇦🇪 العربية (MENA)</option>
+              <option value="ur">🇵🇰 اردو</option>
             </select>
 
             <button 
-              onClick={() => setActiveTab('app')}
+              onClick={() => { setAuthMode('signin'); setShowAuthModal(true); }}
+              className="text-sm text-gray-300 hover:text-white transition font-medium px-3 py-2">
+              Sign In
+            </button>
+
+            <button 
+              onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
               className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition shadow-lg shadow-blue-600/20">
-              Launch App Workspace
+              Get Started Free
             </button>
           </div>
         </div>
@@ -111,7 +132,13 @@ export default function RevPulsePlatform() {
 
           {/* Multi-Industry Selector & Interactive Demo */}
           <section className="py-12 px-6 max-w-4xl mx-auto">
-            <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 md:p-8 shadow-2xl">
+            <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 md:p-8 shadow-2xl relative">
+              
+              {/* Kaku Mascot Floating Callout */}
+              <div className="absolute -top-6 -right-2 md:right-4 bg-blue-600 text-white text-xs px-3 py-1.5 rounded-full shadow-lg flex items-center space-x-2 border border-blue-400">
+                <span>🤖 Kaku: Try switching industries!</span>
+              </div>
+
               <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
                 <h3 className="text-lg font-bold text-white">⚡ Interactive Review Safeguard Demo</h3>
                 
@@ -190,7 +217,7 @@ export default function RevPulsePlatform() {
               </div>
 
               <div className="bg-gray-900/60 border border-gray-800 p-8 rounded-2xl">
-                <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">MENA, Europe & Africa</span>
+                <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Europe, MENA & Africa</span>
                 <h3 className="text-xl font-bold text-white mt-1 mb-3">WhatsApp & Email Campaigns</h3>
                 <p className="text-sm text-gray-400 leading-relaxed mb-4">
                   Region-preferred messaging utilizing rich conversational WhatsApp flows alongside structured email sequences.
@@ -223,7 +250,7 @@ export default function RevPulsePlatform() {
                   <li className="flex items-center">✓ Multi-industry prompt matrices</li>
                 </ul>
               </div>
-              <button onClick={() => alert("Redirecting to secure trial checkout...")} className="w-full py-3 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-xl transition">
+              <button onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }} className="w-full py-3 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-xl transition">
                 Start 7-Day Trial
               </button>
             </div>
@@ -240,7 +267,7 @@ export default function RevPulsePlatform() {
                   <li className="flex items-center">✓ Priority support & template playbooks</li>
                 </ul>
               </div>
-              <button onClick={() => alert("Redirecting to secure trial checkout...")} className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg shadow-blue-600/25">
+              <button onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }} className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg shadow-blue-600/25">
                 Start Pro Trial
               </button>
             </div>
@@ -273,7 +300,7 @@ export default function RevPulsePlatform() {
                   </tr>
                   <tr>
                     <td className="py-3 font-medium">WhatsApp Business</td>
-                    <td className="py-3 text-gray-400">MENA, EU, Africa</td>
+                    <td className="py-3 text-gray-400">Europe, MENA, Africa</td>
                     <td className="py-3 text-blue-400">~$0.005 – $0.05 / conv</td>
                   </tr>
                   <tr>
@@ -389,6 +416,66 @@ export default function RevPulsePlatform() {
             </div>
           </div>
         </main>
+      )}
+
+      {/* Authentication Modal */}
+      {showAuthModal && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 max-w-md w-full shadow-2xl relative">
+            <button 
+              onClick={() => setShowAuthModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white text-sm">
+              ✕
+            </button>
+            
+            <h3 className="text-xl font-bold text-white mb-2">
+              {authMode === 'signin' ? 'Sign In to RevPulse' : 'Create Your RevPulse Account'}
+            </h3>
+            <p className="text-xs text-gray-400 mb-6">
+              Access your reputation workspace, review automation, and omnichannel settings.
+            </p>
+
+            <form onSubmit={handleAuthSubmit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Work Email</label>
+                <input 
+                  type="email" 
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="owner@yourcompany.com" 
+                  className="w-full bg-gray-950 border border-gray-800 rounded-xl px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-blue-500"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Password</label>
+                <input 
+                  type="password" 
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••" 
+                  className="w-full bg-gray-950 border border-gray-800 rounded-xl px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-blue-500"
+                />
+              </div>
+
+              <button 
+                type="submit"
+                className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg shadow-blue-600/20">
+                {authMode === 'signin' ? 'Sign In to Dashboard' : 'Start 7-Day Free Trial'}
+              </button>
+            </form>
+
+            <div className="mt-4 text-center">
+              <button 
+                onClick={() => setAuthMode(authMode === 'signin' ? 'signup' : 'signin')}
+                className="text-xs text-blue-400 hover:underline">
+                {authMode === 'signin' ? "Don't have an account? Sign up" : "Already have an account? Sign in"}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Footer */}
