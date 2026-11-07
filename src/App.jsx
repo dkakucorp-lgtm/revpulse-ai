@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import logoImage from './logo.PNG';
-import kakuMascot from './kaku-mascot.png';
 
 export default function RevPulsePlatform() {
   const [activeTab, setActiveTab] = useState('landing');
   const [selectedVertical, setSelectedVertical] = useState('hvac');
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [authMode, setAuthMode] = useState('signin'); // 'signin' or 'signup'
+  const [authMode, setAuthMode] = useState('signin');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
@@ -15,7 +13,6 @@ export default function RevPulsePlatform() {
   const [aiResponse, setAiResponse] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
 
-  // Vertical-specific sample complaints and responses
   const verticalData = {
     hvac: {
       name: "HVAC & Mechanical",
@@ -56,12 +53,12 @@ export default function RevPulsePlatform() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100 font-sans relative">
-      {/* Minimalist Navigation Header */}
+      {/* Navigation Header */}
       <header className="border-b border-gray-800 bg-gray-900/50 backdrop-blur sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-8">
             <a href="https://www.revpulse.tools" className="flex items-center space-x-3 group">
-              <img src={logoImage} alt="RevPulse Logo" className="w-8 h-8 rounded-lg object-contain shadow-md" />
+              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white shadow-md">RP</div>
               <span className="text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition">RevPulse</span>
             </a>
             <nav className="hidden md:flex space-x-6 text-sm text-gray-300">
@@ -72,7 +69,7 @@ export default function RevPulsePlatform() {
           </div>
           
           <div className="flex items-center space-x-4">
-            {/* Expanded Multilingual Selector Dropdown (US, Europe, MENA) */}
+            {/* European & Global Multilingual Selector */}
             <select 
               value={selectedLanguage} 
               onChange={(e) => setSelectedLanguage(e.target.value)}
@@ -101,10 +98,9 @@ export default function RevPulsePlatform() {
         </div>
       </header>
 
-      {/* Main Content Switcher */}
+      {/* Main Content */}
       {activeTab === 'landing' && (
         <main>
-          {/* Hero Section */}
           <section className="py-20 px-6 text-center max-w-4xl mx-auto">
             <div className="inline-block mb-4 px-3 py-1 bg-blue-900/40 border border-blue-700/50 text-blue-300 text-xs font-semibold rounded-full uppercase tracking-wider">
               Omnichannel Reputation & Outreach Engine
@@ -132,13 +128,13 @@ export default function RevPulsePlatform() {
             </p>
           </section>
 
-          {/* Multi-Industry Selector & Interactive Demo with Kaku Mascot */}
+          {/* Interactive Demo with Kaku Mascot Badge */}
           <section className="py-12 px-6 max-w-4xl mx-auto">
             <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 md:p-8 shadow-2xl relative">
               
-              {/* Properly Positioned Kaku Mascot Badge */}
+              {/* Kaku Mascot Badge */}
               <div className="absolute -top-10 left-6 flex items-center space-x-3 bg-gray-900 border border-blue-500/50 px-4 py-2 rounded-2xl shadow-xl z-10">
-                <img src={kakuMascot} alt="Kaku AI Mascot" className="w-9 h-9 rounded-xl object-cover shadow-md border border-blue-400/40" />
+                <div className="w-9 h-9 rounded-xl bg-purple-600 flex items-center justify-center text-white font-bold text-base shadow-md border border-purple-400/40">🤖</div>
                 <div>
                   <div className="text-xs font-bold text-white flex items-center space-x-1">
                     <span>Kaku Assistant</span>
@@ -151,7 +147,6 @@ export default function RevPulsePlatform() {
               <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4 pt-4">
                 <h3 className="text-lg font-bold text-white">⚡ Interactive Review Safeguard Demo</h3>
                 
-                {/* Industry Selector Tabs */}
                 <div className="flex flex-wrap gap-2">
                   {Object.keys(verticalData).map((key) => (
                     <button
@@ -205,38 +200,6 @@ export default function RevPulsePlatform() {
               )}
             </div>
           </section>
-
-          {/* Regional Communication Engine Section */}
-          <section className="py-20 px-6 max-w-6xl mx-auto border-t border-gray-800">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-white mb-4">Communicate Where Your Customers Live</h2>
-              <p className="text-gray-400 max-w-xl mx-auto">Different markets require different channels. Route your outreach according to regional communication norms.</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-gray-900/60 border border-gray-800 p-8 rounded-2xl">
-                <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">North America (US / CA)</span>
-                <h3 className="text-xl font-bold text-white mt-1 mb-3">Voice Calls & SMS Follow-Ups</h3>
-                <p className="text-sm text-gray-400 leading-relaxed mb-4">
-                  High-touch conversational phone outreach followed instantly by SMS text message reminders and scheduling links.
-                </p>
-                <div className="text-xs bg-gray-950 p-3 rounded-xl border border-gray-800 text-gray-300">
-                  Primary channel preference: <strong>Direct Voice & SMS</strong>
-                </div>
-              </div>
-
-              <div className="bg-gray-900/60 border border-gray-800 p-8 rounded-2xl">
-                <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Europe, MENA & Africa</span>
-                <h3 className="text-xl font-bold text-white mt-1 mb-3">WhatsApp & Email Campaigns</h3>
-                <p className="text-sm text-gray-400 leading-relaxed mb-4">
-                  Region-preferred messaging utilizing rich conversational WhatsApp flows alongside structured email sequences.
-                </p>
-                <div className="text-xs bg-gray-950 p-3 rounded-xl border border-gray-800 text-gray-300">
-                  Primary channel preference: <strong>WhatsApp Business & Email</strong>
-                </div>
-              </div>
-            </div>
-          </section>
         </main>
       )}
 
@@ -281,53 +244,6 @@ export default function RevPulsePlatform() {
               </button>
             </div>
           </div>
-
-          {/* Itemized Channel Costs Table */}
-          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto">
-            <h3 className="text-lg font-bold text-white mb-2">Itemized Communication Costs</h3>
-            <p className="text-sm text-gray-400 mb-6">Pay only for what you dispatch with transparent carrier unit rates.</p>
-            
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm">
-                <thead>
-                  <tr className="border-b border-gray-800 text-gray-400 uppercase text-xs">
-                    <th className="pb-3">Channel</th>
-                    <th className="pb-3">Target Region</th>
-                    <th className="pb-3">Estimated Unit Cost</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-800 text-gray-300">
-                  <tr>
-                    <td className="py-3 font-medium">AI Voice Outbound</td>
-                    <td className="py-3 text-gray-400">Global (Primary US)</td>
-                    <td className="py-3 text-blue-400">~$0.10 – $0.15 / min</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 font-medium">SMS Text Message</td>
-                    <td className="py-3 text-gray-400">US / Global</td>
-                    <td className="py-3 text-blue-400">~$0.008 – $0.015 / msg</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 font-medium">WhatsApp Business</td>
-                    <td className="py-3 text-gray-400">Europe, MENA, Africa</td>
-                    <td className="py-3 text-blue-400">~$0.005 – $0.05 / conv</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 font-medium">Email (SendGrid)</td>
-                    <td className="py-3 text-gray-400">Global</td>
-                    <td className="py-3 text-blue-400">~Fraction of a cent</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="mt-12 bg-gray-900 border border-gray-800 rounded-2xl p-8 text-center max-w-2xl mx-auto">
-            <h3 className="text-lg font-bold text-white mb-2">Our High-Integrity "Cancel Anytime" Promise</h3>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              We believe software should earn your business every month. No retention hurdles, no cancellation fees, and no administrative friction. Manage or cancel your subscription instantly from your dashboard.
-            </p>
-          </div>
         </section>
       )}
 
@@ -337,20 +253,6 @@ export default function RevPulsePlatform() {
             <h1 className="text-3xl font-extrabold text-white mb-4">Trust & Compliance Standards</h1>
             <p className="text-gray-400 leading-relaxed">
               RevPulse is engineered with strict operational safeguards to protect your brand, maintain customer privacy, and ensure alignment with platform best practices.
-            </p>
-          </div>
-
-          <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl space-y-4">
-            <h3 className="text-lg font-bold text-white">1. Human-in-the-Loop Verification</h3>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              Unlike automated bots that post unverified text publicly, RevPulse operates strictly as an assistant. Every drafted reply requires human review and explicit approval before it is published.
-            </p>
-          </div>
-
-          <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl space-y-4">
-            <h3 className="text-lg font-bold text-white">2. Consent-Based Voice & Messaging</h3>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              Outbound voice and WhatsApp features are restricted to consent-based workflows (appointment confirmations, service follow-ups, and customer reactivation) with built-in opt-out mechanisms.
             </p>
           </div>
         </section>
@@ -368,126 +270,35 @@ export default function RevPulsePlatform() {
               <span className="text-xs text-gray-300 font-medium">Secure Session Active</span>
             </div>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 md:col-span-2 space-y-6">
-              <h3 className="text-base font-bold text-white">Recent Customer Interactions</h3>
-              
-              <div className="space-y-4">
-                <div className="bg-gray-950 p-4 rounded-xl border border-gray-800">
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <div className="font-semibold text-sm text-white">Apex Mechanical Services</div>
-                      <div className="text-xs text-gray-400">Status: Active • Plan: Pro ($79/mo)</div>
-                    </div>
-                    <span className="text-xs bg-emerald-900/50 text-emerald-300 px-2 py-0.5 rounded">Active</span>
-                  </div>
-                  <p className="text-sm text-gray-300 mb-3">Last outreach: WhatsApp follow-up delivered successfully.</p>
-                  <div className="flex space-x-2">
-                    <button onClick={() => alert("Editing customer profile...")} className="px-3 py-1 bg-gray-800 hover:bg-gray-700 text-xs rounded font-medium">Edit</button>
-                    <button onClick={() => alert("Putting subscription on hold...")} className="px-3 py-1 bg-yellow-900/50 text-yellow-300 hover:bg-yellow-900 text-xs rounded font-medium">Hold</button>
-                    <button onClick={() => alert("Canceling subscription per Cancel Anytime policy...")} className="px-3 py-1 bg-red-900/50 text-red-300 hover:bg-red-900 text-xs rounded font-medium">Cancel</button>
-                  </div>
-                </div>
-
-                <div className="bg-gray-950 p-4 rounded-xl border border-gray-800">
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <div className="font-semibold text-sm text-white">Gulf Coast HVAC</div>
-                      <div className="text-xs text-gray-400">Status: On Hold • Plan: Starter ($29/mo)</div>
-                    </div>
-                    <span className="text-xs bg-yellow-900/50 text-yellow-300 px-2 py-0.5 rounded">On Hold</span>
-                  </div>
-                  <p className="text-sm text-gray-300 mb-3">Seasonal hold requested by owner.</p>
-                  <div className="flex space-x-2">
-                    <button onClick={() => alert("Reactivating subscription...")} className="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-xs rounded font-medium text-white">Resume</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 space-y-4">
-              <h3 className="text-base font-bold text-white">Platform Metrics</h3>
-              <div className="space-y-3">
-                <div className="bg-gray-950 p-3 rounded-xl">
-                  <div className="text-xs text-gray-400">Active Accounts</div>
-                  <div className="text-xl font-bold text-white">24</div>
-                </div>
-                <div className="bg-gray-950 p-3 rounded-xl">
-                  <div className="text-xs text-gray-400">Monthly Recurring Revenue</div>
-                  <div className="text-xl font-bold text-emerald-400">$1,480</div>
-                </div>
-                <div className="bg-gray-950 p-3 rounded-xl">
-                  <div className="text-xs text-gray-400">Churn Rate</div>
-                  <div className="text-xl font-bold text-blue-400">1.2%</div>
-                </div>
-              </div>
-            </div>
-          </div>
         </main>
       )}
 
-      {/* Authentication Modal */}
+      {/* Auth Modal */}
       {showAuthModal && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 max-w-md w-full shadow-2xl relative">
-            <button 
-              onClick={() => setShowAuthModal(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white text-sm">
-              ✕
-            </button>
+            <button onClick={() => setShowAuthModal(false)} className="absolute top-4 right-4 text-gray-400 hover:text-white text-sm">✕</button>
             
             <h3 className="text-xl font-bold text-white mb-2">
               {authMode === 'signin' ? 'Sign In to RevPulse' : 'Create Your RevPulse Account'}
             </h3>
-            <p className="text-xs text-gray-400 mb-6">
-              Access your reputation workspace, review automation, and omnichannel settings.
-            </p>
-
-            <form onSubmit={handleAuthSubmit} className="space-y-4">
+            <form onSubmit={handleAuthSubmit} className="space-y-4 mt-4">
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Work Email</label>
-                <input 
-                  type="email" 
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="owner@yourcompany.com" 
-                  className="w-full bg-gray-950 border border-gray-800 rounded-xl px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-blue-500"
-                />
+                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="owner@yourcompany.com" className="w-full bg-gray-950 border border-gray-800 rounded-xl px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-blue-500" />
               </div>
-
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Password</label>
-                <input 
-                  type="password" 
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••" 
-                  className="w-full bg-gray-950 border border-gray-800 rounded-xl px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-blue-500"
-                />
+                <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" className="w-full bg-gray-950 border border-gray-800 rounded-xl px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-blue-500" />
               </div>
-
-              <button 
-                type="submit"
-                className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg shadow-blue-600/20">
+              <button type="submit" className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg">
                 {authMode === 'signin' ? 'Sign In to Dashboard' : 'Start 7-Day Free Trial'}
               </button>
             </form>
-
-            <div className="mt-4 text-center">
-              <button 
-                onClick={() => setAuthMode(authMode === 'signin' ? 'signup' : 'signin')}
-                className="text-xs text-blue-400 hover:underline">
-                {authMode === 'signin' ? "Don't have an account? Sign up" : "Already have an account? Sign in"}
-              </button>
-            </div>
           </div>
         </div>
       )}
 
-      {/* Footer */}
       <footer className="border-t border-gray-800 py-8 px-6 mt-20 text-center text-xs text-gray-500">
         <p>© 2026 RevPulse. Commercial Office: 1706 East Semoran Blvd, Apopka, FL 32703. All rights reserved.</p>
       </footer>
