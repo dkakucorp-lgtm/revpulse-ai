@@ -98,18 +98,18 @@ export default function RevPulsePlatform() {
         </div>
       </header>
 
-      {/* Main Content */}
+      {/* Main Content Switcher */}
       {activeTab === 'landing' && (
         <main>
           <section className="py-20 px-6 text-center max-w-4xl mx-auto">
             <div className="inline-block mb-4 px-3 py-1 bg-blue-900/40 border border-blue-700/50 text-blue-300 text-xs font-semibold rounded-full uppercase tracking-wider">
-              Omnichannel Reputation & Outreach Engine
+              Omnichannel Reputation & Messaging Engine
             </div>
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
               Respond Well Before One Review Becomes Your Story.
             </h1>
             <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-              Draft calm, privacy-conscious review replies and route regional customer follow-ups across Voice, SMS, WhatsApp, and Email.
+              Draft calm, privacy-conscious review replies and route regional customer follow-ups across SMS, WhatsApp, and Email.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button 
@@ -235,7 +235,7 @@ export default function RevPulsePlatform() {
                 <div className="text-4xl font-extrabold text-white mb-6">$79<span className="text-sm text-gray-400 font-normal"> / month</span></div>
                 <ul className="space-y-3 text-sm text-gray-300 mb-8">
                   <li className="flex items-center">✓ Up to 3 active locations</li>
-                  <li className="flex items-center">✓ Omnichannel voice & messaging suite</li>
+                  <li className="flex items-center">✓ Omnichannel SMS, WhatsApp & Email suite</li>
                   <li className="flex items-center">✓ Priority support & template playbooks</li>
                 </ul>
               </div>
@@ -299,6 +299,7 @@ export default function RevPulsePlatform() {
         </div>
       )}
 
+      {/* Footer */}
       <footer className="border-t border-gray-800 py-8 px-6 mt-20 text-center text-xs text-gray-500">
         <p>© 2026 RevPulse. Commercial Office: 1706 East Semoran Blvd, Apopka, FL 32703. All rights reserved.</p>
       </footer>
