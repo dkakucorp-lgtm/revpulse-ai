@@ -9,11 +9,11 @@ export default function RevPulsePlatform() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
-  // Situation Room State for Screenshots & Troubleshooting
+  // Situation Room State
   const [showSituationRoom, setShowSituationRoom] = useState(false);
   const [chatMessage, setChatMessage] = useState('');
   const [chatLogs, setChatLogs] = useState([
-    { sender: 'kaku', text: 'Hello! I am Kaku, your AI reputation and onboarding assistant. Drop an error screenshot or describe any setup issue below, and I will open our deep-dive Situation Room to resolve it.' }
+    { sender: 'kaku', text: 'Hello! I am Kaku, your AI reputation and onboarding assistant. Drop an error screenshot or describe any setup issue below, and I will resolve it.' }
   ]);
 
   const [sampleReview, setSampleReview] = useState("Terrible experience! Called for an AC repair on Tuesday, technician arrived 3 hours late, and the bill was double the estimate. Never using them again!");
@@ -68,7 +68,7 @@ export default function RevPulsePlatform() {
     setTimeout(() => {
       setChatLogs(prev => [...prev, { 
         sender: 'kaku', 
-        text: `I've analyzed your query against our user manual and troubleshooting matrices. Let's solve this step-by-step in the Situation Room.` 
+        text: `I've analyzed your query against our user manual and troubleshooting matrices. Here is the step-by-step resolution.` 
       }]);
     }, 700);
   };
@@ -82,9 +82,9 @@ export default function RevPulsePlatform() {
       {/* Navigation Header */}
       <header className="border-b border-gray-800/80 bg-gray-900/40 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between">
-          <div className="flex items-center space-x-8">
+          <div className="flex items-center space-x-6">
             <a href="https://www.revpulse.tools" className="flex items-center space-x-3 group py-2">
-              <img src="/logo.PNG" alt="RevPulse Logo" className="w-9 h-9 rounded-xl object-contain shadow-lg border border-blue-500/20 bg-gray-900" />
+              <img src="/logo.PNG" alt="RevPulse Logo" className="w-10 h-10 rounded-xl object-contain shadow-lg border border-blue-500/20 bg-gray-900" />
               <span className="text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition">RevPulse</span>
             </a>
             <nav className="hidden md:flex space-x-6 text-sm text-gray-300 font-medium">
@@ -126,10 +126,10 @@ export default function RevPulsePlatform() {
 
       {/* Main Content */}
       {activeTab === 'landing' && (
-        <main className="max-w-7xl mx-auto px-6 pt-16 pb-24">
+        <main className="max-w-7xl mx-auto px-6 pt-12 pb-24 space-y-16">
           
           {/* Hero Section */}
-          <div className="grid lg:grid-cols-12 gap-12 items-center mb-20">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-blue-950/60 border border-blue-800/50 text-blue-300 text-xs font-semibold rounded-full uppercase tracking-wider">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
@@ -146,15 +146,13 @@ export default function RevPulsePlatform() {
 
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
                 <button 
-                  onClick={() => setActiveTab('app')}
+                  onClick={() => {
+                    const demoElement = document.getElementById('sandbox-demo');
+                    if (demoElement) demoElement.scrollIntoView({ behavior: 'smooth' });
+                  }}
                   className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2">
                   <span>Explore Live Demo Sandbox</span>
-                  <span>→</span>
-                </button>
-                <button 
-                  onClick={() => setShowSituationRoom(true)}
-                  className="px-8 py-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-200 font-semibold rounded-xl transition flex items-center justify-center space-x-2">
-                  <span>🤖 Open Kaku Situation Room</span>
+                  <span>↓</span>
                 </button>
               </div>
             </div>
@@ -186,7 +184,7 @@ export default function RevPulsePlatform() {
           </div>
 
           {/* Interactive Demo Sandbox with Kaku Mascot */}
-          <section className="mt-12 max-w-4xl mx-auto">
+          <section id="sandbox-demo" className="max-w-4xl mx-auto pt-4">
             <div className="bg-gray-900/90 border border-gray-800/80 rounded-3xl p-8 shadow-2xl relative mt-8">
               
               {/* Kaku Mascot Badge */}
@@ -353,7 +351,7 @@ export default function RevPulsePlatform() {
               <button onClick={() => setShowSituationRoom(false)} className="text-gray-400 hover:text-white text-sm font-bold px-2.5 py-1 bg-gray-800 rounded-lg">✕</button>
             </div>
 
-            {/* Chat History & Screenshot Drop Zone */}
+            {/* Chat History */}
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
               {chatLogs.map((log, idx) => (
                 <div key={idx} className={`flex ${log.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -389,18 +387,18 @@ export default function RevPulsePlatform() {
         </div>
       )}
 
-      {/* Floating Kaku Trigger Button */}
+      {/* Enhanced Prominent Floating Kaku / Situation Room Widget */}
       <div className="fixed bottom-6 right-6 z-40">
         <button 
           onClick={() => setShowSituationRoom(true)}
-          className="flex items-center space-x-3 bg-gray-900 hover:bg-gray-800 border border-blue-500/50 px-4 py-3 rounded-2xl shadow-2xl transition group">
-          <img src="/kaku-mascot.png" alt="Kaku" className="w-9 h-9 rounded-xl object-cover border border-blue-400/40 bg-gray-950" />
-          <div className="text-left hidden sm:block">
-            <div className="text-xs font-bold text-white group-hover:text-blue-400 transition flex items-center space-x-1.5">
+          className="flex items-center space-x-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-3.5 rounded-2xl shadow-2xl transition transform hover:scale-105 border border-blue-400/40 group">
+          <img src="/kaku-mascot.png" alt="Kaku" className="w-10 h-10 rounded-xl object-cover border border-white/30 bg-gray-950 shadow-md" />
+          <div className="text-left">
+            <div className="text-xs font-extrabold flex items-center space-x-1.5">
               <span>Ask Kaku / Situation Room</span>
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
             </div>
-            <div className="text-[10px] text-gray-400">Got an error? Drop screenshot here</div>
+            <div className="text-[11px] text-blue-100 font-medium">Drop error screenshot or ask setup Qs</div>
           </div>
         </button>
       </div>
