@@ -74,12 +74,13 @@ export default function RevPulsePlatform() {
   };
 
   const handleDownloadManual = () => {
-    const manualContent = `REVPULSE OFFICIAL USER MANUAL\n===============================\n\n1. Quickstart & Location Setup\nConnect your Google Business Profile, Yelp, and Facebook pages in 2 clicks.\n\n2. Omnichannel Messaging\nConfigure Twilio and WhatsApp APIs for private resolution routing.\n\n3. Kaku Situation Room\nDrop error screenshots into the assistant to receive instant automated fixes.`;
+    const manualContent = `REVPULSE OFFICIAL ENTERPRISE USER MANUAL (v2.4)\n===================================================\n\n1. EXECUTIVE SUMMARY & ONBOARDING\nRevPulse is an advanced AI-driven review safeguard and omnichannel messaging engine designed for local service operators (HVAC, Dental, Automotive, Contracting). Our core mission is intercepting negative reviews before public syndication while automating private resolution workflows.\n\n2. LOCATION & PROFILE SETUP\n- Connect Google Business Profile via OAuth2 secure token exchange.\n- Sync Yelp and Facebook Graph API connectors for real-time sentiment monitoring.\n- Define multi-location hierarchies and team member permission roles.\n\n3. OMNICHANNEL MESSAGING SUITE (SMS, WHATSAPP, EMAIL)\n- Configure Twilio Account SID and Auth Token for automated SMS follow-ups.\n- Register WhatsApp Business API templates to comply with carrier opt-in regulations.\n- Establish automated drip cadences for private customer recovery.\n\n4. KAKU AI ASSISTANT & THE SITUATION ROOM\n- Kaku acts as your real-time onboarding and troubleshooting companion.\n- Operators can drop error screenshots (API token failures, webhook timeouts, carrier rejections) directly into the Situation Room.\n- Vision-language intelligence parses the error and outputs precise, step-by-step remediation commands.\n\n5. SUPPORT & ENTERPRISE INQUIRIES\nFor dedicated assistance, contact support@revpulse.tools or consult our engineering team directly through the dashboard.`;
+    
     const blob = new Blob([manualContent], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'RevPulse_User_Manual.txt';
+    link.download = 'RevPulse_Enterprise_User_Manual.txt';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -97,7 +98,7 @@ export default function RevPulsePlatform() {
           <div className="flex items-center space-x-4 sm:space-x-6">
             <a href="https://www.revpulse.tools" className="flex items-center space-x-2.5 group py-2">
               <img 
-                src="/logo.PNG" 
+                src="/logo.png" 
                 alt="RevPulse Logo" 
                 className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-contain shadow-lg border border-purple-500/30 bg-purple-950/40" 
                 onError={(e)=>{
@@ -179,8 +180,8 @@ export default function RevPulsePlatform() {
                 </button>
                 <button 
                   onClick={handleDownloadManual}
-                  className="px-6 py-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-300 font-semibold rounded-xl transition">
-                  📄 Download User Manual
+                  className="px-6 py-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-300 font-semibold rounded-xl transition flex items-center justify-center space-x-2">
+                  <span>📄 Download User Manual</span>
                 </button>
               </div>
             </div>
@@ -336,34 +337,64 @@ export default function RevPulsePlatform() {
         </section>
       )}
 
-      {/* User Manual Tab */}
+      {/* Comprehensive User Manual Tab */}
       {activeTab === 'manual' && (
         <section className="py-20 px-6 max-w-4xl mx-auto space-y-8">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-extrabold text-white mb-2">RevPulse Official User Manual</h1>
-              <p className="text-sm text-gray-400">Complete documentation, setup playbooks, and troubleshooting guides.</p>
+              <h1 className="text-3xl font-extrabold text-white mb-2">RevPulse Official Enterprise User Manual</h1>
+              <p className="text-sm text-gray-400">Complete documentation, setup playbooks, and troubleshooting guides (v2.4).</p>
             </div>
-            <button onClick={handleDownloadManual} className="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl shadow-lg transition">
-              📥 Download PDF Manual
+            <button onClick={handleDownloadManual} className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl shadow-lg transition flex items-center space-x-2">
+              <span>📥 Download Enterprise PDF/TXT Manual</span>
             </button>
           </div>
 
-          <div className="bg-gray-900 border border-gray-800 rounded-3xl p-8 space-y-6 text-sm text-gray-300">
+          <div className="bg-gray-900 border border-gray-800 rounded-3xl p-8 space-y-8 text-sm text-gray-300 leading-relaxed">
             <div>
-              <h3 className="text-base font-bold text-white mb-2">1. Quickstart & Location Setup</h3>
-              <p className="text-gray-400 leading-relaxed">Connect your Google Business Profile, Yelp, and Facebook pages in 2 clicks. Set up your automated review safeguard rules to catch negative feedback before it goes public.</p>
+              <h3 className="text-lg font-bold text-white mb-3 text-blue-400">1. Executive Summary & Onboarding</h3>
+              <p className="text-gray-400">RevPulse is an advanced AI-driven review safeguard and omnichannel messaging engine designed for local service operators (HVAC, Dental, Automotive, Contracting). Our core mission is intercepting negative reviews before public syndication while automating private resolution workflows.</p>
             </div>
+
+            <hr className="border-gray-800" />
+
             <div>
-              <h3 className="text-base font-bold text-white mb-2">2. Omnichannel Routing (SMS, WhatsApp, Email)</h3>
-              <p className="text-gray-400 leading-relaxed">Configure your Twilio or WhatsApp Business API credentials in your dashboard settings to enable instant private customer follow-ups.</p>
+              <h3 className="text-lg font-bold text-white mb-3 text-blue-400">2. Location & Profile Setup</h3>
+              <ul className="list-disc pl-5 space-y-2 text-gray-400">
+                <li><strong>Google Business Profile:</strong> Connect via secure OAuth2 token exchange to monitor incoming ratings in real-time.</li>
+                <li><strong>Yelp & Facebook Graph API:</strong> Enable multi-platform sentiment tracking from a single unified control center.</li>
+                <li><strong>Team Permissions:</strong> Assign location managers, dispatchers, and executive viewers with custom role-based access control.</li>
+              </ul>
             </div>
+
+            <hr className="border-gray-800" />
+
             <div>
-              <h3 className="text-base font-bold text-white mb-2">3. Using Kaku & The Situation Room</h3>
-              <p className="text-gray-400 leading-relaxed">Encountering an error or setup snag? Click the floating Kaku widget at any time, drop a screenshot of the error, and Kaku will provide instant step-by-step resolution.</p>
+              <h3 className="text-lg font-bold text-white mb-3 text-blue-400">3. Omnichannel Messaging Suite (SMS, WhatsApp, Email)</h3>
+              <p className="text-gray-400 mb-2">Configure carrier credentials to automate customer recovery sequences:</p>
+              <ul className="list-disc pl-5 space-y-2 text-gray-400">
+                <li>Input Twilio Account SID and Auth Token to enable instant SMS dispatch.</li>
+                <li>Register official WhatsApp Business API message templates to ensure 98%+ delivery rates.</li>
+                <li>Deploy automated email drip sequences for post-service satisfaction check-ins.</li>
+              </ul>
+            </div>
+
+            <hr className="border-gray-800" />
+
+            <div>
+              <h3 className="text-lg font-bold text-white mb-3 text-blue-400">4. Kaku AI Assistant & The Situation Room</h3>
+              <p className="text-gray-400 mb-2">When encountering system errors or setup hurdles:</p>
+              <ul className="list-disc pl-5 space-y-2 text-gray-400">
+                <li>Click the floating Kaku widget at the bottom right of any screen.</li>
+                <li>Drag and drop error screenshots (e.g., webhook failures, API rejections, template errors) into the Situation Room.</li>
+                <li>Kaku parses the visual error state and outputs exact remediation instructions instantly.</li>
+              </ul>
             </div>
           </div>
-          <button onClick={() => setActiveTab('landing')} className="px-4 py-2 bg-gray-800 text-white text-xs font-semibold rounded-xl">Back to Overview</button>
+
+          <button onClick={() => setActiveTab('landing')} className="px-5 py-3 bg-gray-800 hover:bg-gray-700 text-white text-xs font-semibold rounded-xl transition">
+            ← Back to Overview
+          </button>
         </section>
       )}
 
