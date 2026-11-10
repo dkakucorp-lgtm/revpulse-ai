@@ -9,6 +9,13 @@ export default function RevPulsePlatform() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
+  // Situation Room State for Screenshots & Troubleshooting
+  const [showSituationRoom, setShowSituationRoom] = useState(false);
+  const [chatMessage, setChatMessage] = useState('');
+  const [chatLogs, setChatLogs] = useState([
+    { sender: 'kaku', text: 'Hello! I am Kaku, your AI reputation and onboarding assistant. Drop an error screenshot or describe any setup issue below, and I will open our deep-dive Situation Room to resolve it.' }
+  ]);
+
   const [sampleReview, setSampleReview] = useState("Terrible experience! Called for an AC repair on Tuesday, technician arrived 3 hours late, and the bill was double the estimate. Never using them again!");
   const [aiResponse, setAiResponse] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -51,10 +58,25 @@ export default function RevPulsePlatform() {
     setActiveTab('app');
   };
 
+  const handleSendChatMessage = (e) => {
+    e.preventDefault();
+    if (!chatMessage.trim()) return;
+    const userText = chatMessage;
+    setChatLogs(prev => [...prev, { sender: 'user', text: userText }]);
+    setChatMessage('');
+    
+    setTimeout(() => {
+      setChatLogs(prev => [...prev, { 
+        sender: 'kaku', 
+        text: `I've analyzed your query against our user manual and troubleshooting matrices. Let's solve this step-by-step in the Situation Room.` 
+      }]);
+    }, 700);
+  };
+
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100 font-sans relative selection:bg-blue-600 selection:text-white">
       
-      {/* Background Glow Lighting for Premium SaaS Vibe */}
+      {/* Background Glow Lighting */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-blue-600/10 blur-[140px] pointer-events-none rounded-full"></div>
 
       {/* Navigation Header */}
@@ -74,7 +96,6 @@ export default function RevPulsePlatform() {
           </div>
           
           <div className="flex items-center space-x-4">
-            {/* Multilingual Selector */}
             <select 
               value={selectedLanguage} 
               onChange={(e) => setSelectedLanguage(e.target.value)}
@@ -103,14 +124,14 @@ export default function RevPulsePlatform() {
         </div>
       </header>
 
-      {/* Main Content Switcher */}
+      {/* Main Content */}
       {activeTab === 'landing' && (
         <main className="max-w-7xl mx-auto px-6 pt-16 pb-24">
           
-          {/* Hero Section with Captivating Layout */}
+          {/* Hero Section */}
           <div className="grid lg:grid-cols-12 gap-12 items-center mb-20">
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-blue-950/60 border border-blue-800/50 text-blue-300 text-xs font-semibold rounded-full uppercase tracking-wider shadow-inner">
+              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-blue-950/60 border border-blue-800/50 text-blue-300 text-xs font-semibold rounded-full uppercase tracking-wider">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
                 <span>AI-Powered Review Safeguard & Messaging</span>
               </div>
@@ -131,20 +152,14 @@ export default function RevPulsePlatform() {
                   <span>→</span>
                 </button>
                 <button 
-                  onClick={() => setActiveTab('pricing')}
-                  className="px-8 py-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-200 font-semibold rounded-xl transition">
-                  View Transparent Pricing
+                  onClick={() => setShowSituationRoom(true)}
+                  className="px-8 py-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-200 font-semibold rounded-xl transition flex items-center justify-center space-x-2">
+                  <span>🤖 Open Kaku Situation Room</span>
                 </button>
-              </div>
-
-              <div className="flex items-center justify-center lg:justify-start space-x-6 text-xs text-gray-500 pt-2">
-                <span>✓ No credit card required</span>
-                <span>✓ 7-day free trial</span>
-                <span>✓ Cancel anytime</span>
               </div>
             </div>
 
-            {/* Visual Hero Proof Card (Before & After Preview) */}
+            {/* Visual Hero Proof Card */}
             <div className="lg:col-span-5">
               <div className="bg-gray-900/90 border border-gray-800/80 rounded-3xl p-6 shadow-2xl backdrop-blur-xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 bg-blue-600/20 text-blue-400 text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl border-l border-b border-blue-500/30">Live AI Transformation</div>
@@ -165,14 +180,6 @@ export default function RevPulsePlatform() {
                   <div className="bg-emerald-950/30 border border-emerald-900/40 rounded-xl p-3.5 text-xs text-emerald-200 leading-relaxed">
                     "Hello. Thank you for your feedback. We regret that your service timing did not meet our standard. Please reach out directly so we can resolve this privately."
                   </div>
-                </div>
-
-                <div className="mt-6 pt-4 border-t border-gray-800 flex items-center justify-between text-xs text-gray-400">
-                  <span className="flex items-center space-x-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-                    <span>Safeguarded & Routed</span>
-                  </span>
-                  <span className="text-blue-400 font-medium">Saved a 1-Star from Going Public</span>
                 </div>
               </div>
             </div>
@@ -326,62 +333,79 @@ export default function RevPulsePlatform() {
         </section>
       )}
 
-      {/* Compliance Tab */}
-      {activeTab === 'compliance' && (
-        <section className="py-20 px-6 max-w-4xl mx-auto space-y-6">
-          <h1 className="text-3xl font-extrabold text-white">Trust & Compliance Standards</h1>
-          <p className="text-sm text-gray-400 leading-relaxed">
-            RevPulse is engineered with strict operational safeguards to protect your brand, maintain customer privacy, and ensure alignment with platform best practices.
-          </p>
-          <button onClick={() => setActiveTab('landing')} className="px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-xl">Back to Overview</button>
-        </section>
-      )}
-
-      {/* App Workspace Tab */}
-      {activeTab === 'app' && (
-        <main className="py-10 px-6 max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h1 className="text-2xl font-bold text-white">Customer & Reputation Management</h1>
-              <p className="text-sm text-gray-400">Secure Admin Workspace • Active Location #1</p>
-            </div>
-            <div className="flex items-center space-x-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span className="text-xs text-gray-300 font-medium">Secure Session Active</span>
-            </div>
-          </div>
-        </main>
-      )}
-
-      {/* Auth Modal */}
-      {showAuthModal && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-gray-900 border border-gray-800 rounded-3xl p-8 max-w-md w-full shadow-2xl relative">
-            <button onClick={() => setShowAuthModal(false)} className="absolute top-5 right-5 text-gray-400 hover:text-white text-sm">✕</button>
+      {/* Situation Room Modal */}
+      {showSituationRoom && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 border border-blue-500/40 rounded-3xl max-w-2xl w-full h-[650px] flex flex-col shadow-2xl relative overflow-hidden">
             
-            <h3 className="text-xl font-bold text-white mb-2">
-              {authMode === 'signin' ? 'Sign In to RevPulse' : 'Create Your RevPulse Account'}
-            </h3>
-            <p className="text-xs text-gray-400 mb-6">Access your review safeguarding workspace and messaging suite.</p>
+            {/* Situation Room Header */}
+            <div className="px-6 py-4 border-b border-gray-800 flex items-center justify-between bg-gray-950/60">
+              <div className="flex items-center space-x-3">
+                <img src="/kaku-mascot.png" alt="Kaku" className="w-8 h-8 rounded-lg object-cover border border-blue-400/40" />
+                <div>
+                  <h3 className="text-sm font-bold text-white flex items-center space-x-2">
+                    <span>Kaku Situation Room</span>
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  </h3>
+                  <p className="text-[11px] text-gray-400">Deep-dive technical diagnostics, error screenshot analysis, & manual lookups</p>
+                </div>
+              </div>
+              <button onClick={() => setShowSituationRoom(false)} className="text-gray-400 hover:text-white text-sm font-bold px-2.5 py-1 bg-gray-800 rounded-lg">✕</button>
+            </div>
 
-            <form onSubmit={handleAuthSubmit} className="space-y-4">
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Work Email</label>
-                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="owner@yourcompany.com" className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-sm text-gray-200 focus:outline-none focus:border-blue-500" />
+            {/* Chat History & Screenshot Drop Zone */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-4">
+              {chatLogs.map((log, idx) => (
+                <div key={idx} className={`flex ${log.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`max-w-[80%] rounded-2xl p-4 text-xs leading-relaxed ${
+                    log.sender === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-800 text-gray-200 border border-gray-700'
+                  }`}>
+                    {log.text}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Screenshot Drop Zone / Input */}
+            <div className="p-4 border-t border-gray-800 bg-gray-950/80">
+              <div className="mb-3 p-3 border-2 border-dashed border-gray-700 hover:border-blue-500 rounded-xl text-center cursor-pointer transition bg-gray-900/50">
+                <span className="text-xs text-gray-400">📷 Drag & drop an error screenshot here, or click to upload</span>
               </div>
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Password</label>
-                <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-sm text-gray-200 focus:outline-none focus:border-blue-500" />
-              </div>
-              <button type="submit" className="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg shadow-blue-600/30">
-                {authMode === 'signin' ? 'Sign In to Dashboard' : 'Start 7-Day Free Trial'}
-              </button>
-            </form>
+              <form onSubmit={handleSendChatMessage} className="flex space-x-2">
+                <input 
+                  type="text" 
+                  value={chatMessage} 
+                  onChange={(e) => setChatMessage(e.target.value)}
+                  placeholder="Ask Kaku anything about setup, errors, or workflows..." 
+                  className="flex-1 bg-gray-900 border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-gray-200 focus:outline-none focus:border-blue-500"
+                />
+                <button type="submit" className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition">
+                  Send
+                </button>
+              </form>
+            </div>
+
           </div>
         </div>
       )}
 
-      {/* Professional Footer */}
+      {/* Floating Kaku Trigger Button */}
+      <div className="fixed bottom-6 right-6 z-40">
+        <button 
+          onClick={() => setShowSituationRoom(true)}
+          className="flex items-center space-x-3 bg-gray-900 hover:bg-gray-800 border border-blue-500/50 px-4 py-3 rounded-2xl shadow-2xl transition group">
+          <img src="/kaku-mascot.png" alt="Kaku" className="w-9 h-9 rounded-xl object-cover border border-blue-400/40 bg-gray-950" />
+          <div className="text-left hidden sm:block">
+            <div className="text-xs font-bold text-white group-hover:text-blue-400 transition flex items-center space-x-1.5">
+              <span>Ask Kaku / Situation Room</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            </div>
+            <div className="text-[10px] text-gray-400">Got an error? Drop screenshot here</div>
+          </div>
+        </button>
+      </div>
+
+      {/* Footer */}
       <footer className="border-t border-gray-800/80 py-10 px-6 mt-28 text-center text-xs text-gray-400 space-y-3 bg-gray-950">
         <div className="flex justify-center space-x-6 text-gray-400 font-medium pb-2">
           <button onClick={() => setActiveTab('landing')} className="hover:text-white transition">Overview</button>
