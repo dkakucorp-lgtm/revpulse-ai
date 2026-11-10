@@ -84,7 +84,17 @@ export default function RevPulsePlatform() {
         <div className="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between">
           <div className="flex items-center space-x-6">
             <a href="https://www.revpulse.tools" className="flex items-center space-x-3 group py-2">
-              <img src="/logo.PNG" alt="RevPulse Logo" className="w-10 h-10 rounded-xl object-contain shadow-lg border border-blue-500/20 bg-gray-900" />
+              <img 
+                src="/logo.PNG" 
+                alt="RevPulse Logo" 
+                className="w-10 h-10 rounded-xl object-contain shadow-lg border border-blue-500/20 bg-gray-900" 
+                onError={(e)=>{
+                  e.target.onerror = null; 
+                  e.target.style.display = 'none';
+                  if(e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              <div className="w-10 h-10 rounded-xl bg-purple-600 border border-purple-400/40 items-center justify-center text-white font-bold hidden shadow-md">✨</div>
               <span className="text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition">RevPulse</span>
             </a>
             <nav className="hidden md:flex space-x-6 text-sm text-gray-300 font-medium">
@@ -128,9 +138,9 @@ export default function RevPulsePlatform() {
       {activeTab === 'landing' && (
         <main className="max-w-7xl mx-auto px-6 pt-12 pb-24 space-y-16">
           
-          {/* Hero Section */}
+          {/* Hero Section with AI Mockup Visual */}
           <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-blue-950/60 border border-blue-800/50 text-blue-300 text-xs font-semibold rounded-full uppercase tracking-wider">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
                 <span>AI-Powered Review Safeguard & Messaging</span>
@@ -157,27 +167,21 @@ export default function RevPulsePlatform() {
               </div>
             </div>
 
-            {/* Visual Hero Proof Card */}
-            <div className="lg:col-span-5">
-              <div className="bg-gray-900/90 border border-gray-800/80 rounded-3xl p-6 shadow-2xl backdrop-blur-xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-blue-600/20 text-blue-400 text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl border-l border-b border-blue-500/30">Live AI Transformation</div>
-                
-                <div className="space-y-4 mb-4 pt-2">
-                  <div className="text-xs font-semibold text-red-400 uppercase tracking-wider flex items-center space-x-1.5">
-                    <span>⚠️ Incoming 1-Star Public Review</span>
+            {/* Stunning Hero Visual Mockup */}
+            <div className="lg:col-span-6">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-blue-500/30 bg-gray-900 group">
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" 
+                  alt="RevPulse SaaS Dashboard Preview" 
+                  className="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700 opacity-90" 
+                />
+                <div className="absolute bottom-4 left-4 right-4 z-20 bg-gray-900/90 backdrop-blur-md border border-gray-800 rounded-2xl p-3.5 flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span className="text-xs font-bold text-white">Live AI Dashboard Active</span>
                   </div>
-                  <div className="bg-red-950/30 border border-red-900/40 rounded-xl p-3.5 text-xs text-red-200 italic">
-                    "Called for an AC repair, technician arrived 3 hours late and the bill was double the estimate!"
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <div className="text-xs font-semibold text-emerald-400 uppercase tracking-wider flex items-center space-x-1.5">
-                    <span>✨ Kaku Private Resolution Draft</span>
-                  </div>
-                  <div className="bg-emerald-950/30 border border-emerald-900/40 rounded-xl p-3.5 text-xs text-emerald-200 leading-relaxed">
-                    "Hello. Thank you for your feedback. We regret that your service timing did not meet our standard. Please reach out directly so we can resolve this privately."
-                  </div>
+                  <span className="text-xs text-blue-400 font-semibold">Protected & Real-time</span>
                 </div>
               </div>
             </div>
@@ -189,7 +193,12 @@ export default function RevPulsePlatform() {
               
               {/* Kaku Mascot Badge */}
               <div className="absolute -top-10 left-6 flex items-center space-x-3 bg-gray-900 border border-blue-500/50 px-4 py-2.5 rounded-2xl shadow-2xl z-20">
-                <img src="/kaku-mascot.png" alt="Kaku AI Mascot" className="w-10 h-10 rounded-xl object-cover shadow-md border border-blue-400/40 bg-gray-950" />
+                <img 
+                  src="/kaku-mascot.png" 
+                  alt="Kaku AI Mascot" 
+                  className="w-10 h-10 rounded-xl object-cover shadow-md border border-blue-400/40 bg-gray-950"
+                  onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+                />
                 <div>
                   <div className="text-xs font-bold text-white flex items-center space-x-1.5">
                     <span>Kaku Assistant</span>
@@ -339,7 +348,12 @@ export default function RevPulsePlatform() {
             {/* Situation Room Header */}
             <div className="px-6 py-4 border-b border-gray-800 flex items-center justify-between bg-gray-950/60">
               <div className="flex items-center space-x-3">
-                <img src="/kaku-mascot.png" alt="Kaku" className="w-8 h-8 rounded-lg object-cover border border-blue-400/40" />
+                <img 
+                  src="/kaku-mascot.png" 
+                  alt="Kaku" 
+                  className="w-8 h-8 rounded-lg object-cover border border-blue-400/40" 
+                  onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+                />
                 <div>
                   <h3 className="text-sm font-bold text-white flex items-center space-x-2">
                     <span>Kaku Situation Room</span>
@@ -392,7 +406,12 @@ export default function RevPulsePlatform() {
         <button 
           onClick={() => setShowSituationRoom(true)}
           className="flex items-center space-x-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-3.5 rounded-2xl shadow-2xl transition transform hover:scale-105 border border-blue-400/40 group">
-          <img src="/kaku-mascot.png" alt="Kaku" className="w-10 h-10 rounded-xl object-cover border border-white/30 bg-gray-950 shadow-md" />
+          <img 
+            src="/kaku-mascot.png" 
+            alt="Kaku" 
+            className="w-10 h-10 rounded-xl object-cover border border-white/30 bg-gray-950 shadow-md" 
+            onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+          />
           <div className="text-left">
             <div className="text-xs font-extrabold flex items-center space-x-1.5">
               <span>Ask Kaku / Situation Room</span>
