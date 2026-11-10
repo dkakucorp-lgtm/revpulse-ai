@@ -1,6 +1,6 @@
 cat << 'EOF' > src/App.jsx
 import React, { useState } from 'react';
-import { supabase } from './supabaseClient';
+import { supabase } from './components/supabaseClient';
 
 export default function RevPulsePlatform() {
   const [activeTab, setActiveTab] = useState('landing');
