@@ -81,53 +81,48 @@ export default function RevPulsePlatform() {
 
       {/* Navigation Header */}
       <header className="border-b border-gray-800/80 bg-gray-900/40 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between">
-          <div className="flex items-center space-x-6">
-            <a href="https://www.revpulse.tools" className="flex items-center space-x-3 group py-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+          <div className="flex items-center space-x-4 sm:space-x-6">
+            <a href="https://www.revpulse.tools" className="flex items-center space-x-2.5 group py-2">
               <img 
                 src="/logo.PNG" 
                 alt="RevPulse Logo" 
-                className="w-10 h-10 rounded-xl object-contain shadow-lg border border-blue-500/20 bg-gray-900" 
-                onError={(e)=>{
-                  e.target.onerror = null; 
-                  e.target.style.display = 'none';
-                  if(e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
-                }}
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-contain shadow-lg border border-purple-500/30 bg-purple-950/40" 
               />
-              <div className="w-10 h-10 rounded-xl bg-purple-600 border border-purple-400/40 items-center justify-center text-white font-bold hidden shadow-md">✨</div>
-              <span className="text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition">RevPulse</span>
+              <span className="text-lg sm:text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition">RevPulse</span>
             </a>
-            <nav className="hidden md:flex space-x-6 text-sm text-gray-300 font-medium">
+            <nav className="hidden lg:flex space-x-5 text-sm text-gray-300 font-medium">
               <button onClick={() => setActiveTab('landing')} className={`hover:text-white transition ${activeTab === 'landing' ? 'text-blue-400 font-semibold' : ''}`}>Overview</button>
-              <button onClick={() => setActiveTab('pricing')} className={`hover:text-white transition ${activeTab === 'pricing' ? 'text-blue-400 font-semibold' : ''}`}>Pricing & Channels</button>
-              <button onClick={() => setActiveTab('privacy')} className={`hover:text-white transition ${activeTab === 'privacy' ? 'text-blue-400 font-semibold' : ''}`}>Privacy Policy</button>
-              <button onClick={() => setActiveTab('terms')} className={`hover:text-white transition ${activeTab === 'terms' ? 'text-blue-400 font-semibold' : ''}`}>Terms of Use</button>
+              <button onClick={() => setActiveTab('pricing')} className={`hover:text-white transition ${activeTab === 'pricing' ? 'text-blue-400 font-semibold' : ''}`}>Pricing</button>
+              <button onClick={() => setActiveTab('manual')} className={`hover:text-white transition ${activeTab === 'manual' ? 'text-blue-400 font-semibold' : ''}`}>User Manual</button>
+              <button onClick={() => setActiveTab('privacy')} className={`hover:text-white transition ${activeTab === 'privacy' ? 'text-blue-400 font-semibold' : ''}`}>Privacy</button>
+              <button onClick={() => setActiveTab('terms')} className={`hover:text-white transition ${activeTab === 'terms' ? 'text-blue-400 font-semibold' : ''}`}>Terms</button>
             </nav>
           </div>
           
-          <div className="flex items-center space-x-4">
+          {/* Properly Aligned Header Controls for Mobile & Desktop */}
+          <div className="flex items-center space-x-2.5 sm:space-x-4">
             <select 
               value={selectedLanguage} 
               onChange={(e) => setSelectedLanguage(e.target.value)}
-              className="hidden sm:block bg-gray-900 text-gray-300 text-xs rounded-xl px-3 py-2 border border-gray-800 focus:outline-none focus:border-blue-500 cursor-pointer">
+              className="hidden md:block bg-gray-900 text-gray-300 text-xs rounded-xl px-3 py-2 border border-gray-800 focus:outline-none focus:border-blue-500 cursor-pointer">
               <option value="en">🌐 English (US)</option>
-              <option value="fr">🇫🇷 Français (France)</option>
-              <option value="it">🇮🇹 Italiano (Italy)</option>
-              <option value="nl">🇳🇱 Nederlands (Dutch)</option>
+              <option value="fr">🇫🇷 Français</option>
+              <option value="it">🇮🇹 Italiano</option>
               <option value="es">🇪🇸 Español</option>
-              <option value="ar">🇦🇪 العربية (MENA)</option>
+              <option value="ar">🇦🇪 العربية</option>
               <option value="ur">🇵🇰 اردو</option>
             </select>
 
             <button 
               onClick={() => { setAuthMode('signin'); setShowAuthModal(true); }}
-              className="text-sm text-gray-300 hover:text-white transition font-medium px-3 py-2">
+              className="text-xs sm:text-sm text-gray-300 hover:text-white transition font-medium px-2.5 py-2 whitespace-nowrap">
               Sign In
             </button>
 
             <button 
               onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
-              className="px-4.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold rounded-xl transition shadow-lg shadow-blue-600/25">
+              className="px-3.5 py-2 sm:px-4.5 sm:py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold rounded-xl transition shadow-lg shadow-blue-600/25 whitespace-nowrap">
               Get Started Free
             </button>
           </div>
@@ -163,6 +158,11 @@ export default function RevPulsePlatform() {
                   className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2">
                   <span>Explore Live Demo Sandbox</span>
                   <span>↓</span>
+                </button>
+                <button 
+                  onClick={() => setActiveTab('manual')}
+                  className="px-6 py-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-300 font-semibold rounded-xl transition">
+                  📄 Download User Manual
                 </button>
               </div>
             </div>
@@ -318,6 +318,37 @@ export default function RevPulsePlatform() {
         </section>
       )}
 
+      {/* User Manual Tab */}
+      {activeTab === 'manual' && (
+        <section className="py-20 px-6 max-w-4xl mx-auto space-y-8">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-extrabold text-white mb-2">RevPulse Official User Manual</h1>
+              <p className="text-sm text-gray-400">Complete documentation, setup playbooks, and troubleshooting guides.</p>
+            </div>
+            <button onClick={() => alert("Downloading official RevPulse User Manual PDF...")} className="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl shadow-lg transition">
+              📥 Download PDF Manual
+            </button>
+          </div>
+
+          <div className="bg-gray-900 border border-gray-800 rounded-3xl p-8 space-y-6 text-sm text-gray-300">
+            <div>
+              <h3 className="text-base font-bold text-white mb-2">1. Quickstart & Location Setup</h3>
+              <p className="text-gray-400 leading-relaxed">Connect your Google Business Profile, Yelp, and Facebook pages in 2 clicks. Set up your automated review safeguard rules to catch negative feedback before it goes public.</p>
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-white mb-2">2. Omnichannel Routing (SMS, WhatsApp, Email)</h3>
+              <p className="text-gray-400 leading-relaxed">Configure your Twilio or WhatsApp Business API credentials in your dashboard settings to enable instant private customer follow-ups.</p>
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-white mb-2">3. Using Kaku & The Situation Room</h3>
+              <p className="text-gray-400 leading-relaxed">Encountering an error or setup snag? Click the floating Kaku widget at any time, drop a screenshot of the error, and Kaku will provide instant step-by-step resolution.</p>
+            </div>
+          </div>
+          <button onClick={() => setActiveTab('landing')} className="px-4 py-2 bg-gray-800 text-white text-xs font-semibold rounded-xl">Back to Overview</button>
+        </section>
+      )}
+
       {/* Privacy Policy Tab */}
       {activeTab === 'privacy' && (
         <section className="py-20 px-6 max-w-4xl mx-auto space-y-6">
@@ -401,7 +432,7 @@ export default function RevPulsePlatform() {
         </div>
       )}
 
-      {/* Enhanced Prominent Floating Kaku / Situation Room Widget */}
+      {/* Floating Kaku / Situation Room Widget */}
       <div className="fixed bottom-6 right-6 z-40">
         <button 
           onClick={() => setShowSituationRoom(true)}
@@ -427,6 +458,7 @@ export default function RevPulsePlatform() {
         <div className="flex justify-center space-x-6 text-gray-400 font-medium pb-2">
           <button onClick={() => setActiveTab('landing')} className="hover:text-white transition">Overview</button>
           <button onClick={() => setActiveTab('pricing')} className="hover:text-white transition">Pricing</button>
+          <button onClick={() => setActiveTab('manual')} className="hover:text-white transition">User Manual</button>
           <button onClick={() => setActiveTab('privacy')} className="hover:text-white transition">Privacy Policy</button>
           <button onClick={() => setActiveTab('terms')} className="hover:text-white transition">Terms of Use</button>
         </div>
