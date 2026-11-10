@@ -1,3 +1,4 @@
+cat << 'EOF' > src/App.jsx
 import React, { useState } from 'react';
 import { supabase } from './supabaseClient';
 
@@ -10,113 +11,6 @@ export default function RevPulsePlatform() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
-  // Situation Room State
-  const [showSituationRoom, setShowSituationRoom] = useState(false);
-  const [chatMessage, setChatMessage] = useState('');
-  const [chatLogs, setChatLogs] = useState([
-    { sender: 'kaku', text: 'Hello! I am Kaku, your AI reputation and onboarding assistant. Drop an error screenshot or describe any setup issue below, and I will resolve it.' }
-  ]);
-
-  const [sampleReview, setSampleReview] = useState("Terrible experience! Called for an AC repair on Tuesday, technician arrived 3 hours late, and the bill was double the estimate. Never using them again!");
-  const [aiResponse, setAiResponse] = useState('');
-  const [isGenerating, setIsGenerating] = useState(false);
-
-  const verticalData = {
-    hvac: {
-      name: "HVAC & Mechanical",
-      review: "Tech came out 3 hours late for our AC repair and the invoice was higher than quoted.",
-      response: "Hello. Thank you for sharing your feedback. We regret that your service timing and billing clarity did not meet our standard. Please reach out to our service manager directly at our office so we can review your account details and resolve this privately."
-    },
-    dental: {
-      name: "Dental Practices",
-      review: "Wait time in the lobby was over 45 minutes past my scheduled appointment slot.",
-      response: "Hello, thank you for your feedback. We strive to respect your time and apologize for the delay during your visit. Please contact our practice manager so we can ensure a smoother experience at your next appointment."
-    },
-    auto: {
-      name: "Auto Repair",
-      review: "Repairs took two days longer than promised and communication was lacking.",
-      response: "Hello. We understand how important your vehicle is and regret the delay in completing your service. Please reach out to our service desk directly so we can discuss your experience and make it right."
-    },
-    contractors: {
-      name: "General Contractors",
-      review: "Cleanup after the kitchen remodel was messy and debris was left behind.",
-      response: "Hello. Thank you for bringing this to our attention. We hold our job sites to a high standard of cleanliness and apologize for the oversight. Please contact our project lead so we can address this immediately."
-    }
-  };
-
-  const handleGenerateResponse = () => {
-    setIsGenerating(true);
-    setTimeout(() => {
-      setAiResponse(verticalData[selectedVertical].response);
-      setIsGenerating(false);
-    }, 800);
-  };
-
-  const handleAuthSubmit = async (e) => {
-    e.preventDefault();
-    if (!email || !password) {
-      alert("Please enter both email and password.");
-      return;
-    }
-
-    try {
-      if (authMode === 'signup') {
-        const { error } = await supabase.auth.signUp({
-          email: email,
-          password: password,
-        });
-        if (error) throw error;
-        alert(`Registration successful! You can now sign in with your credentials.`);
-        setAuthMode('signin');
-      } else {
-        const { error } = await supabase.auth.signInWithPassword({
-          email: email,
-          password: password,
-        });
-        if (error) throw error;
-        alert(`Successfully signed in as ${email}! Welcome to your RevPulse workspace.`);
-        setShowAuthModal(false);
-        setActiveTab('app');
-      }
-    } catch (error) {
-      alert(`Authentication Error: ${error.message}`);
-    }
-  };
-
-  const handleSendChatMessage = (e) => {
-    e.preventDefault();
-    if (!chatMessage.trim()) return;
-    const userText = chatMessage;
-    setChatLogs(prev => [...prev, { sender: 'user', text: userText }]);
-    setChatMessage('');
-    
-    setTimeout(() => {
-      setChatLogs(prev => [...prev, { 
-        sender: 'kaku', 
-        text: `I've analyzed your query against our user manual and troubleshooting matrices. Here is the step-by-step resolution.` 
-      }]);
-    }, 700);
-  };
-
-  const handleDownloadManual = () => {
-    const manualContent = `REVPULSE OFFICIAL ENTERPRISE USER MANUAL (v2.4)\n===================================================\n\n1. EXECUTIVE SUMMARY & ONBOARDING\nRevPulse is an advanced AI-driven review safeguard and omnichannel messaging engine designed for local service operators (HVAC, Dental, Automotive, Contracting). Our core mission is intercepting negative reviews before public syndication while automating private resolution workflows.\n\n2. LOCATION & PROFILE SETUP\n- Connect Google Business Profile via OAuth2 secure token exchange.\n- Sync Yelp and Facebook Graph API connectors for real-time sentiment monitoring.\n- Define multi-location hierarchies and team member permission roles.\n\n3. OMNICHANNEL MESSAGING SUITE (SMS, WHATSAPP, EMAIL)\n- Configure Twilio Account SID and Auth Token for automated SMS follow-ups.\n- Register WhatsApp Business API templates to comply with carrier opt-in regulations.\n- Establish automated drip cadences for private customer recovery.\n\n4. KAKU AI ASSISTANT & THE SITUATION ROOM\n- Kaku acts as your real-time onboarding and troubleshooting companion.\n- Operators can drop error screenshots (API token failures, webhook timeouts, carrier rejections) directly into the Situation Room.\n- Vision-language intelligence parses the error and outputs precise, step-by-step remediation commands.\n\n5. SUPPORT & ENTERPRISE INQUIRIES\nFor dedicated assistance, contact support@revpulse.You are completely right—giving you the full, drop-in `App.jsx` file is much faster, cleaner, and eliminates any guesswork. 
-
-Here is the complete, production-ready `App.jsx` file with **Supabase Auth fully integrated**, your correct lowercase logo (`/logo.png`), mobile header button alignment, the multi-chapter User Manual, and the Kaku Situation Room.
-
-```jsx
-import React, { useState } from 'react';
-import { supabase } from './supabaseClient';
-
-export default function RevPulsePlatform() {
-  const [activeTab, setActiveTab] = useState('landing');
-  const [selectedVertical, setSelectedVertical] = useState('hvac');
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
-  const [showAuthModal, setShowAuthModal] = useState(false);
-  const [authMode, setAuthMode] = useState('signin');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  
-  // Situation Room State
   const [showSituationRoom, setShowSituationRoom] = useState(false);
   const [chatMessage, setChatMessage] = useState('');
   const [chatLogs, setChatLogs] = useState([
@@ -199,7 +93,7 @@ export default function RevPulsePlatform() {
   };
 
   const handleDownloadManual = () => {
-    const manualContent = `REVPULSE OFFICIAL ENTERPRISE USER MANUAL (v2.4)\n===================================================\n\n1. EXECUTIVE SUMMARY & ONBOARDING\nRevPulse is an advanced AI-driven review safeguard and omnichannel messaging engine designed for local service operators (HVAC, Dental, Automotive, Contracting).\n\n2. LOCATION & PROFILE SETUP\n- Connect Google Business Profile via OAuth2 secure token exchange.\n- Sync Yelp and Facebook Graph API connectors for real-time sentiment monitoring.\n\n3. OMNICHANNEL MESSAGING SUITE (SMS, WHATSAPP, EMAIL)\n- Configure Twilio Account SID and Auth Token for automated SMS follow-ups.\n- Register WhatsApp Business API templates to comply with carrier regulations.\n\n4. KAKU AI ASSISTANT & THE SITUATION ROOM\n- Drop error screenshots directly into the Situation Room to receive vision-language AI diagnostics and remediation commands.`;
+    const manualContent = `REVPULSE OFFICIAL ENTERPRISE USER MANUAL (v2.4)\n===================================================\n\n1. EXECUTIVE SUMMARY & ONBOARDING\nRevPulse is an advanced AI-driven review safeguard and omnichannel messaging engine designed for local service operators.\n\n2. LOCATION & PROFILE SETUP\n- Connect Google Business Profile via OAuth2 secure token exchange.\n- Sync Yelp and Facebook Graph API connectors for real-time sentiment monitoring.\n\n3. OMNICHANNEL MESSAGING SUITE (SMS, WHATSAPP, EMAIL)\n- Configure Twilio Account SID and Auth Token for automated SMS follow-ups.\n- Register WhatsApp Business API templates to comply with carrier regulations.\n\n4. KAKU AI ASSISTANT & THE SITUATION ROOM\n- Drop error screenshots directly into the Situation Room to receive vision-language AI diagnostics and remediation commands.`;
     
     const blob = new Blob([manualContent], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
@@ -213,15 +107,12 @@ export default function RevPulsePlatform() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100 font-sans relative selection:bg-blue-600 selection:text-white">
-      
-      {/* Background Glow Lighting */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-blue-600/10 blur-[140px] pointer-events-none rounded-full"></div>
 
-      {/* Navigation Header */}
       <header className="border-b border-gray-800/80 bg-gray-900/40 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
           <div className="flex items-center space-x-4 sm:space-x-6">
-            <a href="[https://www.revpulse.tools](https://www.revpulse.tools)" className="flex items-center space-x-2.5 group py-2">
+            <a href="https://www.revpulse.tools" className="flex items-center space-x-2.5 group py-2">
               <img 
                 src="/logo.png" 
                 alt="RevPulse Logo" 
@@ -244,7 +135,6 @@ export default function RevPulsePlatform() {
             </nav>
           </div>
           
-          {/* Properly Aligned Header Controls for Mobile & Desktop */}
           <div className="flex items-center space-x-2.5 sm:space-x-4">
             <select 
               value={selectedLanguage} 
@@ -273,7 +163,6 @@ export default function RevPulsePlatform() {
         </div>
       </header>
 
-      {/* Main Content */}
       {activeTab === 'landing' && (
         <main className="max-w-7xl mx-auto px-6 pt-12 pb-24 space-y-16">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
@@ -313,7 +202,7 @@ export default function RevPulsePlatform() {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-blue-500/30 bg-gray-900 group">
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent z-10 pointer-events-none"></div>
                 <img 
-                  src="[https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80](https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80)" 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" 
                   alt="RevPulse SaaS Dashboard Preview" 
                   className="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700 opacity-90" 
                 />
@@ -335,7 +224,7 @@ export default function RevPulsePlatform() {
                   src="/kaku-mascot.png" 
                   alt="Kaku AI Mascot" 
                   className="w-10 h-10 rounded-xl object-cover shadow-md border border-blue-400/40 bg-gray-950"
-                  onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+                  onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
                 />
                 <div>
                   <div className="text-xs font-bold text-white flex items-center space-x-1.5">
@@ -411,7 +300,6 @@ export default function RevPulsePlatform() {
         </main>
       )}
 
-      {/* Pricing Tab */}
       {activeTab === 'pricing' && (
         <section className="py-20 px-6 max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -456,7 +344,6 @@ export default function RevPulsePlatform() {
         </section>
       )}
 
-      {/* User Manual Tab */}
       {activeTab === 'manual' && (
         <section className="py-20 px-6 max-w-4xl mx-auto space-y-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -482,7 +369,6 @@ export default function RevPulsePlatform() {
         </section>
       )}
 
-      {/* Privacy Policy Tab */}
       {activeTab === 'privacy' && (
         <section className="py-20 px-6 max-w-4xl mx-auto space-y-6">
           <h1 className="text-3xl font-extrabold text-white">Privacy Policy</h1>
@@ -493,7 +379,6 @@ export default function RevPulsePlatform() {
         </section>
       )}
 
-      {/* Terms of Use Tab */}
       {activeTab === 'terms' && (
         <section className="py-20 px-6 max-w-4xl mx-auto space-y-6">
           <h1 className="text-3xl font-extrabold text-white">Terms of Use</h1>
@@ -504,7 +389,6 @@ export default function RevPulsePlatform() {
         </section>
       )}
 
-      {/* Real Supabase Authentication Modal */}
       {showAuthModal && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-gray-900 border border-blue-500/40 rounded-3xl max-w-md w-full p-8 shadow-2xl relative">
@@ -551,7 +435,6 @@ export default function RevPulsePlatform() {
         </div>
       )}
 
-      {/* Situation Room Modal */}
       {showSituationRoom && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-gray-900 border border-blue-500/40 rounded-3xl max-w-2xl w-full h-[650px] flex flex-col shadow-2xl relative overflow-hidden">
@@ -599,7 +482,6 @@ export default function RevPulsePlatform() {
         </div>
       )}
 
-      {/* Floating Kaku Widget */}
       <div className="fixed bottom-6 right-6 z-40">
         <button 
           onClick={() => setShowSituationRoom(true)}
@@ -615,7 +497,6 @@ export default function RevPulsePlatform() {
         </button>
       </div>
 
-      {/* Footer */}
       <footer className="border-t border-gray-800/80 py-10 px-6 mt-28 text-center text-xs text-gray-400 space-y-3 bg-gray-950">
         <div className="flex justify-center space-x-6 text-gray-400 font-medium pb-2">
           <button onClick={() => setActiveTab('landing')} className="hover:text-white transition">Overview</button>
@@ -629,3 +510,4 @@ export default function RevPulsePlatform() {
     </div>
   );
 }
+EOF
