@@ -1,4 +1,3 @@
-cat << 'EOF' > src/App.jsx
 import React, { useState } from 'react';
 import { supabase } from './components/supabaseClient';
 
@@ -93,7 +92,7 @@ export default function RevPulsePlatform() {
   };
 
   const handleDownloadManual = () => {
-    const manualContent = `REVPULSE OFFICIAL ENTERPRISE USER MANUAL (v2.4)\n===================================================\n\n1. EXECUTIVE SUMMARY & ONBOARDING\nRevPulse is an advanced AI-driven review safeguard and omnichannel messaging engine designed for local service operators.\n\n2. LOCATION & PROFILE SETUP\n- Connect Google Business Profile via OAuth2 secure token exchange.\n- Sync Yelp and Facebook Graph API connectors for real-time sentiment monitoring.\n\n3. OMNICHANNEL MESSAGING SUITE (SMS, WHATSAPP, EMAIL)\n- Configure Twilio Account SID and Auth Token for automated SMS follow-ups.\n- Register WhatsApp Business API templates to comply with carrier regulations.\n\n4. KAKU AI ASSISTANT & THE SITUATION ROOM\n- Drop error screenshots directly into the Situation Room to receive vision-language AI diagnostics and remediation commands.`;
+    const manualContent = `REVPULSE OFFICIAL ENTERPRISE USER MANUAL (v2.4)\n===================================================\n\n1. EXECUTIVE SUMMARY & ONBOARDING\n- RevPulse is an advanced AI-driven review safeguard and omnichannel messaging engine designed for local service operators.\n\n2. LOCATION & PROFILE SETUP\n- Connect Google Business Profile via OAuth2 secure token exchange.\n- Sync Yelp and Facebook Graph API connectors for real-time sentiment monitoring.\n\n3. OMNICHANNEL MESSAGING SUITE (SMS, WHATSAPP, EMAIL)\n- Configure Twilio Account SID and Auth Token for automated SMS follow-ups.\n- Register WhatsApp Business API templates to comply with carrier regulations.\n\n4. KAKU AI ASSISTANT & THE SITUATION ROOM\n- Drop error screenshots directly into the Situation Room to receive vision-language AI diagnostics and remediation commands.`;
     
     const blob = new Blob([manualContent], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
@@ -510,4 +509,3 @@ export default function RevPulsePlatform() {
     </div>
   );
 }
-EOF
