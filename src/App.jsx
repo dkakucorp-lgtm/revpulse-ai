@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import logoImage from './logo.PNG';
-import kakuMascot from './kaku-mascot.png';
 
 export default function RevPulsePlatform() {
   const [activeTab, setActiveTab] = useState('landing');
@@ -60,7 +58,7 @@ export default function RevPulsePlatform() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-8">
             <a href="https://www.revpulse.tools" className="flex items-center space-x-3 group">
-              <img src={logoImage} alt="RevPulse Logo" className="w-8 h-8 rounded-lg object-contain shadow-md" />
+              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-extrabold text-white shadow-md border border-blue-400/30">RP</div>
               <span className="text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition">RevPulse</span>
             </a>
             <nav className="hidden md:flex space-x-6 text-sm text-gray-300">
@@ -134,9 +132,9 @@ export default function RevPulsePlatform() {
           <section className="py-12 px-6 max-w-4xl mx-auto">
             <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 md:p-8 shadow-2xl relative mt-6">
               
-              {/* Properly Positioned Kaku Mascot Badge */}
+              {/* Kaku Mascot Badge */}
               <div className="absolute -top-10 left-6 flex items-center space-x-3 bg-gray-900 border border-blue-500/50 px-4 py-2 rounded-2xl shadow-xl z-10">
-                <img src={kakuMascot} alt="Kaku AI Mascot" className="w-9 h-9 rounded-xl object-cover shadow-md border border-blue-400/40" />
+                <div className="w-9 h-9 rounded-xl bg-purple-600 flex items-center justify-center text-white font-bold text-base shadow-md border border-purple-400/40">🤖</div>
                 <div>
                   <div className="text-xs font-bold text-white flex items-center space-x-1">
                     <span>Kaku Assistant</span>
