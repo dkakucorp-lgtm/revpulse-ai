@@ -60,7 +60,7 @@ export default function RevPulsePlatform() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-8">
             <a href="https://www.revpulse.tools" className="flex items-center space-x-3 group">
-              <img src={logoImage} alt="RevPulse Logo" className="w-8 h-8 rounded-lg object-contain shadow-md border border-gray-700" />
+              <img src={logoImage} alt="RevPulse Logo" className="w-8 h-8 rounded-lg object-contain shadow-md" />
               <span className="text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition">RevPulse</span>
             </a>
             <nav className="hidden md:flex space-x-6 text-sm text-gray-300">
@@ -134,11 +134,11 @@ export default function RevPulsePlatform() {
           <section className="py-12 px-6 max-w-4xl mx-auto">
             <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 md:p-8 shadow-2xl relative mt-6">
               
-              {/* Properly Positioned Kaku Mascot Badge */}
-              <div className="absolute -top-10 left-6 flex items-center space-x-3 bg-gray-900 border border-blue-500/50 px-4 py-2.5 rounded-2xl shadow-2xl z-20">
-                <img src={kakuMascot} alt="Kaku AI Mascot" className="w-10 h-10 rounded-xl object-cover shadow-md border border-blue-400/40 bg-gray-950" />
+              {/* Kaku Mascot Badge */}
+              <div className="absolute -top-10 left-6 flex items-center space-x-3 bg-gray-900 border border-blue-500/50 px-4 py-2 rounded-2xl shadow-xl z-10">
+                <img src={kakuMascot} alt="Kaku AI Mascot" className="w-9 h-9 rounded-xl object-cover shadow-md border border-blue-400/40" />
                 <div>
-                  <div className="text-xs font-bold text-white flex items-center space-x-1.5">
+                  <div className="text-xs font-bold text-white flex items-center space-x-1">
                     <span>Kaku Assistant</span>
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                   </div>
@@ -146,7 +146,7 @@ export default function RevPulsePlatform() {
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4 pt-6">
+              <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4 pt-4">
                 <h3 className="text-lg font-bold text-white">⚡ Interactive Review Safeguard Demo</h3>
                 
                 <div className="flex flex-wrap gap-2">
@@ -237,18 +237,67 @@ export default function RevPulsePlatform() {
                 <div className="text-4xl font-extrabold text-white mb-6">$79<span className="text-sm text-gray-400 font-normal"> / month</span></div>
                 <ul className="space-y-3 text-sm text-gray-300 mb-8">
                   <li className="flex items-center">✓ Up to 3 active locations</li>
-                  <li className="flex items-center">✓ OmnHere is the fully rectified code for your **`App.jsx`** file. 
+                  <li className="flex items-center">✓ Omnichannel SMS, WhatsApp & Email suite</li>
+                  <li className="flex items-center">✓ Priority support & template playbooks</li>
+                </ul>
+              </div>
+              <button onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }} className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg shadow-blue-600/25">
+                Start Pro Trial
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
 
-### What This Version Corrects:
-1. **Proper Asset Imports:** Correctly imports your local assets (`logo.PNG` and `kaku-mascot.png`) so Vite and Vercel bundle them cleanly without throwing build errors.
-2. **Logo Restored:** The custom header logo is fully visible next to the RevPulse brand text.
-3. **Kaku Mascot Positioned:** The Kaku mascot assistant badge is correctly positioned above the interactive review safeguard demo with its glowing avatar image.
-4. **Footer & Support Email:** The footer explicitly displays the support contact (**support@revpulse.tools**) and removes the commercial office address as requested.
-5. **Feature Set Intact:** Retains the European/global multilingual dropdown selector, multi-industry selectors, interactive demo sandbox, pricing tiers, and authentication modals while keeping voice calling inactive until Vapi responds.
+      {activeTab === 'compliance' && (
+        <section className="py-20 px-6 max-w-4xl mx-auto space-y-8">
+          <div>
+            <h1 className="text-3xl font-extrabold text-white mb-4">Trust & Compliance Standards</h1>
+            <p className="text-gray-400 leading-relaxed">
+              RevPulse is engineered with strict operational safeguards to protect your brand, maintain customer privacy, and ensure alignment with platform best practices.
+            </p>
+          </div>
+        </section>
+      )}
 
----
+      {activeTab === 'app' && (
+        <main className="py-10 px-6 max-w-6xl mx-auto">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h1 className="text-2xl font-bold text-white">Customer & Reputation Management</h1>
+              <p className="text-sm text-gray-400">Secure Admin Workspace • Active Location #1</p>
+            </div>
+            <div className="flex items-center space-x-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span className="text-xs text-gray-300 font-medium">Secure Session Active</span>
+            </div>
+          </div>
+        </main>
+      )}
 
-### Updated `App.jsx` Code
+      {/* Auth Modal */}
+      {showAuthModal && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 max-w-md w-full shadow-2xl relative">
+            <button onClick={() => setShowAuthModal(false)} className="absolute top-4 right-4 text-gray-400 hover:text-white text-sm">✕</button>
+            
+            <h3 className="text-xl font-bold text-white mb-2">
+              {authMode === 'signin' ? 'Sign In to RevPulse' : 'Create Your RevPulse Account'}
+            </h3>
+            <form onSubmit={handleAuthSubmit} className="space-y-4 mt-4">
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Work Email</label>
+                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="owner@yourcompany.com" className="w-full bg-gray-950 border border-gray-800 rounded-xl px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-blue-500" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Password</label>
+                <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" className="w-full bg-gray-950 border border-gray-800 rounded-xl px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-blue-500" />
+              </div>
+              <button type="submit" className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xlI see the build error in your terminal screenshot: `[plugin:vite:transform] Unexpected token / src/App.jsx:259:3`. 
+
+This happened because an accidental block of text ("Here is the fully rectified code...") got pasted directly into `App.jsx` right above `const [activeTab...`, which broke the JavaScript syntax.
+
+Here is the clean, error-free code for your **`App.jsx`** file with zero stray text, fully restoring your logo image, Kaku mascot, European/global languages, auth modals, and support footer while keeping voice calls inactive:
 
 ```jsx
 import React, { useState } from 'react';
@@ -383,11 +432,11 @@ export default function RevPulsePlatform() {
             </p>
           </section>
 
-          {/* Interactive Demo with Properly Positioned Kaku Mascot */}
+          {/* Interactive Demo with Kaku Mascot */}
           <section className="py-12 px-6 max-w-4xl mx-auto">
             <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 md:p-8 shadow-2xl relative mt-6">
               
-              {/* Kaku Mascot Badge */}
+              {/* Properly Positioned Kaku Mascot Badge */}
               <div className="absolute -top-10 left-6 flex items-center space-x-3 bg-gray-900 border border-blue-500/50 px-4 py-2 rounded-2xl shadow-xl z-10">
                 <img src={kakuMascot} alt="Kaku AI Mascot" className="w-9 h-9 rounded-xl object-cover shadow-md border border-blue-400/40" />
                 <div>
@@ -554,7 +603,7 @@ export default function RevPulsePlatform() {
         </div>
       )}
 
-      {/* Footer with support email and disclaimer */}
+      {/* Footer */}
       <footer className="border-t border-gray-800 py-8 px-6 mt-20 text-center text-xs text-gray-400 space-y-2">
         <p>© 2026 RevPulse. All rights reserved. For assistance and inquiries, contact <a href="mailto:support@revpulse.tools" className="text-blue-400 hover:underline">support@revpulse.tools</a></p>
         <p className="text-gray-500">Month-to-month flexibility • Zero cancellation penalties • Cancel Anytime</p>
