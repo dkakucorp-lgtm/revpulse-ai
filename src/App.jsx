@@ -73,6 +73,18 @@ export default function RevPulsePlatform() {
     }, 700);
   };
 
+  const handleDownloadManual = () => {
+    const manualContent = `REVPULSE OFFICIAL USER MANUAL\n===============================\n\n1. Quickstart & Location Setup\nConnect your Google Business Profile, Yelp, and Facebook pages in 2 clicks.\n\n2. Omnichannel Messaging\nConfigure Twilio and WhatsApp APIs for private resolution routing.\n\n3. Kaku Situation Room\nDrop error screenshots into the assistant to receive instant automated fixes.`;
+    const blob = new Blob([manualContent], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'RevPulse_User_Manual.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100 font-sans relative selection:bg-blue-600 selection:text-white">
       
@@ -88,7 +100,13 @@ export default function RevPulsePlatform() {
                 src="/logo.PNG" 
                 alt="RevPulse Logo" 
                 className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-contain shadow-lg border border-purple-500/30 bg-purple-950/40" 
+                onError={(e)=>{
+                  e.target.onerror = null;
+                  e.target.style.display = 'none';
+                  if(e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
+                }}
               />
+              <div className="w-10 h-10 rounded-xl bg-purple-600 border border-purple-400/40 items-center justify-center text-white font-bold hidden shadow-md">✨</div>
               <span className="text-lg sm:text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition">RevPulse</span>
             </a>
             <nav className="hidden lg:flex space-x-5 text-sm text-gray-300 font-medium">
@@ -133,7 +151,7 @@ export default function RevPulsePlatform() {
       {activeTab === 'landing' && (
         <main className="max-w-7xl mx-auto px-6 pt-12 pb-24 space-y-16">
           
-          {/* Hero Section with AI Mockup Visual */}
+          {/* Hero Section */}
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-blue-950/60 border border-blue-800/50 text-blue-300 text-xs font-semibold rounded-full uppercase tracking-wider">
@@ -160,7 +178,7 @@ export default function RevPulsePlatform() {
                   <span>↓</span>
                 </button>
                 <button 
-                  onClick={() => setActiveTab('manual')}
+                  onClick={handleDownloadManual}
                   className="px-6 py-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-300 font-semibold rounded-xl transition">
                   📄 Download User Manual
                 </button>
@@ -326,7 +344,7 @@ export default function RevPulsePlatform() {
               <h1 className="text-3xl font-extrabold text-white mb-2">RevPulse Official User Manual</h1>
               <p className="text-sm text-gray-400">Complete documentation, setup playbooks, and troubleshooting guides.</p>
             </div>
-            <button onClick={() => alert("Downloading official RevPulse User Manual PDF...")} className="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl shadow-lg transition">
+            <button onClick={handleDownloadManual} className="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl shadow-lg transition">
               📥 Download PDF Manual
             </button>
           </div>
