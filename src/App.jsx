@@ -6,7 +6,7 @@ export default function RevPulsePlatform() {
   const [selectedVertical, setSelectedVertical] = useState('hvac');
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [authMode, setAuthMode] = useState('signin');
+  const [authMode, setAuthMode] = useState('signup');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
@@ -22,30 +22,30 @@ export default function RevPulsePlatform() {
     {
       id: 1,
       category: 'hvac',
-      title: 'Handling Severe 1-Star Billing & Delay Disputes (HVAC)',
-      summary: 'Step-by-step framework for intercepting technician arrival delays and invoice disputes before they damage local search rankings.',
-      content: 'When an HVAC customer leaves a low rating regarding arrival timing or pricing, Kaku instantly intercepts the public post. The operator should acknowledge the operational friction privately, offer a manager callback within 15 minutes, and provide a direct resolution link via SMS.'
+      title: 'Managing Service Delays & Billing Inquiries (HVAC)',
+      summary: 'Recommended workflow for handling arrival delays and invoice disputes privately before public ratings are impacted.',
+      content: 'When an HVAC customer expresses frustration over service timing or billing, the operator can acknowledge the feedback privately, offer a manager callback, and provide a direct private resolution channel.'
     },
     {
       id: 2,
       category: 'omnichannel',
-      title: 'Configuring Twilio SMS & WhatsApp Business Templates',
-      summary: 'Ensure 100% carrier compliance and high open rates for automated customer recovery text messages.',
-      content: 'To comply with carrier regulations and WhatsApp 24-hour windows, pre-approved message templates must include clear opt-out language and direct private resolution pathways.'
+      title: 'Configuring SMS & Messaging Follow-Ups',
+      summary: 'Best practices for setting up customer recovery text messages with clear opt-out language.',
+      content: 'Ensure all outbound follow-up messages include clear identification, helpful context, and straightforward options for recipients to opt out or reply.'
     },
     {
       id: 3,
       category: 'dental',
-      title: 'Managing Lobby Wait Times & Patient Sentiment (Dental)',
-      summary: 'How to automate apology flows and re-book appointments seamlessly when clinical delays occur.',
-      content: 'Dental practices rely heavily on local reputation. When lobby wait times exceed 30 minutes, automated SMS notifications can offer complimentary parking vouchers or priority scheduling for subsequent visits.'
+      title: 'Patient Communication & Schedule Management (Dental)',
+      summary: 'Automating helpful follow-ups and feedback collection after patient appointments.',
+      content: 'Dental practices can streamline post-visit feedback collection while respecting patient time and maintaining professional communication standards.'
     },
     {
       id: 4,
       category: 'onboarding',
-      title: '7-Day Free Trial & Email Lifecycle Automation',
-      summary: 'Understanding the unrestricted trial workspace and automated Days 4, 5, and 6 conversion reminders.',
-      content: 'During the 7-day trial, users enjoy full access to all features without entering a credit card. Automated email nudges on Days 4, 5, and 6 help guide operators toward selecting either the $29 Starter Plan or $79 Pro Plan.'
+      title: '7-Day Free Trial & Workspace Setup',
+      summary: 'Overview of your unrestricted trial workspace and trial email communication cadence.',
+      content: 'During your 7-day trial, you have full access to workspace features without entering payment card information. Helpful email reminders are sent as your trial period progresses.'
     }
   ];
 
@@ -80,10 +80,10 @@ export default function RevPulsePlatform() {
 
   const [chatMessage, setChatMessage] = useState('');
   const [chatLogs, setChatLogs] = useState([
-    { sender: 'kaku', text: 'Hello! I am Kaku, your AI reputation and onboarding assistant. Drop an error screenshot or search our Knowledge Center below, and I will resolve it.' }
+    { sender: 'kaku', text: 'Hello! I am Kaku, your AI reputation assistant. Drop a question or search our Knowledge Center below, and I will guide you.' }
   ]);
 
-  const [sampleReview, setSampleReview] = useState("Terrible experience! Called for an AC repair on Tuesday, technician arrived 3 hours late, and the bill was double the estimate. Never using them again!");
+  const [sampleReview, setSampleReview] = useState("Called for an AC repair on Tuesday, technician arrived late, and the bill was higher than quoted.");
   const [aiResponse, setAiResponse] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -91,23 +91,23 @@ export default function RevPulsePlatform() {
   const verticalData = {
     hvac: {
       name: "HVAC & Mechanical",
-      review: "Tech came out 3 hours late for our AC repair and the invoice was higher than quoted.",
-      response: "Hello. Thank you for sharing your feedback. We regret that your service timing and billing clarity did not meet our standard. Please reach out to our service manager directly at our office so we can review your account details and resolve this privately."
+      review: "Tech came out late for our AC repair and the invoice was higher than quoted.",
+      response: "Hello. Thank you for sharing your feedback. We regret that your service timing and billing clarity did not meet our standard. Please reach out to our service manager directly so we can review your account details."
     },
     dental: {
       name: "Dental Practices",
       review: "Wait time in the lobby was over 45 minutes past my scheduled appointment slot.",
-      response: "Hello, thank you for your feedback. We strive to respect your time and apologize for the delay during your visit. Please contact our practice manager so we can ensure a smoother experience at your next appointment."
+      response: "Hello, thank you for your feedback. We strive to respect your time and apologize for the delay during your visit. Please contact our practice manager so we can assist you."
     },
     auto: {
       name: "Auto Repair",
       review: "Repairs took two days longer than promised and communication was lacking.",
-      response: "Hello. We understand how important your vehicle is and regret the delay in completing your service. Please reach out to our service desk directly so we can discuss your experience and make it right."
+      response: "Hello. We understand how important your vehicle is and regret the delay in completing your service. Please reach out to our service desk directly so we can discuss your experience."
     },
     contractors: {
       name: "General Contractors",
       review: "Cleanup after the kitchen remodel was messy and debris was left behind.",
-      response: "Hello. Thank you for bringing this to our attention. We hold our job sites to a high standard of cleanliness and apologize for the oversight. Please contact our project lead so we can address this immediately."
+      response: "Hello. Thank you for bringing this to our attention. We hold our job sites to a high standard of cleanliness and apologize for the oversight. Please contact our project lead to address this."
     }
   };
 
@@ -130,7 +130,7 @@ export default function RevPulsePlatform() {
       if (authMode === 'signup') {
         const { error } = await supabase.auth.signUp({ email, password });
         if (error) throw error;
-        alert(`Account created successfully! 📧 Welcome confirmation email and 7-day trial activated for ${email}.`);
+        alert(`Account created successfully! 📧 Welcome confirmation email sent to ${email}. Your 7-Day Free Trial is now active.`);
         setAuthMode('signin');
       } else {
         const { data, error } = await supabase.auth.signInWithPassword({ email, password });
@@ -181,7 +181,7 @@ export default function RevPulsePlatform() {
         timestamp: new Date().toLocaleTimeString(),
         payload: sandboxChannel === 'sms' 
           ? `[Twilio Sandbox] Sent to ${sandboxPhone}: "Hi! We saw your ${sandboxReviewRating}-star feedback. Our manager wants to resolve this privately. Tap to connect: https://revpulse.tools/resolve/sandbox-token"`
-          : `[WhatsApp Sandbox Template] Dispatched to ${sandboxPhone}: Template #REV_RECOVERY_V2 rendered successfully with dynamic business variables.`
+          : `[WhatsApp Sandbox Template] Dispatched to ${sandboxPhone}: Template #REV_RECOVERY_V2 rendered successfully with business variables.`
       });
     }, 900);
   };
@@ -189,7 +189,7 @@ export default function RevPulsePlatform() {
   const handleSaveTwilioConfig = (e) => {
     e.preventDefault();
     setTwilioConfig(prev => ({ ...prev, isLive: true }));
-    alert("Twilio & WhatsApp API credentials verified! Your workspace is now operating in LIVE PRODUCTION mode.");
+    alert("Twilio & WhatsApp API credentials saved! Your workspace is now operating in Live Production Mode.");
   };
 
   const handleSendChatMessage = (e) => {
@@ -202,7 +202,7 @@ export default function RevPulsePlatform() {
     setTimeout(() => {
       setChatLogs(prev => [...prev, { 
         sender: 'kaku', 
-        text: `I've cross-referenced your query with our Knowledge Center articles. Here is the verified scenario breakdown.` 
+        text: `I've reviewed your query against our Knowledge Center guides. Here is the recommended step-by-step approach.` 
       }]);
     }, 700);
   };
@@ -268,7 +268,7 @@ export default function RevPulsePlatform() {
                 <button 
                   onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
                   className="px-3.5 py-2 sm:px-4.5 sm:py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold rounded-xl transition shadow-lg shadow-blue-600/25 whitespace-nowrap border-none cursor-pointer">
-                  Get Started Free
+                  Start 7-Day Free Trial — No Card Required
                 </button>
               </>
             )}
@@ -277,27 +277,27 @@ export default function RevPulsePlatform() {
       </header>
 
       {activeTab === 'landing' && (
-        <main className="max-w-7xl mx-auto px-6 pt-12 pb-24 space-y-16">
+        <main className="max-w-7xl mx-auto px-6 pt-12 pb-24 space-y-20">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-blue-950/60 border border-blue-800/50 text-blue-300 text-xs font-semibold rounded-full uppercase tracking-wider">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-                <span>AI-Powered Review Safeguard & Messaging</span>
+                <span>AI-Assisted Review Management & Workflows</span>
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
-                Respond Well Before One Review Becomes Your Story.
+                Manage Customer Feedback Before Small Issues Escalate.
               </h1>
               
               <p className="text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                Protect your local business reputation. Instantly draft calm, privacy-compliant responses and route customer follow-ups across SMS, WhatsApp, and Email.
+                Streamline your local business reputation management. Generate professional draft responses and organize customer follow-ups across SMS, WhatsApp, and Email with full human oversight.
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
                 <button 
-                  onClick={() => setActiveTab('pricing')}
+                  onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
                   className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2 border-none cursor-pointer">
-                  <span>Get Started ($29/mo)</span>
+                  <span>Start 7-Day Free Trial — No Card Required</span>
                   <span>→</span>
                 </button>
                 <button 
@@ -319,13 +319,120 @@ export default function RevPulsePlatform() {
                 <div className="absolute bottom-4 left-4 right-4 z-20 bg-gray-900/90 backdrop-blur-md border border-gray-800 rounded-2xl p-3.5 flex items-center justify-between">
                   <div className="flex items-center space-x-3">
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span className="text-xs font-bold text-white">Live AI Dashboard Active</span>
+                    <span className="text-xs font-bold text-white">Secure Workspace Active</span>
                   </div>
-                  <span className="text-xs text-blue-400 font-semibold">Protected & Real-time</span>
+                  <span className="text-xs text-blue-400 font-semibold">Human-in-the-Loop</span>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* 3-Step Simple Contractor Workflow */}
+          <section className="space-y-8 pt-8 border-t border-gray-800/80">
+            <div className="text-center space-y-2">
+              <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">How It Works</span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Simple 3-Step Contractor Workflow</h2>
+              <p className="text-xs text-gray-400 max-w-lg mx-auto">Designed for busy local service operators to maintain total control over every customer touchpoint.</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4 relative">
+                <div className="w-10 h-10 rounded-2xl bg-blue-600/20 border border-blue-500/40 text-blue-400 font-extrabold flex items-center justify-center text-sm">1</div>
+                <h3 className="text-lg font-bold text-white">Review & Feedback Intercept</h3>
+                <p className="text-xs text-gray-400 leading-relaxed">Incoming ratings and feedback from connected business profiles are gathered into your unified dashboard stream.</p>
+              </div>
+
+              <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4 relative">
+                <div className="w-10 h-10 rounded-2xl bg-indigo-600/20 border border-indigo-500/40 text-indigo-400 font-extrabold flex items-center justify-center text-sm">2</div>
+                <h3 className="text-lg font-bold text-white">Human-Approved AI Drafting</h3>
+                <p className="text-xs text-gray-400 leading-relaxed">Kaku assists in drafting calm, professional responses tailored to your industry. You retain final approval before anything is published.</p>
+              </div>
+
+              <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4 relative">
+                <div className="w-10 h-10 rounded-2xl bg-purple-600/20 border border-purple-500/40 text-purple-400 font-extrabold flex items-center justify-center text-sm">3</div>
+                <h3 className="text-lg font-bold text-white">Omnichannel Follow-Up</h3>
+                <p className="text-xs text-gray-400 leading-relaxed">Route private resolution links or follow-ups via SMS, WhatsApp, or Email to resolve client concerns efficiently.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Interactive Demo Section with Kaku Mascot */}
+          <section id="sandbox-demo" className="max-w-4xl mx-auto pt-4">
+            <div className="bg-gray-900/90 border border-gray-800/80 rounded-3xl p-8 shadow-2xl relative mt-8">
+              <div className="absolute -top-10 left-6 flex items-center space-x-3 bg-gray-900 border border-blue-500/50 px-4 py-2.5 rounded-2xl shadow-2xl z-20">
+                <img 
+                  src="/kaku-mascot.png" 
+                  alt="Kaku AI Mascot" 
+                  className="w-10 h-10 rounded-xl object-cover shadow-md border border-blue-400/40 bg-gray-950"
+                  onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+                />
+                <div>
+                  <div className="text-xs font-bold text-white flex items-center space-x-1.5">
+                    <span>Kaku Assistant</span>
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  </div>
+                  <div className="text-[11px] text-gray-400">Test industry response templates below</div>
+                </div>
+              </div>
+
+              <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4 pt-6">
+                <div>
+                  <h3 className="text-lg font-bold text-white">⚡ Interactive Review Draft Demo</h3>
+                  <p className="text-xs text-gray-400">Select your industry and test how Kaku helps draft professional private replies.</p>
+                </div>
+                
+                <div className="flex flex-wrap gap-2">
+                  {Object.keys(verticalData).map((key) => (
+                    <button
+                      key={key}
+                      onClick={() => {
+                        setSelectedVertical(key);
+                        setSampleReview(verticalData[key].review);
+                        setAiResponse('');
+                      }}
+                      className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
+                        selectedVertical === key 
+                          ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' 
+                          : 'bg-gray-800 text-gray-400 hover:text-white'
+                      }`}
+                    >
+                      {verticalData[key].name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-4 mb-6">
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">
+                    Sample Feedback ({verticalData[selectedVertical].name})
+                  </label>
+                  <textarea 
+                    value={sampleReview} 
+                    onChange={(e) => setSampleReview(e.target.value)}
+                    className="w-full bg-gray-950 border border-gray-800 rounded-2xl p-4 text-sm text-gray-200 focus:outline-none focus:border-blue-500 h-28 resize-none shadow-inner"
+                  />
+                </div>
+
+                <button 
+                  onClick={handleGenerateResponse}
+                  disabled={isGenerating}
+                  className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/20 border-none cursor-pointer">
+                  {isGenerating ? <span>Drafting Response...</span> : <span>Generate Professional Private-Resolution Draft</span>}
+                </button>
+              </div>
+
+              {aiResponse && (
+                <div className="bg-gray-950 border border-blue-900/50 rounded-2xl p-5 animate-fadeIn">
+                  <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+                    <span>Approved AI Output (Requires Human Review)</span>
+                    <span className="text-emerald-400 text-[11px]">Ready for Approval</span>
+                  </div>
+                  <p className="text-sm text-gray-300 leading-relaxed">{aiResponse}</p>
+                </div>
+              )}
+            </div>
+          </section>
         </main>
       )}
 
@@ -334,7 +441,7 @@ export default function RevPulsePlatform() {
           <div className="text-center space-y-3">
             <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">Enterprise Resource Hub</span>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-white">RevPulse Knowledge Center</h1>
-            <p className="text-sm text-gray-400 max-w-xl mx-auto">Search industry research, omnichannel setup guides, and multi-language scenario playbooks instantly.</p>
+            <p className="text-sm text-gray-400 max-w-xl mx-auto">Search industry guides, setup instructions, and multi-language scenario playbooks instantly.</p>
           </div>
 
           <div className="bg-gray-900 border border-gray-800 p-6 rounded-3xl space-y-4 shadow-xl">
@@ -342,7 +449,7 @@ export default function RevPulsePlatform() {
               type="text" 
               value={knowledgeSearch}
               onChange={(e) => setKnowledgeSearch(e.target.value)}
-              placeholder="🔍 Search FAQs, HVAC guides, Twilio setup, or trial workflows..."
+              placeholder="🔍 Search FAQs, HVAC guides, messaging setup, or trial workflows..."
               className="w-full bg-gray-950 border border-gray-800 rounded-2xl px-5 py-4 text-xs text-white focus:outline-none focus:border-blue-500 shadow-inner"
             />
             
@@ -351,7 +458,7 @@ export default function RevPulsePlatform() {
                 { id: 'all', label: 'All Topics' },
                 { id: 'hvac', label: 'HVAC & Trades' },
                 { id: 'dental', label: 'Dental & Healthcare' },
-                { id: 'omnichannel', label: 'Twilio & WhatsApp' },
+                { id: 'omnichannel', label: 'SMS & Messaging' },
                 { id: 'onboarding', label: 'Trial & Billing' }
               ].map(cat => (
                 <button
@@ -383,7 +490,7 @@ export default function RevPulsePlatform() {
               ))
             ) : (
               <div className="md:col-span-2 text-center py-16 text-gray-500 text-xs bg-gray-900 border border-gray-800 rounded-3xl">
-                No matching articles found in our Knowledge Center. Try searching with different keywords or ask Kaku in the Situation Room!
+                No matching articles found. Try searching with different keywords or ask Kaku in the Situation Room!
               </div>
             )}
           </div>
@@ -405,7 +512,7 @@ export default function RevPulsePlatform() {
             </p>
             <h3 className="text-base font-bold text-white">1. Information We Collect</h3>
             <p className="text-gray-400">
-              We collect information you provide directly (name, email, telephone number, business name, credentials, billing info, review text, and support requests). We also collect automatic technical telemetry and integration metadata when you connect Google, Yelp, or Facebook pages.
+              We collect information you provide directly (name, email, telephone number, business name, credentials, billing info, review text, and support requests). We also collect automatic technical telemetry and integration metadata when you connect business profiles.
             </p>
             <h3 className="text-base font-bold text-white">2. How We Use Information</h3>
             <p className="text-gray-400">
@@ -424,11 +531,11 @@ export default function RevPulsePlatform() {
             </p>
             <h3 className="text-base font-bold text-white">1. Trial, Paid Plans & Billing</h3>
             <p className="text-gray-400">
-              RevPulse offers an unrestricted 7-day free trial without requiring a credit card upfront. Paid subscription plans are billed monthly ($29/mo Starter, $79/mo Pro). You may cancel anytime through your account settings or by emailing support@revpulse.tools.
+              RevPulse offers an unrestricted 7-day free trial without requiring a payment card upfront. Paid subscription plans are billed monthly ($29/mo Starter, $79/mo Pro). You may cancel anytime through your account settings or by emailing support@revpulse.tools.
             </p>
             <h3 className="text-base font-bold text-white">2. Responsible Communications & Consent</h3>
             <p className="text-gray-400">
-              If you use RevPulse for SMS, WhatsApp, or email messaging, you are the sender and are solely responsible for obtaining proper recipient consent, honoring opt-outs (STOP), and complying with carrier rules and applicable laws.
+              If you use RevPulse for SMS, WhatsApp, or email messaging, you are the sender and are solely responsible for obtaining proper recipient consent, honoring opt-outs, and complying with carrier guidelines and applicable laws.
             </p>
             <h3 className="text-base font-bold text-white">3. Contact Information</h3>
             <p className="text-gray-400">
@@ -447,13 +554,13 @@ export default function RevPulsePlatform() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-gray-900 border border-gray-800 p-8 rounded-3xl">
             <div>
               <div className="flex items-center space-x-3 mb-1">
-                <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Active 7-Day Unrestricted Trial</span>
+                <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Active 7-Day Free Trial — No Card Required</span>
                 <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${twilioConfig.isLive ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'}`}>
-                  {twilioConfig.isLive ? '🟢 Production Live Mode' : '🟡 Sandbox Testing Mode'}
+                  {twilioConfig.isLive ? '🟢 Live Production Mode' : '🟡 Sandbox Testing Mode'}
                 </span>
               </div>
               <h1 className="text-3xl font-extrabold text-white">Customer & Admin Dashboard</h1>
-              <p className="text-sm text-gray-400 mt-1">Welcome back, {currentUser ? currentUser.email : 'Operator'}. No credit card required during trial.</p>
+              <p className="text-sm text-gray-400 mt-1">Welcome back, {currentUser ? currentUser.email : 'Operator'}.</p>
             </div>
             
             <div className="flex flex-wrap gap-2">
@@ -483,7 +590,7 @@ export default function RevPulsePlatform() {
           {dashboardSubTab === 'overview' && (
             <div className="space-y-8">
               <div className="flex justify-between items-center bg-gray-900 border border-gray-800 px-6 py-4 rounded-2xl">
-                <div className="text-xs text-gray-300">Need to link more business profiles or test your SMS sequences?</div>
+                <div className="text-xs text-gray-300">Need to link more business profiles or test your messaging sequences?</div>
                 <div className="flex space-x-3">
                   <button onClick={() => setShowConnectModal(true)} className="px-3.5 py-2 bg-purple-600 text-white text-xs font-semibold rounded-xl border-none cursor-pointer">
                     🔗 Connect Business Pages
@@ -500,7 +607,7 @@ export default function RevPulsePlatform() {
                   <div className="text-xs text-blue-400 mt-2">Google, Yelp & FB Channels Linked</div>
                 </div>
                 <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
-                  <div className="text-xs font-semibold text-gray-400 uppercase">Negative Reviews Intercepted</div>
+                  <div className="text-xs font-semibold text-gray-400 uppercase">Feedback Items Pending</div>
                   <div className="text-3xl font-extrabold text-white mt-2">0 Pending</div>
                   <div className="text-xs text-emerald-400 mt-2">All pipelines protected</div>
                 </div>
@@ -518,7 +625,7 @@ export default function RevPulsePlatform() {
               <div>
                 <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider">Safe Testing Window</span>
                 <h3 className="text-xl font-bold text-white mt-1">Omnichannel Sandbox & Simulation Lab</h3>
-                <p className="text-xs text-gray-400 mt-1">Test your SMS recovery texts, WhatsApp message templates, and AI review drafts in a sandbox environment.</p>
+                <p className="text-xs text-gray-400 mt-1">Test your SMS recovery texts and WhatsApp templates in a sandbox environment.</p>
               </div>
 
               <form onSubmit={handleRunSandboxTest} className="grid md:grid-cols-2 gap-6 bg-gray-950 p-6 rounded-2xl border border-gray-800">
@@ -576,7 +683,7 @@ export default function RevPulsePlatform() {
             <div className="bg-gray-900 border border-amber-500/40 p-8 rounded-3xl space-y-6">
               <div>
                 <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider">Automated Conversion Funnel</span>
-                <h3 className="text-xl font-bold text-white mt-1">7-Day Trial & Email Lifecycle Automation</h3>
+                <h3 className="text-xl font-bold text-white mt-1">7-Day Free Trial & Email Lifecycle Automation</h3>
                 <p className="text-xs text-gray-400 mt-1">Manage the automated welcome confirmation and Days 4, 5, and 6 trial reminder emails.</p>
               </div>
 
@@ -587,7 +694,7 @@ export default function RevPulsePlatform() {
                 </div>
                 <div className="bg-gray-950 p-6 rounded-2xl border border-gray-800 space-y-3">
                   <span className="text-xs font-bold text-white">📧 Days 4, 5 & 6: Trial Nudge Sequence</span>
-                  <p className="text-xs text-gray-400 leading-relaxed">Automated reminders highlighting ROI and prompting users to choose the $29 or $79 plan.</p>
+                  <p className="text-xs text-gray-400 leading-relaxed">Automated reminders highlighting plan options ($29 Starter or $79 Pro).</p>
                 </div>
               </div>
             </div>
@@ -636,7 +743,7 @@ export default function RevPulsePlatform() {
                 </div>
                 <div className="md:col-span-3 flex justify-end">
                   <button type="submit" className="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
-                    Verify & Switch to Live Production Mode
+                    Save Gateway Credentials
                   </button>
                 </div>
               </form>
@@ -648,7 +755,7 @@ export default function RevPulsePlatform() {
       {activeTab === 'pricing' && (
         <section className="py-20 px-6 max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-extrabold text-white mb-4">Transparent Unit Pricing & Plans</h1>
+            <h1 className="text-4xl font-extrabold text-white mb-4">Transparent Pricing & Plans</h1>
             <p className="text-gray-400">Select your tier to initialize secure checkout and instant workspace activation.</p>
           </div>
 
@@ -665,7 +772,7 @@ export default function RevPulsePlatform() {
                 </ul>
               </div>
               <button onClick={() => handleStripeCheckout('starter')} className="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
-                Purchase $29 Starter Plan
+                Start 7-Day Free Trial — No Card Required
               </button>
             </div>
 
@@ -682,7 +789,7 @@ export default function RevPulsePlatform() {
                 </ul>
               </div>
               <button onClick={() => handleStripeCheckout('pro')} className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
-                Purchase $79 Pro Plan
+                Start 7-Day Free Trial — No Card Required
               </button>
             </div>
           </div>
@@ -693,8 +800,8 @@ export default function RevPulsePlatform() {
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-gray-900 border border-blue-500/40 rounded-3xl max-w-md w-full p-8 shadow-2xl relative">
             <button onClick={() => setShowAuthModal(false)} className="absolute top-6 right-6 text-gray-400 hover:text-white text-sm font-bold bg-transparent border-none cursor-pointer">✕</button>
-            <h3 className="text-xl font-bold text-white mb-2">{authMode === 'signin' ? 'Sign In to RevPulse' : 'Start Your 7-Day Free Trial'}</h3>
-            <p className="text-xs text-gray-400 mb-6">Unrestricted workspace access. No credit card required upfront.</p>
+            <h3 className="text-xl font-bold text-white mb-2">{authMode === 'signin' ? 'Sign In to RevPulse' : 'Start 7-Day Free Trial — No Card Required'}</h3>
+            <p className="text-xs text-gray-400 mb-6">Unrestricted workspace access. No payment card required upfront.</p>
             
             <form onSubmit={handleAuthSubmit} className="space-y-4">
               <div>
@@ -720,7 +827,7 @@ export default function RevPulsePlatform() {
                 />
               </div>
               <button type="submit" className="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg text-xs border-none cursor-pointer">
-                {authMode === 'signin' ? 'Sign In' : 'Activate Free Trial Workspace'}
+                {authMode === 'signin' ? 'Sign In' : 'Activate 7-Day Free Trial'}
               </button>
             </form>
           </div>
@@ -764,7 +871,15 @@ export default function RevPulsePlatform() {
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-gray-900 border border-blue-500/40 rounded-3xl max-w-2xl w-full h-[650px] flex flex-col shadow-2xl relative overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-800 flex items-center justify-between bg-gray-950/60">
-              <span className="text-sm font-bold text-white">Kaku Situation Room & Knowledge Center Assistant</span>
+              <div className="flex items-center space-x-3">
+                <img 
+                  src="/kaku-mascot.png" 
+                  alt="Kaku" 
+                  className="w-8 h-8 rounded-lg object-cover border border-blue-400/40 bg-gray-950" 
+                  onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+                />
+                <span className="text-sm font-bold text-white">Kaku Assistant & Situation Room</span>
+              </div>
               <button onClick={() => setShowSituationRoom(false)} className="text-gray-400 hover:text-white text-sm font-bold px-2.5 py-1 bg-gray-800 rounded-lg border-none cursor-pointer">✕</button>
             </div>
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
@@ -792,9 +907,24 @@ export default function RevPulsePlatform() {
         </div>
       )}
 
+      {/* Floating Kaku Assistant Button */}
       <div className="fixed bottom-6 right-6 z-40">
-        <button onClick={() => setShowSituationRoom(true)} className="flex items-center space-x-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-3.5 rounded-2xl shadow-2xl transition border border-blue-400/40 cursor-pointer">
-          <span>Ask Kaku / Situation Room</span>
+        <button 
+          onClick={() => setShowSituationRoom(true)}
+          className="flex items-center space-x-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-3.5 rounded-2xl shadow-2xl transition transform hover:scale-105 border border-blue-400/40 group cursor-pointer">
+          <img 
+            src="/kaku-mascot.png" 
+            alt="Kaku" 
+            className="w-10 h-10 rounded-xl object-cover border border-white/30 bg-gray-950 shadow-md" 
+            onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+          />
+          <div className="text-left">
+            <div className="text-xs font-extrabold flex items-center space-x-1.5">
+              <span>Ask Kaku / Situation Room</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
+            </div>
+            <div className="text-[11px] text-blue-100 font-medium">Get instant guidance</div>
+          </div>
         </button>
       </div>
 
