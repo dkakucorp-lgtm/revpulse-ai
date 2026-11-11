@@ -3,58 +3,208 @@ import { supabase } from './components/supabaseClient';
 
 const translations = {
   en: {
+    overview: "Overview",
+    pricing: "Pricing",
+    dashboard: "Customer Dashboard",
+    knowledge: "Knowledge Center",
+    legal: "Terms & Privacy",
+    signIn: "Sign In",
+    signOut: "Sign Out",
+    getStarted: "Start 7-Day Free Trial — No Card Required",
+    badge: "Multi-Industry AI Reputation & Omnichannel Suite",
     heroTitle: "Manage Customer Feedback Before Small Issues Escalate.",
     subtitle: "Protect your reputation across trades, healthcare, legal, retail, hospitality, and professional services. Generate professional draft responses and organize follow-ups with full human oversight.",
-    ctaTrial: "Start 7-Day Free Trial — No Card Required",
     exploreKnowledge: "📚 Explore Knowledge Center",
     howItWorks: "How It Works",
     workflowTitle: "Simple 3-Step Multi-Industry Workflow",
-    workflowSubtitle: "Designed for operators across all sectors to maintain absolute control over every customer touchpoint."
+    workflowSubtitle: "Designed for operators across all sectors to maintain absolute control over every customer touchpoint.",
+    step1Title: "Review & Feedback Intercept",
+    step1Desc: "Incoming ratings, client inquiries, and platform feedback are gathered into your unified multi-channel dashboard.",
+    step2Title: "Human-Approved AI Drafting",
+    step2Desc: "Kaku drafts professional replies tailored to your specific industry guidelines. You retain final approval before publishing.",
+    step3Title: "Omnichannel Follow-Up",
+    step3Desc: "Route private resolution links or recovery sequences via SMS, WhatsApp, or Email to resolve client concerns efficiently.",
+    demoTitle: "⚡ Interactive Multi-Industry Demo",
+    demoSubtitle: "Select your industry and test how Kaku drafts professional private replies.",
+    sampleFeedbackLabel: "Sample Feedback",
+    generateBtn: "Generate Professional Private-Resolution Draft",
+    generatingBtn: "Drafting Response...",
+    approvedOutput: "Approved AI Output (Requires Human Review)",
+    readyApproval: "Ready for Approval",
+    knowledgeHeader: "RevPulse Multi-Industry Knowledge Center",
+    knowledgeSubtitle: "Search across HVAC, Healthcare, Construction, Hospitality, E-Commerce, Automotive, Finance, Legal, Wellness, and Veterinary research articles.",
+    searchPlaceholder: "🔍 Search HVAC, dental wait times, permit red tags, medical aesthetic reactions, veterinary bills...",
+    footerRights: "© 2026 RevPulse. All rights reserved. Operator: Imran Mateen (support@revpulse.tools)"
   },
   fr: {
+    overview: "Aperçu",
+    pricing: "Tarifs",
+    dashboard: "Tableau de bord",
+    knowledge: "Centre de connaissances",
+    legal: "Conditions & Confidentialité",
+    signIn: "Connexion",
+    signOut: "Déconnexion",
+    getStarted: "Commencer l'essai gratuit de 7 jours — Sans carte",
+    badge: "Suite IA multi-sectorielle pour la réputation",
     heroTitle: "Gérez les avis clients avant que les petits problèmes ne s'aggravent.",
     subtitle: "Protégez votre réputation dans tous les secteurs (artisanat, santé, juridique, commerce, hôtellerie). Générez des réponses professionnelles et organisez vos suivis avec un contrôle humain total.",
-    ctaTrial: "Commencez l'essai gratuit de 7 jours — Sans carte",
     exploreKnowledge: "📚 Explorer le centre de connaissances",
     howItWorks: "Comment ça marche",
     workflowTitle: "Flux de travail multi-sectoriel simple en 3 étapes",
-    workflowSubtitle: "Conçu pour les opérateurs de tous secteurs afin de garder le contrôle absolu sur chaque point de contact."
+    workflowSubtitle: "Conçu pour les opérateurs de tous secteurs afin de garder le contrôle absolu sur chaque point de contact.",
+    step1Title: "Interception des avis et retours",
+    step1Desc: "Les notes reçues, requêtes clients et retours sont centralisés dans votre tableau de bord unifié.",
+    step2Title: "Rédaction IA approuvée par l'humain",
+    step2Desc: "Kaku rédige des réponses professionnelles adaptées à votre secteur. Vous conservez l'approbation finale.",
+    step3Title: "Suivi omnicanal",
+    step3Desc: "Acheminez des liens de résolution privée ou des séquences de relance par SMS, WhatsApp ou e-mail.",
+    demoTitle: "⚡ Démo interactive multi-sectorielle",
+    demoSubtitle: "Sélectionnez votre secteur et testez la rédaction de réponses par Kaku.",
+    sampleFeedbackLabel: "Exemple de retour",
+    generateBtn: "Générer un projet de résolution privée",
+    generatingBtn: "Rédaction en cours...",
+    approvedOutput: "Sortie IA approuvée (Révision humaine requise)",
+    readyApproval: "Prêt pour approbation",
+    knowledgeHeader: "Centre de connaissances RevPulse",
+    knowledgeSubtitle: "Recherchez parmi les articles de recherche HVAC, santé, construction, hôtellerie, e-commerce, automobile, finance, juridique, bien-être et vétérinaire.",
+    searchPlaceholder: "🔍 Rechercher HVAC, temps d'attente dentaires, permis, vétérinaire...",
+    footerRights: "© 2026 RevPulse. Tous droits réservés. Opérateur : Imran Mateen (support@revpulse.tools)"
   },
   es: {
+    overview: "Resumen",
+    pricing: "Precios",
+    dashboard: "Panel de Cliente",
+    knowledge: "Centro de Conocimiento",
+    legal: "Términos y Privacidad",
+    signIn: "Iniciar Sesión",
+    signOut: "Cerrar Sesión",
+    getStarted: "Comenzar prueba gratuita de 7 días — Sin tarjeta",
+    badge: "Suite de Reputación IA Multiindustria",
     heroTitle: "Gestione los comentarios de los clientes antes de que los problemas escalen.",
     subtitle: "Proteja su reputación en comercios, salud, legal, retail, hostelería y servicios profesionales. Genere borradores profesionales y organice seguimientos con total supervisión humana.",
-    ctaTrial: "Comience la prueba gratuita de 7 días — Sin tarjeta",
     exploreKnowledge: "📚 Explorar Centro de Conocimiento",
     howItWorks: "Cómo Funciona",
     workflowTitle: "Flujo de trabajo multiindustria simple de 3 pasos",
-    workflowSubtitle: "Diseñado para operadores en todos los sectores para mantener el control absoluto en cada punto de contacto."
+    workflowSubtitle: "Diseñado para operadores en todos los sectores para mantener el control absoluto en cada punto de contacto.",
+    step1Title: "Intercepción de Reseñas y Feedback",
+    step1Desc: "Las calificaciones y consultas entrantes se agrupan en su panel multicanal unificado.",
+    step2Title: "Redacción IA con Supervisión Humana",
+    step2Desc: "Kaku redacta respuestas profesionales adaptadas a su industria. Usted mantiene la aprobación final.",
+    step3Title: "Seguimiento Omnicanal",
+    step3Desc: "Envíe enlaces de resolución privada o secuencias de recuperación por SMS, WhatsApp o Email.",
+    demoTitle: "⚡ Demostración Interactiva Multiindustria",
+    demoSubtitle: "Seleccione su industria y pruebe cómo Kaku redacta respuestas privadas profesionales.",
+    sampleFeedbackLabel: "Comentario de Ejemplo",
+    generateBtn: "Generar Borrador de Resolución Privada",
+    generatingBtn: "Redactando Respuesta...",
+    approvedOutput: "Salida de IA Aprobada (Requiere Revisión Humana)",
+    readyApproval: "Listo para Aprobar",
+    knowledgeHeader: "Centro de Conocimiento RevPulse",
+    knowledgeSubtitle: "Busque artículos de investigación en HVAC, salud, construcción, hostelería, e-commerce, automoción, finanzas, legal, bienestar y veterinaria.",
+    searchPlaceholder: "🔍 Buscar HVAC, esperas dentales, permisos, multas, veterinaria...",
+    footerRights: "© 2026 RevPulse. Todos los derechos reservados. Operador: Imran Mateen (support@revpulse.tools)"
   },
   it: {
+    overview: "Panoramica",
+    pricing: "Prezzi",
+    dashboard: "Dashboard",
+    knowledge: "Centro Conoscenze",
+    legal: "Termini e Privacy",
+    signIn: "Accedi",
+    signOut: "Esci",
+    getStarted: "Inizia prova gratuita di 7 giorni — Nessuna carta richiesta",
+    badge: "Suite IA Multi-Settore per la Reputazione",
     heroTitle: "Gestisci i feedback dei clienti prima che i piccoli problemi degenerino.",
     subtitle: "Proteggi la tua reputazione in tutti i settori con bozze di risposta professionali e monitoraggio umano completo.",
-    ctaTrial: "Inizia la prova gratuita di 7 giorni — Nessuna carta richiesta",
     exploreKnowledge: "📚 Esplora il Centro Conoscenze",
     howItWorks: "Come Funziona",
     workflowTitle: "Semplice flusso di lavoro multi-settore in 3 passaggi",
-    workflowSubtitle: "Progettato per gli operatori di tutti i settori per mantenere il controllo assoluto su ogni interazione."
+    workflowSubtitle: "Progettato per gli operatori di tutti i settori per mantenere il controllo assoluto su ogni interazione.",
+    step1Title: "Intercettazione Feedback",
+    step1Desc: "Valutazioni e richieste in arrivo raccolte nella tua dashboard unificata.",
+    step2Title: "Bozze IA approvate dall'uomo",
+    step2Desc: "Kaku redige risposte professionali su misura. Mantieni l'approvazione finale.",
+    step3Title: "Follow-up Omnicanale",
+    step3Desc: "Invia link di risoluzione privata o sequenze via SMS, WhatsApp o Email.",
+    demoTitle: "⚡ Demo Interattiva Multi-Settore",
+    demoSubtitle: "Seleziona il tuo settore e prova le bozze di risposta di Kaku.",
+    sampleFeedbackLabel: "Feedback di Esempio",
+    generateBtn: "Genera Bozza di Risoluzione Privata",
+    generatingBtn: "Generazione...",
+    approvedOutput: "Output IA Approvato (Richiede revisione umana)",
+    readyApproval: "Pronto per l'approvazione",
+    knowledgeHeader: "Centro Conoscenze RevPulse",
+    knowledgeSubtitle: "Cerca tra gli articoli di ricerca per HVAC, sanità, costruzioni, ospitalità, e-commerce, automotive, finanza, legale, benessere e veterinaria.",
+    searchPlaceholder: "🔍 Cerca HVAC, attese dentistiche, permessi...",
+    footerRights: "© 2026 RevPulse. Tutti i diritti riservati. Operatore: Imran Mateen (support@revpulse.tools)"
   },
   ar: {
+    overview: "نظرة عامة",
+    pricing: "الأسعار",
+    dashboard: "لوحة التحكم",
+    knowledge: "مركز المعرفة",
+    legal: "الشروط والخصوصية",
+    signIn: "تسجيل الدخول",
+    signOut: "تسجيل الخروج",
+    getStarted: "ابدأ التجربة المجانية لمدة 7 أيام - لا توجد بطاقة مطلوبة",
+    badge: "مجموعة الذكاء الاصطناعي للسمعة المتعددة القطاعات",
     heroTitle: "إدارة ملاحظات العملاء قبل تفاقم المشكلات الصغيرة.",
     subtitle: "احمِ سمعتك عبر قطاعات التجارة والرعاية الصحية والخدمات القانونية والتجزئة والضيافة. أنشئ ردود مسودة احترافية ونظم المتابعات بإشراف بشري كامل.",
-    ctaTrial: "ابدأ التجربة المجانية لمدة 7 أيام - لا توجد بطاقة مطلوبة",
     exploreKnowledge: "📚 استكشف مركز المعرفة",
     howItWorks: "كيف تعمل المنصة",
     workflowTitle: "سير عمل بسيط متعدد الصناعات من 3 خطوات",
-    workflowSubtitle: "مصمم للمشغلين عبر جميع القطاعات للحفاظ على التحكم المطلق في كل نقطة اتصال."
+    workflowSubtitle: "مصمم للمشغلين عبر جميع القطاعات للحفاظ على التحكم المطلق في كل نقطة اتصال.",
+    step1Title: "اعتراض التقييمات والملاحظات",
+    step1Desc: "يتم جمع التقييمات الواردة واستفسارات العملاء في لوحة تحكم موحدة.",
+    step2Title: "صياغة بالذكاء الاصطناعي بموافقة بشرية",
+    step2Desc: "يقوم كاکو بصياغة ردود احترافية مصممة خصيصاً لإرشادات قطاعك. أنت تحتفظ بالموافقة النهائية.",
+    step3Title: "المتابعة عبر القنوات المتعددة",
+    step3Desc: "توجيه روابط الحل الخاص أو تسلسلات الاسترداد عبر الرسائل القصيرة أو الواتساب أو البريد الإلكتروني.",
+    demoTitle: "⚡ عرض تفاعلي متعدد الصناعات",
+    demoSubtitle: "اختر قطاعك واختبر كيف يقوم كاکو بصياغة ردود خاصة احترافية.",
+    sampleFeedbackLabel: "نموذج ملاحظات العملاء",
+    generateBtn: "إنشاء مسودة حل خاص واحترافي",
+    generatingBtn: "جاري صياغة الرد...",
+    approvedOutput: "مخرج الذكاء الاصطناعي المعتمد (يتطلب مراجعة بشرية)",
+    readyApproval: "جاهز للموافقة",
+    knowledgeHeader: "مركز معرفة RevPulse",
+    knowledgeSubtitle: "ابحث في مقالات الأبحاث الخاصة بالتكييف، الرعاية الصحية، البناء، الضيافة، التجارة الإلكترونية، السيارات، التمويل، القانون، العناية الشخصية، والطب البيطري.",
+    searchPlaceholder: "🔍 ابحث في التكييف، المواعيد الطبية، التصاريح، الفواتير...",
+    footerRights: "© 2026 RevPulse. جميع الحقوق محفوظة. المشغل: عمران متين (support@revpulse.tools)"
   },
   ur: {
+    overview: "جائزہ",
+    pricing: "قیمتیں",
+    dashboard: "کسٹمر ڈیش بورڈ",
+    knowledge: "نالج سینٹر",
+    legal: "شرائط و ضوابط",
+    signIn: "سائن ان",
+    signOut: "سائن آؤٹ",
+    getStarted: "7 دن کا مفت ٹرائل شروع کریں — کسی کارڈ کی ضرورت نہیں",
+    badge: "ملٹی انڈسٹری اے آئی ریپوٹیشن اینڈ اومنی چینل سوٹ",
     heroTitle: "چھوٹی چھوٹی مشکلات بڑھنے سے پہلے کسٹمر کے تاثرات کا انتظام کریں۔",
     subtitle: "تجارت، صحت کی دیکھ بھال، قانونی، خوردہ، مہمان نوازی اور پیشہ ورانہ خدمات میں اپنی ساکھ کی حفاظت کریں۔ پیشہ ورانہ ڈرافٹ جوابات تیار کریں۔",
-    ctaTrial: "7 دن کا مفت ٹرائل شروع کریں — کسی کارڈ کی ضرورت نہیں",
     exploreKnowledge: "📚 نالج سینٹر دریافت کریں",
     howItWorks: "یہ کیسے کام کرتا ہے",
     workflowTitle: "آسان 3 قدمی ملٹی انڈسٹری ورک فلو",
-    workflowSubtitle: "تمام شعبوں کے آپریٹرز کے لیے ڈیزائن کیا گیا ہے تاکہ ہر کسٹمر ٹچ پوائنٹ پر مکمل کنٹرول برقرار رکھا جا سکے۔"
+    workflowSubtitle: "تمام شعبوں کے آپریٹرز کے لیے ڈیزائن کیا گیا ہے تاکہ ہر کسٹمر ٹچ پوائنٹ پر مکمل کنٹرول برقرار رکھا جا سکےـ",
+    step1Title: "ریویو اور فیڈ بیک انٹرسیپٹ",
+    step1Desc: "آنے والی ریٹنگز اور کسٹمر انکوائریز کو آپ کے متحد ملٹی چینل ڈیش بورڈ میں اکٹھا کیا جاتا ہے۔",
+    step2Title: "انسانی منظوری سے لیس اے آئی ڈرافٹنگ",
+    step2Desc: "کاکو آپ کی صنعت کے رہنما اصولوں کے مطابق پیشہ ورانہ جوابات تیار کرتا ہے۔ حتمی منظوری آپ کی ہوتی ہے۔",
+    step3Title: "اومنی چینل فولو اپ",
+    step3Desc: "ایس ایم ایس، واٹس ایپ یا ای میل کے ذریعے نجی حل کے لنکس بھیجیں۔",
+    demoTitle: "⚡ انٹرایکティブ ملٹی انڈسٹری ڈیمو",
+    demoSubtitle: "اپنی صنعت کا انتخاب کریں اور جانچیں کہ کاکو نجی جوابات کیسے تیار کرتا ہے۔",
+    sampleFeedbackLabel: "نمونہ فیڈ بیک",
+    generateBtn: "پروفیشنل پرائیویٹ ریزولوشن ڈرافٹ بنائیں",
+    generatingBtn: "جواب تیار کیا جا رہا ہے...",
+    approvedOutput: "منظور شدہ اے آئی آؤٹ پٹ (انسانی جائزے کی ضرورت ہے)",
+    readyApproval: "منظوری کے لیے تیار",
+    knowledgeHeader: "RevPulse ملٹی انڈسٹری نالج سینٹر",
+    knowledgeSubtitle: "HVAC، ہیلتھ کیئر، تعمیرات، مہمان نوازی، ای کامرس، آٹوموٹو، فنانس، قانونی، اور ویٹرنری مضامین تلاش کریں۔",
+    searchPlaceholder: "🔍 تلاش کریں HVAC، ڈেন্টل انتظار کا وقت، اجازت نامے، ویٹرنری بل...",
+    footerRights: "© 2026 RevPulse. جملہ حقوق محفوظ ہیں۔ آپریٹر: عمران متین (support@revpulse.tools)"
   }
 };
 
@@ -62,6 +212,7 @@ export default function RevPulsePlatform() {
   const [activeTab, setActiveTab] = useState('landing');
   const [selectedVertical, setSelectedVertical] = useState('hvac');
   const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState('signup');
   const [email, setEmail] = useState('');
@@ -386,13 +537,13 @@ export default function RevPulsePlatform() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100 font-sans relative selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-gray-950 text-gray-100 font-sans relative selection:bg-blue-600 selection:text-white overflow-x-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-blue-600/10 blur-[140px] pointer-events-none rounded-full"></div>
 
       <header className="border-b border-gray-800/80 bg-gray-900/40 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
           <div className="flex items-center space-x-4 sm:space-x-6">
-            <button onClick={() => setActiveTab('landing')} className="flex items-center space-x-2.5 group py-2 text-left bg-transparent border-none cursor-pointer">
+            <button onClick={() => { setActiveTab('landing'); setMobileMenuOpen(false); }} className="flex items-center space-x-2.5 group py-2 text-left bg-transparent border-none cursor-pointer">
               <img 
                 src="/logo.png" 
                 alt="RevPulse Logo" 
@@ -407,13 +558,13 @@ export default function RevPulsePlatform() {
               <span className="text-lg sm:text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition">RevPulse</span>
             </button>
             <nav className="hidden lg:flex space-x-5 text-sm text-gray-300 font-medium">
-              <button onClick={() => setActiveTab('landing')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'landing' ? 'text-blue-400 font-semibold' : ''}`}>Overview</button>
-              <button onClick={() => setActiveTab('pricing')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'pricing' ? 'text-blue-400 font-semibold' : ''}`}>Pricing</button>
+              <button onClick={() => setActiveTab('landing')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'landing' ? 'text-blue-400 font-semibold' : ''}`}>{t.overview}</button>
+              <button onClick={() => setActiveTab('pricing')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'pricing' ? 'text-blue-400 font-semibold' : ''}`}>{t.pricing}</button>
               {currentUser && (
-                <button onClick={() => setActiveTab('dashboard')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'dashboard' ? 'text-blue-400 font-semibold' : ''}`}>Customer Dashboard</button>
+                <button onClick={() => setActiveTab('dashboard')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'dashboard' ? 'text-blue-400 font-semibold' : ''}`}>{t.dashboard}</button>
               )}
-              <button onClick={() => setActiveTab('knowledge')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'knowledge' ? 'text-blue-400 font-semibold' : ''}`}>Knowledge Center</button>
-              <button onClick={() => setActiveTab('legal')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'legal' ? 'text-blue-400 font-semibold' : ''}`}>Terms & Privacy</button>
+              <button onClick={() => setActiveTab('knowledge')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'knowledge' ? 'text-blue-400 font-semibold' : ''}`}>{t.knowledge}</button>
+              <button onClick={() => setActiveTab('legal')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'legal' ? 'text-blue-400 font-semibold' : ''}`}>{t.legal}</button>
             </nav>
           </div>
           
@@ -421,8 +572,8 @@ export default function RevPulsePlatform() {
             <select 
               value={selectedLanguage} 
               onChange={(e) => setSelectedLanguage(e.target.value)}
-              className="hidden md:block bg-gray-900 text-gray-300 text-xs rounded-xl px-3 py-2 border border-gray-800 focus:outline-none focus:border-blue-500 cursor-pointer">
-              <option value="en">🌐 English (US)</option>
+              className="bg-gray-900 text-gray-300 text-xs rounded-xl px-2.5 py-2 border border-gray-800 focus:outline-none focus:border-blue-500 cursor-pointer">
+              <option value="en">🌐 English</option>
               <option value="fr">🇫🇷 Français</option>
               <option value="it">🇮🇹 Italiano</option>
               <option value="es">🇪🇸 Español</option>
@@ -430,57 +581,110 @@ export default function RevPulsePlatform() {
               <option value="ur">🇵🇰 اردو</option>
             </select>
 
-            {currentUser ? (
-              <button 
-                onClick={() => { supabase.auth.signOut(); setCurrentUser(null); setActiveTab('landing'); }}
-                className="text-xs sm:text-sm text-red-400 hover:text-red-300 transition font-medium px-2.5 py-2 bg-transparent border-none cursor-pointer">
-                Sign Out ({currentUser.email})
-              </button>
-            ) : (
-              <>
+            <div className="hidden lg:flex items-center space-x-3">
+              {currentUser ? (
                 <button 
-                  onClick={() => { setAuthMode('signin'); setShowAuthModal(true); }}
-                  className="text-xs sm:text-sm text-gray-300 hover:text-white transition font-medium px-2.5 py-2 whitespace-nowrap bg-transparent border-none cursor-pointer">
-                  Sign In
+                  onClick={() => { supabase.auth.signOut(); setCurrentUser(null); setActiveTab('landing'); }}
+                  className="text-xs sm:text-sm text-red-400 hover:text-red-300 transition font-medium px-2.5 py-2 bg-transparent border-none cursor-pointer">
+                  {t.signOut} ({currentUser.email})
                 </button>
-                <button 
-                  onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
-                  className="px-3.5 py-2 sm:px-4.5 sm:py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold rounded-xl transition shadow-lg shadow-blue-600/25 whitespace-nowrap border-none cursor-pointer">
-                  Start 7-Day Free Trial — No Card Required
-                </button>
-              </>
-            )}
+              ) : (
+                <>
+                  <button 
+                    onClick={() => { setAuthMode('signin'); setShowAuthModal(true); }}
+                    className="text-xs sm:text-sm text-gray-300 hover:text-white transition font-medium px-2.5 py-2 whitespace-nowrap bg-transparent border-none cursor-pointer">
+                    {t.signIn}
+                  </button>
+                  <button 
+                    onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
+                    className="px-3.5 py-2 sm:px-4.5 sm:py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold rounded-xl transition shadow-lg shadow-blue-600/25 whitespace-nowrap border-none cursor-pointer">
+                    {t.getStarted}
+                  </button>
+                </>
+              )}
+            </div>
+
+            {/* Mobile Hamburger Button */}
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-2 text-gray-300 hover:text-white focus:outline-none bg-gray-900 border border-gray-800 rounded-xl cursor-pointer">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
         </div>
+
+        {/* Mobile Dropdown Navigation Menu */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden bg-gray-900/95 backdrop-blur-xl border-b border-gray-800 px-6 py-6 space-y-4 animate-fadeIn">
+            <div className="flex flex-col space-y-3 font-medium text-sm">
+              <button onClick={() => { setActiveTab('landing'); setMobileMenuOpen(false); }} className="text-left py-2 text-gray-300 hover:text-white bg-transparent border-none cursor-pointer">{t.overview}</button>
+              <button onClick={() => { setActiveTab('pricing'); setMobileMenuOpen(false); }} className="text-left py-2 text-gray-300 hover:text-white bg-transparent border-none cursor-pointer">{t.pricing}</button>
+              {currentUser && (
+                <button onClick={() => { setActiveTab('dashboard'); setMobileMenuOpen(false); }} className="text-left py-2 text-gray-300 hover:text-white bg-transparent border-none cursor-pointer">{t.dashboard}</button>
+              )}
+              <button onClick={() => { setActiveTab('knowledge'); setMobileMenuOpen(false); }} className="text-left py-2 text-gray-300 hover:text-white bg-transparent border-none cursor-pointer">{t.knowledge}</button>
+              <button onClick={() => { setActiveTab('legal'); setMobileMenuOpen(false); }} className="text-left py-2 text-gray-300 hover:text-white bg-transparent border-none cursor-pointer">{t.legal}</button>
+            </div>
+            
+            <div className="pt-4 border-t border-gray-800 flex flex-col space-y-3">
+              {currentUser ? (
+                <button 
+                  onClick={() => { supabase.auth.signOut(); setCurrentUser(null); setActiveTab('landing'); setMobileMenuOpen(false); }}
+                  className="text-left text-red-400 hover:text-red-300 font-medium py-2 bg-transparent border-none cursor-pointer">
+                  {t.signOut} ({currentUser.email})
+                </button>
+              ) : (
+                <>
+                  <button 
+                    onClick={() => { setAuthMode('signin'); setShowAuthModal(true); setMobileMenuOpen(false); }}
+                    className="text-left text-gray-300 hover:text-white font-medium py-2 bg-transparent border-none cursor-pointer">
+                    {t.signIn}
+                  </button>
+                  <button 
+                    onClick={() => { setAuthMode('signup'); setShowAuthModal(true); setMobileMenuOpen(false); }}
+                    className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl text-center shadow-lg border-none cursor-pointer">
+                    {t.getStarted}
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        )}
       </header>
 
       {activeTab === 'landing' && (
-        <main className="max-w-7xl mx-auto px-6 pt-12 pb-24 space-y-20">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-24 space-y-20">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-blue-950/60 border border-blue-800/50 text-blue-300 text-xs font-semibold rounded-full uppercase tracking-wider">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-                <span>Multi-Industry AI Reputation & Omnichannel Suite</span>
+                <span>{t.badge}</span>
               </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
                 {t.heroTitle}
               </h1>
               
-              <p className="text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                 {t.subtitle}
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
                 <button 
                   onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
-                  className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2 border-none cursor-pointer">
-                  <span>{t.ctaTrial}</span>
+                  className="px-6 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2 text-xs sm:text-sm border-none cursor-pointer">
+                  <span>{t.getStarted}</span>
                   <span>→</span>
                 </button>
                 <button 
                   onClick={() => setActiveTab('knowledge')}
-                  className="px-6 py-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-300 font-semibold rounded-xl transition flex items-center justify-center space-x-2 cursor-pointer">
+                  className="px-6 py-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-300 font-semibold rounded-xl transition flex items-center justify-center space-x-2 text-xs sm:text-sm cursor-pointer">
                   <span>{t.exploreKnowledge}</span>
                 </button>
               </div>
@@ -516,27 +720,27 @@ export default function RevPulsePlatform() {
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4 relative">
                 <div className="w-10 h-10 rounded-2xl bg-blue-600/20 border border-blue-500/40 text-blue-400 font-extrabold flex items-center justify-center text-sm">1</div>
-                <h3 className="text-lg font-bold text-white">Review & Feedback Intercept</h3>
-                <p className="text-xs text-gray-400 leading-relaxed">Incoming ratings, client inquiries, and platform feedback are gathered into your unified multi-channel dashboard.</p>
+                <h3 className="text-lg font-bold text-white">{t.step1Title}</h3>
+                <p className="text-xs text-gray-400 leading-relaxed">{t.step1Desc}</p>
               </div>
 
               <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4 relative">
                 <div className="w-10 h-10 rounded-2xl bg-indigo-600/20 border border-indigo-500/40 text-indigo-400 font-extrabold flex items-center justify-center text-sm">2</div>
-                <h3 className="text-lg font-bold text-white">Human-Approved AI Drafting</h3>
-                <p className="text-xs text-gray-400 leading-relaxed">Kaku drafts professional replies tailored to your specific industry guidelines. You retain final approval before publishing.</p>
+                <h3 className="text-lg font-bold text-white">{t.step2Title}</h3>
+                <p className="text-xs text-gray-400 leading-relaxed">{t.step2Desc}</p>
               </div>
 
               <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4 relative">
                 <div className="w-10 h-10 rounded-2xl bg-purple-600/20 border border-purple-500/40 text-purple-400 font-extrabold flex items-center justify-center text-sm">3</div>
-                <h3 className="text-lg font-bold text-white">Omnichannel Follow-Up</h3>
-                <p className="text-xs text-gray-400 leading-relaxed">Route private resolution links or recovery sequences via SMS, WhatsApp, or Email to resolve client concerns efficiently.</p>
+                <h3 className="text-lg font-bold text-white">{t.step3Title}</h3>
+                <p className="text-xs text-gray-400 leading-relaxed">{t.step3Desc}</p>
               </div>
             </div>
           </section>
 
           {/* Interactive Demo Section with Kaku Mascot */}
           <section id="sandbox-demo" className="max-w-4xl mx-auto pt-4">
-            <div className="bg-gray-900/90 border border-gray-800/80 rounded-3xl p-8 shadow-2xl relative mt-8">
+            <div className="bg-gray-900/90 border border-gray-800/80 rounded-3xl p-6 sm:p-8 shadow-2xl relative mt-8">
               <div className="absolute -top-10 left-6 flex items-center space-x-3 bg-gray-900 border border-blue-500/50 px-4 py-2.5 rounded-2xl shadow-2xl z-20">
                 <img 
                   src="/kaku-mascot.png" 
@@ -549,17 +753,17 @@ export default function RevPulsePlatform() {
                     <span>Kaku Assistant</span>
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                   </div>
-                  <div className="text-[11px] text-gray-400">Test industry response templates below</div>
+                  <div className="text-[11px] text-gray-400">Test industry response templates</div>
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4 pt-6">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 pt-6">
                 <div>
-                  <h3 className="text-lg font-bold text-white">⚡ Interactive Multi-Industry Demo</h3>
-                  <p className="text-xs text-gray-400">Select your industry and test how Kaku drafts professional private replies.</p>
+                  <h3 className="text-lg font-bold text-white">{t.demoTitle}</h3>
+                  <p className="text-xs text-gray-400">{t.demoSubtitle}</p>
                 </div>
                 
-                <div className="flex flex-wrap gap-2 max-w-md justify-end">
+                <div className="flex flex-wrap gap-1.5 max-w-full justify-start md:justify-end">
                   {Object.keys(verticalData).map((key) => (
                     <button
                       key={key}
@@ -583,7 +787,7 @@ export default function RevPulsePlatform() {
               <div className="space-y-4 mb-6">
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">
-                    Sample Feedback ({verticalData[selectedVertical]?.name})
+                    {t.sampleFeedbackLabel} ({verticalData[selectedVertical]?.name})
                   </label>
                   <textarea 
                     value={sampleReview} 
@@ -595,16 +799,16 @@ export default function RevPulsePlatform() {
                 <button 
                   onClick={handleGenerateResponse}
                   disabled={isGenerating}
-                  className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/20 border-none cursor-pointer">
-                  {isGenerating ? <span>Drafting Response...</span> : <span>Generate Professional Private-Resolution Draft</span>}
+                  className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/20 text-xs sm:text-sm border-none cursor-pointer">
+                  {isGenerating ? <span>{t.generatingBtn}</span> : <span>{t.generateBtn}</span>}
                 </button>
               </div>
 
               {aiResponse && (
                 <div className="bg-gray-950 border border-blue-900/50 rounded-2xl p-5 animate-fadeIn">
                   <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-1.5 flex items-center justify-between">
-                    <span>Approved AI Output (Requires Human Review)</span>
-                    <span className="text-emerald-400 text-[11px]">Ready for Approval</span>
+                    <span>{t.approvedOutput}</span>
+                    <span className="text-emerald-400 text-[11px]">{t.readyApproval}</span>
                   </div>
                   <p className="text-sm text-gray-300 leading-relaxed">{aiResponse}</p>
                 </div>
@@ -615,11 +819,11 @@ export default function RevPulsePlatform() {
       )}
 
       {activeTab === 'knowledge' && (
-        <section className="py-20 px-6 max-w-5xl mx-auto space-y-8">
+        <section className="py-20 px-4 sm:px-6 max-w-5xl mx-auto space-y-8">
           <div className="text-center space-y-3">
             <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">Comprehensive Enterprise Hub</span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-white">RevPulse Multi-Industry Knowledge Center</h1>
-            <p className="text-sm text-gray-400 max-w-xl mx-auto">Search across HVAC, Healthcare, Construction, Hospitality, E-Commerce, Automotive, Finance, Legal, Wellness, and Veterinary research articles.</p>
+            <h1 className="text-2xl sm:text-4xl font-extrabold text-white">{t.knowledgeHeader}</h1>
+            <p className="text-xs sm:text-sm text-gray-400 max-w-xl mx-auto">{t.knowledgeSubtitle}</p>
           </div>
 
           <div className="bg-gray-900 border border-gray-800 p-6 rounded-3xl space-y-4 shadow-xl">
@@ -627,7 +831,7 @@ export default function RevPulsePlatform() {
               type="text" 
               value={knowledgeSearch}
               onChange={(e) => setKnowledgeSearch(e.target.value)}
-              placeholder="🔍 Search HVAC, dental wait times, permit red tags, medical aesthetic reactions, veterinary bills..."
+              placeholder={t.searchPlaceholder}
               className="w-full bg-gray-950 border border-gray-800 rounded-2xl px-5 py-4 text-xs text-white focus:outline-none focus:border-blue-500 shadow-inner"
             />
             
@@ -1115,12 +1319,12 @@ export default function RevPulsePlatform() {
 
       <footer className="border-t border-gray-800/80 py-10 px-6 mt-28 text-center text-xs text-gray-400 space-y-3 bg-gray-950">
         <div className="flex justify-center space-x-6 font-medium pb-2">
-          <button onClick={() => setActiveTab('landing')} className="hover:text-white transition bg-transparent border-none cursor-pointer">Overview</button>
-          <button onClick={() => setActiveTab('pricing')} className="hover:text-white transition bg-transparent border-none cursor-pointer">Pricing</button>
-          <button onClick={() => setActiveTab('knowledge')} className="hover:text-white transition bg-transparent border-none cursor-pointer">Knowledge Center</button>
-          <button onClick={() => setActiveTab('legal')} className="hover:text-white transition bg-transparent border-none cursor-pointer">Terms & Privacy</button>
+          <button onClick={() => setActiveTab('landing')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.overview}</button>
+          <button onClick={() => setActiveTab('pricing')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.pricing}</button>
+          <button onClick={() => setActiveTab('knowledge')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.knowledge}</button>
+          <button onClick={() => setActiveTab('legal')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.legal}</button>
         </div>
-        <p>© 2026 RevPulse. All rights reserved. Operator: Imran Mateen (support@revpulse.tools)</p>
+        <p>{t.footerRights}</p>
       </footer>
     </div>
   );
