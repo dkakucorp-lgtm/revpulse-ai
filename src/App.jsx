@@ -34,6 +34,7 @@ const translations = {
     knowledgeHeader: "RevPulse Multi-Industry Knowledge Center",
     knowledgeSubtitle: "Search across HVAC, Healthcare, Construction, Hospitality, E-Commerce, Automotive, Finance, Legal, Wellness, and Veterinary research articles.",
     searchPlaceholder: "🔍 Search HVAC, dental wait times, permit red tags, medical aesthetic reactions, veterinary bills...",
+    allIndustries: "All Industries",
     footerRights: "© 2026 RevPulse. All rights reserved. Operator: Imran Mateen (support@revpulse.tools)"
   },
   fr: {
@@ -68,6 +69,7 @@ const translations = {
     knowledgeHeader: "Centre de connaissances RevPulse",
     knowledgeSubtitle: "Recherchez parmi les articles de recherche HVAC, santé, construction, hôtellerie, e-commerce, automobile, finance, juridique, bien-être et vétérinaire.",
     searchPlaceholder: "🔍 Rechercher HVAC, temps d'attente dentaires, permis, vétérinaire...",
+    allIndustries: "Toutes les industries",
     footerRights: "© 2026 RevPulse. Tous droits réservés. Opérateur : Imran Mateen (support@revpulse.tools)"
   },
   es: {
@@ -102,6 +104,7 @@ const translations = {
     knowledgeHeader: "Centro de Conocimiento RevPulse",
     knowledgeSubtitle: "Busque artículos de investigación en HVAC, salud, construcción, hostelería, e-commerce, automoción, finanzas, legal, bienestar y veterinaria.",
     searchPlaceholder: "🔍 Buscar HVAC, esperas dentales, permisos, multas, veterinaria...",
+    allIndustries: "Todas las industrias",
     footerRights: "© 2026 RevPulse. Todos los derechos reservados. Operador: Imran Mateen (support@revpulse.tools)"
   },
   it: {
@@ -136,6 +139,7 @@ const translations = {
     knowledgeHeader: "Centro Conoscenze RevPulse",
     knowledgeSubtitle: "Cerca tra gli articoli di ricerca per HVAC, sanità, costruzioni, ospitalità, e-commerce, automotive, finanza, legale, benessere e veterinaria.",
     searchPlaceholder: "🔍 Cerca HVAC, attese dentistiche, permessi...",
+    allIndustries: "Tutte le industrie",
     footerRights: "© 2026 RevPulse. Tutti i diritti riservati. Operatore: Imran Mateen (support@revpulse.tools)"
   },
   ar: {
@@ -170,6 +174,7 @@ const translations = {
     knowledgeHeader: "مركز معرفة RevPulse",
     knowledgeSubtitle: "ابحث في مقالات الأبحاث الخاصة بالتكييف، الرعاية الصحية، البناء، الضيافة، التجارة الإلكترونية، السيارات، التمويل، القانون، العناية الشخصية، والطب البيطري.",
     searchPlaceholder: "🔍 ابحث في التكييف، المواعيد الطبية، التصاريح، الفواتير...",
+    allIndustries: "جميع الصناعات",
     footerRights: "© 2026 RevPulse. جميع الحقوق محفوظة. المشغل: عمران متين (support@revpulse.tools)"
   },
   ur: {
@@ -194,7 +199,7 @@ const translations = {
     step2Desc: "کاکو آپ کی صنعت کے رہنما اصولوں کے مطابق پیشہ ورانہ جوابات تیار کرتا ہے۔ حتمی منظوری آپ کی ہوتی ہے۔",
     step3Title: "اومنی چینل فولو اپ",
     step3Desc: "ایس ایم ایس، واٹس ایپ یا ای میل کے ذریعے نجی حل کے لنکس بھیجیں۔",
-    demoTitle: "⚡ انٹرایکティブ ملٹی انڈسٹری ڈیمو",
+    demoTitle: "⚡ انٹرایکٹو ملٹی انڈسٹری ڈیمو",
     demoSubtitle: "اپنی صنعت کا انتخاب کریں اور جانچیں کہ کاکو نجی جوابات کیسے تیار کرتا ہے۔",
     sampleFeedbackLabel: "نمونہ فیڈ بیک",
     generateBtn: "پروفیشنل پرائیویٹ ریزولوشن ڈرافٹ بنائیں",
@@ -204,7 +209,176 @@ const translations = {
     knowledgeHeader: "RevPulse ملٹی انڈسٹری نالج سینٹر",
     knowledgeSubtitle: "HVAC، ہیلتھ کیئر، تعمیرات، مہمان نوازی، ای کامرس، آٹوموٹو، فنانس، قانونی، اور ویٹرنری مضامین تلاش کریں۔",
     searchPlaceholder: "🔍 تلاش کریں HVAC، ڈেন্টل انتظار کا وقت، اجازت نامے، ویٹرنری بل...",
+    allIndustries: "تمام صنعتیں",
     footerRights: "© 2026 RevPulse. جملہ حقوق محفوظ ہیں۔ آپریٹر: عمران متین (support@revpulse.tools)"
+  }
+};
+
+const verticalTranslations = {
+  en: {
+    hvac: "HVAC & Trades",
+    dental: "Dental Practices",
+    contractors: "General Contractors",
+    hospitality: "Restaurants & Dining",
+    hotels: "Hotels & Rentals",
+    ecommerce: "E-Commerce Retail",
+    automotive: "Auto Repair",
+    financial: "Financial Services / CPA",
+    legal: "Legal & Consulting",
+    wellness: "Health & Beauty",
+    veterinary: "Veterinary & Pets"
+  },
+  fr: {
+    hvac: "CVC & Métiers",
+    dental: "Cabinets Dentaires",
+    contractors: "Entrepreneurs Généraux",
+    hospitality: "Restaurants & Gastronomie",
+    hotels: "Hôtels & Locations",
+    ecommerce: "Vente en Ligne",
+    automotive: "Réparation Auto",
+    financial: "Services Financiers / Expert-Comptable",
+    legal: "Juridique & Conseil",
+    wellness: "Santé & Beauté",
+    veterinary: "Vétérinaire & Animaux"
+  },
+  es: {
+    hvac: "HVAC y Oficios",
+    dental: "Prácticas Dentales",
+    contractors: "Contratistas Generales",
+    hospitality: "Restaurantes y Cenas",
+    hotels: "Hoteles y Alquileres",
+    ecommerce: "Comercio Electrónico",
+    automotive: "Reparación de Autos",
+    financial: "Servicios Financieros / CPA",
+    legal: "Legal y Consultoría",
+    wellness: "Salud y Belleza",
+    veterinary: "Veterinaria y Mascotas"
+  },
+  it: {
+    hvac: "HVAC e Impianti",
+    dental: "Studi Dentistici",
+    contractors: "Imprese Edili",
+    hospitality: "Ristoranti e Bar",
+    hotels: "Hotel e Affitti",
+    ecommerce: "E-Commerce",
+    automotive: "Riparazione Auto",
+    financial: "Servizi Finanziari / Commercialista",
+    legal: "Legale e Consulenza",
+    wellness: "Salute e Bellezza",
+    veterinary: "Veterinaria e Animali"
+  },
+  ar: {
+    hvac: "التكييف والمهن",
+    dental: "عيادات الأسنان",
+    contractors: "المقاولون العامون",
+    hospitality: "المطاعم والضيافة",
+    hotels: "الفنادق والشقق",
+    ecommerce: "التجارة الإلكترونية",
+    automotive: "إصلاح السيارات",
+    financial: "الخدمات المالية / المحاسب",
+    legal: "الشؤون القانونية والاستشارات",
+    wellness: "الصحة والجمال",
+    veterinary: "الطب البيطري والحيوانات"
+  },
+  ur: {
+    hvac: "ایچ وی اے سی اور ٹریڈز",
+    dental: "ڈেন্টل پریکٹسز",
+    contractors: "جنرل کنٹریکٹرز",
+    hospitality: "ریسٹورنٹس اور ڈائننگ",
+    hotels: "ہوٹلز اور رینٹلز",
+    ecommerce: "ای کامرس ریٹیل",
+    automotive: "آٹو مرمت",
+    financial: "فنانشل سروسز / سی پی اے",
+    legal: "قانونی اور مشاورت",
+    wellness: "صحت اور خوبصورتی",
+    veterinary: "ویٹرنری اور پیٹس"
+  }
+};
+
+const categoryTranslations = {
+  en: {
+    all: "All Industries",
+    hvac: "HVAC & Trades",
+    dental: "Dental & Healthcare",
+    contractors: "Contractors & Permits",
+    hospitality: "Restaurants & Dining",
+    hotels: "Hotels & Rentals",
+    ecommerce: "E-Commerce",
+    automotive: "Auto Repair",
+    financial: "Finance & CPAs",
+    legal: "Legal & Consulting",
+    wellness: "Health & Beauty",
+    veterinary: "Veterinary & Pets"
+  },
+  fr: {
+    all: "Toutes les industries",
+    hvac: "CVC & Métiers",
+    dental: "Santé & Dentaire",
+    contractors: "Construction & Permis",
+    hospitality: "Restaurants",
+    hotels: "Hôtels & Locations",
+    ecommerce: "E-Commerce",
+    automotive: "Réparation Auto",
+    financial: "Finance & Compta",
+    legal: "Juridique & Conseil",
+    wellness: "Santé & Beauté",
+    veterinary: "Vétérinaire & Animaux"
+  },
+  es: {
+    all: "Todas las industrias",
+    hvac: "HVAC y Oficios",
+    dental: "Salud y Dental",
+    contractors: "Contratistas y Permisos",
+    hospitality: "Restaurantes",
+    hotels: "Hoteles y Alquileres",
+    ecommerce: "Comercio Electrónico",
+    automotive: "Reparación de Autos",
+    financial: "Finanzas y CPA",
+    legal: "Legal y Consultoría",
+    wellness: "Salud y Belleza",
+    veterinary: "Veterinaria y Mascotas"
+  },
+  it: {
+    all: "Tutte le industrie",
+    hvac: "HVAC e Impianti",
+    dental: "Sanità e Dentale",
+    contractors: "Edilizia e Permessi",
+    hospitality: "Ristoranti",
+    hotels: "Hotel e Affitti",
+    ecommerce: "E-Commerce",
+    automotive: "Riparazione Auto",
+    financial: "Finanza e Commercialista",
+    legal: "Legale e Consulenza",
+    wellness: "Salute e Bellezza",
+    veterinary: "Veterinaria e Animali"
+  },
+  ar: {
+    all: "جميع الصناعات",
+    hvac: "التكييف والمهن",
+    dental: "الرعاية الصحية والأسنان",
+    contractors: "المقاولون والتصاريح",
+    hospitality: "المطاعم",
+    hotels: "الفنادق والشقق",
+    ecommerce: "التجارة الإلكترونية",
+    automotive: "إصلاح السيارات",
+    financial: "التمويل والمحاسبة",
+    legal: "الشؤون القانونية",
+    wellness: "الصحة والجمال",
+    veterinary: "الطب البيطري والحيوانات"
+  },
+  ur: {
+    all: "تمام صنعتیں",
+    hvac: "ایچ وی اے سی اور ٹریڈز",
+    dental: "صحت اور ڈেন্টل",
+    contractors: "کنٹریکٹرز اور پرمٹس",
+    hospitality: "ریسٹورنٹس",
+    hotels: "ہوٹلز اور رینٹلز",
+    ecommerce: "ای کامرس",
+    automotive: "آٹو مرمت",
+    financial: "فنانس اور سی پی اے",
+    legal: "قانونی اور مشاورت",
+    wellness: "صحت اور خوبصورتی",
+    veterinary: "ویٹرنری اور پیٹس"
   }
 };
 
@@ -223,6 +397,8 @@ export default function RevPulsePlatform() {
   const [dashboardSubTab, setDashboardSubTab] = useState('overview');
 
   const t = translations[selectedLanguage] || translations.en;
+  const vt = verticalTranslations[selectedLanguage] || verticalTranslations.en;
+  const ct = categoryTranslations[selectedLanguage] || categoryTranslations.en;
 
   // Knowledge Center State
   const [knowledgeSearch, setKnowledgeSearch] = useState('');
@@ -384,57 +560,46 @@ export default function RevPulsePlatform() {
 
   const verticalData = {
     hvac: {
-      name: "HVAC & Trades",
       review: "Tech came out late for our AC repair and the invoice was higher than quoted.",
       response: "Hello. Thank you for sharing your feedback. We regret that your service timing and billing clarity did not meet our standard. Please reach out to our service manager directly so we can review your account."
     },
     dental: {
-      name: "Dental Practices",
       review: "Wait time in the lobby was over 45 minutes past my scheduled appointment slot.",
       response: "Hello, thank you for your feedback. We strive to respect your time and apologize for the delay during your visit. Please contact our practice manager so we can assist you."
     },
     contractors: {
-      name: "General Contractors",
       review: "County inspector flagged our project for an unpermitted patio enclosure. Very stressed!",
       response: "Hello. We take building compliance seriously and are coordinating directly with the county office to resolve this permit inspection item immediately. Let's review the paperwork together today."
     },
     hospitality: {
-      name: "Restaurants & Dining",
       review: "Ordered takeout online, drove home, and realized two entrees were completely missing.",
       response: "Hello. We apologize for the missing items in your takeout order. Please reach out to our manager directly so we can issue an immediate refund and arrange a complimentary meal for your next visit."
     },
     hotels: {
-      name: "Hotels & Rentals",
       review: "Arrived at the rental property and the smart lock code didn't work for 30 minutes in the cold.",
       response: "Hello. We sincerely apologize for the lockbox delay upon your arrival. That is not the seamless experience we strive for. Please contact us directly so we can make this right."
     },
     ecommerce: {
-      name: "E-Commerce Retail",
       review: "My package tracking number has been stuck on 'Label Created' for 5 days with no update.",
       response: "Hello. Thank you for bringing this fulfillment delay to our attention. We are investigating with the carrier immediately and will send you a priority replacement or tracking update today."
     },
     automotive: {
-      name: "Auto Repair",
       review: "Brought my car in for a squeak, and was told I needed $1,200 in extra unneeded flushes.",
       response: "Hello. We want you to feel completely confident in our recommendations. Let's review the digital inspection photos together so we can clarify what service is truly necessary right now."
     },
     financial: {
-      name: "Financial Services / CPA",
       review: "Dropped off my corporate tax documents two months ago and haven't heard a single update.",
       response: "Hello. We apologize for the communication gap during our filing queue. Your return is currently in final review, and our senior partner will call you by 2 PM today with a complete status update."
     },
     legal: {
-      name: "Legal & Consulting",
       review: "My attorney hasn't returned my phone calls in three weeks regarding my case status.",
       response: "Hello. We understand how critical timely communication is for your peace of mind. Our team is pulling your case file right now to provide a comprehensive update before end of business today."
     },
     wellness: {
-      name: "Health & Beauty",
       review: "Booked a balayage appointment and left with hair that turned out bright orange and damaged.",
       response: "Hello. We take your hair health and satisfaction extremely seriously. Please come back into the salon this week so our master stylist can perform a complimentary corrective treatment."
     },
     veterinary: {
-      name: "Veterinary & Pets",
       review: "Was hit with a massive surprise bill at discharge without anyone discussing costs beforehand.",
       response: "Hello. We regret the lack of financial clarity regarding your pet's treatment charges. Please speak with our practice director directly so we can review the itemized statement together."
     }
@@ -778,7 +943,7 @@ export default function RevPulsePlatform() {
                           : 'bg-gray-800 text-gray-400 hover:text-white'
                       }`}
                     >
-                      {verticalData[key].name}
+                      {vt[key]}
                     </button>
                   ))}
                 </div>
@@ -787,7 +952,7 @@ export default function RevPulsePlatform() {
               <div className="space-y-4 mb-6">
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">
-                    {t.sampleFeedbackLabel} ({verticalData[selectedVertical]?.name})
+                    {t.sampleFeedbackLabel} ({vt[selectedVertical]})
                   </label>
                   <textarea 
                     value={sampleReview} 
@@ -837,18 +1002,18 @@ export default function RevPulsePlatform() {
             
             <div className="flex flex-wrap gap-2 pt-2">
               {[
-                { id: 'all', label: 'All Industries' },
-                { id: 'hvac', label: 'HVAC & Trades' },
-                { id: 'dental', label: 'Dental & Healthcare' },
-                { id: 'contractors', label: 'Contractors & Permits' },
-                { id: 'hospitality', label: 'Restaurants & Dining' },
-                { id: 'hotels', label: 'Hotels & Rentals' },
-                { id: 'ecommerce', label: 'E-Commerce' },
-                { id: 'automotive', label: 'Auto Repair' },
-                { id: 'financial', label: 'Finance & CPAs' },
-                { id: 'legal', label: 'Legal & Consulting' },
-                { id: 'wellness', label: 'Health & Beauty' },
-                { id: 'veterinary', label: 'Veterinary & Pets' }
+                { id: 'all', label: ct.all },
+                { id: 'hvac', label: ct.hvac },
+                { id: 'dental', label: ct.dental },
+                { id: 'contractors', label: ct.contractors },
+                { id: 'hospitality', label: ct.hospitality },
+                { id: 'hotels', label: ct.hotels },
+                { id: 'ecommerce', label: ct.ecommerce },
+                { id: 'automotive', label: ct.automotive },
+                { id: 'financial', label: ct.financial },
+                { id: 'legal', label: ct.legal },
+                { id: 'wellness', label: ct.wellness },
+                { id: 'veterinary', label: ct.veterinary }
               ].map(cat => (
                 <button
                   key={cat.id}
