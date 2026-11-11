@@ -11,6 +11,13 @@ export default function RevPulsePlatform() {
   const [password, setPassword] = useState('');
   
   const [showSituationRoom, setShowSituationRoom] = useState(false);
+  const [showConnectModal, setShowConnectModal] = useState(false);
+  const [connectedPlatforms, setConnectedPlatforms] = useState({
+    google: true,
+    yelp: false,
+    facebook: false
+  });
+
   const [chatMessage, setChatMessage] = useState('');
   const [chatLogs, setChatLogs] = useState([
     { sender: 'kaku', text: 'Hello! I am Kaku, your AI reputation and onboarding assistant. Drop an error screenshot or describe any setup issue below, and I will resolve it.' }
@@ -20,7 +27,6 @@ export default function RevPulsePlatform() {
   const [aiResponse, setAiResponse] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
 
-  // State for logged-in user dashboard view
   const [currentUser, setCurrentUser] = useState(null);
 
   const verticalData = {
@@ -72,7 +78,6 @@ export default function RevPulsePlatform() {
         if (error) throw error;
         setCurrentUser(data.user);
         setShowAuthModal(false);
-        // Automatically route user straight to dashboard view upon successful login!
         setActiveTab('dashboard');
       }
     } catch (error) {
@@ -123,19 +128,29 @@ export default function RevPulsePlatform() {
       <header className="border-b border-gray-800/80 bg-gray-900/40 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
           <div className="flex items-center space-x-4 sm:space-x-6">
-            <button onClick={() => setActiveTab('landing')} className="flex items-center space-x-2.5 group py-2 text-left">
-              <div className="w-10 h-10 rounded-xl bg-purple-600 border border-purple-400/40 flex items-center justify-center text-white font-bold shadow-md">✨</div>
+            <button onClick={() => setActiveTab('landing')} className="flex items-center space-x-2.5 group py-2 text-left bg-transparent border-none cursor-pointer">
+              <img 
+                src="/logo.png" 
+                alt="RevPulse Logo" 
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-contain shadow-lg border border-purple-500/30 bg-purple-950/40" 
+                onError={(e)=>{
+                  e.target.onerror = null;
+                  e.target.style.display = 'none';
+                  if(e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              <div className="w-10 h-10 rounded-xl bg-purple-600 border border-purple-400/40 items-center justify-center text-white font-bold hidden shadow-md">✨</div>
               <span className="text-lg sm:text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition">RevPulse</span>
             </button>
             <nav className="hidden lg:flex space-x-5 text-sm text-gray-300 font-medium">
-              <button onClick={() => setActiveTab('landing')} className={`hover:text-white transition ${activeTab === 'landing' ? 'text-blue-400 font-semibold' : ''}`}>Overview</button>
-              <button onClick={() => setActiveTab('pricing')} className={`hover:text-white transition ${activeTab === 'pricing' ? 'text-blue-400 font-semibold' : ''}`}>Pricing</button>
+              <button onClick={() => setActiveTab('landing')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'landing' ? 'text-blue-400 font-semibold' : ''}`}>Overview</button>
+              <button onClick={() => setActiveTab('pricing')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'pricing' ? 'text-blue-400 font-semibold' : ''}`}>Pricing</button>
               {currentUser && (
-                <button onClick={() => setActiveTab('dashboard')} className={`hover:text-white transition ${activeTab === 'dashboard' ? 'text-blue-400 font-semibold' : ''}`}>Customer Dashboard</button>
+                <button onClick={() => setActiveTab('dashboard')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'dashboard' ? 'text-blue-400 font-semibold' : ''}`}>Customer Dashboard</button>
               )}
-              <button onClick={() => setActiveTab('manual')} className={`hover:text-white transition ${activeTab === 'manual' ? 'text-blue-400 font-semibold' : ''}`}>User Manual</button>
-              <button onClick={() => setActiveTab('privacy')} className={`hover:text-white transition ${activeTab === 'privacy' ? 'text-blue-400 font-semibold' : ''}`}>Privacy</button>
-              <button onClick={() => setActiveTab('terms')} className={`hover:text-white transition ${activeTab === 'terms' ? 'text-blue-400 font-semibold' : ''}`}>Terms</button>
+              <button onClick={() => setActiveTab('manual')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'manual' ? 'text-blue-400 font-semibold' : ''}`}>User Manual</button>
+              <button onClick={() => setActiveTab('privacy')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'privacy' ? 'text-blue-400 font-semibold' : ''}`}>Privacy</button>
+              <button onClick={() => setActiveTab('terms')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'terms' ? 'text-blue-400 font-semibold' : ''}`}>Terms</button>
             </nav>
           </div>
           
@@ -155,19 +170,19 @@ export default function RevPulsePlatform() {
             {currentUser ? (
               <button 
                 onClick={() => { supabase.auth.signOut(); setCurrentUser(null); setActiveTab('landing'); }}
-                className="text-xs sm:text-sm text-red-400 hover:text-red-300 transition font-medium px-2.5 py-2">
+                className="text-xs sm:text-sm text-red-400 hover:text-red-300 transition font-medium px-2.5 py-2 bg-transparent border-none cursor-pointer">
                 Sign Out ({currentUser.email})
               </button>
             ) : (
               <>
                 <button 
                   onClick={() => { setAuthMode('signin'); setShowAuthModal(true); }}
-                  className="text-xs sm:text-sm text-gray-300 hover:text-white transition font-medium px-2.5 py-2 whitespace-nowrap">
+                  className="text-xs sm:text-sm text-gray-300 hover:text-white transition font-medium px-2.5 py-2 whitespace-nowrap bg-transparent border-none cursor-pointer">
                   Sign In
                 </button>
                 <button 
                   onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
-                  className="px-3.5 py-2 sm:px-4.5 sm:py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold rounded-xl transition shadow-lg shadow-blue-600/25 whitespace-nowrap">
+                  className="px-3.5 py-2 sm:px-4.5 sm:py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold rounded-xl transition shadow-lg shadow-blue-600/25 whitespace-nowrap border-none cursor-pointer">
                   Get Started Free
                 </button>
               </>
@@ -196,13 +211,13 @@ export default function RevPulsePlatform() {
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
                 <button 
                   onClick={() => setActiveTab('pricing')}
-                  className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2">
+                  className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2 border-none cursor-pointer">
                   <span>Get Started ($29/mo)</span>
                   <span>→</span>
                 </button>
                 <button 
                   onClick={handleDownloadManual}
-                  className="px-6 py-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-300 font-semibold rounded-xl transition flex items-center justify-center space-x-2">
+                  className="px-6 py-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-300 font-semibold rounded-xl transition flex items-center justify-center space-x-2 cursor-pointer">
                   <span>📄 Download User Manual</span>
                 </button>
               </div>
@@ -230,7 +245,12 @@ export default function RevPulsePlatform() {
           <section id="sandbox-demo" className="max-w-4xl mx-auto pt-4">
             <div className="bg-gray-900/90 border border-gray-800/80 rounded-3xl p-8 shadow-2xl relative mt-8">
               <div className="absolute -top-10 left-6 flex items-center space-x-3 bg-gray-900 border border-blue-500/50 px-4 py-2.5 rounded-2xl shadow-2xl z-20">
-                <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold shadow-md">🤖</div>
+                <img 
+                  src="/kaku-mascot.png" 
+                  alt="Kaku AI Mascot" 
+                  className="w-10 h-10 rounded-xl object-cover shadow-md border border-blue-400/40 bg-gray-950"
+                  onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+                />
                 <div>
                   <div className="text-xs font-bold text-white flex items-center space-x-1.5">
                     <span>Kaku Assistant</span>
@@ -255,7 +275,7 @@ export default function RevPulsePlatform() {
                         setSampleReview(verticalData[key].review);
                         setAiResponse('');
                       }}
-                      className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition ${
+                      className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
                         selectedVertical === key 
                           ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' 
                           : 'bg-gray-800 text-gray-400 hover:text-white'
@@ -282,7 +302,7 @@ export default function RevPulsePlatform() {
                 <button 
                   onClick={handleGenerateResponse}
                   disabled={isGenerating}
-                  className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/20">
+                  className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/20 border-none cursor-pointer">
                   {isGenerating ? <span>Drafting Professional Response...</span> : <span>Generate Calm, Private-Resolution Draft</span>}
                 </button>
               </div>
@@ -309,8 +329,13 @@ export default function RevPulsePlatform() {
               <h1 className="text-3xl font-extrabold text-white mt-1">Customer & Admin Dashboard</h1>
               <p className="text-sm text-gray-400 mt-1">Welcome back, {currentUser ? currentUser.email : 'Operator'}. Monitor incoming reviews and webhook triggers here.</p>
             </div>
-            <div className="flex space-x-3">
-              <button onClick={() => alert("Webhook test trigger sent successfully!")} className="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition shadow-lg">
+            <div className="flex flex-wrap gap-3">
+              <button 
+                onClick={() => setShowConnectModal(true)} 
+                className="px-4 py-2.5 bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold rounded-xl transition shadow-lg border-none cursor-pointer flex items-center space-x-2">
+                <span>🔗 Connect Business Pages</span>
+              </button>
+              <button onClick={() => alert("Webhook test trigger sent successfully!")} className="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
                 ⚡ Test Webhook / Twilio SMS
               </button>
             </div>
@@ -319,8 +344,10 @@ export default function RevPulsePlatform() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
               <div className="text-xs font-semibold text-gray-400 uppercase">Monitored Locations</div>
-              <div className="text-3xl font-extrabold text-white mt-2">1 Active</div>
-              <div className="text-xs text-blue-400 mt-2">Google Business Profile Connected</div>
+              <div className="text-3xl font-extrabold text-white mt-2">
+                {Object.values(connectedPlatforms).filter(Boolean.length > 0 ? Boolean : () => true).filter(v => v).length} Active
+              </div>
+              <div className="text-xs text-blue-400 mt-2">Google, Yelp & FB OAuth Linked</div>
             </div>
             <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
               <div className="text-xs font-semibold text-gray-400 uppercase">Negative Reviews Intercepted</div>
@@ -364,7 +391,7 @@ export default function RevPulsePlatform() {
               </div>
               <button 
                 onClick={() => handleStripeCheckout('starter')} 
-                className="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg shadow-blue-600/25">
+                className="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg shadow-blue-600/25 border-none cursor-pointer">
                 Purchase $29 Starter Plan
               </button>
             </div>
@@ -383,7 +410,7 @@ export default function RevPulsePlatform() {
               </div>
               <button 
                 onClick={() => handleStripeCheckout('pro')} 
-                className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition shadow-lg shadow-indigo-600/25">
+                className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition shadow-lg shadow-indigo-600/25 border-none cursor-pointer">
                 Purchase $79 Pro Plan
               </button>
             </div>
@@ -398,7 +425,7 @@ export default function RevPulsePlatform() {
               <h1 className="text-3xl font-extrabold text-white mb-2">RevPulse Official Enterprise User Manual</h1>
               <p className="text-sm text-gray-400">Complete documentation, setup playbooks, and troubleshooting guides (v2.4).</p>
             </div>
-            <button onClick={handleDownloadManual} className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl shadow-lg transition flex items-center space-x-2">
+            <button onClick={handleDownloadManual} className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl shadow-lg transition flex items-center space-x-2 border-none cursor-pointer">
               <span>📥 Download Enterprise PDF/TXT Manual</span>
             </button>
           </div>
@@ -410,7 +437,7 @@ export default function RevPulsePlatform() {
             </div>
           </div>
 
-          <button onClick={() => setActiveTab('landing')} className="px-5 py-3 bg-gray-800 hover:bg-gray-700 text-white text-xs font-semibold rounded-xl transition">
+          <button onClick={() => setActiveTab('landing')} className="px-5 py-3 bg-gray-800 hover:bg-gray-700 text-white text-xs font-semibold rounded-xl transition border-none cursor-pointer">
             ← Back to Overview
           </button>
         </section>
@@ -422,7 +449,7 @@ export default function RevPulsePlatform() {
           <p className="text-sm text-gray-400 leading-relaxed">
             At RevPulse, we respect your privacy and protect your business data. We never sell or share user data with third-party advertisers.
           </p>
-          <button onClick={() => setActiveTab('landing')} className="px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-xl">Back to Overview</button>
+          <button onClick={() => setActiveTab('landing')} className="px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-xl border-none cursor-pointer">Back to Overview</button>
         </section>
       )}
 
@@ -432,14 +459,14 @@ export default function RevPulsePlatform() {
           <p className="text-sm text-gray-400 leading-relaxed">
             By accessing RevPulse, you agree to month-to-month subscription flexibility with zero cancellation penalties. Cancel anytime.
           </p>
-          <button onClick={() => setActiveTab('landing')} className="px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-xl">Back to Overview</button>
+          <button onClick={() => setActiveTab('landing')} className="px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-xl border-none cursor-pointer">Back to Overview</button>
         </section>
       )}
 
       {showAuthModal && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-gray-900 border border-blue-500/40 rounded-3xl max-w-md w-full p-8 shadow-2xl relative">
-            <button onClick={() => setShowAuthModal(false)} className="absolute top-6 right-6 text-gray-400 hover:text-white text-sm font-bold">✕</button>
+            <button onClick={() => setShowAuthModal(false)} className="absolute top-6 right-6 text-gray-400 hover:text-white text-sm font-bold bg-transparent border-none cursor-pointer">✕</button>
             <h3 className="text-xl font-bold text-white mb-2">{authMode === 'signin' ? 'Sign In to RevPulse' : 'Create Your Account'}</h3>
             <p className="text-xs text-gray-400 mb-6">Secure authentication powered by Supabase PostgreSQL.</p>
             
@@ -466,7 +493,7 @@ export default function RevPulsePlatform() {
                   required
                 />
               </div>
-              <button type="submit" className="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg text-xs">
+              <button type="submit" className="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg text-xs border-none cursor-pointer">
                 {authMode === 'signin' ? 'Sign In' : 'Register Account'}
               </button>
             </form>
@@ -474,10 +501,75 @@ export default function RevPulsePlatform() {
             <div className="mt-4 text-center">
               <button 
                 onClick={() => setAuthMode(authMode === 'signin' ? 'signup' : 'signin')}
-                className="text-xs text-blue-400 hover:underline">
+                className="text-xs text-blue-400 hover:underline bg-transparent border-none cursor-pointer">
                 {authMode === 'signin' ? "Don't have an account? Sign up" : "Already have an account? Sign in"}
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {showConnectModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 border border-purple-500/40 rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-6">
+            <button onClick={() => setShowConnectModal(false)} className="absolute top-6 right-6 text-gray-400 hover:text-white text-sm font-bold bg-transparent border-none cursor-pointer">✕</button>
+            <div>
+              <h3 className="text-xl font-bold text-white mb-1">Connect Business Profiles</h3>
+              <p className="text-xs text-gray-400">Link your active review channels via secure OAuth token exchange.</p>
+            </div>
+
+            <div className="space-y-3">
+              <div className="flex items-center justify-between p-4 bg-gray-950 border border-gray-800 rounded-2xl">
+                <div className="flex items-center space-x-3">
+                  <span className="text-xl">📍</span>
+                  <div>
+                    <div className="text-xs font-bold text-white">Google Business Profile</div>
+                    <div className="text-[11px] text-emerald-400">Connected & Syncing</div>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setConnectedPlatforms(p => ({...p, google: !p.google}))}
+                  className={`px-3 py-1.5 text-xs rounded-xl font-semibold border-none cursor-pointer ${connectedPlatforms.google ? 'bg-emerald-600/20 text-emerald-400' : 'bg-gray-800 text-gray-300'}`}>
+                  {connectedPlatforms.google ? 'Connected' : 'Connect'}
+                </button>
+              </div>
+
+              <div className="flex items-center justify-between p-4 bg-gray-950 border border-gray-800 rounded-2xl">
+                <div className="flex items-center space-x-3">
+                  <span className="text-xl">⭐</span>
+                  <div>
+                    <div className="text-xs font-bold text-white">Yelp Fusion API</div>
+                    <div className="text-[11px] text-gray-400">Monitor star ratings</div>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setConnectedPlatforms(p => ({...p, yelp: !p.yelp}))}
+                  className={`px-3 py-1.5 text-xs rounded-xl font-semibold border-none cursor-pointer ${connectedPlatforms.yelp ? 'bg-emerald-600/20 text-emerald-400' : 'bg-gray-800 text-gray-300'}`}>
+                  {connectedPlatforms.yelp ? 'Connected' : 'Connect'}
+                </button>
+              </div>
+
+              <div className="flex items-center justify-between p-4 bg-gray-950 border border-gray-800 rounded-2xl">
+                <div className="flex items-center space-x-3">
+                  <span className="text-xl">📘</span>
+                  <div>
+                    <div className="text-xs font-bold text-white">Facebook Business Page</div>
+                    <div className="text-[11px] text-gray-400">Inbox & Messenger sync</div>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setConnectedPlatforms(p => ({...p, facebook: !p.facebook}))}
+                  className={`px-3 py-1.5 text-xs rounded-xl font-semibold border-none cursor-pointer ${connectedPlatforms.facebook ? 'bg-emerald-600/20 text-emerald-400' : 'bg-gray-800 text-gray-300'}`}>
+                  {connectedPlatforms.facebook ? 'Connected' : 'Connect'}
+                </button>
+              </div>
+            </div>
+
+            <button 
+              onClick={() => setShowConnectModal(false)}
+              className="w-full py-3.5 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition shadow-lg text-xs border-none cursor-pointer">
+              Save & Sync Channels
+            </button>
           </div>
         </div>
       )}
@@ -487,7 +579,12 @@ export default function RevPulsePlatform() {
           <div className="bg-gray-900 border border-blue-500/40 rounded-3xl max-w-2xl w-full h-[650px] flex flex-col shadow-2xl relative overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-800 flex items-center justify-between bg-gray-950/60">
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xs">🤖</div>
+                <img 
+                  src="/kaku-mascot.png" 
+                  alt="Kaku" 
+                  className="w-8 h-8 rounded-lg object-cover border border-blue-400/40 bg-gray-950" 
+                  onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+                />
                 <div>
                   <h3 className="text-sm font-bold text-white flex items-center space-x-2">
                     <span>Kaku Situation Room</span>
@@ -496,7 +593,7 @@ export default function RevPulsePlatform() {
                   <p className="text-[11px] text-gray-400">Deep-dive technical diagnostics & error analysis</p>
                 </div>
               </div>
-              <button onClick={() => setShowSituationRoom(false)} className="text-gray-400 hover:text-white text-sm font-bold px-2.5 py-1 bg-gray-800 rounded-lg">✕</button>
+              <button onClick={() => setShowSituationRoom(false)} className="text-gray-400 hover:text-white text-sm font-bold px-2.5 py-1 bg-gray-800 rounded-lg border-none cursor-pointer">✕</button>
             </div>
 
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
@@ -520,7 +617,7 @@ export default function RevPulsePlatform() {
                   placeholder="Ask Kaku anything about setup or errors..." 
                   className="flex-1 bg-gray-900 border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-gray-200 focus:outline-none focus:border-blue-500"
                 />
-                <button type="submit" className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition">
+                <button type="submit" className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition border-none cursor-pointer">
                   Send
                 </button>
               </form>
@@ -532,8 +629,13 @@ export default function RevPulsePlatform() {
       <div className="fixed bottom-6 right-6 z-40">
         <button 
           onClick={() => setShowSituationRoom(true)}
-          className="flex items-center space-x-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-3.5 rounded-2xl shadow-2xl transition transform hover:scale-105 border border-blue-400/40 group">
-          <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold shadow-md border border-white/30">🤖</div>
+          className="flex items-center space-x-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-3.5 rounded-2xl shadow-2xl transition transform hover:scale-105 border border-blue-400/40 group cursor-pointer">
+          <img 
+            src="/kaku-mascot.png" 
+            alt="Kaku" 
+            className="w-10 h-10 rounded-xl object-cover border border-white/30 bg-gray-950 shadow-md" 
+            onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+          />
           <div className="text-left">
             <div className="text-xs font-extrabold flex items-center space-x-1.5">
               <span>Ask Kaku / Situation Room</span>
@@ -546,11 +648,11 @@ export default function RevPulsePlatform() {
 
       <footer className="border-t border-gray-800/80 py-10 px-6 mt-28 text-center text-xs text-gray-400 space-y-3 bg-gray-950">
         <div className="flex justify-center space-x-6 text-gray-400 font-medium pb-2">
-          <button onClick={() => setActiveTab('landing')} className="hover:text-white transition">Overview</button>
-          <button onClick={() => setActiveTab('pricing')} className="hover:text-white transition">Pricing</button>
-          <button onClick={() => setActiveTab('manual')} className="hover:text-white transition">User Manual</button>
-          <button onClick={() => setActiveTab('privacy')} className="hover:text-white transition">Privacy Policy</button>
-          <button onClick={() => setActiveTab('terms')} className="hover:text-white transition">Terms of Use</button>
+          <button onClick={() => setActiveTab('landing')} className="hover:text-white transition bg-transparent border-none cursor-pointer">Overview</button>
+          <button onClick={() => setActiveTab('pricing')} className="hover:text-white transition bg-transparent border-none cursor-pointer">Pricing</button>
+          <button onClick={() => setActiveTab('manual')} className="hover:text-white transition bg-transparent border-none cursor-pointer">User Manual</button>
+          <button onClick={() => setActiveTab('privacy')} className="hover:text-white transition bg-transparent border-none cursor-pointer">Privacy Policy</button>
+          <button onClick={() => setActiveTab('terms')} className="hover:text-white transition bg-transparent border-none cursor-pointer">Terms of Use</button>
         </div>
         <p>© 2026 RevPulse. All rights reserved. Contact <a href="mailto:support@revpulse.tools" className="text-blue-400 hover:underline">support@revpulse.tools</a></p>
       </footer>
