@@ -37,7 +37,26 @@ const translations = {
     allIndustries: "All Industries",
     askKakuTitle: "Ask Kaku / Situation Room",
     askKakuSubtitle: "Multi-Industry AI Ready",
-    footerRights: "© 2026 RevPulse. All rights reserved. Operator: Imran Mateen (support@revpulse.tools)"
+    footerRights: "© 2026 RevPulse. All rights reserved. Operator: Imran Mateen (support@revpulse.tools)",
+    
+    // Pricing Page Translations
+    pricingHeader: "Transparent Pricing & Plans",
+    pricingSub: "Select your tier to initialize secure checkout and instant workspace activation.",
+    starterPlanBadge: "Starter Plan",
+    starterPlanTitle: "Single Location",
+    starterPrice: "$29",
+    starterPeriod: " / month",
+    starterFeature1: "✓ Assisted review-response workflow",
+    starterFeature2: "✓ Strict human approval controls",
+    starterFeature3: "✓ Multi-industry prompt matrices",
+    proPlanBadge: "Pro Plan",
+    proPlanTitle: "Multi-Location & Scale",
+    proPrice: "$79",
+    proPeriod: " / month",
+    proFeature1: "✓ Up to 3 active locations",
+    proFeature2: "✓ Omnichannel SMS, WhatsApp & Email suite",
+    proFeature3: "✓ Built-in Testing & Sandbox Lab",
+    mostPopular: "Most Popular"
   },
   fr: {
     overview: "Aperçu",
@@ -74,7 +93,25 @@ const translations = {
     allIndustries: "Toutes les industries",
     askKakuTitle: "Preguntar a Kaku / Sala de Situación",
     askKakuSubtitle: "IA Multiindustria Lista",
-    footerRights: "© 2026 RevPulse. Tous droits réservés. Opérateur : Imran Mateen (support@revpulse.tools)"
+    footerRights: "© 2026 RevPulse. Tous droits réservés. Opérateur : Imran Mateen (support@revpulse.tools)",
+    
+    pricingHeader: "Tarifs et Formules Transparents",
+    pricingSub: "Sélectionnez votre formule pour initialiser le paiement sécurisé et l'activation instantanée.",
+    starterPlanBadge: "Formule Débutant",
+    starterPlanTitle: "Emplacement Unique",
+    starterPrice: "29 $",
+    starterPeriod: " / mois",
+    starterFeature1: "✓ Flux de réponse aux avis assisté",
+    starterFeature2: "✓ Contrôles stricts d'approbation humaine",
+    starterFeature3: "✓ Matrices de suggestions multi-industries",
+    proPlanBadge: "Formule Pro",
+    proPlanTitle: "Multi-Emplacements & Échelle",
+    proPrice: "79 $",
+    proPeriod: " / mois",
+    proFeature1: "✓ Jusqu'à 3 emplacements actifs",
+    proFeature2: "✓ Suite omnicanale SMS, WhatsApp et e-mail",
+    proFeature3: "✓ Laboratoire de test et bac à sable intégré",
+    mostPopular: "Le Plus Populaire"
   },
   es: {
     overview: "Resumen",
@@ -111,7 +148,25 @@ const translations = {
     allIndustries: "Todas las industrias",
     askKakuTitle: "Preguntar a Kaku / Sala de Situación",
     askKakuSubtitle: "IA Multiindustria Lista",
-    footerRights: "© 2026 RevPulse. Todos los derechos reservados. Operador: Imran Mateen (support@revpulse.tools)"
+    footerRights: "© 2026 RevPulse. Todos los derechos reservados. Operador: Imran Mateen (support@revpulse.tools)",
+    
+    pricingHeader: "Precios y Planes Transparentes",
+    pricingSub: "Seleccione su nivel para iniciar el pago seguro y la activación instantánea.",
+    starterPlanBadge: "Plan Inicial",
+    starterPlanTitle: "Ubicación Única",
+    starterPrice: "$29",
+    starterPeriod: " / mes",
+    starterFeature1: "✓ Flujo asistido de respuesta a reseñas",
+    starterFeature2: "✓ Controles estrictos de aprobación humana",
+    starterFeature3: "✓ Matrices de avisos multiindustria",
+    proPlanBadge: "Plan Pro",
+    proPlanTitle: "Multi-Ubicación y Escala",
+    proPrice: "$79",
+    proPeriod: " / mes",
+    proFeature1: "✓ Hasta 3 ubicaciones activas",
+    proFeature2: "✓ Suite omnicanal de SMS, WhatsApp y Email",
+    proFeature3: "✓ Laboratorio de pruebas y entorno de pruebas integrado",
+    mostPopular: "Más Popular"
   },
   it: {
     overview: "Panoramica",
@@ -148,7 +203,25 @@ const translations = {
     allIndustries: "Tutte le industrie",
     askKakuTitle: "Chiedi a Kaku / Sala Situazione",
     askKakuSubtitle: "IA Multi-Settore Pronta",
-    footerRights: "© 2026 RevPulse. Tutti i diritti riservati. Operatore: Imran Mateen (support@revpulse.tools)"
+    footerRights: "© 2026 RevPulse. Tutti i diritti riservati. Operatore: Imran Mateen (support@revpulse.tools)",
+    
+    pricingHeader: "Prezzi e Piani Trasparenti",
+    pricingSub: "Seleziona il tuo piano per avviare il checkout sicuro e l'attivazione immediata.",
+    starterPlanBadge: "Piano Base",
+    starterPlanTitle: "Sede Singola",
+    starterPrice: "$29",
+    starterPeriod: " / mese",
+    starterFeature1: "✓ Flusso di risposta assistita alle recensioni",
+    starterFeature2: "✓ Rigidi controlli di approvazione umana",
+    starterFeature3: "✓ Matrici di prompt multi-settore",
+    proPlanBadge: "Piano Pro",
+    proPlanTitle: "Multi-Sede e Crescita",
+    proPrice: "$79",
+    proPeriod: " / mese",
+    proFeature1: "✓ Fino a 3 sedi attive",
+    proFeature2: "✓ Suite omnicanale SMS, WhatsApp ed Email",
+    proFeature3: "✓ Laboratorio di test e Sandbox integrato",
+    mostPopular: "Più Popolare"
   },
   ar: {
     overview: "نظرة عامة",
@@ -185,7 +258,25 @@ const translations = {
     allIndustries: "جميع الصناعات",
     askKakuTitle: "اسأل كاکو / غرفة العمليات",
     askKakuSubtitle: "الذكاء الاصطناعي جاهز لجميع القطاعات",
-    footerRights: "© 2026 RevPulse. جميع الحقوق محفوظة. المشغل: عمران متين (support@revpulse.tools)"
+    footerRights: "© 2026 RevPulse. جميع الحقوق محفوظة. المشغل: عمران متين (support@revpulse.tools)",
+    
+    pricingHeader: "أسعار وخطط شفافة",
+    pricingSub: "اختر باقتك لبدء الدفع الآمن والتفعيل الفوري للمساحة.",
+    starterPlanBadge: "الباقة الأساسية",
+    starterPlanTitle: "موقع واحد",
+    starterPrice: "$29",
+    starterPeriod: " / شهرياً",
+    starterFeature1: "✓ سير عمل الرد على المراجعات المدعوم",
+    starterFeature2: "✓ ضوابط صارمة للموافقة البشرية",
+    starterFeature3: "✓ مصفوفات توجيه متعددة الصناعات",
+    proPlanBadge: "الباقة الاحترافية",
+    proPlanTitle: "مواقع متعددة والتوسع",
+    proPrice: "$79",
+    proPeriod: " / شهرياً",
+    proFeature1: "✓ ما يصل إلى 3 مواقع نشطة",
+    proFeature2: "✓ مجموعة قنوات الرسائل القصيرة، الواتساب والبريد",
+    proFeature3: "✓ معمل اختبار Sandbox مدمج",
+    mostPopular: "الأكثر طلباً"
   },
   ur: {
     overview: "جائزہ",
@@ -222,7 +313,25 @@ const translations = {
     allIndustries: "تمام صنعتیں",
     askKakuTitle: "کاکو سے پوچھیں / سچویشن روم",
     askKakuSubtitle: "ملٹی انڈسٹری اے آئی تیار ہے",
-    footerRights: "© 2026 RevPulse. جملہ حقوق محفوظ ہیں۔ آپریٹر: عمران متین (support@revpulse.tools)"
+    footerRights: "© 2026 RevPulse. جملہ حقوق محفوظ ہیں۔ آپریٹر: عمران متین (support@revpulse.tools)",
+    
+    pricingHeader: "شفاف قیمتیں اور پلانز",
+    pricingSub: "محفوظ چیک آؤٹ اور فوری ورک اسپیس ایکتیویشن کے لیے اپنا ٹیر منتخب کریں۔",
+    starterPlanBadge: "اسارٹر پلان",
+    starterPlanTitle: "سنگل لوکیشن",
+    starterPrice: "$29",
+    starterPeriod: " / مہینہ",
+    starterFeature1: "✓ ریویو رسپانس کا تعاون یافتہ ورک فلو",
+    starterFeature2: "✓ انسانی منظوری کے سخت کنٹرولز",
+    starterFeature3: "✓ ملٹی انڈسٹری پرامپٹ میٹرکس",
+    proPlanBadge: "پرو پلان",
+    proPlanTitle: "ملٹی لوکیشن اور اسکیل",
+    proPrice: "$79",
+    proPeriod: " / مہینہ",
+    proFeature1: "✓ 3 فعال مقامات تک",
+    proFeature2: "✓ اومنی چینل ایس ایم ایس، واٹس ایپ اور ای میل سوٹ",
+    proFeature3: "✓ بلٹ ان ٹیسٹنگ اینڈ سینڈ باکس لیب",
+    mostPopular: "سب سے زیادہ مقبول"
   }
 };
 
@@ -2125,41 +2234,41 @@ export default function RevPulsePlatform() {
       {activeTab === 'pricing' && (
         <section className="py-20 px-6 max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-extrabold text-white mb-4">Transparent Pricing & Plans</h1>
-            <p className="text-gray-400">Select your tier to initialize secure checkout and instant workspace activation.</p>
+            <h1 className="text-4xl font-extrabold text-white mb-4">{t.pricingHeader}</h1>
+            <p className="text-gray-400">{t.pricingSub}</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-16">
             <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl flex flex-col justify-between">
               <div>
-                <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">Starter Plan</span>
-                <h3 className="text-2xl font-bold text-white mt-1 mb-4">Single Location</h3>
-                <div className="text-4xl font-extrabold text-white mb-6">$29<span className="text-sm text-gray-400 font-normal"> / month</span></div>
+                <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{t.starterPlanBadge}</span>
+                <h3 className="text-2xl font-bold text-white mt-1 mb-4">{t.starterPlanTitle}</h3>
+                <div className="text-4xl font-extrabold text-white mb-6">{t.starterPrice}<span className="text-sm text-gray-400 font-normal">{t.starterPeriod}</span></div>
                 <ul className="space-y-3 text-sm text-gray-300 mb-8">
-                  <li className="flex items-center">✓ Assisted review-response workflow</li>
-                  <li className="flex items-center">✓ Strict human approval controls</li>
-                  <li className="flex items-center">✓ Multi-industry prompt matrices</li>
+                  <li className="flex items-center">{t.starterFeature1}</li>
+                  <li className="flex items-center">{t.starterFeature2}</li>
+                  <li className="flex items-center">{t.starterFeature3}</li>
                 </ul>
               </div>
               <button onClick={() => handleStripeCheckout('starter')} className="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
-                Start 7-Day Free Trial — No Card Required
+                {t.getStarted}
               </button>
             </div>
 
             <div className="bg-gradient-to-b from-blue-950/50 to-gray-900 border border-blue-600/50 p-8 rounded-3xl flex flex-col justify-between relative shadow-2xl">
-              <div className="absolute -top-3 right-6 bg-blue-600 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">Most Popular</div>
+              <div className="absolute -top-3 right-6 bg-blue-600 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">{t.mostPopular}</div>
               <div>
-                <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">Pro Plan</span>
-                <h3 className="text-2xl font-bold text-white mt-1 mb-4">Multi-Location & Scale</h3>
-                <div className="text-4xl font-extrabold text-white mb-6">$79<span className="text-sm text-gray-400 font-normal"> / month</span></div>
+                <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{t.proPlanBadge}</span>
+                <h3 className="text-2xl font-bold text-white mt-1 mb-4">{t.proPlanTitle}</h3>
+                <div className="text-4xl font-extrabold text-white mb-6">{t.proPrice}<span className="text-sm text-gray-400 font-normal">{t.proPeriod}</span></div>
                 <ul className="space-y-3 text-sm text-gray-300 mb-8">
-                  <li className="flex items-center">✓ Up to 3 active locations</li>
-                  <li className="flex items-center">✓ Omnichannel SMS, WhatsApp & Email suite</li>
-                  <li className="flex items-center">✓ Built-in Testing & Sandbox Lab</li>
+                  <li className="flex items-center">{t.proFeature1}</li>
+                  <li className="flex items-center">{t.proFeature2}</li>
+                  <li className="flex items-center">{t.proFeature3}</li>
                 </ul>
               </div>
               <button onClick={() => handleStripeCheckout('pro')} className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
-                Start 7-Day Free Trial — No Card Required
+                {t.getStarted}
               </button>
             </div>
           </div>
