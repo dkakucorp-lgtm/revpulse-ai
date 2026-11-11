@@ -35,6 +35,8 @@ const translations = {
     knowledgeSubtitle: "Search across HVAC, Healthcare, Construction, Hospitality, E-Commerce, Automotive, Finance, Legal, Wellness, and Veterinary research articles.",
     searchPlaceholder: "🔍 Search HVAC, dental wait times, permit red tags, medical aesthetic reactions, veterinary bills...",
     allIndustries: "All Industries",
+    askKakuTitle: "Ask Kaku / Situation Room",
+    askKakuSubtitle: "Multi-Industry AI Ready",
     footerRights: "© 2026 RevPulse. All rights reserved. Operator: Imran Mateen (support@revpulse.tools)"
   },
   fr: {
@@ -70,6 +72,8 @@ const translations = {
     knowledgeSubtitle: "Recherchez parmi les articles de recherche HVAC, santé, construction, hôtellerie, e-commerce, automobile, finance, juridique, bien-être et vétérinaire.",
     searchPlaceholder: "🔍 Rechercher HVAC, temps d'attente dentaires, permis, vétérinaire...",
     allIndustries: "Toutes les industries",
+    askKakuTitle: "Demander à Kaku / Salle de situation",
+    askKakuSubtitle: "IA multi-sectorielle prête",
     footerRights: "© 2026 RevPulse. Tous droits réservés. Opérateur : Imran Mateen (support@revpulse.tools)"
   },
   es: {
@@ -105,6 +109,8 @@ const translations = {
     knowledgeSubtitle: "Busque artículos de investigación en HVAC, salud, construcción, hostelería, e-commerce, automoción, finanzas, legal, bienestar y veterinaria.",
     searchPlaceholder: "🔍 Buscar HVAC, esperas dentales, permisos, multas, veterinaria...",
     allIndustries: "Todas las industrias",
+    askKakuTitle: "Preguntar a Kaku / Sala de Situación",
+    askKakuSubtitle: "IA Multiindustria Lista",
     footerRights: "© 2026 RevPulse. Todos los derechos reservados. Operador: Imran Mateen (support@revpulse.tools)"
   },
   it: {
@@ -139,7 +145,9 @@ const translations = {
     knowledgeHeader: "Centro Conoscenze RevPulse",
     knowledgeSubtitle: "Cerca tra gli articoli di ricerca per HVAC, sanità, costruzioni, ospitalità, e-commerce, automotive, finanza, legale, benessere e veterinaria.",
     searchPlaceholder: "🔍 Cerca HVAC, attese dentistiche, permessi...",
-    allIndustrie: "Tutte le industrie",
+    allIndustries: "Tutte le industrie",
+    askKakuTitle: "Chiedi a Kaku / Sala Situazione",
+    askKakuSubtitle: "IA Multi-Settore Pronta",
     footerRights: "© 2026 RevPulse. Tutti i diritti riservati. Operatore: Imran Mateen (support@revpulse.tools)"
   },
   ar: {
@@ -175,6 +183,8 @@ const translations = {
     knowledgeSubtitle: "ابحث في مقالات الأبحاث الخاصة بالتكييف، الرعاية الصحية، البناء، الضيافة، التجارة الإلكترونية، السيارات، التمويل، القانون، العناية الشخصية، والطب البيطري.",
     searchPlaceholder: "🔍 ابحث في التكييف، المواعيد الطبية، التصاريح، الفواتير...",
     allIndustries: "جميع الصناعات",
+    askKakuTitle: "اسأل كاکو / غرفة العمليات",
+    askKakuSubtitle: "الذكاء الاصطناعي جاهز لجميع القطاعات",
     footerRights: "© 2026 RevPulse. جميع الحقوق محفوظة. المشغل: عمران متين (support@revpulse.tools)"
   },
   ur: {
@@ -210,6 +220,8 @@ const translations = {
     knowledgeSubtitle: "HVAC، ہیلتھ کیئر، تعمیرات، مہمان نوازی، ای کامرس، آٹوموٹو، فنانس، قانونی، اور ویٹرنری مضامین تلاش کریں۔",
     searchPlaceholder: "🔍 تلاش کریں HVAC، ڈেন্টل انتظار کا وقت، اجازت نامے، ویٹرنری بل...",
     allIndustries: "تمام صنعتیں",
+    askKakuTitle: "کاکو سے پوچھیں / سچویشن روم",
+    askKakuSubtitle: "ملٹی انڈسٹری اے آئی تیار ہے",
     footerRights: "© 2026 RevPulse. جملہ حقوق محفوظ ہیں۔ آپریٹر: عمران متین (support@revpulse.tools)"
   }
 };
@@ -1705,10 +1717,10 @@ export default function RevPulsePlatform() {
           />
           <div className="text-left">
             <div className="text-xs font-extrabold flex items-center space-x-1.5">
-              <span>Ask Kaku / Situation Room</span>
+              <span>{t.askKakuTitle}</span>
               <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
             </div>
-            <div className="text-[11px] text-blue-100 font-medium">Multi-Industry AI Ready</div>
+            <div className="text-[11px] text-blue-100 font-medium">{t.askKakuSubtitle}</div>
           </div>
         </button>
       </div>
