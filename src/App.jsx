@@ -19,33 +19,128 @@ export default function RevPulsePlatform() {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const knowledgeArticles = [
+    // 1. HVAC & Trades
     {
       id: 1,
       category: 'hvac',
-      title: 'Managing Service Delays & Billing Inquiries (HVAC)',
-      summary: 'Recommended workflow for handling arrival delays and invoice disputes privately before public ratings are impacted.',
-      content: 'When an HVAC customer expresses frustration over service timing or billing, the operator can acknowledge the feedback privately, offer a manager callback, and provide a direct private resolution channel.'
+      title: 'Handling Severe 1-Star Billing & Delay Disputes (HVAC)',
+      summary: 'Framework for intercepting arrival delays and invoice disputes before they impact local search rankings.',
+      content: 'When an HVAC customer leaves a low rating regarding arrival timing or pricing, Kaku instantly intercepts the public post. Acknowledge friction privately, offer a manager callback within 15 minutes, and provide a direct secure resolution link via SMS.'
     },
     {
       id: 2,
-      category: 'omnichannel',
-      title: 'Configuring SMS & Messaging Follow-Ups',
-      summary: 'Best practices for setting up customer recovery text messages with clear opt-out language.',
-      content: 'Ensure all outbound follow-up messages include clear identification, helpful context, and straightforward options for recipients to opt out or reply.'
+      category: 'hvac',
+      title: 'Extreme Weather Dispatch & Safety Hazard Triage',
+      summary: 'Managing high-panic heatwave/freeze breakdowns and communicating safety findings transparently.',
+      content: 'During weather extremes, homeowners face high vulnerability. Frame safety discoveries (like cracked heat exchangers) with transparent documentation, photos, and clear explanation to avoid accusations of manufactured sales.'
     },
+    // 2. Dental & Healthcare
     {
       id: 3,
       category: 'dental',
-      title: 'Patient Communication & Schedule Management (Dental)',
-      summary: 'Automating helpful follow-ups and feedback collection after patient appointments.',
-      content: 'Dental practices can streamline post-visit feedback collection while respecting patient time and maintaining professional communication standards.'
+      title: 'Managing Lobby Wait Times & Patient Sentiment (Dental)',
+      summary: 'Automating apology workflows and re-booking appointments when clinical delays exceed 30 minutes.',
+      content: 'When lobby wait times exceed 30 minutes, automated SMS notifications should offer complimentary parking vouchers or priority scheduling while maintaining a calm, empathetic tone.'
     },
     {
       id: 4,
-      category: 'onboarding',
-      title: '7-Day Free Trial & Workspace Setup',
-      summary: 'Overview of your unrestricted trial workspace and trial email communication cadence.',
-      content: 'During your 7-day trial, you have full access to workspace features without entering payment card information. Helpful email reminders are sent as your trial period progresses.'
+      category: 'dental',
+      title: 'Surprise Billing & Insurance Opacity Resolution',
+      summary: 'Providing transparent, plain-language financial estimates prior to major procedures to prevent chargebacks.',
+      content: 'Proactively clarify out-of-network costs and coding breakdowns. Transparent communication before treatment drastically reduces patient anxiety and post-procedure billing disputes.'
+    },
+    // 3. General Contractors & Municipalities
+    {
+      id: 5,
+      category: 'contractors',
+      title: 'Navigating Red-Tag Stop-Work Orders & Permitting',
+      summary: 'Immediate action plan when code enforcement halts construction due to permit or setback issues.',
+      content: 'Address red tags immediately by coordinating directly with county plan reviewers, pulling required permits as the licensed contractor (avoiding owner-builder liability), and communicating timelines transparently to the property owner.'
+    },
+    {
+      id: 6,
+      category: 'contractors',
+      title: 'Managing Hidden Condition Code Upgrades & Change Orders',
+      summary: 'Handling unexpected structural rot, outdated wiring, or plumbing code traps mid-project.',
+      content: 'Use digital change-order documentation with photo evidence before opening walls or performing code-mandated upgrades, ensuring the homeowner approves costs before work proceeds.'
+    },
+    // 4. Restaurants & Hospitality
+    {
+      id: 7,
+      category: 'hospitality',
+      title: 'Preventing the Silent Churn & Off-Premise Order Errors',
+      summary: 'Resolving missing takeout items and long table wait times before guests quietly stop returning.',
+      content: 'Implement double-check packing protocols for delivery/takeout and rapid manager table visits when wait times exceed quotes to salvage guest retention.'
+    },
+    {
+      id: 8,
+      category: 'hospitality',
+      title: 'Severe Allergy Protocols & Dietary Mishap Recovery',
+      summary: 'Immediate crisis response when cross-contamination or allergen oversights occur during service.',
+      content: 'Mandate immediate kitchen accountability, direct general manager involvement, and immediate medical assistance if necessary. Follow up within 2 hours with a sincere, documented apology.'
+    },
+    // 5. Hotels & Short-Term Rentals
+    {
+      id: 9,
+      category: 'hotels',
+      title: 'Short-Term Rental Midnight Lockouts & Cleanliness Recovery',
+      summary: 'Resolving smart-lock failures and cleaning discrepancies within the critical 15-minute window.',
+      content: 'Keep emergency locksmith contacts on standby, maintain backup key lockboxes, and provide instant partial refunds or amenity credits within 15 minutes of reported cleaning lapses to secure 5-star reviews.'
+    },
+    {
+      id: 10,
+      category: 'hotels',
+      title: 'Transparency in Resort Fees & Direct Booking Retention',
+      summary: 'Eliminating hidden fee shock through upfront disclosure across all digital booking channels.',
+      content: 'Disclose all parking, resort, and cleaning fees transparently prior to checkout to eliminate negative reviews driven by fee shock and increase direct repeat bookings.'
+    },
+    // 6. E-Commerce & Online Retail
+    {
+      id: 11,
+      category: 'ecommerce',
+      title: 'Proactive Fulfillment Communication & Return Fee Management',
+      summary: 'Mitigating ghost tracking, delivery delays, and return friction to protect customer lifetime value.',
+      content: 'Notify customers proactively via automated SMS/email when carriers experience transit bottlenecks. Offer transparent, effortless return portals to drive long-term brand loyalty.'
+    },
+    // 7. Automotive Repair & Dealerships
+    {
+      id: 12,
+      category: 'automotive',
+      title: 'Digital Inspections & Eliminating the "Ghost Repair" Stigma',
+      summary: 'Using high-resolution photo and video text links to build absolute transparency in auto repair.',
+      content: 'Send visual inspection links of worn brake pads or leaking gaskets directly to customers before beginning repairs. Complete transparency eliminates customer skepticism and boosts approval rates.'
+    },
+    // 8. Financial Services & CPAs
+    {
+      id: 13,
+      category: 'financial',
+      title: 'Tax Season Communication Cadence & Loan Underwriting Updates',
+      summary: 'Preventing the black-hole client experience through structured weekly status reporting.',
+      content: 'Implement automated weekly progress updates during loan underwriting or tax filing season so clients never experience radio silence regarding their capital or filings.'
+    },
+    // 9. Legal & Professional Services
+    {
+      id: 14,
+      category: 'legal',
+      title: 'Billable Hour Transparency & Proactive Client Check-Ins',
+      summary: 'Eliminating cryptic invoices and communication blackouts in law firms and advisory consultancies.',
+      content: 'Send detailed, value-focused itemized invoices alongside a brief Friday afternoon status summary email, ensuring clients understand the tangible progress being delivered.'
+    },
+    // 10. Health, Beauty & Wellness
+    {
+      id: 15,
+      category: 'wellness',
+      title: 'Managing Result Discrepancies & Cancellation Fee Disputes',
+      summary: 'Handling color corrections, med-spa skin reactions, and strict cancellation policies professionally.',
+      content: 'Maintain signed pre-treatment consent forms, clear patch-testing protocols, and compassionate, flexible conflict resolution for genuine personal emergencies.'
+    },
+    // 11. Veterinary & Pet Care
+    {
+      id: 16,
+      category: 'veterinary',
+      title: 'Itemized Treatment Estimates & ER Triage Empathy',
+      summary: 'Eliminating veterinary bill shock and soothing panicked pet owners during emergency visits.',
+      content: 'Always provide written, itemized treatment estimates and obtain explicit approval before running diagnostic tests. Pair medical care with profound emotional validation.'
     }
   ];
 
@@ -80,7 +175,7 @@ export default function RevPulsePlatform() {
 
   const [chatMessage, setChatMessage] = useState('');
   const [chatLogs, setChatLogs] = useState([
-    { sender: 'kaku', text: 'Hello! I am Kaku, your AI reputation assistant. Drop a question or search our Knowledge Center below, and I will guide you.' }
+    { sender: 'kaku', text: 'Hello! I am Kaku, your AI reputation and multi-industry assistant. Ask me anything across HVAC, Medical, Legal, Veterinary, Restaurant, or E-Commerce operations!' }
   ]);
 
   const [sampleReview, setSampleReview] = useState("Called for an AC repair on Tuesday, technician arrived late, and the bill was higher than quoted.");
@@ -90,31 +185,66 @@ export default function RevPulsePlatform() {
 
   const verticalData = {
     hvac: {
-      name: "HVAC & Mechanical",
+      name: "HVAC & Trades",
       review: "Tech came out late for our AC repair and the invoice was higher than quoted.",
-      response: "Hello. Thank you for sharing your feedback. We regret that your service timing and billing clarity did not meet our standard. Please reach out to our service manager directly so we can review your account details."
+      response: "Hello. Thank you for sharing your feedback. We regret that your service timing and billing clarity did not meet our standard. Please reach out to our service manager directly so we can review your account."
     },
     dental: {
       name: "Dental Practices",
       review: "Wait time in the lobby was over 45 minutes past my scheduled appointment slot.",
       response: "Hello, thank you for your feedback. We strive to respect your time and apologize for the delay during your visit. Please contact our practice manager so we can assist you."
     },
-    auto: {
-      name: "Auto Repair",
-      review: "Repairs took two days longer than promised and communication was lacking.",
-      response: "Hello. We understand how important your vehicle is and regret the delay in completing your service. Please reach out to our service desk directly so we can discuss your experience."
-    },
     contractors: {
       name: "General Contractors",
-      review: "Cleanup after the kitchen remodel was messy and debris was left behind.",
-      response: "Hello. Thank you for bringing this to our attention. We hold our job sites to a high standard of cleanliness and apologize for the oversight. Please contact our project lead to address this."
+      review: "County inspector flagged our project for an unpermitted patio enclosure. Very stressed!",
+      response: "Hello. We take building compliance seriously and are coordinating directly with the county office to resolve this permit inspection item immediately. Let's review the paperwork together today."
+    },
+    hospitality: {
+      name: "Restaurants & Dining",
+      review: "Ordered takeout online, drove home, and realized two entrees were completely missing.",
+      response: "Hello. We apologize for the missing items in your takeout order. Please reach out to our manager directly so we can issue an immediate refund and arrange a complimentary meal for your next visit."
+    },
+    hotels: {
+      name: "Hotels & Rentals",
+      review: "Arrived at the rental property and the smart lock code didn't work for 30 minutes in the cold.",
+      response: "Hello. We sincerely apologize for the lockbox delay upon your arrival. That is not the seamless experience we strive for. Please contact us directly so we can make this right."
+    },
+    ecommerce: {
+      name: "E-Commerce Retail",
+      review: "My package tracking number has been stuck on 'Label Created' for 5 days with no update.",
+      response: "Hello. Thank you for bringing this fulfillment delay to our attention. We are investigating with the carrier immediately and will send you a priority replacement or tracking update today."
+    },
+    automotive: {
+      name: "Auto Repair",
+      review: "Brought my car in for a squeak, and was told I needed $1,200 in extra unneeded flushes.",
+      response: "Hello. We want you to feel completely confident in our recommendations. Let's review the digital inspection photos together so we can clarify what service is truly necessary right now."
+    },
+    financial: {
+      name: "Financial Services / CPA",
+      review: "Dropped off my corporate tax documents two months ago and haven't heard a single update.",
+      response: "Hello. We apologize for the communication gap during our filing queue. Your return is currently in final review, and our senior partner will call you by 2 PM today with a complete status update."
+    },
+    legal: {
+      name: "Legal & Consulting",
+      review: "My attorney hasn't returned my phone calls in three weeks regarding my case status.",
+      response: "Hello. We understand how critical timely communication is for your peace of mind. Our team is pulling your case file right now to provide a comprehensive update before end of business today."
+    },
+    wellness: {
+      name: "Health & Beauty",
+      review: "Booked a balayage appointment and left with hair that turned out bright orange and damaged.",
+      response: "Hello. We take your hair health and satisfaction extremely seriously. Please come back into the salon this week so our master stylist can perform a complimentary corrective treatment."
+    },
+    veterinary: {
+      name: "Veterinary & Pets",
+      review: "Was hit with a massive surprise bill at discharge without anyone discussing costs beforehand.",
+      response: "Hello. We regret the lack of financial clarity regarding your pet's treatment charges. Please speak with our practice director directly so we can review the itemized statement together."
     }
   };
 
   const handleGenerateResponse = () => {
     setIsGenerating(true);
     setTimeout(() => {
-      setAiResponse(verticalData[selectedVertical].response);
+      setAiResponse(verticalData[selectedVertical]?.response || "Hello. Thank you for your feedback. We take your experience seriously and want to resolve this for you privately.");
       setIsGenerating(false);
     }, 800);
   };
@@ -202,7 +332,7 @@ export default function RevPulsePlatform() {
     setTimeout(() => {
       setChatLogs(prev => [...prev, { 
         sender: 'kaku', 
-        text: `I've reviewed your query against our Knowledge Center guides. Here is the recommended step-by-step approach.` 
+        text: `I've cross-referenced your query across our multi-industry Knowledge Center (spanning Trades, Healthcare, Legal, Retail, Veterinary, and Hospitality). Here is the verified operational framework.` 
       }]);
     }, 700);
   };
@@ -282,7 +412,7 @@ export default function RevPulsePlatform() {
             <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-blue-950/60 border border-blue-800/50 text-blue-300 text-xs font-semibold rounded-full uppercase tracking-wider">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-                <span>AI-Assisted Review Management & Workflows</span>
+                <span>Multi-Industry AI Reputation & Omnichannel Suite</span>
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
@@ -290,7 +420,7 @@ export default function RevPulsePlatform() {
               </h1>
               
               <p className="text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                Streamline your local business reputation management. Generate professional draft responses and organize customer follow-ups across SMS, WhatsApp, and Email with full human oversight.
+                Protect your reputation across trades, healthcare, legal, retail, hospitality, and professional services. Generate professional draft responses and organize follow-ups with full human oversight.
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
@@ -327,31 +457,31 @@ export default function RevPulsePlatform() {
             </div>
           </div>
 
-          {/* 3-Step Simple Contractor Workflow */}
+          {/* 3-Step Simple Workflow */}
           <section className="space-y-8 pt-8 border-t border-gray-800/80">
             <div className="text-center space-y-2">
               <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">How It Works</span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Simple 3-Step Contractor Workflow</h2>
-              <p className="text-xs text-gray-400 max-w-lg mx-auto">Designed for busy local service operators to maintain total control over every customer touchpoint.</p>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Simple 3-Step Multi-Industry Workflow</h2>
+              <p className="text-xs text-gray-400 max-w-lg mx-auto">Designed for operators across all sectors to maintain absolute control over every customer touchpoint.</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4 relative">
                 <div className="w-10 h-10 rounded-2xl bg-blue-600/20 border border-blue-500/40 text-blue-400 font-extrabold flex items-center justify-center text-sm">1</div>
                 <h3 className="text-lg font-bold text-white">Review & Feedback Intercept</h3>
-                <p className="text-xs text-gray-400 leading-relaxed">Incoming ratings and feedback from connected business profiles are gathered into your unified dashboard stream.</p>
+                <p className="text-xs text-gray-400 leading-relaxed">Incoming ratings, client inquiries, and platform feedback are gathered into your unified multi-channel dashboard.</p>
               </div>
 
               <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4 relative">
                 <div className="w-10 h-10 rounded-2xl bg-indigo-600/20 border border-indigo-500/40 text-indigo-400 font-extrabold flex items-center justify-center text-sm">2</div>
                 <h3 className="text-lg font-bold text-white">Human-Approved AI Drafting</h3>
-                <p className="text-xs text-gray-400 leading-relaxed">Kaku assists in drafting calm, professional responses tailored to your industry. You retain final approval before anything is published.</p>
+                <p className="text-xs text-gray-400 leading-relaxed">Kaku drafts professional replies tailored to your specific industry guidelines. You retain final approval before publishing.</p>
               </div>
 
               <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4 relative">
                 <div className="w-10 h-10 rounded-2xl bg-purple-600/20 border border-purple-500/40 text-purple-400 font-extrabold flex items-center justify-center text-sm">3</div>
                 <h3 className="text-lg font-bold text-white">Omnichannel Follow-Up</h3>
-                <p className="text-xs text-gray-400 leading-relaxed">Route private resolution links or follow-ups via SMS, WhatsApp, or Email to resolve client concerns efficiently.</p>
+                <p className="text-xs text-gray-400 leading-relaxed">Route private resolution links or recovery sequences via SMS, WhatsApp, or Email to resolve client concerns efficiently.</p>
               </div>
             </div>
           </section>
@@ -377,11 +507,11 @@ export default function RevPulsePlatform() {
 
               <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4 pt-6">
                 <div>
-                  <h3 className="text-lg font-bold text-white">⚡ Interactive Review Draft Demo</h3>
-                  <p className="text-xs text-gray-400">Select your industry and test how Kaku helps draft professional private replies.</p>
+                  <h3 className="text-lg font-bold text-white">⚡ Interactive Multi-Industry Demo</h3>
+                  <p className="text-xs text-gray-400">Select your industry and test how Kaku drafts professional private replies.</p>
                 </div>
                 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 max-w-md justify-end">
                   {Object.keys(verticalData).map((key) => (
                     <button
                       key={key}
@@ -390,7 +520,7 @@ export default function RevPulsePlatform() {
                         setSampleReview(verticalData[key].review);
                         setAiResponse('');
                       }}
-                      className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
+                      className={`px-3 py-1.5 rounded-xl text-[11px] font-semibold transition cursor-pointer ${
                         selectedVertical === key 
                           ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' 
                           : 'bg-gray-800 text-gray-400 hover:text-white'
@@ -405,7 +535,7 @@ export default function RevPulsePlatform() {
               <div className="space-y-4 mb-6">
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">
-                    Sample Feedback ({verticalData[selectedVertical].name})
+                    Sample Feedback ({verticalData[selectedVertical]?.name})
                   </label>
                   <textarea 
                     value={sampleReview} 
@@ -439,9 +569,9 @@ export default function RevPulsePlatform() {
       {activeTab === 'knowledge' && (
         <section className="py-20 px-6 max-w-5xl mx-auto space-y-8">
           <div className="text-center space-y-3">
-            <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">Enterprise Resource Hub</span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-white">RevPulse Knowledge Center</h1>
-            <p className="text-sm text-gray-400 max-w-xl mx-auto">Search industry guides, setup instructions, and multi-language scenario playbooks instantly.</p>
+            <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">Comprehensive Enterprise Hub</span>
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-white">RevPulse Multi-Industry Knowledge Center</h1>
+            <p className="text-sm text-gray-400 max-w-xl mx-auto">Search across HVAC, Healthcare, Construction, Hospitality, E-Commerce, Automotive, Finance, Legal, Wellness, and Veterinary research articles.</p>
           </div>
 
           <div className="bg-gray-900 border border-gray-800 p-6 rounded-3xl space-y-4 shadow-xl">
@@ -449,22 +579,29 @@ export default function RevPulsePlatform() {
               type="text" 
               value={knowledgeSearch}
               onChange={(e) => setKnowledgeSearch(e.target.value)}
-              placeholder="🔍 Search FAQs, HVAC guides, messaging setup, or trial workflows..."
+              placeholder="🔍 Search HVAC, dental wait times, permit red tags, medical aesthetic reactions, veterinary bills..."
               className="w-full bg-gray-950 border border-gray-800 rounded-2xl px-5 py-4 text-xs text-white focus:outline-none focus:border-blue-500 shadow-inner"
             />
             
             <div className="flex flex-wrap gap-2 pt-2">
               {[
-                { id: 'all', label: 'All Topics' },
+                { id: 'all', label: 'All Industries' },
                 { id: 'hvac', label: 'HVAC & Trades' },
                 { id: 'dental', label: 'Dental & Healthcare' },
-                { id: 'omnichannel', label: 'SMS & Messaging' },
-                { id: 'onboarding', label: 'Trial & Billing' }
+                { id: 'contractors', label: 'Contractors & Permits' },
+                { id: 'hospitality', label: 'Restaurants & Dining' },
+                { id: 'hotels', label: 'Hotels & Rentals' },
+                { id: 'ecommerce', label: 'E-Commerce' },
+                { id: 'automotive', label: 'Auto Repair' },
+                { id: 'financial', label: 'Finance & CPAs' },
+                { id: 'legal', label: 'Legal & Consulting' },
+                { id: 'wellness', label: 'Health & Beauty' },
+                { id: 'veterinary', label: 'Veterinary & Pets' }
               ].map(cat => (
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-xl text-[11px] font-semibold transition cursor-pointer ${
                     selectedCategory === cat.id 
                       ? 'bg-blue-600 text-white shadow-lg' 
                       : 'bg-gray-800 text-gray-400 hover:text-white'
@@ -897,7 +1034,7 @@ export default function RevPulsePlatform() {
                   type="text" 
                   value={chatMessage} 
                   onChange={(e) => setChatMessage(e.target.value)}
-                  placeholder="Ask Kaku or search knowledge articles..." 
+                  placeholder="Ask Kaku anything across HVAC, Dental, Legal, Retail, Veterinary..." 
                   className="flex-1 bg-gray-900 border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-gray-200 focus:outline-none focus:border-blue-500"
                 />
                 <button type="submit" className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition border-none cursor-pointer">Send</button>
@@ -923,7 +1060,7 @@ export default function RevPulsePlatform() {
               <span>Ask Kaku / Situation Room</span>
               <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
             </div>
-            <div className="text-[11px] text-blue-100 font-medium">Get instant guidance</div>
+            <div className="text-[11px] text-blue-100 font-medium">Multi-Industry AI Ready</div>
           </div>
         </button>
       </div>
