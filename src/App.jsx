@@ -1,6 +1,63 @@
 import React, { useState } from 'react';
 import { supabase } from './components/supabaseClient';
 
+const translations = {
+  en: {
+    heroTitle: "Manage Customer Feedback Before Small Issues Escalate.",
+    subtitle: "Protect your reputation across trades, healthcare, legal, retail, hospitality, and professional services. Generate professional draft responses and organize follow-ups with full human oversight.",
+    ctaTrial: "Start 7-Day Free Trial — No Card Required",
+    exploreKnowledge: "📚 Explore Knowledge Center",
+    howItWorks: "How It Works",
+    workflowTitle: "Simple 3-Step Multi-Industry Workflow",
+    workflowSubtitle: "Designed for operators across all sectors to maintain absolute control over every customer touchpoint."
+  },
+  fr: {
+    heroTitle: "Gérez les avis clients avant que les petits problèmes ne s'aggravent.",
+    subtitle: "Protégez votre réputation dans tous les secteurs (artisanat, santé, juridique, commerce, hôtellerie). Générez des réponses professionnelles et organisez vos suivis avec un contrôle humain total.",
+    ctaTrial: "Commencez l'essai gratuit de 7 jours — Sans carte",
+    exploreKnowledge: "📚 Explorer le centre de connaissances",
+    howItWorks: "Comment ça marche",
+    workflowTitle: "Flux de travail multi-sectoriel simple en 3 étapes",
+    workflowSubtitle: "Conçu pour les opérateurs de tous secteurs afin de garder le contrôle absolu sur chaque point de contact."
+  },
+  es: {
+    heroTitle: "Gestione los comentarios de los clientes antes de que los problemas escalen.",
+    subtitle: "Proteja su reputación en comercios, salud, legal, retail, hostelería y servicios profesionales. Genere borradores profesionales y organice seguimientos con total supervisión humana.",
+    ctaTrial: "Comience la prueba gratuita de 7 días — Sin tarjeta",
+    exploreKnowledge: "📚 Explorar Centro de Conocimiento",
+    howItWorks: "Cómo Funciona",
+    workflowTitle: "Flujo de trabajo multiindustria simple de 3 pasos",
+    workflowSubtitle: "Diseñado para operadores en todos los sectores para mantener el control absoluto en cada punto de contacto."
+  },
+  it: {
+    heroTitle: "Gestisci i feedback dei clienti prima che i piccoli problemi degenerino.",
+    subtitle: "Proteggi la tua reputazione in tutti i settori con bozze di risposta professionali e monitoraggio umano completo.",
+    ctaTrial: "Inizia la prova gratuita di 7 giorni — Nessuna carta richiesta",
+    exploreKnowledge: "📚 Esplora il Centro Conoscenze",
+    howItWorks: "Come Funziona",
+    workflowTitle: "Semplice flusso di lavoro multi-settore in 3 passaggi",
+    workflowSubtitle: "Progettato per gli operatori di tutti i settori per mantenere il controllo assoluto su ogni interazione."
+  },
+  ar: {
+    heroTitle: "إدارة ملاحظات العملاء قبل تفاقم المشكلات الصغيرة.",
+    subtitle: "احمِ سمعتك عبر قطاعات التجارة والرعاية الصحية والخدمات القانونية والتجزئة والضيافة. أنشئ ردود مسودة احترافية ونظم المتابعات بإشراف بشري كامل.",
+    ctaTrial: "ابدأ التجربة المجانية لمدة 7 أيام - لا توجد بطاقة مطلوبة",
+    exploreKnowledge: "📚 استكشف مركز المعرفة",
+    howItWorks: "كيف تعمل المنصة",
+    workflowTitle: "سير عمل بسيط متعدد الصناعات من 3 خطوات",
+    workflowSubtitle: "مصمم للمشغلين عبر جميع القطاعات للحفاظ على التحكم المطلق في كل نقطة اتصال."
+  },
+  ur: {
+    heroTitle: "چھوٹی چھوٹی مشکلات بڑھنے سے پہلے کسٹمر کے تاثرات کا انتظام کریں۔",
+    subtitle: "تجارت، صحت کی دیکھ بھال، قانونی، خوردہ، مہمان نوازی اور پیشہ ورانہ خدمات میں اپنی ساکھ کی حفاظت کریں۔ پیشہ ورانہ ڈرافٹ جوابات تیار کریں۔",
+    ctaTrial: "7 دن کا مفت ٹرائل شروع کریں — کسی کارڈ کی ضرورت نہیں",
+    exploreKnowledge: "📚 نالج سینٹر دریافت کریں",
+    howItWorks: "یہ کیسے کام کرتا ہے",
+    workflowTitle: "آسان 3 قدمی ملٹی انڈسٹری ورک فلو",
+    workflowSubtitle: "تمام شعبوں کے آپریٹرز کے لیے ڈیزائن کیا گیا ہے تاکہ ہر کسٹمر ٹچ پوائنٹ پر مکمل کنٹرول برقرار رکھا جا سکے۔"
+  }
+};
+
 export default function RevPulsePlatform() {
   const [activeTab, setActiveTab] = useState('landing');
   const [selectedVertical, setSelectedVertical] = useState('hvac');
@@ -14,12 +71,13 @@ export default function RevPulsePlatform() {
   const [showConnectModal, setShowConnectModal] = useState(false);
   const [dashboardSubTab, setDashboardSubTab] = useState('overview');
 
+  const t = translations[selectedLanguage] || translations.en;
+
   // Knowledge Center State
   const [knowledgeSearch, setKnowledgeSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const knowledgeArticles = [
-    // 1. HVAC & Trades
     {
       id: 1,
       category: 'hvac',
@@ -34,7 +92,6 @@ export default function RevPulsePlatform() {
       summary: 'Managing high-panic heatwave/freeze breakdowns and communicating safety findings transparently.',
       content: 'During weather extremes, homeowners face high vulnerability. Frame safety discoveries (like cracked heat exchangers) with transparent documentation, photos, and clear explanation to avoid accusations of manufactured sales.'
     },
-    // 2. Dental & Healthcare
     {
       id: 3,
       category: 'dental',
@@ -49,7 +106,6 @@ export default function RevPulsePlatform() {
       summary: 'Providing transparent, plain-language financial estimates prior to major procedures to prevent chargebacks.',
       content: 'Proactively clarify out-of-network costs and coding breakdowns. Transparent communication before treatment drastically reduces patient anxiety and post-procedure billing disputes.'
     },
-    // 3. General Contractors & Municipalities
     {
       id: 5,
       category: 'contractors',
@@ -64,7 +120,6 @@ export default function RevPulsePlatform() {
       summary: 'Handling unexpected structural rot, outdated wiring, or plumbing code traps mid-project.',
       content: 'Use digital change-order documentation with photo evidence before opening walls or performing code-mandated upgrades, ensuring the homeowner approves costs before work proceeds.'
     },
-    // 4. Restaurants & Hospitality
     {
       id: 7,
       category: 'hospitality',
@@ -79,7 +134,6 @@ export default function RevPulsePlatform() {
       summary: 'Immediate crisis response when cross-contamination or allergen oversights occur during service.',
       content: 'Mandate immediate kitchen accountability, direct general manager involvement, and immediate medical assistance if necessary. Follow up within 2 hours with a sincere, documented apology.'
     },
-    // 5. Hotels & Short-Term Rentals
     {
       id: 9,
       category: 'hotels',
@@ -94,7 +148,6 @@ export default function RevPulsePlatform() {
       summary: 'Eliminating hidden fee shock through upfront disclosure across all digital booking channels.',
       content: 'Disclose all parking, resort, and cleaning fees transparently prior to checkout to eliminate negative reviews driven by fee shock and increase direct repeat bookings.'
     },
-    // 6. E-Commerce & Online Retail
     {
       id: 11,
       category: 'ecommerce',
@@ -102,7 +155,6 @@ export default function RevPulsePlatform() {
       summary: 'Mitigating ghost tracking, delivery delays, and return friction to protect customer lifetime value.',
       content: 'Notify customers proactively via automated SMS/email when carriers experience transit bottlenecks. Offer transparent, effortless return portals to drive long-term brand loyalty.'
     },
-    // 7. Automotive Repair & Dealerships
     {
       id: 12,
       category: 'automotive',
@@ -110,7 +162,6 @@ export default function RevPulsePlatform() {
       summary: 'Using high-resolution photo and video text links to build absolute transparency in auto repair.',
       content: 'Send visual inspection links of worn brake pads or leaking gaskets directly to customers before beginning repairs. Complete transparency eliminates customer skepticism and boosts approval rates.'
     },
-    // 8. Financial Services & CPAs
     {
       id: 13,
       category: 'financial',
@@ -118,7 +169,6 @@ export default function RevPulsePlatform() {
       summary: 'Preventing the black-hole client experience through structured weekly status reporting.',
       content: 'Implement automated weekly progress updates during loan underwriting or tax filing season so clients never experience radio silence regarding their capital or filings.'
     },
-    // 9. Legal & Professional Services
     {
       id: 14,
       category: 'legal',
@@ -126,7 +176,6 @@ export default function RevPulsePlatform() {
       summary: 'Eliminating cryptic invoices and communication blackouts in law firms and advisory consultancies.',
       content: 'Send detailed, value-focused itemized invoices alongside a brief Friday afternoon status summary email, ensuring clients understand the tangible progress being delivered.'
     },
-    // 10. Health, Beauty & Wellness
     {
       id: 15,
       category: 'wellness',
@@ -134,7 +183,6 @@ export default function RevPulsePlatform() {
       summary: 'Handling color corrections, med-spa skin reactions, and strict cancellation policies professionally.',
       content: 'Maintain signed pre-treatment consent forms, clear patch-testing protocols, and compassionate, flexible conflict resolution for genuine personal emergencies.'
     },
-    // 11. Veterinary & Pet Care
     {
       id: 16,
       category: 'veterinary',
@@ -332,7 +380,7 @@ export default function RevPulsePlatform() {
     setTimeout(() => {
       setChatLogs(prev => [...prev, { 
         sender: 'kaku', 
-        text: `I've cross-referenced your query across our multi-industry Knowledge Center (spanning Trades, Healthcare, Legal, Retail, Veterinary, and Hospitality). Here is the verified operational framework.` 
+        text: `I've cross-referenced your query across our multi-industry Knowledge Center. Here is the verified operational framework.` 
       }]);
     }, 700);
   };
@@ -416,24 +464,24 @@ export default function RevPulsePlatform() {
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
-                Manage Customer Feedback Before Small Issues Escalate.
+                {t.heroTitle}
               </h1>
               
               <p className="text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                Protect your reputation across trades, healthcare, legal, retail, hospitality, and professional services. Generate professional draft responses and organize follow-ups with full human oversight.
+                {t.subtitle}
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
                 <button 
                   onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
                   className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2 border-none cursor-pointer">
-                  <span>Start 7-Day Free Trial — No Card Required</span>
+                  <span>{t.ctaTrial}</span>
                   <span>→</span>
                 </button>
                 <button 
                   onClick={() => setActiveTab('knowledge')}
                   className="px-6 py-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-300 font-semibold rounded-xl transition flex items-center justify-center space-x-2 cursor-pointer">
-                  <span>📚 Explore Knowledge Center</span>
+                  <span>{t.exploreKnowledge}</span>
                 </button>
               </div>
             </div>
@@ -460,9 +508,9 @@ export default function RevPulsePlatform() {
           {/* 3-Step Simple Workflow */}
           <section className="space-y-8 pt-8 border-t border-gray-800/80">
             <div className="text-center space-y-2">
-              <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">How It Works</span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Simple 3-Step Multi-Industry Workflow</h2>
-              <p className="text-xs text-gray-400 max-w-lg mx-auto">Designed for operators across all sectors to maintain absolute control over every customer touchpoint.</p>
+              <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{t.howItWorks}</span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white">{t.workflowTitle}</h2>
+              <p className="text-xs text-gray-400 max-w-lg mx-auto">{t.workflowSubtitle}</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
