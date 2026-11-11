@@ -39,7 +39,6 @@ const translations = {
     askKakuSubtitle: "Multi-Industry AI Ready",
     footerRights: "© 2026 RevPulse. All rights reserved. Operator: Imran Mateen (support@revpulse.tools)",
     
-    // Pricing Page Translations
     pricingHeader: "Transparent Pricing & Plans",
     pricingSub: "Select your tier to initialize secure checkout and instant workspace activation.",
     starterPlanBadge: "Starter Plan",
@@ -56,7 +55,29 @@ const translations = {
     proFeature1: "✓ Up to 3 active locations",
     proFeature2: "✓ Omnichannel SMS, WhatsApp & Email suite",
     proFeature3: "✓ Built-in Testing & Sandbox Lab",
-    mostPopular: "Most Popular"
+    mostPopular: "Most Popular",
+
+    // Legal Page Translations
+    legalSubtitle: "Legal & Compliance",
+    legalTitle: "RevPulse — Terms of Use & Privacy Policy",
+    legalMeta: "Effective Date: November 11, 2026 | Operator: Imran Mateen (support@revpulse.tools)",
+    part1Title: "Part 1: Privacy Policy",
+    part1Desc: "RevPulse is operated by Imran Mateen (“RevPulse,” “we,” “us,” or “our”). This Privacy Policy explains how we collect, use, share, retain, and protect information when you visit www.revpulse.tools, create an account, use the RevPulse workspace, or contact us.",
+    p1Heading1: "1. Information We Collect",
+    p1Text1: "We collect information you provide directly (name, email, telephone number, business name, credentials, billing info, review text, and support requests). We also collect automatic technical telemetry and integration metadata when you connect business profiles.",
+    p1Heading2: "2. How We Use Information",
+    p1Text2: "We use information to operate the Service, administer your account and 7-day trial, generate AI-assisted review response drafts, process authorized communication workflows, and send service notices. We do not sell personal information or customer contact lists.",
+    p1Heading3: "3. AI-Assisted Features & Human Responsibility",
+    p1Text3: "AI-generated suggestions can be imperfect. You are solely responsible for reviewing all drafts before publication, verifying legal compliance, and ensuring no sensitive information is exposed.",
+    part2Title: "Part 2: Terms of Use",
+    part2Desc: "These Terms of Use govern your access to the RevPulse platform provided by Imran Mateen. By creating an account or starting a trial, you agree to these terms.",
+    p2Heading1: "1. Trial, Paid Plans & Billing",
+    p2Text1: "RevPulse offers an unrestricted 7-day free trial without requiring a payment card upfront. Paid subscription plans are billed monthly ($29/mo Starter, $79/mo Pro). You may cancel anytime through your account settings or by emailing support@revpulse.tools.",
+    p2Heading2: "2. Responsible Communications & Consent",
+    p2Text2: "If you use RevPulse for SMS, WhatsApp, or email messaging, you are the sender and are solely responsible for obtaining proper recipient consent, honoring opt-outs, and complying with carrier guidelines and applicable laws.",
+    p2Heading3: "3. Contact Information",
+    p2Text3: "For any questions regarding these terms or privacy inquiries, contact Imran Mateen directly at",
+    backToOverview: "← Back to Overview"
   },
   fr: {
     overview: "Aperçu",
@@ -111,7 +132,28 @@ const translations = {
     proFeature1: "✓ Jusqu'à 3 emplacements actifs",
     proFeature2: "✓ Suite omnicanale SMS, WhatsApp et e-mail",
     proFeature3: "✓ Laboratoire de test et bac à sable intégré",
-    mostPopular: "Le Plus Populaire"
+    mostPopular: "Le Plus Populaire",
+
+    legalSubtitle: "Juridique & Conformité",
+    legalTitle: "RevPulse — Conditions d'utilisation & Politique de confidentialité",
+    legalMeta: "Date d'effet : 11 novembre 2026 | Opérateur : Imran Mateen (support@revpulse.tools)",
+    part1Title: "Partie 1 : Politique de confidentialité",
+    part1Desc: "RevPulse est exploité par Imran Mateen (« RevPulse », « nous », « notre »). Cette politique de confidentialité explique comment nous collectons, utilisons, partageons et protégeons vos informations.",
+    p1Heading1: "1. Informations que nous collectons",
+    p1Text1: "Nous collectons les informations que vous fournissez directement (nom, e-mail, téléphone, nom d'entreprise, identifiants, informations de facturation).",
+    p1Heading2: "2. Comment nous utilisons les informations",
+    p1Text2: "Nous utilisons les informations pour exploiter le Service, administrer votre compte et votre essai de 7 jours, et générer des projets de réponse.",
+    p1Heading3: "3. Fonctionnalités assistées par IA et responsabilité humaine",
+    p1Text3: "Les suggestions générées par l'IA peuvent être imperfectes. Vous êtes seul responsable de la révision de tous les projets avant publication.",
+    part2Title: "Partie 2 : Conditions d'utilisation",
+    part2Desc: "Ces conditions d'utilisation régissent votre accès à la plateforme RevPulse fournie par Imran Mateen.",
+    p2Heading1: "1. Essai, abonnements payants et facturation",
+    p2Text1: "RevPulse offre un essai gratuit de 7 jours sans carte bancaire requise. Les abonnements payants sont facturés mensuellement (29 $/mois Starter, 79 $/mois Pro).",
+    p2Heading2: "2. Communications responsables et consentement",
+    p2Text2: "Si vous utilisez RevPulse pour des messages SMS, WhatsApp ou e-mail, vous êtes l'expéditeur et seul responsable de l'obtention du consentement.",
+    p2Heading3: "3. Coordonnées",
+    p2Text3: "Pour toute question concernant ces conditions ou la confidentialité, contactez directement Imran Mateen à",
+    backToOverview: "← Retour à l'aperçu"
   },
   es: {
     overview: "Resumen",
@@ -166,7 +208,28 @@ const translations = {
     proFeature1: "✓ Hasta 3 ubicaciones activas",
     proFeature2: "✓ Suite omnicanal de SMS, WhatsApp y Email",
     proFeature3: "✓ Laboratorio de pruebas y entorno de pruebas integrado",
-    mostPopular: "Más Popular"
+    mostPopular: "Más Popular",
+
+    legalSubtitle: "Legal y Cumplimiento",
+    legalTitle: "RevPulse — Términos de Uso y Política de Privacidad",
+    legalMeta: "Fecha de vigencia: 11 de noviembre de 2026 | Operador: Imran Mateen (support@revpulse.tools)",
+    part1Title: "Parte 1: Política de Privacidad",
+    part1Desc: "RevPulse es operado por Imran Mateen (“RevPulse”, “nosotros” o “nuestro”). Esta Política de Privacidad explica cómo recopilamos, usamos, compartimos y protegemos la información.",
+    p1Heading1: "1. Información que Recopilamos",
+    p1Text1: "Recopilamos información que usted proporciona directamente (nombre, correo electrónico, teléfono, nombre de empresa, credenciales, información de facturación).",
+    p1Heading2: "2. Cómo Usamos la Información",
+    p1Text2: "Utilizamos la información para operar el Servicio, administrar su cuenta y su prueba de 7 días, y generar borradores de respuesta.",
+    p1Heading3: "3. Funciones Asistidas por IA y Responsabilidad Humana",
+    p1Text3: "Las sugerencias generadas por IA pueden ser imperfectas. Usted es el único responsable de revisar todos los borradores antes de su publicación.",
+    part2Title: "Parte 2: Términos de Uso",
+    part2Desc: "Estos Términos de Uso rigen su acceso a la plataforma RevPulse proporcionada por Imran Mateen.",
+    p2Heading1: "1. Prueba, Planes de Pago y Facturación",
+    p2Text1: "RevPulse ofrece una prueba gratuita de 7 días sin requerir tarjeta por adelantado. Los planes de suscripción se cobran mensualmente ($29/mes Starter, $79/mes Pro).",
+    p2Heading2: "2. Comunicaciones Responsables y Consentimiento",
+    p2Text2: "Si utiliza RevPulse para mensajería SMS, WhatsApp o correo electrónico, usted es el remitente y único responsable de obtener el consentimiento adecuado.",
+    p2Heading3: "3. Información de Contacto",
+    p2Text3: "Para cualquier pregunta sobre estos términos o consultas de privacidad, contacte directamente a Imran Mateen en",
+    backToOverview: "← Volver al Resumen"
   },
   it: {
     overview: "Panoramica",
@@ -221,7 +284,28 @@ const translations = {
     proFeature1: "✓ Fino a 3 sedi attive",
     proFeature2: "✓ Suite omnicanale SMS, WhatsApp ed Email",
     proFeature3: "✓ Laboratorio di test e Sandbox integrato",
-    mostPopular: "Più Popolare"
+    mostPopular: "Più Popolare",
+
+    legalSubtitle: "Legale e Conformità",
+    legalTitle: "RevPulse — Termini di Utilizzo e Informativa sulla Privacy",
+    legalMeta: "Data di entrata in vigore: 11 novembre 2026 | Operatore: Imran Mateen (support@revpulse.tools)",
+    part1Title: "Parte 1: Informativa sulla Privacy",
+    part1Desc: "RevPulse è gestito da Imran Mateen (“RevPulse”, “noi”, “nostro”). Questa Informativa sulla Privacy spiega come raccogliamo, utilizziamo, condividiamo e proteggiamo le informazioni.",
+    p1Heading1: "1. Informazioni che Raccogliamo",
+    p1Text1: "Raccogliamo le informazioni fornite direttamente (nome, email, numero di telefono, nome dell'azienda, credenziali, dati di fatturazione).",
+    p1Heading2: "2. Come Utilizziamo le Informazioni",
+    p1Text2: "Utilizziamo le informazioni per far funzionare il Servizio, gestire il tuo account e la prova di 7 giorni, e generare bozze di risposta.",
+    p1Heading3: "3. Funzionalità Assistite da IA e Responsabilità Umana",
+    p1Text3: "I suggerimenti generati dall'intelligenza artificiale possono essere imperfetti. Sei l'unico responsabile della revisione di tutte le bozze prima della pubblicazione.",
+    part2Title: "Parte 2: Termini di Utilizzo",
+    part2Desc: "I presenti Termini di Utilizzo regolano l'accesso alla piattaforma RevPulse fornita da Imran Mateen.",
+    p2Heading1: "1. Prova, Piani a Pagamento e Fatturazione",
+    p2Text1: "RevPulse offre una prova gratuita di 7 giorni senza carta di credito richiesta. I piani di abbonamento sono fatturati mensilmente ($29/mese Starter, $79/mese Pro).",
+    p2Heading2: "2. Comunicazioni Responsabili e Consenso",
+    p2Text2: "Se utilizzi RevPulse per messaggi SMS, WhatsApp o email, sei il mittente e l'unico responsabile dell'ottenimento del consenso.",
+    p2Heading3: "3. Informazioni di Contatto",
+    p2Text3: "Per qualsiasi domanda sui presenti termini o richieste di privacy, contatta direttamente Imran Mateen all'indirizzo",
+    backToOverview: "← Torna alla Panoramica"
   },
   ar: {
     overview: "نظرة عامة",
@@ -276,7 +360,28 @@ const translations = {
     proFeature1: "✓ ما يصل إلى 3 مواقع نشطة",
     proFeature2: "✓ مجموعة قنوات الرسائل القصيرة، الواتساب والبريد",
     proFeature3: "✓ معمل اختبار Sandbox مدمج",
-    mostPopular: "الأكثر طلباً"
+    mostPopular: "الأكثر طلباً",
+
+    legalSubtitle: "الشؤون القانونية والامتثال",
+    legalTitle: "RevPulse — شروط الاستخدام وسياسة الخصوصية",
+    legalMeta: "تاريخ النفاذ: 11 نوفمبر 2026 | المشغل: عمران متين (support@revpulse.tools)",
+    part1Title: "الجزء 1: سياسة الخصوصية",
+    part1Desc: "يتم تشغيل RevPulse بواسطة عمران متين (“RevPulse”، “نحن”، “لنا”). توضح سياسة الخصوصية هذه كيفية جمعنا للمعلومات واستخدامها ومشاركتها وحمايتها.",
+    p1Heading1: "1. المعلومات التي نجمعها",
+    p1Text1: "نجمع المعلومات التي تقدمها مباشرة (الاسم، البريد الإلكتروني، رقم الهاتف، اسم الشركة، بيانات الاعتماد، معلومات الفوترة).",
+    p1Heading2: "2. كيف نستخدم المعلومات",
+    p1Text2: "نستخدم المعلومات لتشغيل الخدمة، وإدارة حسابك والتجربة المجانية لمدة 7 أيام، وإنشاء مسودات الردود.",
+    p1Heading3: "3. الميزات المدعومة بالذكاء الاصطناعي والمسؤولية البشرية",
+    p1Text3: "قد تكون المقترحات الناتجة عن الذكاء الاصطناعي غير كاملة. أنت وحدك المسؤول عن مراجعة جميع المسودات قبل النشر.",
+    part2Title: "الجزء 2: شروط الاستخدام",
+    part2Desc: "تخضع شروط الاستخدام هذه لاستخدامك لمنصة RevPulse المقدمة من عمران متين.",
+    p2Heading1: "1. التجربة، الخطط المدفوعة والفوترة",
+    p2Text1: "توفر RevPulse تجربة مجانية لمدة 7 أيام دون الحاجة لبطاقة دفع مقدماً. يتم فوترة خطط الاشتراك شهرياً ($29/شهرياً للأساسية، $79/شهرياً للاحترافية).",
+    p2Heading2: "2. الاتصالات المسؤولة والموافقة",
+    p2Text2: "إذا كنت تستخدم RevPulse لإرسال الرسائل القصيرة أو الواتساب أو البريد الإلكتروني، فأنت المرسل والمسؤول الوحيد عن الحصول على الموافقة.",
+    p2Heading3: "3. معلومات الاتصال",
+    p2Text3: "لأية أسئلة بخصوص هذه الشروط أو استفسارات الخصوصية، تواصل مباشرة مع عمران متين عبر",
+    backToOverview: "← العودة إلى نظرة عامة"
   },
   ur: {
     overview: "جائزہ",
@@ -331,7 +436,28 @@ const translations = {
     proFeature1: "✓ 3 فعال مقامات تک",
     proFeature2: "✓ اومنی چینل ایس ایم ایس، واٹس ایپ اور ای میل سوٹ",
     proFeature3: "✓ بلٹ ان ٹیسٹنگ اینڈ سینڈ باکس لیب",
-    mostPopular: "سب سے زیادہ مقبول"
+    mostPopular: "سب سے زیادہ مقبول",
+
+    legalSubtitle: "قانونی اور تعمیل",
+    legalTitle: "RevPulse — استعمال کی شرائط اور پرائیویسی پالیسی",
+    legalMeta: "نافذ العمل تاریخ: 11 نومبر 2026 | آپریٹر: عمران متین (support@revpulse.tools)",
+    part1Title: "حصہ 1: پرائیویسی پالیسی",
+    part1Desc: "RevPulse عمران متین کے ذریعہ چلایا جاتا ہے۔ یہ پرائیویسی پالیسی بتاتی ہے کہ جب آپ تشریف لاتے ہیں تو ہم معلومات کو کیسے جمع اور محفوظ کرتے ہیں۔",
+    p1Heading1: "1. جو معلومات ہم جمع کرتے ہیں",
+    p1Text1: "ہم وہ معلومات جمع کرتے ہیں جو آپ براہ راست فراہم کرتے ہیں (نام، ای میل، فون نمبر، کاروبار کا نام، بلنگ کی معلومات)۔",
+    p1Heading2: "2. ہم معلومات کا استعمال کیسے کرتے ہیں",
+    p1Text2: "ہم اس سروس کو چلانے، آپ کے اکاؤنٹ اور 7 دن کے ٹرائل کا انتظام کرنے، اور ریویو رسپانس کے مسودے تیار کرنے کے لیے معلومات کا استعمال کرتے ہیں۔",
+    p1Heading3: "3. اے آئی معاون خصوصیات اور انسانی ذمہ داری",
+    p1Text3: "اے آئی کے تیار کردہ مشورے نامکمل ہو سکتے ہیں۔ آپ اشاعت سے پہلے تمام مسودات کا جائزہ لینے کے لیے مکمل طور پر ذمہ دار ہیں۔",
+    part2Title: "حصہ 2: استعمال کی شرائط",
+    part2Desc: "استعمال کی یہ شرائط RevPulse پلیٹ فارم تک آپ کی رسائی کو کنٹرول کرتی ہیں۔",
+    p2Heading1: "1. ٹرائل، پیڈ پلانز اور بلنگ",
+    p2Text1: "RevPulse بغیر کسی پیشگی کارڈ کے 7 دن کا مفت ٹرائل پیش کرتا ہے۔ سبسکرپشن پلان ماہانہ بل کیے جاتے ہیں۔",
+    p2Heading2: "2. ذمہ دارانہ مواصلات اور رضامندی",
+    p2Text2: "اگر آپ SMS، WhatsApp یا ای میل کے لیے RevPulse استعمال کرتے ہیں، تو آپ مرسل ہیں اور رضامندی حاصل کرنے کے ذمہ دار ہیں۔",
+    p2Heading3: "3. رابطے کی معلومات",
+    p2Text3: "ان شرائط سے متعلق کسی بھی سوال یا پرائیویسی کے استفسار کے لیے، براہ راست عمران متین سے رابطہ کریں",
+    backToOverview: "← واپس جائزہ پر"
   }
 };
 
@@ -1979,51 +2105,37 @@ export default function RevPulsePlatform() {
       {activeTab === 'legal' && (
         <section className="py-20 px-6 max-w-4xl mx-auto space-y-12 text-sm text-gray-300 leading-relaxed">
           <div className="border-b border-gray-800 pb-6">
-            <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">Legal & Compliance</span>
-            <h1 className="text-3xl font-extrabold text-white mt-1">RevPulse — Terms of Use & Privacy Policy</h1>
-            <p className="text-xs text-gray-400 mt-2">Effective Date: November 11, 2026 | Operator: Imran Mateen (support@revpulse.tools)</p>
+            <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{t.legalSubtitle}</span>
+            <h1 className="text-3xl font-extrabold text-white mt-1">{t.legalTitle}</h1>
+            <p className="text-xs text-gray-400 mt-2">{t.legalMeta}</p>
           </div>
 
           <div className="space-y-6">
-            <h2 className="text-xl font-bold text-white">Part 1: Privacy Policy</h2>
-            <p className="text-gray-400">
-              RevPulse is operated by Imran Mateen (“RevPulse,” “we,” “us,” or “our”). This Privacy Policy explains how we collect, use, share, retain, and protect information when you visit www.revpulse.tools, create an account, use the RevPulse workspace, or contact us.
-            </p>
-            <h3 className="text-base font-bold text-white">1. Information We Collect</h3>
-            <p className="text-gray-400">
-              We collect information you provide directly (name, email, telephone number, business name, credentials, billing info, review text, and support requests). We also collect automatic technical telemetry and integration metadata when you connect business profiles.
-            </p>
-            <h3 className="text-base font-bold text-white">2. How We Use Information</h3>
-            <p className="text-gray-400">
-              We use information to operate the Service, administer your account and 7-day trial, generate AI-assisted review response drafts, process authorized communication workflows, and send service notices. We do not sell personal information or customer contact lists.
-            </p>
-            <h3 className="text-base font-bold text-white">3. AI-Assisted Features & Human Responsibility</h3>
-            <p className="text-gray-400">
-              AI-generated suggestions can be imperfect. You are solely responsible for reviewing all drafts before publication, verifying legal compliance, and ensuring no sensitive information is exposed.
-            </p>
+            <h2 className="text-xl font-bold text-white">{t.part1Title}</h2>
+            <p className="text-gray-400">{t.part1Desc}</p>
+            <h3 className="text-base font-bold text-white">{t.p1Heading1}</h3>
+            <p className="text-gray-400">{t.p1Text1}</p>
+            <h3 className="text-base font-bold text-white">{t.p1Heading2}</h3>
+            <p className="text-gray-400">{t.p1Text2}</p>
+            <h3 className="text-base font-bold text-white">{t.p1Heading3}</h3>
+            <p className="text-gray-400">{t.p1Text3}</p>
           </div>
 
           <div className="space-y-6 pt-6 border-t border-gray-800">
-            <h2 className="text-xl font-bold text-white">Part 2: Terms of Use</h2>
+            <h2 className="text-xl font-bold text-white">{t.part2Title}</h2>
+            <p className="text-gray-400">{t.part2Desc}</p>
+            <h3 className="text-base font-bold text-white">{t.p2Heading1}</h3>
+            <p className="text-gray-400">{t.p2Text1}</p>
+            <h3 className="text-base font-bold text-white">{t.p2Heading2}</h3>
+            <p className="text-gray-400">{t.p2Text2}</p>
+            <h3 className="text-base font-bold text-white">{t.p2Heading3}</h3>
             <p className="text-gray-400">
-              These Terms of Use govern your access to the RevPulse platform provided by Imran Mateen. By creating an account or starting a trial, you agree to these terms.
-            </p>
-            <h3 className="text-base font-bold text-white">1. Trial, Paid Plans & Billing</h3>
-            <p className="text-gray-400">
-              RevPulse offers an unrestricted 7-day free trial without requiring a payment card upfront. Paid subscription plans are billed monthly ($29/mo Starter, $79/mo Pro). You may cancel anytime through your account settings or by emailing support@revpulse.tools.
-            </p>
-            <h3 className="text-base font-bold text-white">2. Responsible Communications & Consent</h3>
-            <p className="text-gray-400">
-              If you use RevPulse for SMS, WhatsApp, or email messaging, you are the sender and are solely responsible for obtaining proper recipient consent, honoring opt-outs, and complying with carrier guidelines and applicable laws.
-            </p>
-            <h3 className="text-base font-bold text-white">3. Contact Information</h3>
-            <p className="text-gray-400">
-              For any questions regarding these terms or privacy inquiries, contact Imran Mateen directly at <strong>support@revpulse.tools</strong>.
+              {t.p2Text3} <strong>support@revpulse.tools</strong>.
             </p>
           </div>
 
           <button onClick={() => setActiveTab('landing')} className="px-5 py-3 bg-gray-800 hover:bg-gray-700 text-white text-xs font-semibold rounded-xl transition border-none cursor-pointer">
-            ← Back to Overview
+            {t.backToOverview}
           </button>
         </section>
       )}
