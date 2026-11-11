@@ -235,8 +235,7 @@ export default function RevPulsePlatform() {
                 <button onClick={() => setActiveTab('dashboard')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'dashboard' ? 'text-blue-400 font-semibold' : ''}`}>Customer Dashboard</button>
               )}
               <button onClick={() => setActiveTab('knowledge')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'knowledge' ? 'text-blue-400 font-semibold' : ''}`}>Knowledge Center</button>
-              <button onClick={() => setActiveTab('privacy')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'privacy' ? 'text-blue-400 font-semibold' : ''}`}>Privacy</button>
-              <button onClick={() => setActiveTab('terms')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'terms' ? 'text-blue-400 font-semibold' : ''}`}>Terms</button>
+              <button onClick={() => setActiveTab('legal')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'legal' ? 'text-blue-400 font-semibold' : ''}`}>Terms & Privacy</button>
             </nav>
           </div>
           
@@ -338,7 +337,6 @@ export default function RevPulsePlatform() {
             <p className="text-sm text-gray-400 max-w-xl mx-auto">Search industry research, omnichannel setup guides, and multi-language scenario playbooks instantly.</p>
           </div>
 
-          {/* Search Bar & Category Filters */}
           <div className="bg-gray-900 border border-gray-800 p-6 rounded-3xl space-y-4 shadow-xl">
             <input 
               type="text" 
@@ -371,7 +369,6 @@ export default function RevPulsePlatform() {
             </div>
           </div>
 
-          {/* Articles Grid */}
           <div className="grid md:grid-cols-2 gap-6">
             {filteredArticles.length > 0 ? (
               filteredArticles.map(article => (
@@ -390,6 +387,58 @@ export default function RevPulsePlatform() {
               </div>
             )}
           </div>
+        </section>
+      )}
+
+      {activeTab === 'legal' && (
+        <section className="py-20 px-6 max-w-4xl mx-auto space-y-12 text-sm text-gray-300 leading-relaxed">
+          <div className="border-b border-gray-800 pb-6">
+            <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">Legal & Compliance</span>
+            <h1 className="text-3xl font-extrabold text-white mt-1">RevPulse — Terms of Use & Privacy Policy</h1>
+            <p className="text-xs text-gray-400 mt-2">Effective Date: November 11, 2026 | Operator: Imran Mateen (support@revpulse.tools)</p>
+          </div>
+
+          <div className="space-y-6">
+            <h2 className="text-xl font-bold text-white">Part 1: Privacy Policy</h2>
+            <p className="text-gray-400">
+              RevPulse is operated by Imran Mateen (“RevPulse,” “we,” “us,” or “our”). This Privacy Policy explains how we collect, use, share, retain, and protect information when you visit www.revpulse.tools, create an account, use the RevPulse workspace, or contact us.
+            </p>
+            <h3 className="text-base font-bold text-white">1. Information We Collect</h3>
+            <p className="text-gray-400">
+              We collect information you provide directly (name, email, telephone number, business name, credentials, billing info, review text, and support requests). We also collect automatic technical telemetry and integration metadata when you connect Google, Yelp, or Facebook pages.
+            </p>
+            <h3 className="text-base font-bold text-white">2. How We Use Information</h3>
+            <p className="text-gray-400">
+              We use information to operate the Service, administer your account and 7-day trial, generate AI-assisted review response drafts, process authorized communication workflows, and send service notices. We do not sell personal information or customer contact lists.
+            </p>
+            <h3 className="text-base font-bold text-white">3. AI-Assisted Features & Human Responsibility</h3>
+            <p className="text-gray-400">
+              AI-generated suggestions can be imperfect. You are solely responsible for reviewing all drafts before publication, verifying legal compliance, and ensuring no sensitive information is exposed.
+            </p>
+          </div>
+
+          <div className="space-y-6 pt-6 border-t border-gray-800">
+            <h2 className="text-xl font-bold text-white">Part 2: Terms of Use</h2>
+            <p className="text-gray-400">
+              These Terms of Use govern your access to the RevPulse platform provided by Imran Mateen. By creating an account or starting a trial, you agree to these terms.
+            </p>
+            <h3 className="text-base font-bold text-white">1. Trial, Paid Plans & Billing</h3>
+            <p className="text-gray-400">
+              RevPulse offers an unrestricted 7-day free trial without requiring a credit card upfront. Paid subscription plans are billed monthly ($29/mo Starter, $79/mo Pro). You may cancel anytime through your account settings or by emailing support@revpulse.tools.
+            </p>
+            <h3 className="text-base font-bold text-white">2. Responsible Communications & Consent</h3>
+            <p className="text-gray-400">
+              If you use RevPulse for SMS, WhatsApp, or email messaging, you are the sender and are solely responsible for obtaining proper recipient consent, honoring opt-outs (STOP), and complying with carrier rules and applicable laws.
+            </p>
+            <h3 className="text-base font-bold text-white">3. Contact Information</h3>
+            <p className="text-gray-400">
+              For any questions regarding these terms or privacy inquiries, contact Imran Mateen directly at <strong>support@revpulse.tools</strong>.
+            </p>
+          </div>
+
+          <button onClick={() => setActiveTab('landing')} className="px-5 py-3 bg-gray-800 hover:bg-gray-700 text-white text-xs font-semibold rounded-xl transition border-none cursor-pointer">
+            ← Back to Overview
+          </button>
         </section>
       )}
 
@@ -640,22 +689,6 @@ export default function RevPulsePlatform() {
         </section>
       )}
 
-      {activeTab === 'privacy' && (
-        <section className="py-20 px-6 max-w-4xl mx-auto space-y-6">
-          <h1 className="text-3xl font-extrabold text-white">Privacy Policy</h1>
-          <p className="text-sm text-gray-400 leading-relaxed">At RevPulse, we respect your privacy and protect your business data.</p>
-          <button onClick={() => setActiveTab('landing')} className="px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-xl border-none cursor-pointer">Back to Overview</button>
-        </section>
-      )}
-
-      {activeTab === 'terms' && (
-        <section className="py-20 px-6 max-w-4xl mx-auto space-y-6">
-          <h1 className="text-3xl font-extrabold text-white">Terms of Use</h1>
-          <p className="text-sm text-gray-400 leading-relaxed">By accessing RevPulse, you agree to month-to-month subscription flexibility.</p>
-          <button onClick={() => setActiveTab('landing')} className="px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-xl border-none cursor-pointer">Back to Overview</button>
-        </section>
-      )}
-
       {showAuthModal && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-gray-900 border border-blue-500/40 rounded-3xl max-w-md w-full p-8 shadow-2xl relative">
@@ -770,10 +803,9 @@ export default function RevPulsePlatform() {
           <button onClick={() => setActiveTab('landing')} className="hover:text-white transition bg-transparent border-none cursor-pointer">Overview</button>
           <button onClick={() => setActiveTab('pricing')} className="hover:text-white transition bg-transparent border-none cursor-pointer">Pricing</button>
           <button onClick={() => setActiveTab('knowledge')} className="hover:text-white transition bg-transparent border-none cursor-pointer">Knowledge Center</button>
-          <button onClick={() => setActiveTab('privacy')} className="hover:text-white transition bg-transparent border-none cursor-pointer">Privacy Policy</button>
-          <button onClick={() => setActiveTab('terms')} className="hover:text-white transition bg-transparent border-none cursor-pointer">Terms of Use</button>
+          <button onClick={() => setActiveTab('legal')} className="hover:text-white transition bg-transparent border-none cursor-pointer">Terms & Privacy</button>
         </div>
-        <p>© 2026 RevPulse. All rights reserved.</p>
+        <p>© 2026 RevPulse. All rights reserved. Operator: Imran Mateen (support@revpulse.tools)</p>
       </footer>
     </div>
   );
