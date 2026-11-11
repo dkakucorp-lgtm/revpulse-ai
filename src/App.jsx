@@ -57,7 +57,6 @@ const translations = {
     proFeature3: "✓ Built-in Testing & Sandbox Lab",
     mostPopular: "Most Popular",
 
-    // Legal Page Translations
     legalSubtitle: "Legal & Compliance",
     legalTitle: "RevPulse — Terms of Use & Privacy Policy",
     legalMeta: "Effective Date: November 11, 2026 | Operator: Imran Mateen (support@revpulse.tools)",
@@ -450,7 +449,7 @@ const translations = {
     p1Heading3: "3. اے آئی معاون خصوصیات اور انسانی ذمہ داری",
     p1Text3: "اے آئی کے تیار کردہ مشورے نامکمل ہو سکتے ہیں۔ آپ اشاعت سے پہلے تمام مسودات کا جائزہ لینے کے لیے مکمل طور پر ذمہ دار ہیں۔",
     part2Title: "حصہ 2: استعمال کی شرائط",
-    part2Desc: "استعمال کی یہ شرائط RevPulse پلیٹ فارم تک آپ کی رسائی کو کنٹرول کرتی ہیں۔",
+    part2Desc: "استعمال کی یہ شرائط RevPulse پلیٹ فارم تک آپ کی رسائی کو کنٹرول کرتی کرتی ہیں۔",
     p2Heading1: "1. ٹرائل، پیڈ پلانز اور بلنگ",
     p2Text1: "RevPulse بغیر کسی پیشگی کارڈ کے 7 دن کا مفت ٹرائل پیش کرتا ہے۔ سبسکرپشن پلان ماہانہ بل کیے جاتے ہیں۔",
     p2Heading2: "2. ذمہ دارانہ مواصلات اور رضامندی",
@@ -1611,29 +1610,29 @@ export default function RevPulsePlatform() {
   const [showConnectModal, setShowConnectModal] = useState(false);
   const [dashboardSubTab, setDashboardSubTab] = useState('overview');
 
-  // Hero Slider State
+  // Hero Slider State with your new public filenames
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroSlides = [
     {
-      image: "A69AF971-CB4D-48CF-B7D1-95D2345645C6.PNG",
+      image: "A69AF971-CB4D-48CF-B7D1-95D2345645C6.png",
       badge: "AI-POWERED CUSTOMER FEEDBACK & REPUTATION",
       title: "Manage Customer Feedback Before Small Issues Escalate.",
       subtitle: "Identify concerns, generate professional draft responses, and keep every customer conversation on track — with full human oversight."
     },
     {
-      image: "EADDB785-F8BD-42CC-9F68-72FD955953DC.PNG",
+      image: "kaku-assistant-overview.png",
       badge: "MEET KAKU — YOUR AI BUSINESS ASSISTANT",
       title: "Better Decisions Begin With Better Guidance.",
       subtitle: "Ask Kaku for help with customer issues, response suggestions, and actionable next steps — across industries."
     },
     {
-      image: "62F92B95-9514-4E41-A9E1-C2C84CE1998B.PNG",
+      image: "omnichannel-workspace.png",
       badge: "OMNICHANNEL CUSTOMER CONVERSATIONS",
       title: "Bring Customer Conversations Into Focus.",
       subtitle: "Unify reviews, messages, and inquiries from multiple channels in one workspace, so your team can respond faster and stay in control."
     },
     {
-      image: "9B53E1D8-F366-4383-88BC-C5463F0B199D.PNG",
+      image: "9B53E1D8-F366-4383-88BC-C5463F0B199D.png",
       badge: "MULTI-INDUSTRY AI SOLUTION",
       title: "One Intelligent Platform. Multiple Industries.",
       subtitle: "Flexible customer experience management for businesses across different sectors."
