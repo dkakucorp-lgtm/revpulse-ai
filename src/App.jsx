@@ -12,10 +12,15 @@ export default function RevPulsePlatform() {
   
   const [showSituationRoom, setShowSituationRoom] = useState(false);
   const [showConnectModal, setShowConnectModal] = useState(false);
+  
+  // Interactive credential input state for each platform
+  const [connectingPlatform, setConnectingPlatform] = useState(null);
+  const [credentialInput, setCredentialInput] = useState('');
+  
   const [connectedPlatforms, setConnectedPlatforms] = useState({
-    google: true,
-    yelp: false,
-    facebook: false
+    google: { connected: true, details: 'Google Business Profile #8821' },
+    yelp: { connected: false, details: '' },
+    facebook: { connected: false, details: '' }
   });
 
   const [chatMessage, setChatMessage] = useState('');
@@ -91,6 +96,20 @@ export default function RevPulsePlatform() {
       pro: "https://buy.stripe.com/test_pro_79"
     };
     window.location.href = stripeLinks[planType] || "https://stripe.com";
+  };
+
+  const handleSaveCredentials = (e) => {
+    e.preventDefault();
+    if (!credentialInput.trim()) {
+      alert("Please enter your page link or ID.");
+      return;
+    }
+    setConnectedPlatforms(prev => ({
+      ...prev,
+      [connectingPlatform]: { connected: true, details: credentialInput }
+    }));
+    setConnectingPlatform(null);
+    setCredentialInput('');
   };
 
   const handleSendChatMessage = (e) => {
@@ -345,9 +364,9 @@ export default function RevPulsePlatform() {
             <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
               <div className="text-xs font-semibold text-gray-400 uppercase">Monitored Locations</div>
               <div className="text-3xl font-extrabold text-white mt-2">
-                {Object.values(connectedPlatforms).filter(Boolean.length > 0 ? Boolean : () => true).filter(v => v).length} Active
+                {Object.values(connectedPlatforms).filter(p => p.connected).length} Active
               </div>
-              <div className="text-xs text-blue-400 mt-2">Google, Yelp & FB OAuth Linked</div>
+              <div className="text-xs text-blue-400 mt-2">Google, Yelp & FB Channels Linked</div>
             </div>
             <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
               <div className="text-xs font-semibold text-gray-400 uppercase">Negative Reviews Intercepted</div>
@@ -515,61 +534,95 @@ export default function RevPulsePlatform() {
             <button onClick={() => setShowConnectModal(false)} className="absolute top-6 right-6 text-gray-400 hover:text-white text-sm font-bold bg-transparent border-none cursor-pointer">✕</button>
             <div>
               <h3 className="text-xl font-bold text-white mb-1">Connect Business Profiles</h3>
-              <p className="text-xs text-gray-400">Link your active review channels via secure OAuth token exchange.</p>
+              <p className="text-xs text-gray-400">Link your review channels via secure API token & URL handshake.</p>
             </div>
 
-            <div className="space-y-3">
-              <div className="flex items-center justify-between p-4 bg-gray-950 border border-gray-800 rounded-2xl">
-                <div className="flex items-center space-x-3">
-                  <span className="text-xl">📍</span>
-                  <div>
-                    <div className="text-xs font-bold text-white">Google Business Profile</div>
-                    <div className="text-[11px] text-emerald-400">Connected & Syncing</div>
-                  </div>
+            {connectingPlatform ? (
+              <form onSubmit={handleSaveCredentials} className="space-y-4">
+                <div className="p-3 bg-blue-950/40 border border-blue-800/50 rounded-xl text-xs text-blue-300">
+                  Enter your exact {connectingPlatform.toUpperCase()} Business Page URL or Location ID to initialize syncing.
                 </div>
-                <button 
-                  onClick={() => setConnectedPlatforms(p => ({...p, google: !p.google}))}
-                  className={`px-3 py-1.5 text-xs rounded-xl font-semibold border-none cursor-pointer ${connectedPlatforms.google ? 'bg-emerald-600/20 text-emerald-400' : 'bg-gray-800 text-gray-300'}`}>
-                  {connectedPlatforms.google ? 'Connected' : 'Connect'}
-                </button>
-              </div>
-
-              <div className="flex items-center justify-between p-4 bg-gray-950 border border-gray-800 rounded-2xl">
-                <div className="flex items-center space-x-3">
-                  <span className="text-xl">⭐</span>
-                  <div>
-                    <div className="text-xs font-bold text-white">Yelp Fusion API</div>
-                    <div className="text-[11px] text-gray-400">Monitor star ratings</div>
-                  </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-400 mb-1 capitalize">{connectingPlatform} Page URL / ID</label>
+                  <input 
+                    type="text"
+                    value={credentialInput}
+                    onChange={(e) => setCredentialInput(e.target.value)}
+                    placeholder={`https://${connectingPlatform}.com/your-business`}
+                    className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-purple-500"
+                    required
+                  />
                 </div>
-                <button 
-                  onClick={() => setConnectedPlatforms(p => ({...p, yelp: !p.yelp}))}
-                  className={`px-3 py-1.5 text-xs rounded-xl font-semibold border-none cursor-pointer ${connectedPlatforms.yelp ? 'bg-emerald-600/20 text-emerald-400' : 'bg-gray-800 text-gray-300'}`}>
-                  {connectedPlatforms.yelp ? 'Connected' : 'Connect'}
-                </button>
-              </div>
-
-              <div className="flex items-center justify-between p-4 bg-gray-950 border border-gray-800 rounded-2xl">
-                <div className="flex items-center space-x-3">
-                  <span className="text-xl">📘</span>
-                  <div>
-                    <div className="text-xs font-bold text-white">Facebook Business Page</div>
-                    <div className="text-[11px] text-gray-400">Inbox & Messenger sync</div>
-                  </div>
+                <div className="flex space-x-3">
+                  <button 
+                    type="button" 
+                    onClick={() => setConnectingPlatform(null)}
+                    className="flex-1 py-3 bg-gray-800 text-gray-300 text-xs font-semibold rounded-xl border-none cursor-pointer">
+                    Back
+                  </button>
+                  <button 
+                    type="submit"
+                    className="flex-1 py-3 bg-purple-600 text-white text-xs font-semibold rounded-xl border-none cursor-pointer shadow-lg">
+                    Verify & Link
+                  </button>
                 </div>
-                <button 
-                  onClick={() => setConnectedPlatforms(p => ({...p, facebook: !p.facebook}))}
-                  className={`px-3 py-1.5 text-xs rounded-xl font-semibold border-none cursor-pointer ${connectedPlatforms.facebook ? 'bg-emerald-600/20 text-emerald-400' : 'bg-gray-800 text-gray-300'}`}>
-                  {connectedPlatforms.facebook ? 'Connected' : 'Connect'}
-                </button>
-              </div>
-            </div>
+              </form>
+            ) : (
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-4 bg-gray-950 border border-gray-800 rounded-2xl">
+                  <div className="flex items-center space-x-3">
+                    <span className="text-xl">📍</span>
+                    <div>
+                      <div className="text-xs font-bold text-white">Google Business Profile</div>
+                      <div className="text-[11px] text-emerald-400">{connectedPlatforms.google.connected ? connectedPlatforms.google.details : 'Not linked'}</div>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => { setConnectingPlatform('google'); setCredentialInput(connectedPlatforms.google.details); }}
+                    className={`px-3 py-1.5 text-xs rounded-xl font-semibold border-none cursor-pointer ${connectedPlatforms.google.connected ? 'bg-emerald-600/20 text-emerald-400' : 'bg-blue-600 text-white'}`}>
+                    {connectedPlatforms.google.connected ? 'Reconfigure' : 'Connect'}
+                  </button>
+                </div>
 
-            <button 
-              onClick={() => setShowConnectModal(false)}
-              className="w-full py-3.5 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition shadow-lg text-xs border-none cursor-pointer">
-              Save & Sync Channels
-            </button>
+                <div className="flex items-center justify-between p-4 bg-gray-950 border border-gray-800 rounded-2xl">
+                  <div className="flex items-center space-x-3">
+                    <span className="text-xl">⭐</span>
+                    <div>
+                      <div className="text-xs font-bold text-white">Yelp Fusion API</div>
+                      <div className="text-[11px] text-gray-400">{connectedPlatforms.yelp.connected ? connectedPlatforms.yelp.details : 'Monitor star ratings'}</div>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => { setConnectingPlatform('yelp'); setCredentialInput(connectedPlatforms.yelp.details); }}
+                    className={`px-3 py-1.5 text-xs rounded-xl font-semibold border-none cursor-pointer ${connectedPlatforms.yelp.connected ? 'bg-emerald-600/20 text-emerald-400' : 'bg-blue-600 text-white'}`}>
+                    {connectedPlatforms.yelp.connected ? 'Reconfigure' : 'Connect'}
+                  </button>
+                </div>
+
+                <div className="flex items-center justify-between p-4 bg-gray-950 border border-gray-800 rounded-2xl">
+                  <div className="flex items-center space-x-3">
+                    <span className="text-xl">📘</span>
+                    <div>
+                      <div className="text-xs font-bold text-white">Facebook Business Page</div>
+                      <div className="text-[11px] text-gray-400">{connectedPlatforms.facebook.connected ? connectedPlatforms.facebook.details : 'Inbox & Messenger sync'}</div>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => { setConnectingPlatform('facebook'); setCredentialInput(connectedPlatforms.facebook.details); }}
+                    className={`px-3 py-1.5 text-xs rounded-xl font-semibold border-none cursor-pointer ${connectedPlatforms.facebook.connected ? 'bg-emerald-600/20 text-emerald-400' : 'bg-blue-600 text-white'}`}>
+                    {connectedPlatforms.facebook.connected ? 'Reconfigure' : 'Connect'}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {!connectingPlatform && (
+              <button 
+                onClick={() => setShowConnectModal(false)}
+                className="w-full py-3.5 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition shadow-lg text-xs border-none cursor-pointer">
+                Save & Close
+              </button>
+            )}
           </div>
         </div>
       )}
