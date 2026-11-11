@@ -57,6 +57,7 @@ const translations = {
     proFeature3: "✓ Built-in Testing & Sandbox Lab",
     mostPopular: "Most Popular",
 
+    // Legal Page Translations
     legalSubtitle: "Legal & Compliance",
     legalTitle: "RevPulse — Terms of Use & Privacy Policy",
     legalMeta: "Effective Date: November 11, 2026 | Operator: Imran Mateen (support@revpulse.tools)",
@@ -1021,12 +1022,1560 @@ const knowledgeArticlesTranslations = {
       category: 'veterinary',
       title: 'Itemized Treatment Estimates & ER Triage Empathy',
       summary: 'Eliminating veterinary bill shock and soothing panicked pet owners during emergency visits.',
-      content: 'Always provide written,My apologies for missing those! Looking closely at the screenshot you provided (`image_c0f15c.jpg`), I see that your hero section layout is designed to use an image slider (`heroSlides`) referencing external filenames (`A69AF971-CB4D-48CF-B7D1-95D2345645C6.PNG`, `EADDB785-F8BD-42CC-9F68-72FD955953DC.PNG`, etc.), but those images are currently rendering as transparent or blank backgrounds behind your text overlay.
+      content: 'Always provide written, itemized treatment estimates and obtain explicit approval before running diagnostic tests. Pair medical care with profound emotional validation.'
+    }
+  ],
+  fr: [
+    {
+      id: 1,
+      category: 'hvac',
+      title: 'Gestion des litiges graves de facturation et de retard (CVC)',
+      summary: 'Cadre pour intercepter les retards d’intervention et litiges de facturation avant qu’ils n’impactent le référencement.',
+      content: 'Lorsqu’un client CVC laisse une mauvaise note concernant le timing ou les prix, Kaku intercepte instantanément le message public. Reconnaissez la friction en privé, proposez un rappel de responsable sous 15 minutes et fournissez un lien de résolution sécurisé par SMS.'
+    },
+    {
+      id: 2,
+      category: 'hvac',
+      title: 'Intervention météo extrême et triage des risques de sécurité',
+      summary: 'Gestion des pannes de canicule/gel de forte intensité et communication transparente des conclusions de sécurité.',
+      content: 'Pendant les extrêmes climatiques, les propriétaires sont vulnérables. Présentez les découvertes de sécurité avec une documentation transparente et des photos pour éviter toute accusation de vente forcée.'
+    },
+    {
+      id: 3,
+      category: 'dental',
+      title: 'Gestion des temps d’attente en salle et du sentiment patient',
+      summary: 'Automatisation des flux d’excuses et de reprogrammation lorsque les retards cliniques dépassent 30 minutes.',
+      content: 'Lorsque l’attente dépasse 30 minutes, des notifications SMS automatisées doivent offrir des bons de stationnement ou une planification prioritaire tout en conservant un ton calme et empathique.'
+    },
+    {
+      id: 4,
+      category: 'dental',
+      title: 'Facturation surprise et résolution de l’opacité des assurances',
+      summary: 'Fourniture d’estimations financières claires et transparentes avant les interventions majeures pour éviter les litiges.',
+      content: 'Clarifiez proactivement les coûts hors réseau et le codage. Une communication transparente avant le traitement réduit considérablement l’anxiété des patients.'
+    },
+    {
+      id: 5,
+      category: 'contractors',
+      title: 'Navigation face aux ordres d’arrêt de chantier et permis (Red-Tag)',
+      summary: 'Plan d’action immédiat lorsque le contrôle du code bloque la construction en raison de permis ou de marges de recul.',
+      content: 'Traitez immédiatement les étiquettes rouges en coordonnant directement avec les examinateurs du comté et en obtenant les permis requis.'
+    },
+    {
+      id: 6,
+      category: 'contractors',
+      title: 'Gestion des mises à niveau de codes et ordres de modification cachés',
+      summary: 'Gestion de la pourriture structurelle imprévue, câblage obsolète ou pièges de code de plomberie en cours de projet.',
+      content: 'Utilisez une documentation numérique de modification avec photos avant d’ouvrir les murs ou d’effectuer des mises à niveau.'
+    },
+    {
+      id: 7,
+      category: 'hospitality',
+      title: 'Prévention de l’attrition silencieuse et des erreurs de commande à emporter',
+      summary: 'Résolution des articles manquants et des longs temps d’attente avant que les clients ne reviennent plus.',
+      content: 'Mettez en œuvre des protocoles de double vérification pour la livraison/vente à emporter et des visites de direction en salle.'
+    },
+    {
+      id: 8,
+      category: 'hospitality',
+      title: 'Protocoles d’allergie grave et récupération des incidents alimentaires',
+      summary: 'Réponse de crise immédiate en cas de contamination croisée ou d’oubli d’allergène pendant le service.',
+      content: 'Exigez la responsabilité immédiate de la cuisine, l’implication directe du directeur général et une assistance médicale si nécessaire.'
+    },
+    {
+      id: 9,
+      category: 'hotels',
+      title: 'Verrouillages de minuit en location courte durée et récupération de propreté',
+      summary: 'Résolution des pannes de serrure connectée et des écarts de propreté dans la fenêtre critique de 15 minutes.',
+      content: 'Gardez des contacts de serrurier d’urgence en veille et offrez des remboursements partiels instantanés sous 15 minutes.'
+    },
+    {
+      id: 10,
+      category: 'hotels',
+      title: 'Transparence des frais de séjour et fidélisation par réservation directe',
+      summary: 'Élimination du choc des frais cachés grâce à une divulgation préalable sur tous les canaux de réservation.',
+      content: 'Divulguez tous les frais de stationnement, de séjour et de nettoyage de manière transparente avant le paiement.'
+    },
+    {
+      id: 11,
+      category: 'ecommerce',
+      title: 'Communication proactive d’exécution et gestion des frais de retour',
+      summary: 'Atténuation du suivi fantôme, des retards de livraison et des frictions de retour pour protéger la valeur client.',
+      content: 'Informez proactivement les clients par SMS/e-mail lorsque les transporteurs rencontrent des goulets d’étranglement.'
+    },
+    {
+      id: 12,
+      category: 'automotive',
+      title: 'Inspections numériques et élimination du stigmate de réparation fantôme',
+      summary: 'Utilisation de liens photo et vidéo haute résolution pour instaurer une transparence absolue en réparation auto.',
+      content: 'Envoyez des liens d’inspection visuelle des plaquettes de frein usées directement aux clients avant de commencer les réparations.'
+    },
+    {
+      id: 13,
+      category: 'financial',
+      title: 'Cadence de communication en saison fiscale et mises à jour de prêts',
+      summary: 'Prévention de l’expérience client en trou noir grâce à un reporting d’état hebdomadaire structuré.',
+      content: 'Mettez en œuvre des mises à jour de progrès hebdomadaires automatisées pendant la saison de déclaration fiscale.'
+    },
+    {
+      id: 14,
+      category: 'legal',
+      title: 'Transparence des heures facturables et points de contact clients',
+      summary: 'Élimination des factures énigmatiques et des pannes de communication dans les cabinets d’avocats.',
+      content: 'Envoyez des factures détaillées axées sur la valeur accompagnées d’un bref e-mail récapitulatif le vendredi après-midi.'
+    },
+    {
+      id: 15,
+      category: 'wellness',
+      title: 'Gestion des écarts de résultats et des litiges de frais d’annulation',
+      summary: 'Traitement professionnel des corrections de couleur, réactions cutanées et politiques d’annulation strictes.',
+      content: 'Maintenez des formulaires de consentement pré-traitement signés et une résolution de conflit flexible et compatissante.'
+    },
+    {
+      id: 16,
+      category: 'veterinary',
+      title: 'Estimations de traitement détaillées et empathie de triage d’urgence',
+      summary: 'Élimination du choc des factures vétérinaires et réconfort des propriétaires d’animaux paniqués.',
+      content: 'Fournissez toujours des estimations de traitement écrites et détaillées et obtenez une approbation explicite avant les tests.'
+    }
+  ],
+  es: [
+    {
+      id: 1,
+      category: 'hvac',
+      title: 'Manejo de disputas graves de facturación y retrasos de 1 estrella (HVAC)',
+      summary: 'Marco para interceptar retrasos de llegada y disputas de facturas antes de que afecten las clasificaciones de búsqueda local.',
+      content: 'Cuando un cliente de HVAC deja una calificación baja sobre el tiempo de llegada o los precios, Kaku intercepta instantáneamente la publicación pública. Reconozca la fricción en privado, ofrezca una devolución de llamada del gerente en 15 minutos y proporcione un enlace de resolución seguro por SMS.'
+    },
+    {
+      id: 2,
+      category: 'hvac',
+      title: 'Despacho en clima extremo y triaje de riesgos de seguridad',
+      summary: 'Gestión de averías por olas de calor/heladas de alto pánico y comunicación transparente de hallazgos de seguridad.',
+      content: 'Durante climas extremos, los propietarios enfrentan una alta vulnerabilidad. Presente los descubrimientos de seguridad con documentación transparente y fotos para evitar acusaciones de ventas fabricadas.'
+    },
+    {
+      id: 3,
+      category: 'dental',
+      title: 'Gestión de tiempos de espera en vestíbulo y sentimiento del paciente',
+      summary: 'Automatización de flujos de disculpas y reasignación de citas cuando los retrasos clínicos superan los 30 minutos.',
+      content: 'Cuando los tiempos de espera superen los 30 minutos, las notificaciones SMS automatizadas deben ofrecer vales de estacionamiento o programación prioritaria manteniendo un tono empático.'
+    },
+    {
+      id: 4,
+      category: 'dental',
+      title: 'Facturación sorpresa y resolución de opacidad de seguros',
+      summary: 'Provisión de estimaciones financieras transparentes y en lenguaje sencillo antes de procedimientos mayores.',
+      content: 'Aclare de forma proactiva los costos fuera de la red y los desgloses de códigos. La comunicación transparente antes del tratamiento reduce drásticamente la ansiedad del paciente.'
+    },
+    {
+      id: 5,
+      category: 'contractors',
+      title: 'Navegación de órdenes de suspensión de obra (Red-Tag) y permisos',
+      summary: 'Plan de acción inmediato cuando el código de cumplimiento detiene la construcción debido a problemas de permisos.',
+      content: 'Aborde las etiquetas rojas inmediatamente coordinando directamente con los revisores del condado y obteniendo los permisos requeridos.'
+    },
+    {
+      id: 6,
+      category: 'contractors',
+      title: 'Gestión de actualizaciones de códigos de condiciones ocultas y órdenes de cambio',
+      summary: 'Manejo de podredumbre estructural inesperada, cableado obsoleto o trampas de código de plomería a mitad de proyecto.',
+      content: 'Utilice documentación digital de órdenes de cambio con evidencia fotográfica antes de abrir paredes o realizar actualizaciones.'
+    },
+    {
+      id: 7,
+      category: 'hospitality',
+      title: 'Prevención de la deserción silenciosa y errores de pedidos para llevar',
+      summary: 'Resolución de artículos faltantes para llevar y largos tiempos de espera antes de que los clientes dejen de regresar.',
+      content: 'Implemente protocolos de doble verificación para empaque de entrega/llevar y visitas rápidas de gerentes a las mesas.'
+    },
+    {
+      id: 8,
+      category: 'hospitality',
+      title: 'Protocolos de alergia severa y recuperación de incidentes dietéticos',
+      summary: 'Respuesta inmediata ante crisis cuando ocurre contaminación cruzada u omisión de alérgenos durante el servicio.',
+      content: 'Exija responsabilidad inmediata de cocina, participación directa del gerente general y asistencia médica inmediata si es necesario.'
+    },
+    {
+      id: 9,
+      category: 'hotels',
+      title: 'Bloqueos de medianoche en alquiler vacacional y recuperación de limpieza',
+      summary: 'Resolución de fallas en cerraduras inteligentes y discrepancias de limpieza en la ventana crítica de 15 minutos.',
+      content: 'Mantenga contactos de cerrajero de emergencia en espera y proporcione reembolsos parciales instantáneos en 15 minutos.'
+    },
+    {
+      id: 10,
+      category: 'hotels',
+      title: 'Transparencia en tarifas de resort y retención de reservas directas',
+      summary: 'Eliminación del impacto de tarifas ocultas mediante divulgación previa en todos los canales de reserva digital.',
+      content: 'Divulgue todas las tarifas de estacionamiento, resort y limpieza de manera transparente antes de pagar.'
+    },
+    {
+      id: 11,
+      category: 'ecommerce',
+      title: 'Comunicación proactiva de cumplimiento y gestión de tarifas de devolución',
+      summary: 'Mitigación de rastreo fantasma, retrasos de entrega y fricción de devoluciones para proteger el valor del cliente.',
+      content: 'Notifique a los clientes de forma proactiva mediante SMS/correo electrónico cuando los transportistas experimenten cuellos de botella.'
+    },
+    {
+      id: 12,
+      category: 'automotive',
+      title: 'Inspecciones digitales y eliminación del estigma de "reparación fantasma"',
+      summary: 'Uso de enlaces de texto de fotos y videos de alta resolución para construir transparencia absoluta en reparación de autos.',
+      content: 'Envíe enlaces de inspección visual de pastillas de freno desgastadas directamente a los clientes antes de comenzar las reparaciones.'
+    },
+    {
+      id: 13,
+      category: 'financial',
+      title: 'Cadencia de comunicación en temporada de impuestos y actualizaciones de préstamos',
+      summary: 'Prevención de la experiencia de caja negra del cliente mediante informes de estado semanales estructurados.',
+      content: 'Implemente actualizaciones de progreso semanales automatizadas durante la suscripción de préstamos o la temporada de impuestos.'
+    },
+    {
+      id: 14,
+      category: 'legal',
+      title: 'Transparencia de horas facturables y revisiones proactivas con clientes',
+      summary: 'Eliminación de facturas crípticas y apagones de comunicación en firmas de abogados y consultorías.',
+      content: 'Envía facturas detalladas centradas en el valor junto con un breve correo electrónico resumen el viernes por la tarde.'
+    },
+    {
+      id: 15,
+      category: 'wellness',
+      title: 'Gestión de discrepancias de resultados y disputas de tarifas de cancelación',
+      summary: 'Manejo profesional de correcciones de color, reacciones cutáneas en spa médico y políticas de cancelación estrictas.',
+      content: 'Mantenga formularios de consentimiento firmados y resolución de conflictos compasiva y flexible para emergencias.'
+    },
+    {
+      id: 16,
+      category: 'veterinary',
+      title: 'Estimaciones de tratamiento detalladas y empatía en triaje de urgencias',
+      summary: 'Eliminación del impacto de facturas veterinarias y calmar a los dueños de mascotas aterrorizados en visitas de emergencia.',
+      content: 'Proporcione siempre estimaciones de tratamiento escritas y detalladas y obtenga aprobación explícita antes de las pruebas.'
+    }
+  ],
+  it: [
+    {
+      id: 1,
+      category: 'hvac',
+      title: 'Gestione di gravi controversie su fatturazione e ritardi (HVAC)',
+      summary: 'Quadro per intercettare ritardi di arrivo e controversie sulle fatture prima che incidano sul posizionamento.',
+      content: 'Quando un cliente HVAC lascia una valutazione bassa sui tempi o sui prezzi, Kaku intercetta istantaneamente il post. Riconosci la frizione in privato e offri un richiamo.'
+    },
+    {
+      id: 2,
+      category: 'hvac',
+      title: 'Gestione emergenze climatiche e triage dei rischi di sicurezza',
+      summary: 'Gestione di guasti da ondate di calore/gelo e comunicazione trasparente dei risultati di sicurezza.',
+      content: 'Durante i climi estremi, i proprietari di casa sono vulnerabili. Inquadra le scoperte sulla sicurezza con documentazione trasparente e foto.'
+    },
+    {
+      id: 3,
+      category: 'dental',
+      title: 'Gestione dei tempi di attesa in sala d’attesa e sentiment dei pazienti',
+      summary: 'Automazione dei flussi di scuse e riprenotazione quando i ritardi clinici superano i 30 minuti.',
+      content: 'Quando i tempi di attesa superano i 30 minuti, le notifiche SMS automatizzate dovrebbero offrire voucher di parcheggio o priorità.'
+    },
+    {
+      id: 4,
+      category: 'dental',
+      title: 'Fatturazione a sorpresa e risoluzione dell’opacità assicurativa',
+      summary: 'Fornitura di stime finanziarie trasparenti e in linguaggio semplice prima di procedure maggiori.',
+      content: 'Chiarisci in modo proattivo i costi fuori rete e la soddisfazione del paziente.'
+    },
+    {
+      id: 5,
+      category: 'contractors',
+      title: 'Gestione ordini di blocco lavori (Red-Tag) e permessi',
+      summary: 'Piano d’azione immediato quando il controllo edilizio blocca i lavori per problemi di permessi.',
+      content: 'Affronta immediatamente i cartellini rossi coordinandoti con i revisori della contea e ottenendo i permessi richiesti.'
+    },
+    {
+      id: 6,
+      category: 'contractors',
+      title: 'Gestione aggiornamenti di codice e ordini di modifica nascosti',
+      summary: 'Gestione di marciume strutturale inatteso, cablaggi obsoleti o problemi idraulici a metà progetto.',
+      content: 'Usa la documentazione digitale degli ordini di modifica con prove fotografiche prima di aprire le pareti.'
+    },
+    {
+      id: 7,
+      category: 'hospitality',
+      title: 'Prevenzione del churn silenzioso ed errori negli ordini d’asporto',
+      summary: 'Risoluzione di articoli d’asporto mancanti e lunghe attese prima che i clienti smettano di tornare.',
+      content: 'Implementa protocolli di doppio controllo per l’imballaggio e visite rapide del gestore ai tavoli.'
+    },
+    {
+      id: 8,
+      category: 'hospitality',
+      title: 'Protocolli per allergie gravi e recupero incidenti alimentari',
+      summary: 'Risposta immediata alle crisi in caso di contaminazione crociata o errori di allergeni durante il servizio.',
+      content: 'Richiedi responsabilità immediata della cucina e assistenza medica se necessario.'
+    },
+    {
+      id: 9,
+      category: 'hotels',
+      title: 'Blocchi di mezzanotte in affitti brevi e recupero pulizie',
+      summary: 'Risoluzione guasti serrature smart e problemi di pulizia nella finestra critica di 15 minuti.',
+      content: 'Tieni contatti di fabbri di emergenza in standby e offri rimborsi parziali immediati entro 15 minuti.'
+    },
+    {
+      id: 10,
+      category: 'hotels',
+      title: 'Trasparenza delle spese di soggiorno e retention prenotazioni dirette',
+      summary: 'Eliminazione dello shock da costi nascosti tramite informativa anticipata su tutti i canali digitali.',
+      content: 'Rivela tutte le spese di parcheggio, resort e pulizie in modo trasparente prima del pagamento.'
+    },
+    {
+      id: 11,
+      category: 'ecommerce',
+      title: 'Comunicazione proattiva di evasione ordini e gestione resi',
+      summary: 'Mitigazione del tracciamento fantasma e dei ritardi di consegna per proteggere il valore del cliente.',
+      content: 'Notifica i clienti in modo proattivo tramite SMS/email quando i corrieri subiscono colli di bottiglia.'
+    },
+    {
+      id: 12,
+      category: 'automotive',
+      title: 'Ispezioni digitali ed eliminazione dello stigma di "riparazione fantasma"',
+      summary: 'Uso di collegamenti foto e video ad alta risoluzione per stabilire trasparenza assoluta.',
+      content: 'Invia link di ispezione visiva di pastiglie freni usurate direttamente ai clienti prima di iniziare.'
+    },
+    {
+      id: 13,
+      category: 'financial',
+      title: 'Cadenza di comunicazione nella stagione fiscale e aggiornamenti prestiti',
+      summary: 'Prevenzione dell’esperienza cliente "black hole" tramite report di stato settimanali.',
+      content: 'Implementa aggiornamenti settimanali automatizzati durante la stagione di dichiarazione dei redditi.'
+    },
+    {
+      id: 14,
+      category: 'legal',
+      title: 'Trasparenza ore fatturabili e check-in proattivi con i clienti',
+      summary: 'Eliminazione di fatture criptiche e blackout di comunicazione negli studi legali.',
+      content: 'Invia fatture dettagliate incentrate sul valore insieme a una breve email di riepilogo il venerdì.'
+    },
+    {
+      id: 15,
+      category: 'wellness',
+      title: 'Gestione discrepanze di risultato e controversie sulle cancellazioni',
+      summary: 'Gestione professionale di correzioni colore, reazioni cutanee e rigide politiche di cancellazione.',
+      content: 'Mantieni moduli di consenso firmati e una risoluzione dei conflitti flessibile.'
+    },
+    {
+      id: 16,
+      category: 'veterinary',
+      title: 'Preventivi di trattamento dettagliati ed empatia nel triage di pronto soccorso',
+      summary: 'Eliminazione dello shock da bolletta veterinaria e rassicurazione dei proprietari in visita d’emergenza.',
+      content: 'Fornisci sempre preventivi scritti e dettagliati e ottieni l’approvazione esplicita prima dei test.'
+    }
+  ],
+  ar: [
+    {
+      id: 1,
+      category: 'hvac',
+      title: 'التعامل مع نزاعات الفواتير والتأخير الخطيرة (التكييف)',
+      summary: 'إطار عمل لاعتراض تأخيرات الوصول ونزاعات الفواتير قبل أن تؤثر على تصنيفات البحث المحلي.',
+      content: 'عندما يترك عميل التكييف تقييماً منخفضاً، يقوم كاکو باعتراض المنشور العام فوراً. اعترف بالاحتكاك على حدحدة.'
+    },
+    {
+      id: 2,
+      category: 'hvac',
+      title: 'إرسال الطقس المتطرف وفرز المخاطر الأمنية',
+      summary: 'إدارة أعطال موجات الحر/الصقيع عالية الذعر وإرسال نتائج السلامة بشفافية.',
+      content: 'أثناء الطقس القاسي، يواجه أصحاب المنازل ضعفاً كبيراً. قم بتأطير اكتشافات السلامة بتوثيق شفاف.'
+    },
+    {
+      id: 3,
+      category: 'dental',
+      title: 'إدارة أوقات الانتظار في الاستقبال ومشاعر المرضى (الأسنان)',
+      summary: 'أتمتة سير عمل الاعتذار وإعادة حجز المواعيد عندما تتجاوز التأخيرات السريرية 30 دقيقة.',
+      content: 'عندما يتجاوز وقت الانتظار 30 دقيقة، يجب أن تقدم إشعارات الرسائل القصيرة قسائم وقوف السيارات.'
+    },
+    {
+      id: 4,
+      category: 'dental',
+      title: 'الفواتير المفاجئة وحل غموض التأمين',
+      summary: 'توفير تقديرات مالية واضحة وشفافة بلغة بسيطة قبل الإجراءات الكبرى لمنع الاعتراضات.',
+      content: 'توضيح تكاليف شبكة الاتصال وتفاصيل الترميز بشكل استباقي لتقليل قلق المريض.'
+    },
+    {
+      id: 5,
+      category: 'contractors',
+      title: 'التنقل في أوامر وقف العمل ذات العلامة الحمراء والتصاريح',
+      summary: 'خطة عمل فورية عندما يوقف إنفاذ القانون البناء بسبب مشكلات التصاريح.',
+      content: 'معالجة العلامات الحمراء فوراً من خلال التنسيق المباشر مع مراجعي خطط المقاطعة.'
+    },
+    {
+      id: 6,
+      category: 'contractors',
+      title: 'إدارة ترقيات كود الظروف الخفية وأوامر التغيير',
+      summary: 'التعامل مع التعفن الهيكلي غير المتوقع، الأسلاك القديمة، أو فخاخ كود السباكة في منتصف المشروع.',
+      content: 'استخدم توثيق أمر التغيير الرقمي مع الأدلة الفوتوغرافية قبل فتح الجدران.'
+    },
+    {
+      id: 7,
+      category: 'hospitality',
+      title: 'منع التسرب الصامت وأخطاء الطلبات الخارجية',
+      summary: 'حل عناصر الوجبات الجاهزة المفقودة وأوقات انتظار الطاولات الطويلة قبل توقف العملاء عن العودة.',
+      content: 'تنفيذ بروتوكولات التعبئة المزدوجة للتسليم/الخارج وزيارات المدير السريعة للطاولات.'
+    },
+    {
+      id: 8,
+      category: 'hospitality',
+      title: 'بروتوكولات الحساسية الشديدة واستعادة الحوادث الغذائية',
+      summary: 'استجابة الأزمات الفورية عند حدوث تلوث متبادل أو إغفال مسببات الحساسية أثناء الخدمة.',
+      content: 'فرض المسؤولية الفورية للمطبخ، ومشاركة المدير العام المباشرة، والمساعدة الطبية إذا لزم الأمر.'
+    },
+    {
+      id: 9,
+      category: 'hotels',
+      title: 'إغلاق منتصف الليل للإيجارات قصيرة الأجل واستعادة النظافة',
+      summary: 'حل اخفاقات القفل الذكي وتناقضات التنظيف خلال النافذة الحرجة البالغة 15 دقيقة.',
+      content: 'الاحتفاظ بجهات اتصال صانع الأقفال في حالات الطوارئ وتوفير استرداد جزئي فوري خلال 15 دقيقة.'
+    },
+    {
+      id: 10,
+      category: 'hotels',
+      title: 'الشفافية في رسوم المنتجع والاحتفاظ بالحجز المباشر',
+      summary: 'القضاء على صدمة الرسوم الخفية من خلال الإفصاح المسبق عبر قنوات الحجز الرقمية.',
+      content: 'الإفصاح عن جميع رسوم وقوف السيارات والمنتجع والتنظيف بشفافية قبل الدفع.'
+    },
+    {
+      id: 11,
+      category: 'ecommerce',
+      title: 'التواصل الاستباقي للتنفيذ وإدارة رسوم الإرجاع',
+      summary: 'تخفيف تتبع الأشباح، وتأخير التسليم، واحتكاك الإرجاع لحماية قيمة العميل.',
+      content: 'إخطار العملاء استباقياً عبر الرسائل القصيرة/البريد الإلكتروني عندما تواجه شركات النقل اختناقات.'
+    },
+    {
+      id: 12,
+      category: 'automotive',
+      title: 'الفحوصات الرقمية والقضاء على وصمة "الإصلاح الوهمي"',
+      summary: 'استخدام روابط النصوص الخاصة بالصور والفيديو عالية الدقة بناء شفافية مطلقة.',
+      content: 'إرسال روابط الفحص البصري لتوسادات الفرامل البالية مباشرة للعملاء قبل بدء الإصلاحات.'
+    },
+    {
+      id: 13,
+      category: 'financial',
+      title: 'إقاعات التواصل في موسم الضرائب وتحديثات اكتتاب القروض',
+      summary: 'منع تجربة العملاء المظلمة من خلال تقارير الحالة الأسبوعية المنظمة.',
+      content: 'تنفيذ تحديثات التقدم الأسبوعية الآلية خلال موسم تقديم الضرائب أو اكتتاب القروض.'
+    },
+    {
+      id: 14,
+      category: 'legal',
+      title: 'شفافية ساعات العمل القابلة للفوترة ومتابعة العملاء الاستباقية',
+      summary: 'القضاء على الفواتير الغامضة وانقطاع الاتصالات في شركات المحاماة والاستشارات.',
+      content: 'إرسال فواتير مفصلة تركز على القيمة إلى جانب بريد إلكتروني موجز يوم الجمعة.'
+    },
+    {
+      id: 15,
+      category: 'wellness',
+      title: 'إدارة تناقضات النتائج ونزاعات رسوم الإلغاء',
+      summary: 'التعامل مع تصحيحات اللون، تفاعلات الجلد، وسياسات الإلغاء الصارمة بشكل احترافي.',
+      content: 'الحفاظ على نماذج الموافقة الموقعة مسبقاً وبروتوكولات واضحة وحل نزاعات مرن.'
+    },
+    {
+      id: 16,
+      category: 'veterinary',
+      title: 'تقديرات العلاج المفصلة وتعاطف فرز الطوارئ البيطرية',
+      summary: 'القضاء على صدمة الفواتير البيطرية وتهدئة أصحاب الحيوانات الأليفة أثناء زيارات الطوارئ.',
+      content: 'دائماً توفير تقديرات علاج مكتوبة ومفصلة والحصول على موافقة صريحة قبل الفحوصات.'
+    }
+  ],
+  ur: [
+    {
+      id: 1,
+      category: 'hvac',
+      title: 'سنگین بلنگ اور تاخیر کے تنازعات سے نمٹنا (HVAC)',
+      summary: 'مقامی سرچ رینکنگ کو متاثر کرنے سے پہلے آمد کی تاخیر اور بل کے تنازعات کو روکنے کا فریم ورک۔',
+      content: 'جب کوئی HVAC کسٹمر کم ریٹنگ چھوڑتا ہے، تو کاکو عوامی پوسٹ کو فوری طور پر روک لیتا ہے۔ رگڑ کو نجی طور پر تسلیم کریں۔'
+    },
+    {
+      id: 2,
+      category: 'hvac',
+      title: 'شدید موسم کی ترسیل اور حفاظتی خطرات کا ٹریج',
+      summary: 'زیادہ گھبراہٹ والی ہیٹ ویو/فریز خرابیوں کا انتظام اور حفاظتی نتائج کو شفاف طریقے سے بتانا۔',
+      content: 'انتہائی موسم کے دوران، گھر کے مالکان کو شدید خطرہ لاحق ہوتا ہے۔ شفاف دستاویزات کے ساتھ حفاظتی نتائج تیار کریں۔'
+    },
+    {
+      id: 3,
+      category: 'dental',
+      title: 'لابی میں انتظار کے وقت اور مریضوں کے جذبات کا انتظام (ڈেন্টل)',
+      summary: 'معذرت کے ورک فलो کو خودکار بنانا اور کلینیکل تاخیر 30 منٹ سے زیادہ ہونے پر دوبارہ بکنگ کرنا۔',
+      content: 'جب لابی کے انتظار کا وقت 30 منٹ سے زیادہ ہو جائے، تو خودکار SMS اطلاعات پارکنگ واؤچر پیش کریں۔'
+    },
+    {
+      id: 4,
+      category: 'dental',
+      title: 'سرپرائز بلنگ اور انشورنس کی دھندلاہٹ کا حل',
+      summary: 'بڑے طریقہ کار سے پہلے شفاف، سادہ زبان میں مالی تخمینے فراہم کرنا۔',
+      content: 'نیٹ ورک سے باہر کے اخراجات کو فعال طور پر واضح کریں۔ علاج سے پہلے شفاف مواصلات مریض کی پریشانی کو کم کرتی ہے۔'
+    },
+    {
+      id: 5,
+      category: 'contractors',
+      title: 'ریڈ ٹیگ اسٹاپ ورک آرڈرز اور پرمٹنگ کو نیویگیٹ کرنا',
+      summary: 'جب کوڈ نافذ کرنے والا پرمٹ کے مسائل کی وجہ سے تعمیرات کو روکتا ہے تو فوری لائحہ عمل۔',
+      content: 'کاؤنٹی پلان کے جائزہ لینے والوں کے ساتھ براہ راست رابطہ کرکے ریڈ ٹیگ کو فوری طور پر حل کریں۔'
+    },
+    {
+      id: 6,
+      category: 'contractors',
+      title: 'پوشیدہ حالات کے کوڈ اپ گریڈ اور تبدیلی کے احکام کا انتظام',
+      summary: 'غیر متوقع ساختی سڑن، پرانی وائرنگ، یا پلمبنگ کوڈ کے جال سے نمٹنا۔',
+      content: 'دیواریں کھولنے سے پہلے فوٹو گرافی کے ثبوت کے ساتھ ڈیجیٹل تبدیلی کے آرڈر کی دستاویزات کا استعمال کریں۔'
+    },
+    {
+      id: 7,
+      category: 'hospitality',
+      title: 'خاموش چرن اور ٹیک آؤٹ آرڈر کی غلطیوں کو روکنا',
+      summary: 'مہقین کے واپس آنے سے پہلے غائب ٹیک آؤٹ اشیاء اور طویل میز کے انتظار کے اوقات کو حل کرنا۔',
+      content: 'ترسیل/ٹेक آؤٹ کے لیے ڈبل چیک پیکنگ پروٹوکول نافذ کریں اور مینیجر کے دورے۔'
+    },
+    {
+      id: 8,
+      category: 'hospitality',
+      title: 'شدید الرجی پروٹوکول اور غذایی حادثے کی بحالی',
+      summary: 'سروس کے دوران آلودگی یا الرجن کی کوتاہی ہونے پر فوری بحران کا ردعمل۔',
+      content: 'فوری باورچی خانے کی جوابدہی، جنرل مینیجر کی براہ راست شمولیت، اور طبی مدد لازمی کریں۔'
+    },
+    {
+      id: 9,
+      category: 'hotels',
+      title: 'مختصر مدت کے رینٹل آدھی رات کے لاک آؤٹ اور صفائی کی بحالی',
+      summary: 'سمارٹ لاک کی خرابیوں کو حل کرنا اور اہم 15 منٹ کی ونڈو میں صفائی کے تضادات کو دور کرنا۔',
+      content: 'ہنگامی تالا بنانے والے کے رابطوں کو اسٹینڈ بائی پر رکھیں اور 15 منٹ کے اندر فوری جزوی ریفنڈز فراہم کریں۔'
+    },
+    {
+      id: 10,
+      category: 'hotels',
+      title: 'ریزورٹ فیس میں شفافیت اور براہ راست بکنگ برقرار رکھنا',
+      summary: 'تمام ڈیجیٹل بکنگ چینلز میں پیشگی انکشاف کے ذریعے پوشیدہ فیس کے جھٹکے کو ختم کرنا۔',
+      content: 'چیک آؤٹ سے پہلے تمام پارکنگ، ریزورٹ اور صفائی فیس کا شفاف طریقے سے انکشاف کریں۔'
+    },
+    {
+      id: 11,
+      category: 'ecommerce',
+      title: 'فعال تکمیل مواصلات اور واپسی فیس کا انتظام',
+      summary: 'کستمر لائف ٹائم ویلیو کی حفاظت کے لیے گھوسٹ ٹریکنگ، ترسیل میں تاخیر، اور واپسی کے رگڑ کو کم کرنا۔',
+      content: 'جب کیریئرز کو ٹرانزٹ رکاوٹوں کا سامنا کرنا پڑے تو SMS/ای میل کے ذریعے صارفین کو فعال طور پر مطلع کریں۔'
+    },
+    {
+      id: 12,
+      category: 'automotive',
+      title: 'ڈیجیٹل انسپیکشن اور "گھوسٹ ریپئر" کے داغ کا خاتمہ',
+      summary: 'آٹو ریپئر میں مطلق شفافیت پیدا کرنے کے لیے ہائی ریزولوشن فوٹو اور ویڈیو ٹیکسٹ لنکس کا استعمال۔',
+      content: 'مرمت شروع کرنے سے پہلے پہنے ہوئے بریک پیڈ کے بصری معائنہ کے لنکس براہ راست صارفین کو بھیجیں۔'
+    },
+    {
+      id: 13,
+      category: 'financial',
+      title: 'ٹیکس سیزن مواصلات کی رفتار اور لون انڈر رائٹنگ اپ ڈیٹس',
+      summary: 'ساختہ ہفتہ وار اسٹیٹ رپورٹنگ کے ذریعے بلیک ہول کل라이언트 کے تجربے کو روکنا۔',
+      content: 'لون انڈر رائٹنگ یا ٹیکس فائلنگ سیزن کے دوران خودکار ہفتہ وار پیش رفت اپ ڈیٹس کو نافذ کریں۔'
+    },
+    {
+      id: 14,
+      category: 'legal',
+      title: 'بل کے لحاظ گھنٹوں کی شفافیت اور فعال کلائنٹ چیک ان',
+      summary: 'قانون کی فرموں اور مشاورتی مشاورت میں خفیہ بلوں اور مواصلاتی بلیک آؤٹ کا خاتمہ۔',
+      content: 'جمعہ کی دوپہر کو ایک مختصر اسٹیٹ سمری ای میل کے ساتھ تفصیلی، قدر پر مبنی آئٹمائزڈ انوائسز بھیجیں۔'
+    },
+    {
+      id: 15,
+      category: 'wellness',
+      title: 'نتیجے کے تضادات اور منسوخی فیس کے تنازعات کا انتظام',
+      summary: 'رنگوں کی اصلاح، میڈ-اسپا جلد کے رد عمل، اور منسوخی کی سخت پالیسیوں کو پیشہ ورانه طور پرسنبھالنا۔',
+      content: 'دستخط شدہ پری ٹریٹمنٹ رضامندی کے فارم اور ہمدردانہ تنازعات کے حل کو برقرار رکھیں۔'
+    },
+    {
+      id: 16,
+      category: 'veterinary',
+      title: 'آئٹمائزڈ علاج کے تخمینے اور ER ٹریج ہمدردی',
+      summary: 'ویٹرنری بل کے جھٹکے کو ختم کرنا اور ہنگامی دوروں کے دوران گھبرائے ہوئے پالتو جانوروں کے مالکان کو پرسکون کرنا۔',
+      content: 'تشخیصی ٹیسٹ چلانے سے پہلے ہمیشہ تحریری، آئٹمائزڈ علاج کے تخمینے فراہم کریں۔'
+    }
+  ]
+};
 
-To fix this so your hero background images display correctly on Vercel:
+export default function RevPulsePlatform() {
+  const [activeTab, setActiveTab] = useState('landing');
+  const [selectedVertical, setSelectedVertical] = useState('hvac');
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authMode, setAuthMode] = useState('signup');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
+  const [showSituationRoom, setShowSituationRoom] = useState(false);
+  const [showConnectModal, setShowConnectModal] = useState(false);
+  const [dashboardSubTab, setDashboardSubTab] = useState('overview');
 
-1. **Verify Asset Placement:** Ensure that your image files (e.g., `A69AF971-CB4D-48CF-B7D1-95D2345645C6.PNG`) are placed inside your project's `public/` directory so they can be loaded directly from the root path (`/A69AF971-CB4D-48CF-B7D1-95D2345645C6.PNG`).
-2. **Check File Paths & Naming:** Confirm that the filenames in your `heroSlides` array in `src/App.jsx` exactly match the filenames in your public folder (including capitalization and extensions).
-3. **Adjust CSS Opacity/Z-Index:** In the code provided previously, the image tag has `opacity-85` and is positioned `absolute inset-0`. If the images are still not showing, verify that your CSS or container div isn't overriding the image display.
+  // Hero Slider State
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const heroSlides = [
+    {
+      image: "A69AF971-CB4D-48CF-B7D1-95D2345645C6.PNG",
+      badge: "AI-POWERED CUSTOMER FEEDBACK & REPUTATION",
+      title: "Manage Customer Feedback Before Small Issues Escalate.",
+      subtitle: "Identify concerns, generate professional draft responses, and keep every customer conversation on track — with full human oversight."
+    },
+    {
+      image: "EADDB785-F8BD-42CC-9F68-72FD955953DC.PNG",
+      badge: "MEET KAKU — YOUR AI BUSINESS ASSISTANT",
+      title: "Better Decisions Begin With Better Guidance.",
+      subtitle: "Ask Kaku for help with customer issues, response suggestions, and actionable next steps — across industries."
+    },
+    {
+      image: "62F92B95-9514-4E41-A9E1-C2C84CE1998B.PNG",
+      badge: "OMNICHANNEL CUSTOMER CONVERSATIONS",
+      title: "Bring Customer Conversations Into Focus.",
+      subtitle: "Unify reviews, messages, and inquiries from multiple channels in one workspace, so your team can respond faster and stay in control."
+    },
+    {
+      image: "9B53E1D8-F366-4383-88BC-C5463F0B199D.PNG",
+      badge: "MULTI-INDUSTRY AI SOLUTION",
+      title: "One Intelligent Platform. Multiple Industries.",
+      subtitle: "Flexible customer experience management for businesses across different sectors."
+    }
+  ];
 
-Let me know if you need me to adjust the slider implementation or asset paths in the code!
+  // Auto-advance hero slider
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [heroSlides.length]);
+
+  const t = translations[selectedLanguage] || translations.en;
+  const vt = verticalTranslations[selectedLanguage] || verticalTranslations.en;
+  const ct = categoryTranslations[selectedLanguage] || categoryTranslations.en;
+  const dt = (demoContentTranslations[selectedLanguage] || demoContentTranslations.en)[selectedVertical] || verticalData[selectedVertical];
+  const knowledgeArticles = knowledgeArticlesTranslations[selectedLanguage] || knowledgeArticlesTranslations.en;
+
+  // Knowledge Center State
+  const [knowledgeSearch, setKnowledgeSearch] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
+  const filteredArticles = knowledgeArticles.filter(art => {
+    const matchesSearch = art.title.toLowerCase().includes(knowledgeSearch.toLowerCase()) || art.summary.toLowerCase().includes(knowledgeSearch.toLowerCase());
+    const matchesCategory = selectedCategory === 'all' || art.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+
+  // Sandbox State
+  const [sandboxChannel, setSandboxChannel] = useState('sms');
+  const [sandboxPhone, setSandboxPhone] = useState('+13212763473');
+  const [sandboxReviewRating, setSandboxReviewRating] = useState('1');
+  const [sandboxLog, setSandboxLog] = useState(null);
+  const [isSandboxRunning, setIsSandboxRunning] = useState(false);
+
+  const [twilioConfig, setTwilioConfig] = useState({
+    accountSid: '',
+    authToken: '',
+    phoneNumber: '',
+    isLive: false
+  });
+
+  const [connectingPlatform, setConnectingPlatform] = useState(null);
+  const [credentialInput, setCredentialInput] = useState('');
+  
+  const [connectedPlatforms, setConnectedPlatforms] = useState({
+    google: { connected: true, details: 'Google Business Profile #8821' },
+    yelp: { connected: false, details: '' },
+    facebook: { connected: false, details: '' }
+  });
+
+  const [chatMessage, setChatMessage] = useState('');
+  const [chatLogs, setChatLogs] = useState([
+    { sender: 'kaku', text: 'Hello! I am Kaku, your AI reputation and multi-industry assistant. Ask me anything across HVAC, Medical, Legal, Veterinary, Restaurant, or E-Commerce operations!' }
+  ]);
+
+  const [aiResponse, setAiResponse] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const handleGenerateResponse = () => {
+    setIsGenerating(true);
+    setTimeout(() => {
+      setAiResponse(dt.response);
+      setIsGenerating(false);
+    }, 800);
+  };
+
+  const handleAuthSubmit = async (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      alert("Please enter both email and password.");
+      return;
+    }
+
+    try {
+      if (authMode === 'signup') {
+        const { error } = await supabase.auth.signUp({ email, password });
+        if (error) throw error;
+        alert(`Account created successfully! 📧 Welcome confirmation email sent to ${email}. Your 7-Day Free Trial is now active.`);
+        setAuthMode('signin');
+      } else {
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        setCurrentUser(data.user);
+        setShowAuthModal(false);
+        setActiveTab('dashboard');
+      }
+    } catch (error) {
+      alert(`Authentication Error: ${error.message}`);
+    }
+  };
+
+  const handleStripeCheckout = (planType) => {
+    const stripeLinks = {
+      starter: "https://buy.stripe.com/test_starter_29",
+      pro: "https://buy.stripe.com/test_pro_79"
+    };
+    window.location.href = stripeLinks[planType] || "https://stripe.com";
+  };
+
+  const handleSaveCredentials = (e) => {
+    e.preventDefault();
+    if (!credentialInput.trim()) {
+      alert("Please enter your page link or ID.");
+      return;
+    }
+    setConnectedPlatforms(prev => ({
+      ...prev,
+      [connectingPlatform]: { connected: true, details: credentialInput }
+    }));
+    setConnectingPlatform(null);
+    setCredentialInput('');
+  };
+
+  const handleRunSandboxTest = (e) => {
+    e.preventDefault();
+    setIsSandboxRunning(true);
+    setSandboxLog(null);
+
+    setTimeout(() => {
+      setIsSandboxRunning(false);
+      setSandboxLog({
+        status: "SUCCESS (SANDBOX SIMULATION)",
+        channel: sandboxChannel.toUpperCase(),
+        recipient: sandboxPhone,
+        ratingSimulated: `${sandboxReviewRating} Stars`,
+        timestamp: new Date().toLocaleTimeString(),
+        payload: sandboxChannel === 'sms' 
+          ? `[Twilio Sandbox] Sent to ${sandboxPhone}: "Hi! We saw your ${sandboxReviewRating}-star feedback. Our manager wants to resolve this privately. Tap to connect: https://revpulse.tools/resolve/sandbox-token"`
+          : `[WhatsApp Sandbox Template] Dispatched to ${sandboxPhone}: Template #REV_RECOVERY_V2 rendered successfully with business variables.`
+      });
+    }, 900);
+  };
+
+  const handleSaveTwilioConfig = (e) => {
+    e.preventDefault();
+    setTwilioConfig(prev => ({ ...prev, isLive: true }));
+    alert("Twilio & WhatsApp API credentials saved! Your workspace is now operating in Live Production Mode.");
+  };
+
+  const handleSendChatMessage = (e) => {
+    e.preventDefault();
+    if (!chatMessage.trim()) return;
+    const userText = chatMessage;
+    setChatLogs(prev => [...prev, { sender: 'user', text: userText }]);
+    setChatMessage('');
+    
+    setTimeout(() => {
+      setChatLogs(prev => [...prev, { 
+        sender: 'kaku', 
+        text: `I've cross-referenced your query across our multi-industry Knowledge Center. Here is the verified operational framework.` 
+      }]);
+    }, 700);
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-950 text-gray-100 font-sans relative selection:bg-blue-600 selection:text-white overflow-x-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-blue-600/10 blur-[140px] pointer-events-none rounded-full"></div>
+
+      <header className="border-b border-gray-800/80 bg-gray-900/40 backdrop-blur-md sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+          <div className="flex items-center space-x-4 sm:space-x-6">
+            <button onClick={() => { setActiveTab('landing'); setMobileMenuOpen(false); }} className="flex items-center space-x-2.5 group py-2 text-left bg-transparent border-none cursor-pointer">
+              <img 
+                src="/logo.png" 
+                alt="RevPulse Logo" 
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-contain shadow-lg border border-purple-500/30 bg-purple-950/40" 
+                onError={(e)=>{
+                  e.target.onerror = null;
+                  e.target.style.display = 'none';
+                  if(e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              <div className="w-10 h-10 rounded-xl bg-purple-600 border border-purple-400/40 items-center justify-center text-white font-bold hidden shadow-md">✨</div>
+              <span className="text-lg sm:text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition">RevPulse</span>
+            </button>
+            <nav className="hidden lg:flex space-x-5 text-sm text-gray-300 font-medium">
+              <button onClick={() => setActiveTab('landing')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'landing' ? 'text-blue-400 font-semibold' : ''}`}>{t.overview}</button>
+              <button onClick={() => setActiveTab('pricing')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'pricing' ? 'text-blue-400 font-semibold' : ''}`}>{t.pricing}</button>
+              {currentUser && (
+                <button onClick={() => setActiveTab('dashboard')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'dashboard' ? 'text-blue-400 font-semibold' : ''}`}>{t.dashboard}</button>
+              )}
+              <button onClick={() => setActiveTab('knowledge')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'knowledge' ? 'text-blue-400 font-semibold' : ''}`}>{t.knowledge}</button>
+              <button onClick={() => setActiveTab('legal')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'legal' ? 'text-blue-400 font-semibold' : ''}`}>{t.legal}</button>
+            </nav>
+          </div>
+          
+          <div className="flex items-center space-x-2.5 sm:space-x-4">
+            <select 
+              value={selectedLanguage} 
+              onChange={(e) => setSelectedLanguage(e.target.value)}
+              className="bg-gray-900 text-gray-300 text-xs rounded-xl px-2.5 py-2 border border-gray-800 focus:outline-none focus:border-blue-500 cursor-pointer">
+              <option value="en">🌐 English</option>
+              <option value="fr">🇫🇷 Français</option>
+              <option value="it">🇮🇹 Italiano</option>
+              <option value="es">🇪🇸 Español</option>
+              <option value="ar">🇦🇪 العربية</option>
+              <option value="ur">🇵🇰 اردو</option>
+            </select>
+
+            <div className="hidden lg:flex items-center space-x-3">
+              {currentUser ? (
+                <button 
+                  onClick={() => { supabase.auth.signOut(); setCurrentUser(null); setActiveTab('landing'); }}
+                  className="text-xs sm:text-sm text-red-400 hover:text-red-300 transition font-medium px-2.5 py-2 bg-transparent border-none cursor-pointer">
+                  {t.signOut} ({currentUser.email})
+                </button>
+              ) : (
+                <>
+                  <button 
+                    onClick={() => { setAuthMode('signin'); setShowAuthModal(true); }}
+                    className="text-xs sm:text-sm text-gray-300 hover:text-white transition font-medium px-2.5 py-2 whitespace-nowrap bg-transparent border-none cursor-pointer">
+                    {t.signIn}
+                  </button>
+                  <button 
+                    onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
+                    className="px-3.5 py-2 sm:px-4.5 sm:py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold rounded-xl transition shadow-lg shadow-blue-600/25 whitespace-nowrap border-none cursor-pointer">
+                    {t.getStarted}
+                  </button>
+                </>
+              )}
+            </div>
+
+            {/* Mobile Hamburger Button */}
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-2 text-gray-300 hover:text-white focus:outline-none bg-gray-900 border border-gray-800 rounded-xl cursor-pointer">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Dropdown Navigation Menu */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden bg-gray-900/95 backdrop-blur-xl border-b border-gray-800 px-6 py-6 space-y-4 animate-fadeIn">
+            <div className="flex flex-col space-y-3 font-medium text-sm">
+              <button onClick={() => { setActiveTab('landing'); setMobileMenuOpen(false); }} className="text-left py-2 text-gray-300 hover:text-white bg-transparent border-none cursor-pointer">{t.overview}</button>
+              <button onClick={() => { setActiveTab('pricing'); setMobileMenuOpen(false); }} className="text-left py-2 text-gray-300 hover:text-white bg-transparent border-none cursor-pointer">{t.pricing}</button>
+              {currentUser && (
+                <button onClick={() => { setActiveTab('dashboard'); setMobileMenuOpen(false); }} className="text-left py-2 text-gray-300 hover:text-white bg-transparent border-none cursor-pointer">{t.dashboard}</button>
+              )}
+              <button onClick={() => { setActiveTab('knowledge'); setMobileMenuOpen(false); }} className="text-left py-2 text-gray-300 hover:text-white bg-transparent border-none cursor-pointer">{t.knowledge}</button>
+              <button onClick={() => { setActiveTab('legal'); setMobileMenuOpen(false); }} className="text-left py-2 text-gray-300 hover:text-white bg-transparent border-none cursor-pointer">{t.legal}</button>
+            </div>
+            
+            <div className="pt-4 border-t border-gray-800 flex flex-col space-y-3">
+              {currentUser ? (
+                <button 
+                  onClick={() => { supabase.auth.signOut(); setCurrentUser(null); setActiveTab('landing'); setMobileMenuOpen(false); }}
+                  className="text-left text-red-400 hover:text-red-300 font-medium py-2 bg-transparent border-none cursor-pointer">
+                  {t.signOut} ({currentUser.email})
+                </button>
+              ) : (
+                <>
+                  <button 
+                    onClick={() => { setAuthMode('signin'); setShowAuthModal(true); setMobileMenuOpen(false); }}
+                    className="text-left text-gray-300 hover:text-white font-medium py-2 bg-transparent border-none cursor-pointer">
+                    {t.signIn}
+                  </button>
+                  <button 
+                    onClick={() => { setAuthMode('signup'); setShowAuthModal(true); setMobileMenuOpen(false); }}
+                    className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl text-center shadow-lg border-none cursor-pointer">
+                    {t.getStarted}
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        )}
+      </header>
+
+      {activeTab === 'landing' && (
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-24 space-y-20">
+          {/* Hero Slider Section */}
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-blue-500/30 bg-gray-900">
+            <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] min-h-[420px]">
+              {heroSlides.map((slide, index) => (
+                <div 
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out flex items-center ${index === currentSlide ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}
+                >
+                  <img 
+                    src={`/${slide.image}`} 
+                    alt={`RevPulse Hero Slide ${index + 1}`} 
+                    className="absolute inset-0 w-full h-full object-cover opacity-85" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/80 to-transparent z-10"></div>
+                  
+                  <div className="relative z-20 max-w-2xl px-6 sm:px-12 py-12 space-y-6">
+                    <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-blue-950/80 border border-blue-800/50 text-blue-300 text-xs font-semibold rounded-full uppercase tracking-wider backdrop-blur-md">
+                      <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                      <span>{slide.badge}</span>
+                    </div>
+                    
+                    <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
+                      {slide.title}
+                    </h1>
+                    
+                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed max-w-xl">
+                      {slide.subtitle}
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                      <button 
+                        onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
+                        className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2 text-xs sm:text-sm border-none cursor-pointer">
+                        <span>{t.getStarted}</span>
+                        <span>→</span>
+                      </button>
+                      <button 
+                        onClick={() => setActiveTab('knowledge')}
+                        className="px-6 py-3.5 bg-gray-900/80 hover:bg-gray-800 border border-gray-700 backdrop-blur-md text-gray-200 font-semibold rounded-xl transition flex items-center justify-center space-x-2 text-xs sm:text-sm cursor-pointer">
+                        <span>{t.exploreKnowledge}</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Slider Navigation Dots */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex space-x-2 bg-gray-950/60 backdrop-blur-md px-4 py-2 rounded-full border border-gray-800">
+              {heroSlides.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`w-3 h-3 rounded-full transition-all border-none cursor-pointer ${idx === currentSlide ? 'bg-blue-500 w-8' : 'bg-gray-600 hover:bg-gray-400'}`}
+                  aria-label={`Slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* 3-Step Simple Workflow */}
+          <section className="space-y-8 pt-8 border-t border-gray-800/80">
+            <div className="text-center space-y-2">
+              <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{t.howItWorks}</span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white">{t.workflowTitle}</h2>
+              <p className="text-xs text-gray-400 max-w-lg mx-auto">{t.workflowSubtitle}</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4 relative">
+                <div className="w-10 h-10 rounded-2xl bg-blue-600/20 border border-blue-500/40 text-blue-400 font-extrabold flex items-center justify-center text-sm">1</div>
+                <h3 className="text-lg font-bold text-white">{t.step1Title}</h3>
+                <p className="text-xs text-gray-400 leading-relaxed">{t.step1Desc}</p>
+              </div>
+
+              <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4 relative">
+                <div className="w-10 h-10 rounded-2xl bg-indigo-600/20 border border-indigo-500/40 text-indigo-400 font-extrabold flex items-center justify-center text-sm">2</div>
+                <h3 className="text-lg font-bold text-white">{t.step2Title}</h3>
+                <p className="text-xs text-gray-400 leading-relaxed">{t.step2Desc}</p>
+              </div>
+
+              <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4 relative">
+                <div className="w-10 h-10 rounded-2xl bg-purple-600/20 border border-purple-500/40 text-purple-400 font-extrabold flex items-center justify-center text-sm">3</div>
+                <h3 className="text-lg font-bold text-white">{t.step3Title}</h3>
+                <p className="text-xs text-gray-400 leading-relaxed">{t.step3Desc}</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Interactive Demo Section with Kaku Mascot */}
+          <section id="sandbox-demo" className="max-w-4xl mx-auto pt-4">
+            <div className="bg-gray-900/90 border border-gray-800/80 rounded-3xl p-6 sm:p-8 shadow-2xl relative mt-8">
+              <div className="absolute -top-10 left-6 flex items-center space-x-3 bg-gray-900 border border-blue-500/50 px-4 py-2.5 rounded-2xl shadow-2xl z-20">
+                <img 
+                  src="/kaku-mascot.png" 
+                  alt="Kaku AI Mascot" 
+                  className="w-10 h-10 rounded-xl object-cover shadow-md border border-blue-400/40 bg-gray-950"
+                  onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+                />
+                <div>
+                  <div className="text-xs font-bold text-white flex items-center space-x-1.5">
+                    <span>Kaku Assistant</span>
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  </div>
+                  <div className="text-[11px] text-gray-400">Test industry response templates</div>
+                </div>
+              </div>
+
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 pt-6">
+                <div>
+                  <h3 className="text-lg font-bold text-white">{t.demoTitle}</h3>
+                  <p className="text-xs text-gray-400">{t.demoSubtitle}</p>
+                </div>
+                
+                <div className="flex flex-wrap gap-1.5 max-w-full justify-start md:justify-end">
+                  {Object.keys(verticalData).map((key) => (
+                    <button
+                      key={key}
+                      onClick={() => {
+                        setSelectedVertical(key);
+                        setAiResponse('');
+                      }}
+                      className={`px-3 py-1.5 rounded-xl text-[11px] font-semibold transition cursor-pointer ${
+                        selectedVertical === key 
+                          ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' 
+                          : 'bg-gray-800 text-gray-400 hover:text-white'
+                      }`}
+                    >
+                      {vt[key]}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-4 mb-6">
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">
+                    {t.sampleFeedbackLabel} ({vt[selectedVertical]})
+                  </label>
+                  <div className="w-full bg-gray-950 border border-gray-800 rounded-2xl p-4 text-sm text-gray-200 h-28 overflow-y-auto shadow-inner">
+                    {dt.review}
+                  </div>
+                </div>
+
+                <button 
+                  onClick={handleGenerateResponse}
+                  disabled={isGenerating}
+                  className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/20 text-xs sm:text-sm border-none cursor-pointer">
+                  {isGenerating ? <span>{t.generatingBtn}</span> : <span>{t.generateBtn}</span>}
+                </button>
+              </div>
+
+              {aiResponse && (
+                <div className="bg-gray-950 border border-blue-900/50 rounded-2xl p-5 animate-fadeIn">
+                  <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+                    <span>{t.approvedOutput}</span>
+                    <span className="text-emerald-400 text-[11px]">{t.readyApproval}</span>
+                  </div>
+                  <p className="text-sm text-gray-300 leading-relaxed">{aiResponse}</p>
+                </div>
+              )}
+            </div>
+          </section>
+        </main>
+      )}
+
+      {activeTab === 'knowledge' && (
+        <section className="py-20 px-4 sm:px-6 max-w-5xl mx-auto space-y-8">
+          <div className="text-center space-y-3">
+            <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">Comprehensive Enterprise Hub</span>
+            <h1 className="text-2xl sm:text-4xl font-extrabold text-white">{t.knowledgeHeader}</h1>
+            <p className="text-xs sm:text-sm text-gray-400 max-w-xl mx-auto">{t.knowledgeSubtitle}</p>
+          </div>
+
+          <div className="bg-gray-900 border border-gray-800 p-6 rounded-3xl space-y-4 shadow-xl">
+            <input 
+              type="text" 
+              value={knowledgeSearch}
+              onChange={(e) => setKnowledgeSearch(e.target.value)}
+              placeholder={t.searchPlaceholder}
+              className="w-full bg-gray-950 border border-gray-800 rounded-2xl px-5 py-4 text-xs text-white focus:outline-none focus:border-blue-500 shadow-inner"
+            />
+            
+            <div className="flex flex-wrap gap-2 pt-2">
+              {[
+                { id: 'all', label: ct.all },
+                { id: 'hvac', label: ct.hvac },
+                { id: 'dental', label: ct.dental },
+                { id: 'contractors', label: ct.contractors },
+                { id: 'hospitality', label: ct.hospitality },
+                { id: 'hotels', label: ct.hotels },
+                { id: 'ecommerce', label: ct.ecommerce },
+                { id: 'automotive', label: ct.automotive },
+                { id: 'financial', label: ct.financial },
+                { id: 'legal', label: ct.legal },
+                { id: 'wellness', label: ct.wellness },
+                { id: 'veterinary', label: ct.veterinary }
+              ].map(cat => (
+                <button
+                  key={cat.id}
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`px-3 py-1.5 rounded-xl text-[11px] font-semibold transition cursor-pointer ${
+                    selectedCategory === cat.id 
+                      ? 'bg-blue-600 text-white shadow-lg' 
+                      : 'bg-gray-800 text-gray-400 hover:text-white'
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {filteredArticles.length > 0 ? (
+              filteredArticles.map(article => (
+                <div key={article.id} className="bg-gray-900 border border-gray-800 p-6 rounded-3xl space-y-3 hover:border-blue-500/50 transition">
+                  <span className="text-[10px] bg-blue-500/20 text-blue-400 px-2.5 py-1 rounded-full uppercase font-bold tracking-wider">{article.category}</span>
+                  <h3 className="text-base font-bold text-white">{article.title}</h3>
+                  <p className="text-xs text-gray-400 leading-relaxed">{article.summary}</p>
+                  <div className="pt-3 border-t border-gray-800 text-xs text-gray-300 leading-relaxed bg-gray-950 p-4 rounded-2xl">
+                    {article.content}
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="md:col-span-2 text-center py-16 text-gray-500 text-xs bg-gray-900 border border-gray-800 rounded-3xl">
+                No matching articles found. Try searching with different keywords or ask Kaku in the Situation Room!
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {activeTab === 'legal' && (
+        <section className="py-20 px-6 max-w-4xl mx-auto space-y-12 text-sm text-gray-300 leading-relaxed">
+          <div className="border-b border-gray-800 pb-6">
+            <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{t.legalSubtitle}</span>
+            <h1 className="text-3xl font-extrabold text-white mt-1">{t.legalTitle}</h1>
+            <p className="text-xs text-gray-400 mt-2">{t.legalMeta}</p>
+          </div>
+
+          <div className="space-y-6">
+            <h2 className="text-xl font-bold text-white">{t.part1Title}</h2>
+            <p className="text-gray-400">{t.part1Desc}</p>
+            <h3 className="text-base font-bold text-white">{t.p1Heading1}</h3>
+            <p className="text-gray-400">{t.p1Text1}</p>
+            <h3 className="text-base font-bold text-white">{t.p1Heading2}</h3>
+            <p className="text-gray-400">{t.p1Text2}</p>
+            <h3 className="text-base font-bold text-white">{t.p1Heading3}</h3>
+            <p className="text-gray-400">{t.p1Text3}</p>
+          </div>
+
+          <div className="space-y-6 pt-6 border-t border-gray-800">
+            <h2 className="text-xl font-bold text-white">{t.part2Title}</h2>
+            <p className="text-gray-400">{t.part2Desc}</p>
+            <h3 className="text-base font-bold text-white">{t.p2Heading1}</h3>
+            <p className="text-gray-400">{t.p2Text1}</p>
+            <h3 className="text-base font-bold text-white">{t.p2Heading2}</h3>
+            <p className="text-gray-400">{t.p2Text2}</p>
+            <h3 className="text-base font-bold text-white">{t.p2Heading3}</h3>
+            <p className="text-gray-400">
+              {t.p2Text3} <strong>support@revpulse.tools</strong>.
+            </p>
+          </div>
+
+          <button onClick={() => setActiveTab('landing')} className="px-5 py-3 bg-gray-800 hover:bg-gray-700 text-white text-xs font-semibold rounded-xl transition border-none cursor-pointer">
+            {t.backToOverview}
+          </button>
+        </section>
+      )}
+
+      {activeTab === 'dashboard' && (
+        <section className="py-12 px-6 max-w-7xl mx-auto space-y-8">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-gray-900 border border-gray-800 p-8 rounded-3xl">
+            <div>
+              <div className="flex items-center space-x-3 mb-1">
+                <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Active 7-Day Free Trial — No Card Required</span>
+                <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${twilioConfig.isLive ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'}`}>
+                  {twilioConfig.isLive ? '🟢 Live Production Mode' : '🟡 Sandbox Testing Mode'}
+                </span>
+              </div>
+              <h1 className="text-3xl font-extrabold text-white">Customer & Admin Dashboard</h1>
+              <p className="text-sm text-gray-400 mt-1">Welcome back, {currentUser ? currentUser.email : 'Operator'}.</p>
+            </div>
+            
+            <div className="flex flex-wrap gap-2">
+              <button 
+                onClick={() => setDashboardSubTab('overview')} 
+                className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition border-none cursor-pointer ${dashboardSubTab === 'overview' ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-800 text-gray-300 hover:text-white'}`}>
+                📊 Overview
+              </button>
+              <button 
+                onClick={() => setDashboardSubTab('sandbox')} 
+                className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition border-none cursor-pointer ${dashboardSubTab === 'sandbox' ? 'bg-purple-600 text-white shadow-lg' : 'bg-gray-800 text-gray-300 hover:text-white'}`}>
+                🧪 Testing & Sandbox Lab
+              </button>
+              <button 
+                onClick={() => setDashboardSubTab('trial-lifecycle')} 
+                className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition border-none cursor-pointer ${dashboardSubTab === 'trial-lifecycle' ? 'bg-amber-600 text-white shadow-lg' : 'bg-gray-800 text-gray-300 hover:text-white'}`}>
+                📧 Trial & Email Lifecycle
+              </button>
+              <button 
+                onClick={() => setDashboardSubTab('settings')} 
+                className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition border-none cursor-pointer ${dashboardSubTab === 'settings' ? 'bg-indigo-600 text-white shadow-lg' : 'bg-gray-800 text-gray-300 hover:text-white'}`}>
+                ⚙️ Integrations & Gateway
+              </button>
+            </div>
+          </div>
+
+          {dashboardSubTab === 'overview' && (
+            <div className="space-y-8">
+              <div className="flex justify-between items-center bg-gray-900 border border-gray-800 px-6 py-4 rounded-2xl">
+                <div className="text-xs text-gray-300">Need to link more business profiles or test your messaging sequences?</div>
+                <div className="flex space-x-3">
+                  <button onClick={() => setShowConnectModal(true)} className="px-3.5 py-2 bg-purple-600 text-white text-xs font-semibold rounded-xl border-none cursor-pointer">
+                    🔗 Connect Business Pages
+                  </button>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
+                  <div className="text-xs font-semibold text-gray-400 uppercase">Monitored Locations</div>
+                  <div className="text-3xl font-extrabold text-white mt-2">
+                    {Object.values(connectedPlatforms).filter(p => p.connected).length} Active
+                  </div>
+                  <div className="text-xs text-blue-400 mt-2">Google, Yelp & FB Channels Linked</div>
+                </div>
+                <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
+                  <div className="text-xs font-semibold text-gray-400 uppercase">Feedback Items Pending</div>
+                  <div className="text-3xl font-extrabold text-white mt-2">0 Pending</div>
+                  <div className="text-xs text-emerald-400 mt-2">All pipelines protected</div>
+                </div>
+                <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
+                  <div className="text-xs font-semibold text-gray-400 uppercase">Trial Status</div>
+                  <div className="text-3xl font-extrabold text-white mt-2">7 Days Free</div>
+                  <div className="text-xs text-amber-400 mt-2">Automated email nudges active</div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {dashboardSubTab === 'sandbox' && (
+            <div className="bg-gray-900 border border-purple-500/40 p-8 rounded-3xl space-y-6">
+              <div>
+                <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider">Safe Testing Window</span>
+                <h3 className="text-xl font-bold text-white mt-1">Omnichannel Sandbox & Simulation Lab</h3>
+                <p className="text-xs text-gray-400 mt-1">Test your SMS recovery texts and WhatsApp templates in a sandbox environment.</p>
+              </div>
+
+              <form onSubmit={handleRunSandboxTest} className="grid md:grid-cols-2 gap-6 bg-gray-950 p-6 rounded-2xl border border-gray-800">
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-400 mb-1">Select Channel to Test</label>
+                    <select 
+                      value={sandboxChannel}
+                      onChange={(e) => setSandboxChannel(e.target.value)}
+                      className="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-purple-500 cursor-pointer">
+                      <option value="sms">💬 Twilio SMS Recovery Text</option>
+                      <option value="whatsapp">📗 WhatsApp Business Template</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-400 mb-1">Test Recipient Phone / SIM</label>
+                    <input 
+                      type="text" 
+                      value={sandboxPhone} 
+                      onChange={(e) => setSandboxPhone(e.target.value)}
+                      className="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-purple-500"
+                      required
+                    />
+                  </div>
+                  <button 
+                    type="submit"
+                    disabled={isSandboxRunning}
+                    className="w-full py-3.5 bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
+                    {isSandboxRunning ? 'Simulating Dispatch...' : '🧪 Run Sandbox Simulation'}
+                  </button>
+                </div>
+
+                <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex flex-col justify-between">
+                  <div>
+                    <div className="text-xs font-bold text-gray-300 mb-3 uppercase tracking-wider">Sandbox Terminal Log</div>
+                    {sandboxLog ? (
+                      <div className="space-y-3 text-xs font-mono">
+                        <div className="text-emerald-400 font-bold">{sandboxLog.status}</div>
+                        <div className="p-3 bg-gray-950 border border-gray-800 rounded-xl text-gray-300 mt-2">
+                          {sandboxLog.payload}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-xs text-gray-500 italic py-12 text-center">
+                        Configure your test parameters on the left and click "Run Sandbox Simulation".
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </form>
+            </div>
+          )}
+
+          {dashboardSubTab === 'trial-lifecycle' && (
+            <div className="bg-gray-900 border border-amber-500/40 p-8 rounded-3xl space-y-6">
+              <div>
+                <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider">Automated Conversion Funnel</span>
+                <h3 className="text-xl font-bold text-white mt-1">7-Day Free Trial & Email Lifecycle Automation</h3>
+                <p className="text-xs text-gray-400 mt-1">Manage the automated welcome confirmation and Days 4, 5, and 6 trial reminder emails.</p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-gray-950 p-6 rounded-2xl border border-gray-800 space-y-3">
+                  <span className="text-xs font-bold text-white">📧 Day 0: Account Setup Confirmation</span>
+                  <p className="text-xs text-gray-400 leading-relaxed">Dispatched instantly upon registration with unrestricted 7-day trial access.</p>
+                </div>
+                <div className="bg-gray-950 p-6 rounded-2xl border border-gray-800 space-y-3">
+                  <span className="text-xs font-bold text-white">📧 Days 4, 5 & 6: Trial Nudge Sequence</span>
+                  <p className="text-xs text-gray-400 leading-relaxed">Automated reminders highlighting plan options ($29 Starter or $79 Pro).</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {dashboardSubTab === 'settings' && (
+            <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-6">
+              <div>
+                <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">Production Setup</span>
+                <h3 className="text-xl font-bold text-white mt-1">Twilio & WhatsApp API Gateway Credentials</h3>
+              </div>
+
+              <form onSubmit={handleSaveTwilioConfig} className="grid md:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-400 mb-1">Twilio Account SID</label>
+                  <input 
+                    type="text" 
+                    value={twilioConfig.accountSid} 
+                    onChange={(e) => setTwilioConfig({...twilioConfig, accountSid: e.target.value})} 
+                    placeholder="ACxxxxxxxxxxxxxxxx"
+                    className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-400 mb-1">Twilio Auth Token</label>
+                  <input 
+                    type="password" 
+                    value={twilioConfig.authToken} 
+                    onChange={(e) => setTwilioConfig({...twilioConfig, authToken: e.target.value})} 
+                    placeholder="••••••••••••••••"
+                    className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-400 mb-1">Twilio Phone Number</label>
+                  <input 
+                    type="text" 
+                    value={twilioConfig.phoneNumber} 
+                    onChange={(e) => setTwilioConfig({...twilioConfig, phoneNumber: e.target.value})} 
+                    placeholder="+1 (321) 000-0000"
+                    className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500"
+                    required
+                  />
+                </div>
+                <div className="md:col-span-3 flex justify-end">
+                  <button type="submit" className="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
+                    Save Gateway Credentials
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+        </section>
+      )}
+
+      {activeTab === 'pricing' && (
+        <section className="py-20 px-6 max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl font-extrabold text-white mb-4">{t.pricingHeader}</h1>
+            <p className="text-gray-400">{t.pricingSub}</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-16">
+            <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{t.starterPlanBadge}</span>
+                <h3 className="text-2xl font-bold text-white mt-1 mb-4">{t.starterPlanTitle}</h3>
+                <div className="text-4xl font-extrabold text-white mb-6">{t.starterPrice}<span className="text-sm text-gray-400 font-normal">{t.starterPeriod}</span></div>
+                <ul className="space-y-3 text-sm text-gray-300 mb-8">
+                  <li className="flex items-center">{t.starterFeature1}</li>
+                  <li className="flex items-center">{t.starterFeature2}</li>
+                  <li className="flex items-center">{t.starterFeature3}</li>
+                </ul>
+              </div>
+              <button onClick={() => handleStripeCheckout('starter')} className="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
+                {t.getStarted}
+              </button>
+            </div>
+
+            <div className="bg-gradient-to-b from-blue-950/50 to-gray-900 border border-blue-600/50 p-8 rounded-3xl flex flex-col justify-between relative shadow-2xl">
+              <div className="absolute -top-3 right-6 bg-blue-600 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">{t.mostPopular}</div>
+              <div>
+                <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{t.proPlanBadge}</span>
+                <h3 className="text-2xl font-bold text-white mt-1 mb-4">{t.proPlanTitle}</h3>
+                <div className="text-4xl font-extrabold text-white mb-6">{t.proPrice}<span className="text-sm text-gray-400 font-normal">{t.proPeriod}</span></div>
+                <ul className="space-y-3 text-sm text-gray-300 mb-8">
+                  <li className="flex items-center">{t.proFeature1}</li>
+                  <li className="flex items-center">{t.proFeature2}</li>
+                  <li className="flex items-center">{t.proFeature3}</li>
+                </ul>
+              </div>
+              <button onClick={() => handleStripeCheckout('pro')} className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
+                {t.getStarted}
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {showAuthModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 border border-blue-500/40 rounded-3xl max-w-md w-full p-8 shadow-2xl relative">
+            <button onClick={() => setShowAuthModal(false)} className="absolute top-6 right-6 text-gray-400 hover:text-white text-sm font-bold bg-transparent border-none cursor-pointer">✕</button>
+            <h3 className="text-xl font-bold text-white mb-2">{authMode === 'signin' ? 'Sign In to RevPulse' : 'Start 7-Day Free Trial — No Card Required'}</h3>
+            <p className="text-xs text-gray-400 mb-6">Unrestricted workspace access. No payment card required upfront.</p>
+            
+            <form onSubmit={handleAuthSubmit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-gray-400 mb-1">Email Address</label>
+                <input 
+                  type="email" 
+                  value={email} 
+                  onChange={(e) => setEmail(e.target.value)} 
+                  placeholder="name@company.com"
+                  className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-400 mb-1">Password</label>
+                <input 
+                  type="password" 
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)} 
+                  placeholder="••••••••"
+                  className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500"
+                  required
+                />
+              </div>
+              <button type="submit" className="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg text-xs border-none cursor-pointer">
+                {authMode === 'signin' ? 'Sign In' : 'Activate 7-Day Free Trial'}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {showConnectModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 border border-purple-500/40 rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-6">
+            <button onClick={() => setShowConnectModal(false)} className="absolute top-6 right-6 text-gray-400 hover:text-white text-sm font-bold bg-transparent border-none cursor-pointer">✕</button>
+            <div>
+              <h3 className="text-xl font-bold text-white mb-1">Connect Business Profiles</h3>
+              <p className="text-xs text-gray-400">Link your review channels via secure API token & URL handshake.</p>
+            </div>
+
+            {connectingPlatform ? (
+              <form onSubmit={handleSaveCredentials} className="space-y-4">
+                <input 
+                  type="text"
+                  value={credentialInput}
+                  onChange={(e) => setCredentialInput(e.target.value)}
+                  placeholder={`https://${connectingPlatform}.com/your-business`}
+                  className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-purple-500"
+                  required
+                />
+                <button type="submit" className="w-full py-3 bg-purple-600 text-white text-xs font-semibold rounded-xl border-none cursor-pointer shadow-lg">Verify & Link</button>
+              </form>
+            ) : (
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-4 bg-gray-950 border border-gray-800 rounded-2xl">
+                  <span className="text-xs font-bold text-white">Google Business Profile</span>
+                  <button onClick={() => setConnectingPlatform('google')} className="px-3 py-1.5 text-xs bg-blue-600 text-white rounded-xl border-none cursor-pointer">Connect</button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {showSituationRoom && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 border border-blue-500/40 rounded-3xl max-w-2xl w-full h-[650px] flex flex-col shadow-2xl relative overflow-hidden">
+            <div className="px-6 py-4 border-b border-gray-800 flex items-center justify-between bg-gray-950/60">
+              <div className="flex items-center space-x-3">
+                <img 
+                  src="/kaku-mascot.png" 
+                  alt="Kaku" 
+                  className="w-8 h-8 rounded-lg object-cover border border-blue-400/40 bg-gray-950" 
+                  onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+                />
+                <span className="text-sm font-bold text-white">Kaku Assistant & Situation Room</span>
+              </div>
+              <button onClick={() => setShowSituationRoom(false)} className="text-gray-400 hover:text-white text-sm font-bold px-2.5 py-1 bg-gray-800 rounded-lg border-none cursor-pointer">✕</button>
+            </div>
+            <div className="flex-1 overflow-y-auto p-6 space-y-4">
+              {chatLogs.map((log, idx) => (
+                <div key={idx} className={`flex ${log.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`max-w-[80%] rounded-2xl p-4 text-xs leading-relaxed ${log.sender === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-800 text-gray-200 border border-gray-700'}`}>
+                    {log.text}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="p-4 border-t border-gray-800 bg-gray-950/80">
+              <form onSubmit={handleSendChatMessage} className="flex space-x-2">
+                <input 
+                  type="text" 
+                  value={chatMessage} 
+                  onChange={(e) => setChatMessage(e.target.value)}
+                  placeholder="Ask Kaku anything across HVAC, Dental, Legal, Retail, Veterinary..." 
+                  className="flex-1 bg-gray-900 border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-gray-200 focus:outline-none focus:border-blue-500"
+                />
+                <button type="submit" className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition border-none cursor-pointer">Send</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Floating Kaku Assistant Button */}
+      <div className="fixed bottom-6 right-6 z-40">
+        <button 
+          onClick={() => setShowSituationRoom(true)}
+          className="flex items-center space-x-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-3.5 rounded-2xl shadow-2xl transition transform hover:scale-105 border border-blue-400/40 group cursor-pointer">
+          <img 
+            src="/kaku-mascot.png" 
+            alt="Kaku" 
+            className="w-10 h-10 rounded-xl object-cover border border-white/30 bg-gray-950 shadow-md" 
+            onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+          />
+          <div className="text-left">
+            <div className="text-xs font-extrabold flex items-center space-x-1.5">
+              <span>{t.askKakuTitle}</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
+            </div>
+            <div className="text-[11px] text-blue-100 font-medium">{t.askKakuSubtitle}</div>
+          </div>
+        </button>
+      </div>
+
+      <footer className="border-t border-gray-800/80 py-10 px-6 mt-28 text-center text-xs text-gray-400 space-y-3 bg-gray-950">
+        <div className="flex justify-center space-x-6 font-medium pb-2">
+          <button onClick={() => setActiveTab('landing')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.overview}</button>
+          <button onClick={() => setActiveTab('pricing')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.pricing}</button>
+          <button onClick={() => setActiveTab('knowledge')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.knowledge}</button>
+          <button onClick={() => setActiveTab('legal')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.legal}</button>
+        </div>
+        <p>{t.footerRights}</p>
+      </footer>
+    </div>
+  );
+}
