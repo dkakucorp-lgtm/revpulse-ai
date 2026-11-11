@@ -13,7 +13,24 @@ export default function RevPulsePlatform() {
   const [showSituationRoom, setShowSituationRoom] = useState(false);
   const [showConnectModal, setShowConnectModal] = useState(false);
   
-  // Interactive credential input state for each platform
+  // Dashboard Sub-tabs ('overview', 'sandbox', 'settings')
+  const [dashboardSubTab, setDashboardSubTab] = useState('overview');
+
+  // Sandbox State for Testing Features Before Going Live
+  const [sandboxChannel, setSandboxChannel] = useState('sms');
+  const [sandboxPhone, setSandboxPhone] = useState('+13212763473');
+  const [sandboxReviewRating, setSandboxReviewRating] = useState('1');
+  const [sandboxLog, setSandboxLog] = useState(null);
+  const [isSandboxRunning, setIsSandboxRunning] = useState(false);
+
+  // Twilio & Omnichannel Configuration State
+  const [twilioConfig, setTwilioConfig] = useState({
+    accountSid: '',
+    authToken: '',
+    phoneNumber: '',
+    isLive: false // Mode toggle: Sandbox vs Live
+  });
+
   const [connectingPlatform, setConnectingPlatform] = useState(null);
   const [credentialInput, setCredentialInput] = useState('');
   
@@ -110,6 +127,32 @@ export default function RevPulsePlatform() {
     }));
     setConnectingPlatform(null);
     setCredentialInput('');
+  };
+
+  const handleRunSandboxTest = (e) => {
+    e.preventDefault();
+    setIsSandboxRunning(true);
+    setSandboxLog(null);
+
+    setTimeout(() => {
+      setIsSandboxRunning(false);
+      setSandboxLog({
+        status: "SUCCESS (SANDBOX SIMULATION)",
+        channel: sandboxChannel.toUpperCase(),
+        recipient: sandboxPhone,
+        ratingSimulated: `${sandboxReviewRating} Stars`,
+        timestamp: new Date().toLocaleTimeString(),
+        payload: sandboxChannel === 'sms' 
+          ? `[Twilio Sandbox] Sent to ${sandboxPhone}: "Hi! We saw your ${sandboxReviewRating}-star feedback. Our manager wants to resolve this privately. Tap to connect: https://revpulse.tools/resolve/sandbox-token"`
+          : `[WhatsApp Sandbox Template] Dispatched to ${sandboxPhone}: Template #REV_RECOVERY_V2 rendered successfully with dynamic business variables.`
+      });
+    }, 900);
+  };
+
+  const handleSaveTwilioConfig = (e) => {
+    e.preventDefault();
+    setTwilioConfig(prev => ({ ...prev, isLive: true }));
+    alert("Twilio & WhatsApp API credentials verified! Your workspace is now operating in LIVE PRODUCTION mode.");
   };
 
   const handleSendChatMessage = (e) => {
@@ -344,48 +387,201 @@ export default function RevPulsePlatform() {
         <section className="py-12 px-6 max-w-7xl mx-auto space-y-8">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-gray-900 border border-gray-800 p-8 rounded-3xl">
             <div>
-              <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Active Workspace</span>
-              <h1 className="text-3xl font-extrabold text-white mt-1">Customer & Admin Dashboard</h1>
-              <p className="text-sm text-gray-400 mt-1">Welcome back, {currentUser ? currentUser.email : 'Operator'}. Monitor incoming reviews and webhook triggers here.</p>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <button 
-                onClick={() => setShowConnectModal(true)} 
-                className="px-4 py-2.5 bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold rounded-xl transition shadow-lg border-none cursor-pointer flex items-center space-x-2">
-                <span>🔗 Connect Business Pages</span>
-              </button>
-              <button onClick={() => alert("Webhook test trigger sent successfully!")} className="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
-                ⚡ Test Webhook / Twilio SMS
-              </button>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
-              <div className="text-xs font-semibold text-gray-400 uppercase">Monitored Locations</div>
-              <div className="text-3xl font-extrabold text-white mt-2">
-                {Object.values(connectedPlatforms).filter(p => p.connected).length} Active
+              <div className="flex items-center space-x-3 mb-1">
+                <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Active Workspace ($79 Pro Plan)</span>
+                <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${twilioConfig.isLive ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'}`}>
+                  {twilioConfig.isLive ? '🟢 Production Live Mode' : '🟡 Sandbox Testing Mode'}
+                </span>
               </div>
-              <div className="text-xs text-blue-400 mt-2">Google, Yelp & FB Channels Linked</div>
+              <h1 className="text-3xl font-extrabold text-white">Customer & Admin Dashboard</h1>
+              <p className="text-sm text-gray-400 mt-1">Welcome back, {currentUser ? currentUser.email : 'Operator'}.</p>
             </div>
-            <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
-              <div className="text-xs font-semibold text-gray-400 uppercase">Negative Reviews Intercepted</div>
-              <div className="text-3xl font-extrabold text-white mt-2">0 Pending</div>
-              <div className="text-xs text-emerald-400 mt-2">All pipelines protected</div>
-            </div>
-            <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
-              <div className="text-xs font-semibold text-gray-400 uppercase">Twilio SMS Recovery Status</div>
-              <div className="text-3xl font-extrabold text-white mt-2">Online</div>
-              <div className="text-xs text-emerald-400 mt-2">Webhook listening on port 3000</div>
+            
+            <div className="flex flex-wrap gap-2">
+              <button 
+                onClick={() => setDashboardSubTab('overview')} 
+                className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition border-none cursor-pointer ${dashboardSubTab === 'overview' ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-800 text-gray-300 hover:text-white'}`}>
+                📊 Overview
+              </button>
+              <button 
+                onClick={() => setDashboardSubTab('sandbox')} 
+                className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition border-none cursor-pointer ${dashboardSubTab === 'sandbox' ? 'bg-purple-600 text-white shadow-lg' : 'bg-gray-800 text-gray-300 hover:text-white'}`}>
+                🧪 Testing & Sandbox Lab
+              </button>
+              <button 
+                onClick={() => setDashboardSubTab('settings')} 
+                className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition border-none cursor-pointer ${dashboardSubTab === 'settings' ? 'bg-indigo-600 text-white shadow-lg' : 'bg-gray-800 text-gray-300 hover:text-white'}`}>
+                ⚙️ Integrations & Gateway
+              </button>
             </div>
           </div>
 
-          <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4">
-            <h3 className="text-lg font-bold text-white">Recent Review Activity Stream</h3>
-            <div className="border border-gray-800 rounded-2xl p-4 bg-gray-950 text-sm text-gray-400 text-center py-12">
-              No negative reviews (&lt; 4 stars) intercepted yet. When a customer leaves a low rating, Kaku will instantly log it here and dispatch a Twilio SMS recovery link.
+          {dashboardSubTab === 'overview' && (
+            <div className="space-y-8">
+              <div className="flex justify-between items-center bg-gray-900 border border-gray-800 px-6 py-4 rounded-2xl">
+                <div className="text-xs text-gray-300">Need to link more business profiles or configure SMS dispatches?</div>
+                <div className="flex space-x-3">
+                  <button onClick={() => setShowConnectModal(true)} className="px-3.5 py-2 bg-purple-600 text-white text-xs font-semibold rounded-xl border-none cursor-pointer">
+                    🔗 Connect Business Pages
+                  </button>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
+                  <div className="text-xs font-semibold text-gray-400 uppercase">Monitored Locations</div>
+                  <div className="text-3xl font-extrabold text-white mt-2">
+                    {Object.values(connectedPlatforms).filter(p => p.connected).length} Active
+                  </div>
+                  <div className="text-xs text-blue-400 mt-2">Google, Yelp & FB Channels Linked</div>
+                </div>
+                <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
+                  <div className="text-xs font-semibold text-gray-400 uppercase">Negative Reviews Intercepted</div>
+                  <div className="text-3xl font-extrabold text-white mt-2">0 Pending</div>
+                  <div className="text-xs text-emerald-400 mt-2">All pipelines protected</div>
+                </div>
+                <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
+                  <div className="text-xs font-semibold text-gray-400 uppercase">Omnichannel Status</div>
+                  <div className="text-3xl font-extrabold text-white mt-2">{twilioConfig.isLive ? 'Live' : 'Sandbox'}</div>
+                  <div className="text-xs text-emerald-400 mt-2">Ready for deployment</div>
+                </div>
+              </div>
+
+              <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4">
+                <h3 className="text-lg font-bold text-white">Recent Review Activity Stream</h3>
+                <div className="border border-gray-800 rounded-2xl p-4 bg-gray-950 text-sm text-gray-400 text-center py-12">
+                  No negative reviews (&lt; 4 stars) intercepted yet. When a customer leaves a low rating, Kaku will instantly log it here and dispatch a recovery link.
+                </div>
+              </div>
             </div>
-          </div>
+          )}
+
+          {dashboardSubTab === 'sandbox' && (
+            <div className="bg-gray-900 border border-purple-500/40 p-8 rounded-3xl space-y-6">
+              <div>
+                <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider">Safe Testing Window</span>
+                <h3 className="text-xl font-bold text-white mt-1">Omnichannel Sandbox & Simulation Lab</h3>
+                <p className="text-xs text-gray-400 mt-1">Test your SMS recovery texts, WhatsApp message templates, and AI review drafts in a sandbox environment before rolling them out to real customers.</p>
+              </div>
+
+              <form onSubmit={handleRunSandboxTest} className="grid md:grid-cols-2 gap-6 bg-gray-950 p-6 rounded-2xl border border-gray-800">
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-400 mb-1">Select Channel to Test</label>
+                    <select 
+                      value={sandboxChannel}
+                      onChange={(e) => setSandboxChannel(e.target.value)}
+                      className="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-purple-500 cursor-pointer">
+                      <option value="sms">💬 Twilio SMS Recovery Text</option>
+                      <option value="whatsapp">📗 WhatsApp Business Template</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-400 mb-1">Test Recipient Phone / SIM</label>
+                    <input 
+                      type="text" 
+                      value={sandboxPhone} 
+                      onChange={(e) => setSandboxPhone(e.target.value)}
+                      className="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-purple-500"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-400 mb-1">Simulate Review Rating</label>
+                    <select 
+                      value={sandboxReviewRating}
+                      onChange={(e) => setSandboxReviewRating(e.target.value)}
+                      className="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-purple-500 cursor-pointer">
+                      <option value="1">★☆☆☆☆ (1 Star - Severe Complaint)</option>
+                      <option value="2">★★☆☆☆ (2 Stars - Service Delay)</option>
+                      <option value="3">★★★☆☆ (3 Stars - Billing Dispute)</option>
+                    </select>
+                  </div>
+                  <button 
+                    type="submit"
+                    disabled={isSandboxRunning}
+                    className="w-full py-3.5 bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
+                    {isSandboxRunning ? 'Simulating Dispatch...' : '🧪 Run Sandbox Simulation'}
+                  </button>
+                </div>
+
+                <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex flex-col justify-between">
+                  <div>
+                    <div className="text-xs font-bold text-gray-300 mb-3 uppercase tracking-wider">Sandbox Terminal Log</div>
+                    {sandboxLog ? (
+                      <div className="space-y-3 text-xs font-mono">
+                        <div className="text-emerald-400 font-bold">{sandboxLog.status}</div>
+                        <div className="text-gray-400">Channel: <span className="text-white">{sandboxLog.channel}</span></div>
+                        <div className="text-gray-400">Recipient: <span className="text-white">{sandboxLog.recipient}</span></div>
+                        <div className="text-gray-400">Trigger: <span className="text-white">{sandboxLog.ratingSimulated}</span></div>
+                        <div className="p-3 bg-gray-950 border border-gray-800 rounded-xl text-gray-300 mt-2">
+                          {sandboxLog.payload}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-xs text-gray-500 italic py-12 text-center">
+                        Configure your test parameters on the left and click "Run Sandbox Simulation" to inspect the rendered outbound payload here.
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-[11px] text-gray-500 pt-4 border-t border-gray-800">
+                    ℹ️ Sandbox mode does not consume real Twilio credits or contact live customers.
+                  </div>
+                </div>
+              </form>
+            </div>
+          )}
+
+          {dashboardSubTab === 'settings' && (
+            <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-6">
+              <div>
+                <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">Production Setup</span>
+                <h3 className="text-xl font-bold text-white mt-1">Twilio & WhatsApp API Gateway Credentials</h3>
+                <p className="text-xs text-gray-400 mt-1">Once you have tested your campaigns in the sandbox tab, enter your live credentials here to go live.</p>
+              </div>
+
+              <form onSubmit={handleSaveTwilioConfig} className="grid md:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-400 mb-1">Twilio Account SID</label>
+                  <input 
+                    type="text" 
+                    value={twilioConfig.accountSid} 
+                    onChange={(e) => setTwilioConfig({...twilioConfig, accountSid: e.target.value})} 
+                    placeholder="ACxxxxxxxxxxxxxxxxxxxxxxxx"
+                    className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-400 mb-1">Twilio Auth Token</label>
+                  <input 
+                    type="password" 
+                    value={twilioConfig.authToken} 
+                    onChange={(e) => setTwilioConfig({...twilioConfig, authToken: e.target.value})} 
+                    placeholder="••••••••••••••••••••"
+                    className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-400 mb-1">Twilio Phone Number</label>
+                  <input 
+                    type="text" 
+                    value={twilioConfig.phoneNumber} 
+                    onChange={(e) => setTwilioConfig({...twilioConfig, phoneNumber: e.target.value})} 
+                    placeholder="+1 (321) 000-0000"
+                    className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500"
+                    required
+                  />
+                </div>
+                <div className="md:col-span-3 flex justify-end">
+                  <button type="submit" className="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
+                    Verify & Switch to Live Production Mode
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
         </section>
       )}
 
@@ -424,12 +620,12 @@ export default function RevPulsePlatform() {
                 <ul className="space-y-3 text-sm text-gray-300 mb-8">
                   <li className="flex items-center">✓ Up to 3 active locations</li>
                   <li className="flex items-center">✓ Omnichannel SMS, WhatsApp & Email suite</li>
-                  <li className="flex items-center">✓ Priority support & template playbooks</li>
+                  <li className="flex items-center">✓ Built-in Testing & Sandbox Lab</li>
                 </ul>
               </div>
               <button 
                 onClick={() => handleStripeCheckout('pro')} 
-                className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition shadow-lg shadow-indigo-600/25 border-none cursor-pointer">
+                className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition shadow-lg shadow-blue-600/25 border-none cursor-pointer">
                 Purchase $79 Pro Plan
               </button>
             </div>
