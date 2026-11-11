@@ -20,7 +20,7 @@ export default function RevPulsePlatform() {
   const [aiResponse, setAiResponse] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
 
-  // Dummy state for logged-in user dashboard view
+  // State for logged-in user dashboard view
   const [currentUser, setCurrentUser] = useState(null);
 
   const verticalData = {
@@ -81,13 +81,10 @@ export default function RevPulsePlatform() {
   };
 
   const handleStripeCheckout = (planType) => {
-    // Replace with your actual Stripe Payment Link or backend checkout endpoint
     const stripeLinks = {
-      starter: "https://buy.stripe.com/test_starter_29", // Update with your actual Stripe link
-      pro: "https://buy.stripe.com/test_pro_79"         // Update with your actual Stripe link
+      starter: "https://buy.stripe.com/test_starter_29",
+      pro: "https://buy.stripe.com/test_pro_79"
     };
-    
-    // Redirect to Stripe or open checkout modal
     window.location.href = stripeLinks[planType] || "https://stripe.com";
   };
 
@@ -340,7 +337,7 @@ export default function RevPulsePlatform() {
           <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4">
             <h3 className="text-lg font-bold text-white">Recent Review Activity Stream</h3>
             <div className="border border-gray-800 rounded-2xl p-4 bg-gray-950 text-sm text-gray-400 text-center py-12">
-              No negative reviews (< 4 stars) intercepted yet. When a customer leaves a low rating, Kaku will instantly log it here and dispatch a Twilio SMS recovery link.
+              No negative reviews (&lt; 4 stars) intercepted yet. When a customer leaves a low rating, Kaku will instantly log it here and dispatch a Twilio SMS recovery link.
             </div>
           </div>
         </section>
