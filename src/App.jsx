@@ -382,6 +382,285 @@ const categoryTranslations = {
   }
 };
 
+const demoContentTranslations = {
+  en: {
+    hvac: {
+      review: "Called for an AC repair on Tuesday, technician arrived late, and the bill was higher than quoted.",
+      response: "Hello. Thank you for sharing your feedback. We regret that your service timing and billing clarity did not meet our standard. Please reach out to our service manager directly so we can review your account."
+    },
+    dental: {
+      review: "Wait time in the lobby was over 45 minutes past my scheduled appointment slot.",
+      response: "Hello, thank you for your feedback. We strive to respect your time and apologize for the delay during your visit. Please contact our practice manager so we can assist you."
+    },
+    contractors: {
+      review: "County inspector flagged our project for an unpermitted patio enclosure. Very stressed!",
+      response: "Hello. We take building compliance seriously and are coordinating directly with the county office to resolve this permit inspection item immediately. Let's review the paperwork together today."
+    },
+    hospitality: {
+      review: "Ordered takeout online, drove home, and realized two entrees were completely missing.",
+      response: "Hello. We apologize for the missing items in your takeout order. Please reach out to our manager directly so we can issue an immediate refund and arrange a complimentary meal for your next visit."
+    },
+    hotels: {
+      review: "Arrived at the rental property and the smart lock code didn't work for 30 minutes in the cold.",
+      response: "Hello. We sincerely apologize for the lockbox delay upon your arrival. That is not the seamless experience we strive for. Please contact us directly so we can make this right."
+    },
+    ecommerce: {
+      review: "My package tracking number has been stuck on 'Label Created' for 5 days with no update.",
+      response: "Hello. Thank you for bringing this fulfillment delay to our attention. We are investigating with the carrier immediately and will send you a priority replacement or tracking update today."
+    },
+    automotive: {
+      review: "Brought my car in for a squeak, and was told I needed $1,200 in extra unneeded flushes.",
+      response: "Hello. We want you to feel completely confident in our recommendations. Let's review the digital inspection photos together so we can clarify what service is truly necessary right now."
+    },
+    financial: {
+      review: "Dropped off my corporate tax documents two months ago and haven't heard a single update.",
+      response: "Hello. We apologize for the communication gap during our filing queue. Your return is currently in final review, and our senior partner will call you by 2 PM today with a complete status update."
+    },
+    legal: {
+      review: "My attorney hasn't returned my phone calls in three weeks regarding my case status.",
+      response: "Hello. We understand how critical timely communication is for your peace of mind. Our team is pulling your case file right now to provide a comprehensive update before end of business today."
+    },
+    wellness: {
+      review: "Booked a balayage appointment and left with hair that turned out bright orange and damaged.",
+      response: "Hello. We take your hair health and satisfaction extremely seriously. Please come back into the salon this week so our master stylist can perform a complimentary corrective treatment."
+    },
+    veterinary: {
+      review: "Was hit with a massive surprise bill at discharge without anyone discussing costs beforehand.",
+      response: "Hello. We regret the lack of financial clarity regarding your pet's treatment charges. Please speak with our practice director directly so we can review the itemized statement together."
+    }
+  },
+  fr: {
+    hvac: {
+      review: "Appel pour une réparation de climatisation mardi, le technicien est arrivé en retard et la facture était plus élevée que prévu.",
+      response: "Bonjour. Merci d'avoir partagé votre avis. Nous regrettons que le délai et la clarté de la facture n'aient pas répondu à nos normes. Veuillez contacter notre responsable."
+    },
+    dental: {
+      review: "Le temps d'attente dans le hall dépassait 45 minutes par rapport à l'heure prévue.",
+      response: "Bonjour, merci pour votre commentaire. Nous nous efforçons de respecter votre temps et vous prions d'excuser ce retard. Contactez notre responsable de cabinet."
+    },
+    contractors: {
+      review: "L'inspecteur du comté a signalé notre projet pour une clôture de patio non autorisée. Très stressant !",
+      response: "Bonjour. Nous prenons la conformité au sérieux et coordonnons avec le bureau du comté pour résoudre ce problème de permis. Examinons les documents ensemble."
+    },
+    hospitality: {
+      review: "Commande à emporter en ligne, rentré chez moi, et j'ai réalisé que deux plats principaux manquaient.",
+      response: "Bonjour. Nous nous excusons pour les articles manquants. Contactez notre responsable directement pour un remboursement immédiat et un repas offert."
+    },
+    hotels: {
+      review: "Arrivé à la location et le code de la serrure connectée n'a pas fonctionné pendant 30 minutes dans le froid.",
+      response: "Bonjour. Nous nous excusons sincèrement pour ce problème de retard à l'arrivée. Contactez-nous directement pour rectifier la situation."
+    },
+    ecommerce: {
+      review: "Mon numéro de suivi de colis est bloqué sur 'Étiquette créée' depuis 5 jours sans mise à jour.",
+      response: "Bonjour. Merci d'avoir signalé ce retard. Nous enquêtons immédiatement auprès du transporteur et vous enverrons une mise à jour ou un remplacement."
+    },
+    automotive: {
+      review: "J'ai apporté ma voiture pour un grincement et on m'a dit que j'avais besoin de 1200 $ de purges supplémentaires inutiles.",
+      response: "Bonjour. Nous voulons que vous ayez totale confiance en nos recommandations. Examinons ensemble les photos d'inspection numérique."
+    },
+    financial: {
+      review: "J'ai déposé mes documents fiscaux d'entreprise il y a deux mois et je n'ai reçu aucune nouvelle.",
+      response: "Bonjour. Nous nous excusons pour cette lacune de communication. Votre déclaration est en cours de révision finale."
+    },
+    legal: {
+      review: "Mon avocat n'a pas répondu à mes appels depuis trois semaines concernant mon dossier.",
+      response: "Bonjour. Nous comprenons l'importance d'une communication rapide. Notre équipe consulte votre dossier pour vous donner une mise à jour."
+    },
+    wellness: {
+      review: "Rendez-vous balayage réservé et je suis repartie avec des cheveux orange vif et abîmés.",
+      response: "Bonjour. Nous prenons votre satisfaction très au sérieux. Revenez au salon cette semaine pour un soin correctif gracieux."
+    },
+    veterinary: {
+      review: "Facture surprise énorme à la sortie sans que personne n'en discute au préalable.",
+      response: "Bonjour. Nous regrettons le manque de clarté financière. Veuillez parler directement à notre directeur de pratique."
+    }
+  },
+  es: {
+    hvac: {
+      review: "Llamé para reparar el aire acondicionado el martes, el técnico llegó tarde y la factura fue mayor a la cotizada.",
+      response: "Hola. Gracias por compartir sus comentarios. Lamentamos que el tiempo y la claridad de la factura no cumplieran con nuestro estándar. Comuníquese con nuestro gerente."
+    },
+    dental: {
+      review: "El tiempo de espera en el vestíbulo fue de más de 45 minutos pasada mi cita programada.",
+      response: "Hola, gracias por sus comentarios. Nos esforzamos por respetar su tiempo y nos disculpamos por la demora. Contacte al gerente de la práctica."
+    },
+    contractors: {
+      review: "El inspector del condado marcó nuestro proyecto por un cierre de patio sin permiso. ¡Muy estresante!",
+      response: "Hola. Tomamos el cumplimiento de códigos muy en serio y estamos coordinando con la oficina del condado para resolver esto. Revisemos los documentos hoy."
+    },
+    hospitality: {
+      review: "Pedí comida para llevar en línea, llegué a casa y me di cuenta de que faltaban dos platos principales.",
+      response: "Hola. Nos disculpamos por los artículos faltantes en su pedido. Comuníquese con nuestro gerente para emitir un reembolso inmediato y una comida de cortesía."
+    },
+    hotels: {
+      review: "Llegué a la propiedad de alquiler y el código de la cerradura inteligente no funcionó durante 30 minutos en el frío.",
+      response: "Hola. Nos disculpamos sinceramente por el retraso en la caja de seguridad. Contáctenos directamente para solucionar esto."
+    },
+    ecommerce: {
+      review: "Mi número de seguimiento de paquete lleva 5 días atascado en 'Etiqueta creada' sin actualizaciones.",
+      response: "Hola. Gracias por informarnos sobre este retraso. Estamos investigando con la empresa de transporte inmediatamente y le enviaremos un reemplazo."
+    },
+    automotive: {
+      review: "Llevé mi auto por un chirrido y me dijeron que necesitaba $1,200 en lavados adicionales innecesarios.",
+      response: "Hola. Queremos que se sienta completamente seguro en nuestras recomendaciones. Revisemos juntos las fotos de inspección digital."
+    },
+    financial: {
+      review: "Dejé mis documentos de impuestos corporativos hace dos meses y no he recibido ninguna actualización.",
+      response: "Hola. Nos disculpamos por la brecha de comunicación. Su declaración está en revisión final y nuestro socio principal lo llamará hoy."
+    },
+    legal: {
+      review: "Mi abogado no ha devuelto mis llamadas en tres semanas sobre el estado de mi caso.",
+      response: "Hola. Entendemos lo crucial que es la comunicación oportuna. Nuestro equipo está revisando su expediente para darle una actualización."
+    },
+    wellness: {
+      review: "Reservé una cita de balayage y salí con el cabello naranja brillante y dañado.",
+      response: "Hola. Tomamos la salud de su cabello muy en serio. Vuelva al salón esta semana para que nuestro estilista realice un tratamiento corrector."
+    },
+    veterinary: {
+      review: "Recibí una factura sorpresa enorme al dar de alta a mi mascota sin que nadie discutiera los costos antes.",
+      response: "Hola. Lamentamos la falta de claridad financiera sobre los cargos. Hable directamente con nuestro director de práctica."
+    }
+  },
+  it: {
+    hvac: {
+      review: "Chiamato per riparazione AC martedì, tecnico arrivato in ritardo e conto più alto del preventivo.",
+      response: "Salve. Grazie per il feedback. Ci dispiace che i tempi e la fatturazione non siano stati chiari. Contatti il nostro responsabile."
+    },
+    dental: {
+      review: "Tempo di attesa in sala d'attesa oltre 45 minuti rispetto all'orario fissato.",
+      response: "Salve, grazie per il feedback. Ci scusiamo per il ritardo. Contatti il nostro responsabile dello studio."
+    },
+    contractors: {
+      review: "L'ispettore ha bloccato il nostro cantiere per un patio senza permessi. Molto stressante!",
+      response: "Salve. Prendiamo sul serio la conformità edilizia e stiamo coordinando con gli uffici comunali per risolvere."
+    },
+    hospitality: {
+      review: "Ordinato d'asporto online, arrivato a casa mancavano due piatti principali.",
+      response: "Salve. Ci scusiamo per gli articoli mancanti nel vostro ordine. Contattate il nostro gestore per un rimborso immediato."
+    },
+    hotels: {
+      review: "Arrivato all'alloggio e il codice della serratura smart non ha funzionato per 30 minuti al freddo.",
+      response: "Salve. Ci scusiamo sinceramente per il disagio all'arrivo. Contattateci direttamente per rimediare."
+    },
+    ecommerce: {
+      review: "Il mio numero di tracciamento è bloccato su 'Etichetta creata' da 5 giorni.",
+      response: "Salve. Grazie per aver segnalato il ritardo. Stiamo verificando con il corriere e invieremo un aggiornamento."
+    },
+    automotive: {
+      review: "Portato l'auto per un cigolio, mi è stato detto che servivano 1.200$ di lavaggi non necessari.",
+      response: "Salve. Vogliamo che si fidi delle nostre raccomandazioni. Rivediamo insieme le foto dell'ispezione digitale."
+    },
+    financial: {
+      review: " Consegnato i documenti fiscali due mesi fa e non ho ricevuto alcuna notizia.",
+      response: "Salve. Ci scusiamo per la mancanza di comunicazione. La vostra dichiarazione è in fase di revisione finale."
+    },
+    legal: {
+      review: "Il mio avvocato non risponde alle chiamate da tre settimane sullo stato del caso.",
+      response: "Salve. Comprendiamo l'importanza della comunicazione tempestiva. Il nostro team sta esaminando la pratica."
+    },
+    wellness: {
+      review: "Prenotato appuntamento balayage, capelli usciti arancioni accesi e rovinati.",
+      response: "Salve. Prendiamo molto sul serio la vostra soddisfazione. Tornate in salone per un trattamento correttivo gratuito."
+    },
+    veterinary: {
+      review: "Maxi bolletta a sorpresa al momento delle dimissioni senza previa discussione dei costi.",
+      response: "Salve. Ci dispiace per la mancanza di trasparenza finanziaria. Parlate direttamente con il direttore."
+    }
+  },
+  ar: {
+    hvac: {
+      review: "اتصلت لإصلاح المكيف يوم الثلاثاء، وصل الفني متأخراً وكانت الفاتورة أعلى من المتوقع.",
+      response: "مرحباً. شكراً لمشاركتك ملاحظاتك. نأسف لأن توقيت الخدمة ووضوح الفواتير لم يرقيا إلى مستوانا. يرجى التواصل مع مدير الخدمة مباشرة لمراجعة حسابك."
+    },
+    dental: {
+      review: "وقت الانتظار في الاستقبال تجاوز 45 دقيقة بعد موعدي المحدد.",
+      response: "مرحباً، شكراً لملاحظاتك. نساهم في احترام وقتك ونعتذر عن التأخير. يرجى الاتصال بمدير عيادتنا لمساعدتك."
+    },
+    contractors: {
+      review: "مفتش المقاطعة قام بمخالفة مشروعنا بسبب بناء فناء غير مرخص. أمر مزعج للغاية!",
+      response: "مرحباً. نحن نأخذ الامتثال البناء على محمل الجد ونسق مع مكتب المقاطعة لحل هذه المشكلة فوراً."
+    },
+    hospitality: {
+      review: "طلبت طعاماً عبر الإنترنت، وعندما وصلت إلى المنزل وجدت وجبتين مفقودتين تماماً.",
+      response: "مرحباً. نعتذر عن العناصر المفقودة في طلبك. يرجى التواصل مع مديرنا مباشرة لنتمكن من إصدار استرداد فوري."
+    },
+    hotels: {
+      review: "وصلت إلى مكان الإقامة ولم يعمل رمز القفل الذكي لمدة 30 دقيقة في البرد.",
+      response: "مرحباً. نعتذر بصدق عن تأخير صندوق المفاتيح عند وصولك. يرجى الاتصال بنا مباشرة لنصلح هذا الأمر."
+    },
+    ecommerce: {
+      review: "رقم تتبع الشحنة الخاص بي عالق في حالة 'تم إنشاء الملصق' منذ 5 أيام دون تحديث.",
+      response: "مرحباً. شكراً لتنبيهنا بتأخير الشحن هذا. نحن نحقق مع شركة الشحن فوراً وسنرسل لك تحديثاً أو بديلاً."
+    },
+    automotive: {
+      review: "أحضفت سيارتي بسبب صوت صرير، وأخبروني أنني بحاجة إلى 1200 دولار كخدمات إضافية غير ضرورية.",
+      response: "مرحباً. نريد أن تشعر بالثقة الكاملة في توصياتنا. دعنا نراجع صور الفحص الرقمي معاً لنوضح الخدمات الضرورية حقاً."
+    },
+    financial: {
+      review: "سلمت مستندات ضرائب الشركات الخاصة بي قبل شهرين ولم أسمع أي تحديث.",
+      response: "مرحباً. نعتذر عن الفجوة في الاتصالات أثناء صف الانتظار. إقرارك حالياً في المراجعة النهائية وسيتصل بك شريكنا."
+    },
+    legal: {
+      review: "محامي لم يرد على مكالماتي الهاتفية منذ ثلاثة أسابيع بخصوص حالة قضيتي.",
+      response: "مرحباً. نحن نتفهم مدى أهمية التواصل في الوقت المناسب لراحة بالك. يقوم فريقنا بسحب ملف قضيتك الآن."
+    },
+    wellness: {
+      review: "حجزت موعداً لصبغة الشعر وخرجت بشعر برتقالي فاقع وتالف.",
+      response: "مرحباً. نحن نأخذ صحة شعرك ورضاك على محمل الجد. يرجى العودة إلى الصالون هذا الأسبوع ليقوم خبيرنا بالعلاج."
+    },
+    veterinary: {
+      review: "فاجأوني بفاتورة ضخمة للغاية عند الخروج دون مناقشة التكاليف مسبقاً.",
+      response: "مرحباً. نأسف لعدم الوضوح المالي فيما يتعلق برسوم علاج حيوانك الأليف. يرجى التحدث مع مدير العيادة مباشرة."
+    }
+  },
+  ur: {
+    hvac: {
+      review: "منگل کو اے سی کی مرمت کے لیے کال کی، ٹیکنیشین دیر سے آیا اور بل بتائے گئے تخمینے سے زیادہ تھا۔",
+      response: "ہیلو۔ آپ کے تاثرات کا شکریہ۔ ہمیں افسوس ہے کہ سروس کا وقت اور بلنگ کا معیار ہمارے مطابق نہیں تھا۔ براہ کرم ہمارے سروس مینیجر سے رابطہ کریں۔"
+    },
+    dental: {
+      review: "لاؤنج میں انتظار کا وقت میرے مقررہ وقت سے 45 منٹ زیادہ تھا۔",
+      response: "ہیلو، آپ کے تاثرات کا شکریہ۔ ہم آپ کے وقت کا احترام کرنے کی کوشش کرتے ہیں اور تاخیر پر معذرت خواہ ہیں۔ براہ کرم ہمارے مینیجر سے رابطہ کریں۔"
+    },
+    contractors: {
+      review: "کاؤنٹی انسپکٹر نے بغیر اجازت نامے کے پیٹیو انکلوزر پر ہمارے پروجیکٹ پر اعتراض کیا۔ بہت پریشانی ہوئی!",
+      response: "ہیلو۔ ہم عمارت کے ضوابط کو سنجیدگی سے لیتے ہیں اور پرمٹ کے اس مسئلے کو حل کرنے کے لیے کاؤنٹی کے دفتر سے رابطہ کر رہے ہیں۔"
+    },
+    hospitality: {
+      review: "آن لائن کھانا آرڈر کیا، گھر پہنچے تو معلوم ہوا کہ دو مین کورس غائب ہیں۔",
+      response: "ہیلو۔ ہم آپ کے آرڈر میں غائب اشیاء پر معذرت خواہ ہیں۔ براہ کرم ہمارے مینیجر سے رابطہ کریں تاکہ فوری ریفنڈ جاری کیا جا سکے۔"
+    },
+    hotels: {
+      review: "رینٹل پراپرٹی پر پہنچے تو سمارٹ لاک کا کوڈ سردی میں 30 منٹ تک کام نہیں کرتا رہا۔",
+      response: "ہیلو۔ آمد پر لاک باکس میں تاخیر پر ہمیں مخلصانہ معذرت ہے۔ براہ کرم ہم سے براہ راست رابطہ کریں تاکہ ہم اس کو درست کر سکیں۔"
+    },
+    ecommerce: {
+      review: "میرے پیکیج کا ٹریکنگ نمبر 5 دن سے 'لیبل تخلیق' پر پھنسا ہوا ہے۔",
+      response: "ہیلو۔ اس تاخیر کی طرف ہماری توجہ مبذول کرانے کا شکریہ۔ ہم فوری طور پر کورئیر کے ساتھ تحقیقات کر رہے ہیں۔"
+    },
+    automotive: {
+      review: "گاڑی ایک آواز پر لایا، اور کہا گیا کہ مجھے 1200 ڈالر کے اضافی فالتو فلاشز کی ضرورت ہے۔",
+      response: "ہیلو۔ ہم چاہتے ہیں کہ آپ ہماری سفارشات پر مکمل اعتماد کریں۔ آئیے ڈیجیٹل انسپیکشن کی تصاویر کا جائزہ لیں۔"
+    },
+    financial: {
+      review: "دو ماہ پہلے کارپوریٹ ٹیکس کے کاغذات جمع کرائے تھے اور کوئی اپ ڈیٹ نہیں ملی۔",
+      response: "ہیلو۔ ہم فائلنگ کی قطار کے دوران مواصلاتی وقفے پر معذرت خواہ ہیں۔ آپ کا ریٹرن حتمی مرحلے میں ہے۔"
+    },
+    legal: {
+      review: "میرے وکیل نے میرے کیس کے بارے میں تین ہفتوں سے میری کالز کا جواب نہیں دیا۔",
+      response: "ہیلو۔ ہم آپ کے سکون کے لیے وقت پر مواصلات کی اہمیت کو سمجھتے ہیں۔ ہماری ٹیم آپ کی فائل کا جائزہ لے رہی ہے۔"
+    },
+    wellness: {
+      review: "بالوں کے رنگ کی بکنگ کی اور جب باہر آئے تو بال چمکدار نارنجی اور خراب ہو چکے تھے۔",
+      response: "ہیلو۔ ہم آپ کے بالوں کی صحت اور اطمینان کو بہت سنجیدگی سے لیتے ہیں۔ براہ کرم اس ہفتے سلون واپس آئیں۔"
+    },
+    veterinary: {
+      review: "ڈسچارج کے وقت بغیر کسی پیشگی بحث کے بھاری بھرکم بل تھما دیا گیا۔",
+      response: "ہیلو۔ ہمیں آپ کے پالتو جانوروں کے علاج کے اخراجات میں مالی وضاحت کی کمی پر افسوس ہے۔ براہ کرم ڈائریکٹر سے بات کریں۔"
+    }
+  }
+};
+
 export default function RevPulsePlatform() {
   const [activeTab, setActiveTab] = useState('landing');
   const [selectedVertical, setSelectedVertical] = useState('hvac');
@@ -399,6 +678,7 @@ export default function RevPulsePlatform() {
   const t = translations[selectedLanguage] || translations.en;
   const vt = verticalTranslations[selectedLanguage] || verticalTranslations.en;
   const ct = categoryTranslations[selectedLanguage] || categoryTranslations.en;
+  const dt = demoContentTranslations[selectedLanguage]?.[selectedVertical] || demoContentTranslations.en[selectedVertical];
 
   // Knowledge Center State
   const [knowledgeSearch, setKnowledgeSearch] = useState('');
@@ -553,62 +833,14 @@ export default function RevPulsePlatform() {
     { sender: 'kaku', text: 'Hello! I am Kaku, your AI reputation and multi-industry assistant. Ask me anything across HVAC, Medical, Legal, Veterinary, Restaurant, or E-Commerce operations!' }
   ]);
 
-  const [sampleReview, setSampleReview] = useState("Called for an AC repair on Tuesday, technician arrived late, and the bill was higher than quoted.");
   const [aiResponse, setAiResponse] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
-  const verticalData = {
-    hvac: {
-      review: "Tech came out late for our AC repair and the invoice was higher than quoted.",
-      response: "Hello. Thank you for sharing your feedback. We regret that your service timing and billing clarity did not meet our standard. Please reach out to our service manager directly so we can review your account."
-    },
-    dental: {
-      review: "Wait time in the lobby was over 45 minutes past my scheduled appointment slot.",
-      response: "Hello, thank you for your feedback. We strive to respect your time and apologize for the delay during your visit. Please contact our practice manager so we can assist you."
-    },
-    contractors: {
-      review: "County inspector flagged our project for an unpermitted patio enclosure. Very stressed!",
-      response: "Hello. We take building compliance seriously and are coordinating directly with the county office to resolve this permit inspection item immediately. Let's review the paperwork together today."
-    },
-    hospitality: {
-      review: "Ordered takeout online, drove home, and realized two entrees were completely missing.",
-      response: "Hello. We apologize for the missing items in your takeout order. Please reach out to our manager directly so we can issue an immediate refund and arrange a complimentary meal for your next visit."
-    },
-    hotels: {
-      review: "Arrived at the rental property and the smart lock code didn't work for 30 minutes in the cold.",
-      response: "Hello. We sincerely apologize for the lockbox delay upon your arrival. That is not the seamless experience we strive for. Please contact us directly so we can make this right."
-    },
-    ecommerce: {
-      review: "My package tracking number has been stuck on 'Label Created' for 5 days with no update.",
-      response: "Hello. Thank you for bringing this fulfillment delay to our attention. We are investigating with the carrier immediately and will send you a priority replacement or tracking update today."
-    },
-    automotive: {
-      review: "Brought my car in for a squeak, and was told I needed $1,200 in extra unneeded flushes.",
-      response: "Hello. We want you to feel completely confident in our recommendations. Let's review the digital inspection photos together so we can clarify what service is truly necessary right now."
-    },
-    financial: {
-      review: "Dropped off my corporate tax documents two months ago and haven't heard a single update.",
-      response: "Hello. We apologize for the communication gap during our filing queue. Your return is currently in final review, and our senior partner will call you by 2 PM today with a complete status update."
-    },
-    legal: {
-      review: "My attorney hasn't returned my phone calls in three weeks regarding my case status.",
-      response: "Hello. We understand how critical timely communication is for your peace of mind. Our team is pulling your case file right now to provide a comprehensive update before end of business today."
-    },
-    wellness: {
-      review: "Booked a balayage appointment and left with hair that turned out bright orange and damaged.",
-      response: "Hello. We take your hair health and satisfaction extremely seriously. Please come back into the salon this week so our master stylist can perform a complimentary corrective treatment."
-    },
-    veterinary: {
-      review: "Was hit with a massive surprise bill at discharge without anyone discussing costs beforehand.",
-      response: "Hello. We regret the lack of financial clarity regarding your pet's treatment charges. Please speak with our practice director directly so we can review the itemized statement together."
-    }
-  };
-
   const handleGenerateResponse = () => {
     setIsGenerating(true);
     setTimeout(() => {
-      setAiResponse(verticalData[selectedVertical]?.response || "Hello. Thank you for your feedback. We take your experience seriously and want to resolve this for you privately.");
+      setAiResponse(dt.response);
       setIsGenerating(false);
     }, 800);
   };
@@ -934,7 +1166,6 @@ export default function RevPulsePlatform() {
                       key={key}
                       onClick={() => {
                         setSelectedVertical(key);
-                        setSampleReview(verticalData[key].review);
                         setAiResponse('');
                       }}
                       className={`px-3 py-1.5 rounded-xl text-[11px] font-semibold transition cursor-pointer ${
@@ -954,11 +1185,9 @@ export default function RevPulsePlatform() {
                   <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">
                     {t.sampleFeedbackLabel} ({vt[selectedVertical]})
                   </label>
-                  <textarea 
-                    value={sampleReview} 
-                    onChange={(e) => setSampleReview(e.target.value)}
-                    className="w-full bg-gray-950 border border-gray-800 rounded-2xl p-4 text-sm text-gray-200 focus:outline-none focus:border-blue-500 h-28 resize-none shadow-inner"
-                  />
+                  <div className="w-full bg-gray-950 border border-gray-800 rounded-2xl p-4 text-sm text-gray-200 h-28 overflow-y-auto shadow-inner">
+                    {dt.review}
+                  </div>
                 </div>
 
                 <button 
