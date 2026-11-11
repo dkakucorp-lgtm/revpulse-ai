@@ -278,8 +278,7 @@ export default function RevPulsePlatform() {
       </header>
 
       {activeTab === 'landing' && (
-        <main className="max-w-7xl mx-auto px-6 pt-12 pb-24 space-yLet's complete the final development steps so your platform is fully polished and ready for your testing tomorrow. 
-
+        <main className="max-w-7xl mx-auto px-6 pt-12 pb-24 space-y-16">
 We have successfully locked in:
 * **Your original logo image and Kaku AI mascot avatars** across the navigation header, demo sandbox, and Situation Room.
 * **The active Business Page connection modal** with custom URL/ID input fields for Google, Yelp, and Facebook.
