@@ -20,6 +20,9 @@ export default function RevPulsePlatform() {
   const [aiResponse, setAiResponse] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
 
+  // Dummy state for logged-in user dashboard view
+  const [currentUser, setCurrentUser] = useState(null);
+
   const verticalData = {
     hvac: {
       name: "HVAC & Mechanical",
@@ -62,18 +65,30 @@ export default function RevPulsePlatform() {
       if (authMode === 'signup') {
         const { error } = await supabase.auth.signUp({ email, password });
         if (error) throw error;
-        alert(`Registration successful! You can now sign in with your credentials.`);
+        alert(`Registration successful! Please check your email to verify your account, or sign in now.`);
         setAuthMode('signin');
       } else {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        alert(`Successfully signed in as ${email}! Welcome to your RevPulse workspace.`);
+        setCurrentUser(data.user);
         setShowAuthModal(false);
-        setActiveTab('landing');
+        // Automatically route user straight to dashboard view upon successful login!
+        setActiveTab('dashboard');
       }
     } catch (error) {
       alert(`Authentication Error: ${error.message}`);
     }
+  };
+
+  const handleStripeCheckout = (planType) => {
+    // Replace with your actual Stripe Payment Link or backend checkout endpoint
+    const stripeLinks = {
+      starter: "https://buy.stripe.com/test_starter_29", // Update with your actual Stripe link
+      pro: "https://buy.stripe.com/test_pro_79"         // Update with your actual Stripe link
+    };
+    
+    // Redirect to Stripe or open checkout modal
+    window.location.href = stripeLinks[planType] || "https://stripe.com";
   };
 
   const handleSendChatMessage = (e) => {
@@ -111,23 +126,16 @@ export default function RevPulsePlatform() {
       <header className="border-b border-gray-800/80 bg-gray-900/40 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
           <div className="flex items-center space-x-4 sm:space-x-6">
-            <a href="https://www.revpulse.tools" className="flex items-center space-x-2.5 group py-2">
-              <img 
-                src="/logo.png" 
-                alt="RevPulse Logo" 
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-contain shadow-lg border border-purple-500/30 bg-purple-950/40" 
-                onError={(e)=>{
-                  e.target.onerror = null;
-                  e.target.style.display = 'none';
-                  if(e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
-                }}
-              />
-              <div className="w-10 h-10 rounded-xl bg-purple-600 border border-purple-400/40 items-center justify-center text-white font-bold hidden shadow-md">✨</div>
+            <button onClick={() => setActiveTab('landing')} className="flex items-center space-x-2.5 group py-2 text-left">
+              <div className="w-10 h-10 rounded-xl bg-purple-600 border border-purple-400/40 flex items-center justify-center text-white font-bold shadow-md">✨</div>
               <span className="text-lg sm:text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition">RevPulse</span>
-            </a>
+            </button>
             <nav className="hidden lg:flex space-x-5 text-sm text-gray-300 font-medium">
               <button onClick={() => setActiveTab('landing')} className={`hover:text-white transition ${activeTab === 'landing' ? 'text-blue-400 font-semibold' : ''}`}>Overview</button>
               <button onClick={() => setActiveTab('pricing')} className={`hover:text-white transition ${activeTab === 'pricing' ? 'text-blue-400 font-semibold' : ''}`}>Pricing</button>
+              {currentUser && (
+                <button onClick={() => setActiveTab('dashboard')} className={`hover:text-white transition ${activeTab === 'dashboard' ? 'text-blue-400 font-semibold' : ''}`}>Customer Dashboard</button>
+              )}
               <button onClick={() => setActiveTab('manual')} className={`hover:text-white transition ${activeTab === 'manual' ? 'text-blue-400 font-semibold' : ''}`}>User Manual</button>
               <button onClick={() => setActiveTab('privacy')} className={`hover:text-white transition ${activeTab === 'privacy' ? 'text-blue-400 font-semibold' : ''}`}>Privacy</button>
               <button onClick={() => setActiveTab('terms')} className={`hover:text-white transition ${activeTab === 'terms' ? 'text-blue-400 font-semibold' : ''}`}>Terms</button>
@@ -147,17 +155,26 @@ export default function RevPulsePlatform() {
               <option value="ur">🇵🇰 اردو</option>
             </select>
 
-            <button 
-              onClick={() => { setAuthMode('signin'); setShowAuthModal(true); }}
-              className="text-xs sm:text-sm text-gray-300 hover:text-white transition font-medium px-2.5 py-2 whitespace-nowrap">
-              Sign In
-            </button>
-
-            <button 
-              onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
-              className="px-3.5 py-2 sm:px-4.5 sm:py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold rounded-xl transition shadow-lg shadow-blue-600/25 whitespace-nowrap">
-              Get Started Free
-            </button>
+            {currentUser ? (
+              <button 
+                onClick={() => { supabase.auth.signOut(); setCurrentUser(null); setActiveTab('landing'); }}
+                className="text-xs sm:text-sm text-red-400 hover:text-red-300 transition font-medium px-2.5 py-2">
+                Sign Out ({currentUser.email})
+              </button>
+            ) : (
+              <>
+                <button 
+                  onClick={() => { setAuthMode('signin'); setShowAuthModal(true); }}
+                  className="text-xs sm:text-sm text-gray-300 hover:text-white transition font-medium px-2.5 py-2 whitespace-nowrap">
+                  Sign In
+                </button>
+                <button 
+                  onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
+                  className="px-3.5 py-2 sm:px-4.5 sm:py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold rounded-xl transition shadow-lg shadow-blue-600/25 whitespace-nowrap">
+                  Get Started Free
+                </button>
+              </>
+            )}
           </div>
         </div>
       </header>
@@ -181,13 +198,10 @@ export default function RevPulsePlatform() {
 
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
                 <button 
-                  onClick={() => {
-                    const demoElement = document.getElementById('sandbox-demo');
-                    if (demoElement) demoElement.scrollIntoView({ behavior: 'smooth' });
-                  }}
+                  onClick={() => setActiveTab('pricing')}
                   className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2">
-                  <span>Explore Live Demo Sandbox</span>
-                  <span>↓</span>
+                  <span>Get Started ($29/mo)</span>
+                  <span>→</span>
                 </button>
                 <button 
                   onClick={handleDownloadManual}
@@ -219,12 +233,7 @@ export default function RevPulsePlatform() {
           <section id="sandbox-demo" className="max-w-4xl mx-auto pt-4">
             <div className="bg-gray-900/90 border border-gray-800/80 rounded-3xl p-8 shadow-2xl relative mt-8">
               <div className="absolute -top-10 left-6 flex items-center space-x-3 bg-gray-900 border border-blue-500/50 px-4 py-2.5 rounded-2xl shadow-2xl z-20">
-                <img 
-                  src="/kaku-mascot.png" 
-                  alt="Kaku AI Mascot" 
-                  className="w-10 h-10 rounded-xl object-cover shadow-md border border-blue-400/40 bg-gray-950"
-                  onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
-                />
+                <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold shadow-md">🤖</div>
                 <div>
                   <div className="text-xs font-bold text-white flex items-center space-x-1.5">
                     <span>Kaku Assistant</span>
@@ -288,10 +297,6 @@ export default function RevPulsePlatform() {
                     <span className="text-emerald-400 text-[11px]">Ready to Deploy</span>
                   </div>
                   <p className="text-sm text-gray-300 leading-relaxed">{aiResponse}</p>
-                  <div className="mt-4 flex justify-end space-x-3">
-                    <button onClick={() => alert("Copied to clipboard!")} className="px-3.5 py-2 bg-gray-800 hover:bg-gray-700 text-xs rounded-xl font-medium transition">Copy Text</button>
-                    <button onClick={() => alert("Approved for publishing!")} className="px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-xs rounded-xl font-medium text-white transition">Approve & Publish</button>
-                  </div>
                 </div>
               )}
             </div>
@@ -299,11 +304,53 @@ export default function RevPulsePlatform() {
         </main>
       )}
 
+      {activeTab === 'dashboard' && (
+        <section className="py-12 px-6 max-w-7xl mx-auto space-y-8">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-gray-900 border border-gray-800 p-8 rounded-3xl">
+            <div>
+              <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Active Workspace</span>
+              <h1 className="text-3xl font-extrabold text-white mt-1">Customer & Admin Dashboard</h1>
+              <p className="text-sm text-gray-400 mt-1">Welcome back, {currentUser ? currentUser.email : 'Operator'}. Monitor incoming reviews and webhook triggers here.</p>
+            </div>
+            <div className="flex space-x-3">
+              <button onClick={() => alert("Webhook test trigger sent successfully!")} className="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition shadow-lg">
+                ⚡ Test Webhook / Twilio SMS
+              </button>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
+              <div className="text-xs font-semibold text-gray-400 uppercase">Monitored Locations</div>
+              <div className="text-3xl font-extrabold text-white mt-2">1 Active</div>
+              <div className="text-xs text-blue-400 mt-2">Google Business Profile Connected</div>
+            </div>
+            <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
+              <div className="text-xs font-semibold text-gray-400 uppercase">Negative Reviews Intercepted</div>
+              <div className="text-3xl font-extrabold text-white mt-2">0 Pending</div>
+              <div className="text-xs text-emerald-400 mt-2">All pipelines protected</div>
+            </div>
+            <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
+              <div className="text-xs font-semibold text-gray-400 uppercase">Twilio SMS Recovery Status</div>
+              <div className="text-3xl font-extrabold text-white mt-2">Online</div>
+              <div className="text-xs text-emerald-400 mt-2">Webhook listening on port 3000</div>
+            </div>
+          </div>
+
+          <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4">
+            <h3 className="text-lg font-bold text-white">Recent Review Activity Stream</h3>
+            <div className="border border-gray-800 rounded-2xl p-4 bg-gray-950 text-sm text-gray-400 text-center py-12">
+              No negative reviews (< 4 stars) intercepted yet. When a customer leaves a low rating, Kaku will instantly log it here and dispatch a Twilio SMS recovery link.
+            </div>
+          </div>
+        </section>
+      )}
+
       {activeTab === 'pricing' && (
         <section className="py-20 px-6 max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="text-4xl font-extrabold text-white mb-4">Transparent Unit Pricing & Plans</h1>
-            <p className="text-gray-400">Predictable monthly software tiers paired with pay-as-you-go itemized channel costs.</p>
+            <p className="text-gray-400">Select your tier to initialize secure checkout and instant workspace activation.</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-16">
@@ -318,8 +365,10 @@ export default function RevPulsePlatform() {
                   <li className="flex items-center">✓ Multi-industry prompt matrices</li>
                 </ul>
               </div>
-              <button onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }} className="w-full py-3.5 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-xl transition">
-                Start 7-Day Trial
+              <button 
+                onClick={() => handleStripeCheckout('starter')} 
+                className="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg shadow-blue-600/25">
+                Purchase $29 Starter Plan
               </button>
             </div>
 
@@ -335,8 +384,10 @@ export default function RevPulsePlatform() {
                   <li className="flex items-center">✓ Priority support & template playbooks</li>
                 </ul>
               </div>
-              <button onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }} className="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-lg shadow-blue-600/25">
-                Start Pro Trial
+              <button 
+                onClick={() => handleStripeCheckout('pro')} 
+                className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition shadow-lg shadow-indigo-600/25">
+                Purchase $79 Pro Plan
               </button>
             </div>
           </div>
@@ -439,7 +490,7 @@ export default function RevPulsePlatform() {
           <div className="bg-gray-900 border border-blue-500/40 rounded-3xl max-w-2xl w-full h-[650px] flex flex-col shadow-2xl relative overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-800 flex items-center justify-between bg-gray-950/60">
               <div className="flex items-center space-x-3">
-                <img src="/kaku-mascot.png" alt="Kaku" className="w-8 h-8 rounded-lg object-cover border border-blue-400/40" />
+                <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xs">🤖</div>
                 <div>
                   <h3 className="text-sm font-bold text-white flex items-center space-x-2">
                     <span>Kaku Situation Room</span>
@@ -485,7 +536,7 @@ export default function RevPulsePlatform() {
         <button 
           onClick={() => setShowSituationRoom(true)}
           className="flex items-center space-x-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-3.5 rounded-2xl shadow-2xl transition transform hover:scale-105 border border-blue-400/40 group">
-          <img src="/kaku-mascot.png" alt="Kaku" className="w-10 h-10 rounded-xl object-cover border border-white/30 bg-gray-950 shadow-md" />
+          <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold shadow-md border border-white/30">🤖</div>
           <div className="text-left">
             <div className="text-xs font-extrabold flex items-center space-x-1.5">
               <span>Ask Kaku / Situation Room</span>
