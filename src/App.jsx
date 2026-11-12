@@ -892,7 +892,7 @@ const demoContentTranslations = {
     },
     financial: {
       review: "دو ماہ پہلے کارپوریٹ ٹیکس کے کاغذات جمع کرائے تھے اور کوئی اپ ڈیٹ نہیں ملی۔",
-      response: "ہیلو۔ ہم فائلنگ کی قطار کے دوران مواصلاتی وقفے پر معذرت خواہ ہیں۔ آپ کا ریٹرن حتمی مرحلے میں ہے۔"
+      response: "ہیلو۔ فائلنگ کی قطار کے دوران مواصلاتی وقفے پر معذرت خواہ ہیں۔ آپ کا ریٹرن حتمی مرحلے میں ہے۔"
     },
     legal: {
       review: "میرے وکیل نے میرے کیس کے بارے میں تین ہفتوں سے میری کالز کا جواب نہیں دیا۔",
@@ -1610,29 +1610,29 @@ export default function RevPulsePlatform() {
   const [showConnectModal, setShowConnectModal] = useState(false);
   const [dashboardSubTab, setDashboardSubTab] = useState('overview');
 
-  // Hero Slider State (Standardized lowercase filenames matching public folder)
+  // Hero Slider State with short, reliable fallback filenames
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroSlides = [
     {
-      image: "a69af971-cb4d-48cf-b7d1-95d2345645c6.png",
+      image: "slide1.png",
       badge: "AI-POWERED CUSTOMER FEEDBACK & REPUTATION",
       title: "Manage Customer Feedback Before Small Issues Escalate.",
       subtitle: "Identify concerns, generate professional draft responses, and keep every customer conversation on track — with full human oversight."
     },
     {
-      image: "kaku-assistant-overview.png",
+      image: "slide2.png",
       badge: "MEET KAKU — YOUR AI BUSINESS ASSISTANT",
       title: "Better Decisions Begin With Better Guidance.",
       subtitle: "Ask Kaku for help with customer issues, response suggestions, and actionable next steps — across industries."
     },
     {
-      image: "omnichannel-workspace.png",
+      image: "slide3.png",
       badge: "OMNICHANNEL CUSTOMER CONVERSATIONS",
       title: "Bring Customer Conversations Into Focus.",
       subtitle: "Unify reviews, messages, and inquiries from multiple channels in one workspace, so your team can respond faster and stay in control."
     },
     {
-      image: "9b53e1d8-f366-4383-88bc-c5463f0b199d.png",
+      image: "slide4.png",
       badge: "MULTI-INDUSTRY AI SOLUTION",
       title: "One Intelligent Platform. Multiple Industries.",
       subtitle: "Flexible customer experience management for businesses across different sectors."
@@ -1915,9 +1915,9 @@ export default function RevPulsePlatform() {
 
       {activeTab === 'landing' && (
         <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-20 space-y-16">
-          {/* Hero Slider Section (Optimized for Mobile Height & Robust Image Loading) */}
+          {/* Hero Slider Section (Optimized for Mobile Height & Fallback Backgrounds) */}
           <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-blue-500/30 bg-gray-900">
-            <div className="relative w-full aspect-[4/3] sm:aspect-[21/9] min-h-[350px] sm:min-h-[500px]">
+            <div className="relative w-full aspect-[4/3] sm:aspect-[21/9] min-h-[350px] sm:min-h-[500px] bg-gradient-to-br from-gray-900 via-gray-950 to-blue-950">
               {heroSlides.map((slide, index) => (
                 <div 
                   key={index}
@@ -1926,9 +1926,12 @@ export default function RevPulsePlatform() {
                   <img 
                     src={`/${slide.image}`} 
                     alt={`RevPulse Hero Slide ${index + 1}`} 
-                    className="absolute inset-0 w-full h-full object-cover opacity-85" 
+                    className="absolute inset-0 w-full h-full object-cover opacity-70"
+                    onError={(e) => {
+                      e.target.style.display = 'none'; // Graceful fallback if image is missing
+                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/80 to-transparent z-10"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/85 to-transparent z-10"></div>
                   
                   <div className="relative z-20 max-w-2xl px-6 sm:px-12 py-8 sm:py-12 space-y-4 sm:space-y-6">
                     <div className="inline-flex items-center space-x-2 px-3 py-1 bg-blue-950/80 border border-blue-800/50 text-blue-300 text-[11px] sm:text-xs font-semibold rounded-full uppercase tracking-wider backdrop-blur-md">
