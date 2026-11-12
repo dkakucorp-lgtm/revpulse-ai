@@ -1,6 +1,6 @@
 import express from 'express';
-import { handleIncomingReview } from './src/reviewIngestion.js';
-import { sendRecoveryMessage } from './src/messagingDispatcher.js';
+import { handleIncomingReview } from './components/reviewIngestion.js';
+import { sendRecoveryMessage } from './components/messagingDispatcher.js';
 
 const app = express();
 app.use(express.json());
