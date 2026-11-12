@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from './components/supabaseClient';
+import slide1Img from './slide1.png';
+import slide2Img from './slide2.png';
+import slide3Img from './slide3.png';
+import slide4Img from './slide4.png';
 
 const translations = {
   en: {
@@ -449,7 +453,7 @@ const translations = {
     p1Heading3: "3. اے آئی معاون خصوصیات اور انسانی ذمہ داری",
     p1Text3: "اے آئی کے تیار کردہ مشورے نامکمل ہو سکتے ہیں۔ آپ اشاعت سے پہلے تمام مسودات کا جائزہ لینے کے لیے مکمل طور پر ذمہ دار ہیں۔",
     part2Title: "حصہ 2: استعمال کی شرائط",
-    part2Desc: "استعمال کی یہ شرائط RevPulse پلیٹ فارم تک آپ کی رسائی کو کنٹرول کرتی ہیں۔",
+    part2Desc: "استعمال کی یہ شرائط RevPulse پلیٹ فارم تک آپ کی رسائی کو کنٹرول کرتی کرتی ہیں۔",
     p2Heading1: "1. ٹرائل، پیڈ پلانز اور بلنگ",
     p2Text1: "RevPulse بغیر کسی پیشگی کارڈ کے 7 دن کا مفت ٹرائل پیش کرتا ہے۔ سبسکرپشن پلان ماہانہ بل کیے جاتے ہیں۔",
     p2Heading2: "2. ذمہ دارانہ مواصلات اور رضامندی",
@@ -1610,29 +1614,29 @@ export default function RevPulsePlatform() {
   const [showConnectModal, setShowConnectModal] = useState(false);
   const [dashboardSubTab, setDashboardSubTab] = useState('overview');
 
-  // Hero Slider State with short, reliable fallback filenames
+  // Hero Slider State with imported local image variables
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroSlides = [
     {
-      image: "slide1.png",
+      image: slide1Img,
       badge: "AI-POWERED CUSTOMER FEEDBACK & REPUTATION",
       title: "Manage Customer Feedback Before Small Issues Escalate.",
       subtitle: "Identify concerns, generate professional draft responses, and keep every customer conversation on track — with full human oversight."
     },
     {
-      image: "slide2.png",
+      image: slide2Img,
       badge: "MEET KAKU — YOUR AI BUSINESS ASSISTANT",
       title: "Better Decisions Begin With Better Guidance.",
       subtitle: "Ask Kaku for help with customer issues, response suggestions, and actionable next steps — across industries."
     },
     {
-      image: "slide3.png",
+      image: slide3Img,
       badge: "OMNICHANNEL CUSTOMER CONVERSATIONS",
       title: "Bring Customer Conversations Into Focus.",
       subtitle: "Unify reviews, messages, and inquiries from multiple channels in one workspace, so your team can respond faster and stay in control."
     },
     {
-      image: "slide4.png",
+      image: slide4Img,
       badge: "MULTI-INDUSTRY AI SOLUTION",
       title: "One Intelligent Platform. Multiple Industries.",
       subtitle: "Flexible customer experience management for businesses across different sectors."
@@ -1915,7 +1919,7 @@ export default function RevPulsePlatform() {
 
       {activeTab === 'landing' && (
         <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-20 space-y-16">
-          {/* Hero Slider Section (Optimized for Mobile Height & Fallback Backgrounds) */}
+          {/* Hero Slider Section (Optimized for Mobile Height & Local Image Variables) */}
           <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-blue-500/30 bg-gray-900">
             <div className="relative w-full aspect-[4/3] sm:aspect-[21/9] min-h-[350px] sm:min-h-[500px] bg-gradient-to-br from-gray-900 via-gray-950 to-blue-950">
               {heroSlides.map((slide, index) => (
@@ -1924,11 +1928,11 @@ export default function RevPulsePlatform() {
                   className={`absolute inset-0 transition-opacity duration-1000 ease-in-out flex items-center ${index === currentSlide ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}
                 >
                   <img 
-                    src={`/${slide.image}`} 
+                    src={slide.image} 
                     alt={`RevPulse Hero Slide ${index + 1}`} 
                     className="absolute inset-0 w-full h-full object-cover opacity-70"
                     onError={(e) => {
-                      e.target.style.display = 'none'; // Graceful fallback if image is missing
+                      e.target.style.display = 'none'; // Graceful fallback if image load fails
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/85 to-transparent z-10"></div>
@@ -2525,59 +2529,4 @@ export default function RevPulsePlatform() {
             </div>
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
               {chatLogs.map((log, idx) => (
-                <div key={idx} className={`flex ${log.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[80%] rounded-2xl p-4 text-xs leading-relaxed ${log.sender === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-800 text-gray-200 border border-gray-700'}`}>
-                    {log.text}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="p-4 border-t border-gray-800 bg-gray-950/80">
-              <form onSubmit={handleSendChatMessage} className="flex space-x-2">
-                <input 
-                  type="text" 
-                  value={chatMessage} 
-                  onChange={(e) => setChatMessage(e.target.value)}
-                  placeholder="Ask Kaku anything across HVAC, Dental, Legal, Retail, Veterinary..." 
-                  className="flex-1 bg-gray-900 border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-gray-200 focus:outline-none focus:border-blue-500"
-                />
-                <button type="submit" className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition border-none cursor-pointer">Send</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Floating Kaku Assistant Button */}
-      <div className="fixed bottom-6 right-6 z-40">
-        <button 
-          onClick={() => setShowSituationRoom(true)}
-          className="flex items-center space-x-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-3.5 rounded-2xl shadow-2xl transition transform hover:scale-105 border border-blue-400/40 group cursor-pointer">
-          <img 
-            src="/kaku-mascot.png" 
-            alt="Kaku" 
-            className="w-10 h-10 rounded-xl object-cover border border-white/30 bg-gray-950 shadow-md" 
-            onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
-          />
-          <div className="text-left">
-            <div className="text-xs font-extrabold flex items-center space-x-1.5">
-              <span>{t.askKakuTitle}</span>
-              <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
-            </div>
-            <div className="text-[11px] text-blue-100 font-medium">{t.askKakuSubtitle}</div>
-          </div>
-        </button>
-      </div>
-
-      <footer className="border-t border-gray-800/80 py-10 px-6 mt-28 text-center text-xs text-gray-400 space-y-3 bg-gray-950">
-        <div className="flex justify-center space-x-6 font-medium pb-2">
-          <button onClick={() => setActiveTab('landing')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.overview}</button>
-          <button onClick={() => setActiveTab('pricing')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.pricing}</button>
-          <button onClick={() => setActiveTab('knowledge')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.knowledge}</button>
-          <button onClick={() => setActiveTab('legal')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.legal}</button>
-        </div>
-        <p>{t.footerRights}</p>
-      </footer>
-    </div>
-  );
-}
+                <div key={idx} className={
