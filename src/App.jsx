@@ -41,7 +41,7 @@ const translations = {
     allIndustries: "All Industries",
     askKakuTitle: "Ask Kaku / Situation Room",
     askKakuSubtitle: "Multi-Industry AI Ready",
-    footerRights: "© 2026 RevPulse. All rights reserved. Operator: Imran Mateen (revpulsetools@gmail.com)",
+    footerRights: "© 2026 RevPulse. All rights reserved. Operator: Imran Mateen (support@revpulse.tools)",
     
     pricingHeader: "Transparent Pricing & Plans",
     pricingSub: "Select your tier to initialize secure checkout and instant workspace activation.",
@@ -63,7 +63,7 @@ const translations = {
 
     legalSubtitle: "Legal & Compliance",
     legalTitle: "RevPulse — Terms of Use & Privacy Policy",
-    legalMeta: "Effective Date: November 11, 2026 | Operator: Imran Mateen (revpulsetools@gmail.com)",
+    legalMeta: "Effective Date: November 11, 2026 | Operator: Imran Mateen (support@revpulse.tools)",
     part1Title: "Part 1: Privacy Policy",
     part1Desc: "RevPulse is operated by Imran Mateen (“RevPulse,” “we,” “us,” or “our”). This Privacy Policy explains how we collect, use, share, retain, and protect information when you visit www.revpulse.tools, create an account, use the RevPulse workspace, or contact us.",
     p1Heading1: "1. Information We Collect",
@@ -75,7 +75,7 @@ const translations = {
     part2Title: "Part 2: Terms of Use",
     part2Desc: "These Terms of Use govern your access to the RevPulse platform provided by Imran Mateen. By creating an account or starting a trial, you agree to these terms.",
     p2Heading1: "1. Trial, Paid Plans & Billing",
-    p2Text1: "RevPulse offers an unrestricted 7-day free trial without requiring a payment card upfront. Paid subscription plans are billed monthly ($29/mo Starter, $79/mo Pro). You may cancel anytime through your account settings or by emailing revpulsetools@gmail.com.",
+    p2Text1: "RevPulse offers an unrestricted 7-day free trial without requiring a payment card upfront. Paid subscription plans are billed monthly ($29/mo Starter, $79/mo Pro). You may cancel anytime through your account settings or by emailing support@revpulse.tools.",
     p2Heading2: "2. Responsible Communications & Consent",
     p2Text2: "If you use RevPulse for SMS, WhatsApp, or email messaging, you are the sender and are solely responsible for obtaining proper recipient consent, honoring opt-outs, and complying with carrier guidelines and applicable laws.",
     p2Heading3: "3. Contact Information",
@@ -117,7 +117,7 @@ const translations = {
     allIndustries: "Toutes les industries",
     askKakuTitle: "Preguntar a Kaku / Sala de Situación",
     askKakuSubtitle: "IA Multiindustria Lista",
-    footerRights: "© 2026 RevPulse. Tous droits réservés. Opérateur : Imran Mateen (revpulsetools@gmail.com)",
+    footerRights: "© 2026 RevPulse. Tous droits réservés. Opérateur : Imran Mateen (support@revpulse.tools)",
     
     pricingHeader: "Tarifs et Formules Transparents",
     pricingSub: "Sélectionnez votre formule pour initialiser le paiement sécurisé et l'activation instantanée.",
@@ -139,7 +139,7 @@ const translations = {
 
     legalSubtitle: "Juridique & Conformité",
     legalTitle: "RevPulse — Conditions d'utilisation & Politique de confidentialité",
-    legalMeta: "Date d'effet : 11 novembre 2026 | Opérateur : Imran Mateen (revpulsetools@gmail.com)",
+    legalMeta: "Date d'effet : 11 novembre 2026 | Opérateur : Imran Mateen (support@revpulse.tools)",
     part1Title: "Partie 1 : Politique de confidentialité",
     part1Desc: "RevPulse est exploité par Imran Mateen (« RevPulse », « nous », « notre »). Cette politique de confidentialité explique comment nous collectons, utilisons, partageons et protégeons vos informations.",
     p1Heading1: "1. Informations que nous collectons",
@@ -193,7 +193,7 @@ const translations = {
     allIndustries: "Todas las industrias",
     askKakuTitle: "Preguntar a Kaku / Sala de Situación",
     askKakuSubtitle: "IA Multiindustria Lista",
-    footerRights: "© 2026 RevPulse. Todos los derechos reservados. Operador: Imran Mateen (revpulsetools@gmail.com)",
+    footerRights: "© 2026 RevPulse. Todos los derechos reservados. Operador: Imran Mateen (support@revpulse.tools)",
     
     pricingHeader: "Precios y Planes Transparentes",
     pricingSub: "Seleccione su nivel para iniciar el pago seguro y la activación instantánea.",
@@ -215,7 +215,7 @@ const translations = {
 
     legalSubtitle: "Legal y Cumplimiento",
     legalTitle: "RevPulse — Términos de Uso y Política de Privacidad",
-    legalMeta: "Fecha de vigencia: 11 de noviembre de 2026 | Operador: Imran Mateen (revpulsetools@gmail.com)",
+    legalMeta: "Fecha de vigencia: 11 de noviembre de 2026 | Operador: Imran Mateen (support@revpulse.tools)",
     part1Title: "Parte 1: Política de Privacidad",
     part1Desc: "RevPulse es operado por Imran Mateen (“RevPulse”, “nosotros” o “nuestro”). Esta Política de Privacidad explica cómo recopilamos, usamos, compartimos y protegemos la información.",
     p1Heading1: "1. Información que Recopilamos",
@@ -269,7 +269,7 @@ const translations = {
     allIndustries: "Tutte le industrie",
     askKakuTitle: "Chiedi a Kaku / Sala Situazione",
     askKakuSubtitle: "IA Multi-Settore Pronta",
-    footerRights: "© 2026 RevPulse. Tutti i diritti riservati. Operatore: Imran Mateen (revpulsetools@gmail.com)",
+    footerRights: "© 2026 RevPulse. Tutti i diritti riservati. Operatore: Imran Mateen (support@revpulse.tools)",
     
     pricingHeader: "Prezzi e Piani Trasparenti",
     pricingSub: "Seleziona il tuo piano per avviare il checkout sicuro e l'attivazione immediata.",
@@ -291,7 +291,7 @@ const translations = {
 
     legalSubtitle: "Legale e Conformità",
     legalTitle: "RevPulse — Termini di Utilizzo e Informativa sulla Privacy",
-    legalMeta: "Data di entrata in vigore: 11 novembre 2026 | Operatore: Imran Mateen (revpulsetools@gmail.com)",
+    legalMeta: "Data di entrata in vigore: 11 novembre 2026 | Operatore: Imran Mateen (support@revpulse.tools)",
     part1Title: "Parte 1: Informativa sulla Privacy",
     part1Desc: "RevPulse è gestito da Imran Mateen (“RevPulse”, “noi”, “nostro”). Questa Informativa sulla Privacy spiega come raccogliamo, utilizziamo, condividiamo e proteggiamo le informazioni.",
     p1Heading1: "1. Informazioni che Raccogliamo",
@@ -345,7 +345,7 @@ const translations = {
     allIndustries: "جميع الصناعات",
     askKakuTitle: "اسأل كاکو / غرفة العمليات",
     askKakuSubtitle: "الذكاء الاصطناعي جاهز لجميع القطاعات",
-    footerRights: "© 2026 RevPulse. جميع الحقوق محفوظة. المشغل: عمران متين (revpulsetools@gmail.com)",
+    footerRights: "© 2026 RevPulse. جميع الحقوق محفوظة. المشغل: عمران متين (support@revpulse.tools)",
     
     pricingHeader: "أسعار وخطط شفافة",
     pricingSub: "اختر باقتك لبدء الدفع الآمن والتفعيل الفوري للمساحة.",
@@ -367,7 +367,7 @@ const translations = {
 
     legalSubtitle: "الشؤون القانونية والامتثال",
     legalTitle: "RevPulse — شروط الاستخدام وسياسة الخصوصية",
-    legalMeta: "تاريخ النفاذ: 11 نوفمبر 2026 | المشغل: عمران متين (revpulsetools@gmail.com)",
+    legalMeta: "تاريخ النفاذ: 11 نوفمبر 2026 | المشغل: عمران متين (support@revpulse.tools)",
     part1Title: "الجزء 1: سياسة الخصوصية",
     part1Desc: "يتم تشغيل RevPulse بواسطة عمران متين (“RevPulse”، “نحن”، “لنا”). توضح سياسة الخصوصية هذه كيفية جمعنا للمعلومات واستخدامها ومشاركتها وحمايتها.",
     p1Heading1: "1. المعلومات التي نجمعها",
@@ -421,7 +421,7 @@ const translations = {
     allIndustries: "تمام صنعتیں",
     askKakuTitle: "کاکو سے پوچھیں / سچویشن روم",
     askKakuSubtitle: "ملٹی انڈسٹری اے آئی تیار ہے",
-    footerRights: "© 2026 RevPulse. جملہ حقوق محفوظ ہیں۔ آپریٹر: عمران متین (revpulsetools@gmail.com)",
+    footerRights: "© 2026 RevPulse. جملہ حقوق محفوظ ہیں۔ آپریٹر: عمران متین (support@revpulse.tools)",
     
     pricingHeader: "شفاف قیمتیں اور پلانز",
     pricingSub: "محفوظ چیک آؤٹ اور فوری ورک اسپیس ایکتیویشن کے لیے اپنا ٹیر منتخب کریں۔",
@@ -443,7 +443,7 @@ const translations = {
 
     legalSubtitle: "قانونی اور تعمیل",
     legalTitle: "RevPulse — استعمال کی شرائط اور پرائیویسی پالیسی",
-    legalMeta: "نافذ العمل تاریخ: 11 نومبر 2026 | آپریٹر: عمران متین (revpulsetools@gmail.com)",
+    legalMeta: "نافذ العمل تاریخ: 11 نومبر 2026 | آپریٹر: عمران متین (support@revpulse.tools)",
     part1Title: "حصہ 1: پرائیویسی پالیسی",
     part1Desc: "RevPulse عمران متین کے ذریعہ چلایا جاتا ہے۔ یہ پرائیویسی پالیسی بتاتی ہے کہ جب آپ تشریف لاتے ہیں تو ہم معلومات کو کیسے جمع اور محفوظ کرتے ہیں۔",
     p1Heading1: "1. جو معلومات ہم جمع کرتے ہیں",
@@ -1614,20 +1614,6 @@ export default function RevPulsePlatform() {
   const [showConnectModal, setShowConnectModal] = useState(false);
   const [dashboardSubTab, setDashboardSubTab] = useState('overview');
 
-  // Customer Dashboard EOD Report State
-  const [eodSettings, setEodSettings] = useState({
-    enabled: true,
-    channel: 'sms',
-    time: '19:00'
-  });
-  const [eodSavedMsg, setEodSavedMsg] = useState(false);
-
-  const handleSaveEodSettings = (e) => {
-    e.preventDefault();
-    setEodSavedMsg(true);
-    setTimeout(() => setEodSavedMsg(false), 3000);
-  };
-
   // Hero Slider State with imported local image variables
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroSlides = [
@@ -2198,7 +2184,7 @@ export default function RevPulsePlatform() {
             <p className="text-gray-400">{t.p2Text2}</p>
             <h3 className="text-base font-bold text-white">{t.p2Heading3}</h3>
             <p className="text-gray-400">
-              {t.p2Text3} <strong>revpulsetools@gmail.com</strong>.
+              {t.p2Text3} <strong>support@revpulse.tools</strong>.
             </p>
           </div>
 
@@ -2227,11 +2213,6 @@ export default function RevPulsePlatform() {
                 onClick={() => setDashboardSubTab('overview')} 
                 className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition border-none cursor-pointer ${dashboardSubTab === 'overview' ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-800 text-gray-300 hover:text-white'}`}>
                 📊 Overview
-              </button>
-              <button 
-                onClick={() => setDashboardSubTab('eod-report')} 
-                className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition border-none cursor-pointer ${dashboardSubTab === 'eod-report' ? 'bg-emerald-600 text-white shadow-lg' : 'bg-gray-800 text-gray-300 hover:text-white'}`}>
-                📋 EOD Report & Settings
               </button>
               <button 
                 onClick={() => setDashboardSubTab('sandbox')} 
@@ -2279,79 +2260,6 @@ export default function RevPulsePlatform() {
                   <div className="text-xs font-semibold text-gray-400 uppercase">Trial Status</div>
                   <div className="text-3xl font-extrabold text-white mt-2">7 Days Free</div>
                   <div className="text-xs text-amber-400 mt-2">Automated email nudges active</div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {dashboardSubTab === 'eod-report' && (
-            <div className="space-y-8 animate-fadeIn">
-              <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-6">
-                <div>
-                  <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Automated Closing Briefing</span>
-                  <h3 className="text-xl font-bold text-white mt-1">End-of-Day (EOD) Report Settings</h3>
-                  <p className="text-xs text-gray-400 mt-1">Configure how and when your consolidated daily operations summary is delivered to your mobile phone.</p>
-                </div>
-
-                <form onSubmit={handleSaveEodSettings} className="space-y-6 bg-gray-950 p-6 rounded-2xl border border-gray-800">
-                  <label className="flex items-center space-x-3 cursor-pointer">
-                    <input 
-                      type="checkbox" 
-                      checked={eodSettings.enabled}
-                      onChange={(e) => setEodSettings({...eodSettings, enabled: e.target.checked})}
-                      className="w-4 h-4 rounded border-gray-800 text-blue-600 focus:ring-blue-500 bg-gray-900 cursor-pointer"
-                    />
-                    <span className="text-sm font-medium text-white">Enable Automated End-of-Day Summary</span>
-                  </label>
-
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-semibold text-gray-400 mb-1">Delivery Channel</label>
-                      <select 
-                        value={eodSettings.channel}
-                        onChange={(e) => setEodSettings({...eodSettings, channel: e.target.value})}
-                        className="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500 cursor-pointer">
-                        <option value="sms">📱 SMS Text Message</option>
-                        <option value="whatsapp">📗 WhatsApp Business</option>
-                        <option value="email">✉️ Email Briefing</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-semibold text-gray-400 mb-1">Delivery Time (Shop Close)</label>
-                      <select 
-                        value={eodSettings.time}
-                        onChange={(e) => setEodSettings({...eodSettings, time: e.target.value})}
-                        className="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500 cursor-pointer">
-                        <option value="18:00">06:00 PM</option>
-                        <option value="19:00">07:00 PM</option>
-                        <option value="20:00">08:00 PM</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between pt-2">
-                    {eodSavedMsg ? (
-                      <span className="text-xs text-emerald-400 font-semibold">Preferences saved successfully! ✓</span>
-                    ) : <span></span>}
-                    <button type="submit" className="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
-                      Save Report Preferences
-                    </button>
-                  </div>
-                </form>
-              </div>
-
-              {/* Mobile Preview Card */}
-              <div className="bg-gray-900 border border-gray-800 p-8 rounded-3xl space-y-4">
-                <h3 className="text-sm font-bold text-white uppercase tracking-wider">📱 Live Mobile Report Preview</h3>
-                <div className="bg-gray-950 border border-gray-800 p-5 rounded-2xl max-w-md font-mono text-xs text-gray-300 space-y-2 shadow-inner">
-                  <div className="text-blue-400 font-bold">RevPulse Daily Briefing · Today</div>
-                  <div className="text-gray-400">"Quiet execution today. Here is your operational recap."</div>
-                  <div className="pt-2 border-t border-gray-900 space-y-1">
-                    <div>• Inbound Touchpoints: 14 intercepted</div>
-                    <div>• Public Sentiment: 4.8 / 5.0 ⭐</div>
-                    <div>• AI Drafts Approved: 12 (100% human-verified)</div>
-                    <div className="text-amber-400">• Unresolved Escalations: 1 (Manager callback pending)</div>
-                  </div>
                 </div>
               </div>
             </div>
