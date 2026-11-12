@@ -1919,7 +1919,7 @@ export default function RevPulsePlatform() {
 
       {activeTab === 'landing' && (
         <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-20 space-y-16">
-          {/* Hero Slider Section (Optimized for Mobile Height & Local Image Variables) */}
+          {/* Hero Slider Section */}
           <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-blue-500/30 bg-gray-900">
             <div className="relative w-full aspect-[4/3] sm:aspect-[21/9] min-h-[350px] sm:min-h-[500px] bg-gradient-to-br from-gray-900 via-gray-950 to-blue-950">
               {heroSlides.map((slide, index) => (
@@ -1932,7 +1932,7 @@ export default function RevPulsePlatform() {
                     alt={`RevPulse Hero Slide ${index + 1}`} 
                     className="absolute inset-0 w-full h-full object-cover opacity-70"
                     onError={(e) => {
-                      e.target.style.display = 'none'; // Graceful fallback if image load fails
+                      e.target.style.display = 'none';
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/85 to-transparent z-10"></div>
@@ -2529,4 +2529,59 @@ export default function RevPulsePlatform() {
             </div>
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
               {chatLogs.map((log, idx) => (
-                <div key={idx} className={
+                <div key={idx} className={`flex ${log.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`max-w-[80%] rounded-2xl p-4 text-xs leading-relaxed ${log.sender === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-800 text-gray-200 border border-gray-700'}`}>
+                    {log.text}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="p-4 border-t border-gray-800 bg-gray-950/80">
+              <form onSubmit={handleSendChatMessage} className="flex space-x-2">
+                <input 
+                  type="text" 
+                  value={chatMessage} 
+                  onChange={(e) => setChatMessage(e.target.value)}
+                  placeholder="Ask Kaku anything across HVAC, Dental, Legal, Retail, Veterinary..." 
+                  className="flex-1 bg-gray-900 border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-gray-200 focus:outline-none focus:border-blue-500"
+                />
+                <button type="submit" className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition border-none cursor-pointer">Send</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Floating Kaku Assistant Button */}
+      <div className="fixed bottom-6 right-6 z-40">
+        <button 
+          onClick={() => setShowSituationRoom(true)}
+          className="flex items-center space-x-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-3.5 rounded-2xl shadow-2xl transition transform hover:scale-105 border border-blue-400/40 group cursor-pointer">
+          <img 
+            src="/kaku-mascot.png" 
+            alt="Kaku" 
+            className="w-10 h-10 rounded-xl object-cover border border-white/30 bg-gray-950 shadow-md" 
+            onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+          />
+          <div className="text-left">
+            <div className="text-xs font-extrabold flex items-center space-x-1.5">
+              <span>{t.askKakuTitle}</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
+            </div>
+            <div className="text-[11px] text-blue-100 font-medium">{t.askKakuSubtitle}</div>
+          </div>
+        </button>
+      </div>
+
+      <footer className="border-t border-gray-800/80 py-10 px-6 mt-28 text-center text-xs text-gray-400 space-y-3 bg-gray-950">
+        <div className="flex justify-center space-x-6 font-medium pb-2">
+          <button onClick={() => setActiveTab('landing')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.overview}</button>
+          <button onClick={() => setActiveTab('pricing')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.pricing}</button>
+          <button onClick={() => setActiveTab('knowledge')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.knowledge}</button>
+          <button onClick={() => setActiveTab('legal')} className="hover:text-white transition bg-transparent border-none cursor-pointer">{t.legal}</button>
+        </div>
+        <p>{t.footerRights}</p>
+      </footer>
+    </div>
+  );
+}
