@@ -449,7 +449,7 @@ const translations = {
     p1Heading3: "3. اے آئی معاون خصوصیات اور انسانی ذمہ داری",
     p1Text3: "اے آئی کے تیار کردہ مشورے نامکمل ہو سکتے ہیں۔ آپ اشاعت سے پہلے تمام مسودات کا جائزہ لینے کے لیے مکمل طور پر ذمہ دار ہیں۔",
     part2Title: "حصہ 2: استعمال کی شرائط",
-    part2Desc: "استعمال کی یہ شرائط RevPulse پلیٹ فارم تک آپ کی رسائی کو کنٹرول کرتی کرتی ہیں۔",
+    part2Desc: "استعمال کی یہ شرائط RevPulse پلیٹ فارم تک آپ کی رسائی کو کنٹرول کرتی ہیں۔",
     p2Heading1: "1. ٹرائل، پیڈ پلانز اور بلنگ",
     p2Text1: "RevPulse بغیر کسی پیشگی کارڈ کے 7 دن کا مفت ٹرائل پیش کرتا ہے۔ سبسکرپشن پلان ماہانہ بل کیے جاتے ہیں۔",
     p2Heading2: "2. ذمہ دارانہ مواصلات اور رضامندی",
@@ -1610,11 +1610,11 @@ export default function RevPulsePlatform() {
   const [showConnectModal, setShowConnectModal] = useState(false);
   const [dashboardSubTab, setDashboardSubTab] = useState('overview');
 
-  // Hero Slider State with your new public filenames
+  // Hero Slider State (Standardized lowercase filenames matching public folder)
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroSlides = [
     {
-      image: "A69AF971-CB4D-48CF-B7D1-95D2345645C6.png",
+      image: "a69af971-cb4d-48cf-b7d1-95d2345645c6.png",
       badge: "AI-POWERED CUSTOMER FEEDBACK & REPUTATION",
       title: "Manage Customer Feedback Before Small Issues Escalate.",
       subtitle: "Identify concerns, generate professional draft responses, and keep every customer conversation on track — with full human oversight."
@@ -1632,7 +1632,7 @@ export default function RevPulsePlatform() {
       subtitle: "Unify reviews, messages, and inquiries from multiple channels in one workspace, so your team can respond faster and stay in control."
     },
     {
-      image: "9B53E1D8-F366-4383-88BC-C5463F0B199D.png",
+      image: "9b53e1d8-f366-4383-88bc-c5463f0b199d.png",
       badge: "MULTI-INDUSTRY AI SOLUTION",
       title: "One Intelligent Platform. Multiple Industries.",
       subtitle: "Flexible customer experience management for businesses across different sectors."
@@ -1914,10 +1914,10 @@ export default function RevPulsePlatform() {
       </header>
 
       {activeTab === 'landing' && (
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-24 space-y-20">
-          {/* Hero Slider Section */}
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-20 space-y-16">
+          {/* Hero Slider Section (Optimized for Mobile Height & Robust Image Loading) */}
           <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-blue-500/30 bg-gray-900">
-            <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] min-h-[420px]">
+            <div className="relative w-full aspect-[4/3] sm:aspect-[21/9] min-h-[350px] sm:min-h-[500px]">
               {heroSlides.map((slide, index) => (
                 <div 
                   key={index}
@@ -1930,30 +1930,30 @@ export default function RevPulsePlatform() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/80 to-transparent z-10"></div>
                   
-                  <div className="relative z-20 max-w-2xl px-6 sm:px-12 py-12 space-y-6">
-                    <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-blue-950/80 border border-blue-800/50 text-blue-300 text-xs font-semibold rounded-full uppercase tracking-wider backdrop-blur-md">
+                  <div className="relative z-20 max-w-2xl px-6 sm:px-12 py-8 sm:py-12 space-y-4 sm:space-y-6">
+                    <div className="inline-flex items-center space-x-2 px-3 py-1 bg-blue-950/80 border border-blue-800/50 text-blue-300 text-[11px] sm:text-xs font-semibold rounded-full uppercase tracking-wider backdrop-blur-md">
                       <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
                       <span>{slide.badge}</span>
                     </div>
                     
-                    <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
+                    <h1 className="text-2xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
                       {slide.title}
                     </h1>
                     
-                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed max-w-xl">
+                    <p className="text-xs sm:text-base text-gray-300 leading-relaxed max-w-xl">
                       {slide.subtitle}
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                    <div className="flex flex-col sm:flex-row gap-3 pt-1">
                       <button 
                         onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
-                        className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2 text-xs sm:text-sm border-none cursor-pointer">
+                        className="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2 text-xs sm:text-sm border-none cursor-pointer">
                         <span>{t.getStarted}</span>
                         <span>→</span>
                       </button>
                       <button 
                         onClick={() => setActiveTab('knowledge')}
-                        className="px-6 py-3.5 bg-gray-900/80 hover:bg-gray-800 border border-gray-700 backdrop-blur-md text-gray-200 font-semibold rounded-xl transition flex items-center justify-center space-x-2 text-xs sm:text-sm cursor-pointer">
+                        className="px-5 py-3 bg-gray-900/80 hover:bg-gray-800 border border-gray-700 backdrop-blur-md text-gray-200 font-semibold rounded-xl transition flex items-center justify-center space-x-2 text-xs sm:text-sm cursor-pointer">
                         <span>{t.exploreKnowledge}</span>
                       </button>
                     </div>
@@ -1963,12 +1963,12 @@ export default function RevPulsePlatform() {
             </div>
 
             {/* Slider Navigation Dots */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex space-x-2 bg-gray-950/60 backdrop-blur-md px-4 py-2 rounded-full border border-gray-800">
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex space-x-2 bg-gray-950/60 backdrop-blur-md px-4 py-2 rounded-full border border-gray-800">
               {heroSlides.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentSlide(idx)}
-                  className={`w-3 h-3 rounded-full transition-all border-none cursor-pointer ${idx === currentSlide ? 'bg-blue-500 w-8' : 'bg-gray-600 hover:bg-gray-400'}`}
+                  className={`w-2.5 h-2.5 rounded-full transition-all border-none cursor-pointer ${idx === currentSlide ? 'bg-blue-500 w-6' : 'bg-gray-600 hover:bg-gray-400'}`}
                   aria-label={`Slide ${idx + 1}`}
                 />
               ))}
@@ -1976,7 +1976,7 @@ export default function RevPulsePlatform() {
           </div>
 
           {/* 3-Step Simple Workflow */}
-          <section className="space-y-8 pt-8 border-t border-gray-800/80">
+          <section className="space-y-8 pt-6 border-t border-gray-800/80">
             <div className="text-center space-y-2">
               <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{t.howItWorks}</span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white">{t.workflowTitle}</h2>
