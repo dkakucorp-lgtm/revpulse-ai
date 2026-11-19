@@ -1767,11 +1767,22 @@ export default function RevPulsePlatform() {
   const [connectingPlatform, setConnectingPlatform] = useState(null);
   const [credentialInput, setCredentialInput] = useState('');
 
-  const [connectedPlatforms, setConnectedPlatforms] = useState({
+  const [connectedPlatforms, setConnectedPlatforms] = useState(() => {
+    try {
+      const saved = localStorage.getItem("revpulse_connected_platforms");
+      if (saved) return { ...({
     google: { connected: true, details: 'Google Business Profile #8821' },
     yelp: { connected: false, details: '' },
     facebook: { connected: false, details: '' },
     trustpilot: { connected: false, details: '' }
+  }), ...JSON.parse(saved) };
+    } catch (e) {}
+    return {
+    google: { connected: true, details: 'Google Business Profile #8821' },
+    yelp: { connected: false, details: '' },
+    facebook: { connected: false, details: '' },
+    trustpilot: { connected: false, details: '' }
+  };
   });
 
   // Interactive Dashboard Feedback Queue State
@@ -1848,19 +1859,21 @@ export default function RevPulsePlatform() {
       alert("Please enter your page link or ID.");
       return;
     }
-    setConnectedPlatforms(prev => ({
-      ...prev,
-      [connectingPlatform]: { connected: true, details: credentialInput.trim() }
-    }));
+    setConnectedPlatforms(prev => {
+      const next = { ...prev, [connectingPlatform]: { connected: true, details: credentialInput.trim() } };
+      try { localStorage.setItem("revpulse_connected_platforms", JSON.stringify(next)); } catch (e) {}
+      return next;
+    });
     setConnectingPlatform(null);
     setCredentialInput('');
   };
 
   const handleDisconnectPlatform = (platformKey) => {
-    setConnectedPlatforms(prev => ({
-      ...prev,
-      [platformKey]: { connected: false, details: '' }
-    }));
+    setConnectedPlatforms(prev => {
+      const next = { ...prev, [platformKey]: { connected: false, details: "" } };
+      try { localStorage.setItem("revpulse_connected_platforms", JSON.stringify(next)); } catch (e) {}
+      return next;
+    });
   };
 
   const handleQueueAction = (id, actionType) => {
