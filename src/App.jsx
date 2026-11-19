@@ -42,7 +42,7 @@ const translations = {
     askKakuTitle: "Ask Kaku / Situation Room",
     askKakuSubtitle: "Multi-Industry AI Ready",
     footerRights: "© 2026 RevPulse. All rights reserved. Operator: Imran Mateen (support@revpulse.tools)",
-    
+
     pricingHeader: "Transparent Pricing & Plans",
     pricingSub: "Select your tier to initialize secure checkout and instant workspace activation.",
     starterPlanBadge: "Starter Plan",
@@ -115,10 +115,10 @@ const translations = {
     knowledgeSubtitle: "Recherchez parmi les articles de recherche HVAC, santé, construction, hôtellerie, e-commerce, automobile, finance, juridique, bien-être et vétérinaire.",
     searchPlaceholder: "🔍 Rechercher HVAC, temps d'attente dentaires, permis, vétérinaire...",
     allIndustries: "Toutes les industries",
-    askKakuTitle: "Preguntar a Kaku / Sala de Situación",
-    askKakuSubtitle: "IA Multiindustria Lista",
+    askKakuTitle: "Demander à Kaku / Salle de situation",
+    askKakuSubtitle: "IA multi-sectorielle prête",
     footerRights: "© 2026 RevPulse. Tous droits réservés. Opérateur : Imran Mateen (support@revpulse.tools)",
-    
+
     pricingHeader: "Tarifs et Formules Transparents",
     pricingSub: "Sélectionnez votre formule pour initialiser le paiement sécurisé et l'activation instantanée.",
     starterPlanBadge: "Formule Débutant",
@@ -147,7 +147,7 @@ const translations = {
     p1Heading2: "2. Comment nous utilisons les informations",
     p1Text2: "Nous utilisons les informations pour exploiter le Service, administrer votre compte et votre essai de 7 jours, et générer des projets de réponse.",
     p1Heading3: "3. Fonctionnalités assistées par IA et responsabilité humaine",
-    p1Text3: "Les suggestions générées par l'IA peuvent être imperfectes. Vous êtes seul responsable de la révision de tous les projets avant publication.",
+    p1Text3: "Les suggestions générées par l'IA peuvent être imparfaites. Vous êtes seul responsable de la révision de tous les projets avant publication.",
     part2Title: "Partie 2 : Conditions d'utilisation",
     part2Desc: "Ces conditions d'utilisation régissent votre accès à la plateforme RevPulse fournie par Imran Mateen.",
     p2Heading1: "1. Essai, abonnements payants et facturation",
@@ -194,7 +194,7 @@ const translations = {
     askKakuTitle: "Preguntar a Kaku / Sala de Situación",
     askKakuSubtitle: "IA Multiindustria Lista",
     footerRights: "© 2026 RevPulse. Todos los derechos reservados. Operador: Imran Mateen (support@revpulse.tools)",
-    
+
     pricingHeader: "Precios y Planes Transparentes",
     pricingSub: "Seleccione su nivel para iniciar el pago seguro y la activación instantánea.",
     starterPlanBadge: "Plan Inicial",
@@ -270,7 +270,7 @@ const translations = {
     askKakuTitle: "Chiedi a Kaku / Sala Situazione",
     askKakuSubtitle: "IA Multi-Settore Pronta",
     footerRights: "© 2026 RevPulse. Tutti i diritti riservati. Operatore: Imran Mateen (support@revpulse.tools)",
-    
+
     pricingHeader: "Prezzi e Piani Trasparenti",
     pricingSub: "Seleziona il tuo piano per avviare il checkout sicuro e l'attivazione immediata.",
     starterPlanBadge: "Piano Base",
@@ -329,11 +329,11 @@ const translations = {
     step1Title: "اعتراض التقييمات والملاحظات",
     step1Desc: "يتم جمع التقييمات الواردة واستفسارات العملاء في لوحة تحكم موحدة.",
     step2Title: "صياغة بالذكاء الاصطناعي بموافقة بشرية",
-    step2Desc: "يقوم كاکو بصياغة ردود احترافية مصممة خصيصاً لإرشادات قطاعك. أنت تحتفظ بالموافقة النهائية.",
+    step2Desc: "يقوم كاكو بصياغة ردود احترافية مصممة خصيصاً لإرشادات قطاعك. أنت تحتفظ بالموافقة النهائية.",
     step3Title: "المتابعة عبر القنوات المتعددة",
     step3Desc: "توجيه روابط الحل الخاص أو تسلسلات الاسترداد عبر الرسائل القصيرة أو الواتساب أو البريد الإلكتروني.",
     demoTitle: "⚡ عرض تفاعلي متعدد الصناعات",
-    demoSubtitle: "اختر قطاعك واختبر كيف يقوم كاکو بصياغة ردود خاصة احترافية.",
+    demoSubtitle: "اختر قطاعك واختبر كيف يقوم كاكو بصياغة ردود خاصة احترافية.",
     sampleFeedbackLabel: "نموذج ملاحظات العملاء",
     generateBtn: "إنشاء مسودة حل خاص واحترافي",
     generatingBtn: "جاري صياغة الرد...",
@@ -343,10 +343,10 @@ const translations = {
     knowledgeSubtitle: "ابحث في مقالات الأبحاث الخاصة بالتكييف، الرعاية الصحية، البناء، الضيافة، التجارة الإلكترونية، السيارات، التمويل، القانون، العناية الشخصية، والطب البيطري.",
     searchPlaceholder: "🔍 ابحث في التكييف، المواعيد الطبية، التصاريح، الفواتير...",
     allIndustries: "جميع الصناعات",
-    askKakuTitle: "اسأل كاکو / غرفة العمليات",
+    askKakuTitle: "اسأل كاكو / غرفة العمليات",
     askKakuSubtitle: "الذكاء الاصطناعي جاهز لجميع القطاعات",
     footerRights: "© 2026 RevPulse. جميع الحقوق محفوظة. المشغل: عمران متين (support@revpulse.tools)",
-    
+
     pricingHeader: "أسعار وخطط شفافة",
     pricingSub: "اختر باقتك لبدء الدفع الآمن والتفعيل الفوري للمساحة.",
     starterPlanBadge: "الباقة الأساسية",
@@ -401,7 +401,7 @@ const translations = {
     exploreKnowledge: "📚 نالج سینٹر دریافت کریں",
     howItWorks: "یہ کیسے کام کرتا ہے",
     workflowTitle: "آسان 3 قدمی ملٹی انڈسٹری ورک فلو",
-    workflowSubtitle: "تمام شعبوں کے آپریٹرز کے لیے ڈیزائن کیا گیا ہے تاکہ ہر کسٹمر ٹچ پوائنٹ پر مکمل کنٹرول رکھا جا سکےـ",
+    workflowSubtitle: "تمام شعبوں کے آپریٹرز کے لیے ڈیزائن کیا گیا ہے تاکہ ہر کسٹمر ٹچ پوائنٹ پر مکمل کنٹرول رکھا جا سکے۔",
     step1Title: "ریویو اور فیڈ بیک انٹرسیپٹ",
     step1Desc: "آنے والی ریٹنگز اور کسٹمر انکوائریز کو آپ کے متحد ملٹی چینل ڈیش بورڈ میں اکٹھا کیا جاتا ہے۔",
     step2Title: "انسانی منظوری سے لیس اے آئی ڈرافٹنگ",
@@ -417,15 +417,15 @@ const translations = {
     readyApproval: "منظوری کے لیے تیار",
     knowledgeHeader: "RevPulse ملٹی انڈسٹری نالج سینٹر",
     knowledgeSubtitle: "HVAC، ہیلتھ کیئر، تعمیرات، مہمان نوازی، ای کامرس، آٹوموٹو، فنانس، قانونی، اور ویٹرنری مضامین تلاش کریں۔",
-    searchPlaceholder: "🔍 تلاش کریں HVAC، ڈেন্টل انتظار کا وقت، اجازت نامے، ویٹرنری بل...",
+    searchPlaceholder: "🔍 تلاش کریں HVAC، ڈینٹل انتظار کا وقت، اجازت نامے، ویٹرنری بل...",
     allIndustries: "تمام صنعتیں",
     askKakuTitle: "کاکو سے پوچھیں / سچویشن روم",
     askKakuSubtitle: "ملٹی انڈسٹری اے آئی تیار ہے",
     footerRights: "© 2026 RevPulse. جملہ حقوق محفوظ ہیں۔ آپریٹر: عمران متین (support@revpulse.tools)",
-    
+
     pricingHeader: "شفاف قیمتیں اور پلانز",
-    pricingSub: "محفوظ چیک آؤٹ اور فوری ورک اسپیس ایکتیویشن کے لیے اپنا ٹیر منتخب کریں۔",
-    starterPlanBadge: "اسارٹر پلان",
+    pricingSub: "محفوظ چیک آؤٹ اور فوری ورک اسپیس ایکٹیویشن کے لیے اپنا ٹیر منتخب کریں۔",
+    starterPlanBadge: "اسٹارٹر پلان",
     starterPlanTitle: "سنگل لوکیشن",
     starterPrice: "$29",
     starterPeriod: " / مہینہ",
@@ -453,7 +453,7 @@ const translations = {
     p1Heading3: "3. اے آئی معاون خصوصیات اور انسانی ذمہ داری",
     p1Text3: "اے آئی کے تیار کردہ مشورے نامکمل ہو سکتے ہیں۔ آپ اشاعت سے پہلے تمام مسودات کا جائزہ لینے کے لیے مکمل طور پر ذمہ دار ہیں۔",
     part2Title: "حصہ 2: استعمال کی شرائط",
-    part2Desc: "استعمال کی یہ شرائط RevPulse پلیٹ فارم تک آپ کی رسائی کو کنٹرول کرتی کرتی ہیں۔",
+    part2Desc: "استعمال کی یہ شرائط RevPulse پلیٹ فارم تک آپ کی رسائی کو کنٹرول کرتی ہیں۔",
     p2Heading1: "1. ٹرائل، پیڈ پلانز اور بلنگ",
     p2Text1: "RevPulse بغیر کسی پیشگی کارڈ کے 7 دن کا مفت ٹرائل پیش کرتا ہے۔ سبسکرپشن پلان ماہانہ بل کیے جاتے ہیں۔",
     p2Heading2: "2. ذمہ دارانہ مواصلات اور رضامندی",
@@ -532,7 +532,7 @@ const verticalTranslations = {
   },
   ur: {
     hvac: "ایچ وی اے سی اور ٹریڈز",
-    dental: "ڈেন্টل پریکٹسز",
+    dental: "ڈینٹل پریکٹسز",
     contractors: "جنرل کنٹریکٹرز",
     hospitality: "ریسٹورنٹس اور ڈائننگ",
     hotels: "ہوٹلز اور رینٹلز",
@@ -619,7 +619,7 @@ const categoryTranslations = {
   ur: {
     all: "تمام صنعتیں",
     hvac: "ایچ وی اے سی اور ٹریڈز",
-    dental: "صحت اور ڈেন্টل",
+    dental: "صحت اور ڈینٹل",
     contractors: "کنٹریکٹرز اور پرمٹس",
     hospitality: "ریسٹورنٹس",
     hotels: "ہوٹلز اور رینٹلز",
@@ -803,7 +803,7 @@ const demoContentTranslations = {
       response: "Salve. Vogliamo che si fidi delle nostre raccomandazioni. Rivediamo insieme le foto dell'ispezione digitale."
     },
     financial: {
-      review: " Consegnato i documenti fiscali due mesi fa e non ho ricevuto alcuna notizia.",
+      review: "Consegnato i documenti fiscali due mesi fa e non ho ricevuto alcuna notizia.",
       response: "Salve. Ci scusiamo per la mancanza di comunicazione. La vostra dichiarazione è in fase di revisione finale."
     },
     legal: {
@@ -880,7 +880,7 @@ const demoContentTranslations = {
     },
     hospitality: {
       review: "آن لائن کھانا آرڈر کیا، گھر پہنچے تو معلوم ہوا کہ دو مین کورس غائب ہیں۔",
-      response: "ہیلو۔ ہم آپ کے آرڈر میں غائب اشیاء پر معذرت خواہ ہیں۔ براہ کرم ہمارے مینیجر سے رابطہ کریں تاکہ فوری ریفنڈ جاری کیا جا سکےـ"
+      response: "ہیلو۔ ہم آپ کے آرڈر میں غائب اشیاء پر معذرت خواہ ہیں۔ براہ کرم ہمارے مینیجر سے رابطہ کریں تاکہ فوری ریفنڈ جاری کیا جا سکے۔"
     },
     hotels: {
       review: "رینٹل پراپرٹی پر پہنچے تو سمارٹ لاک کا کوڈ سردی میں 30 منٹ تک کام نہیں کرتا رہا۔",
@@ -1376,7 +1376,7 @@ const knowledgeArticlesTranslations = {
       category: 'hvac',
       title: 'التعامل مع نزاعات الفواتير والتأخير الخطيرة (التكييف)',
       summary: 'إطار عمل لاعتراض تأخيرات الوصول ونزاعات الفواتير قبل أن تؤثر على تصنيفات البحث المحلي.',
-      content: 'عندما يترك عميل التكييف تقييماً منخفضاً، يقوم كاکو باعتراض المنشور العام فوراً. اعترف بالاحتكاك على حدحدة.'
+      content: 'عندما يترك عميل التكييف تقييماً منخفضاً، يقوم كاكو باعتراض المنشور العام فوراً. اعترف بالاحتكاك على حدة.'
     },
     {
       id: 2,
@@ -1431,7 +1431,7 @@ const knowledgeArticlesTranslations = {
       id: 9,
       category: 'hotels',
       title: 'إغلاق منتصف الليل للإيجارات قصيرة الأجل واستعادة النظافة',
-      summary: 'حل اخفاقات القفل الذكي وتناقضات التنظيف خلال النافذة الحرجة البالغة 15 دقيقة.',
+      summary: 'حل إخفاقات القفل الذكي وتناقضات التنظيف خلال النافذة الحرجة البالغة 15 دقيقة.',
       content: 'الاحتفاظ بجهات اتصال صانع الأقفال في حالات الطوارئ وتوفير استرداد جزئي فوري خلال 15 دقيقة.'
     },
     {
@@ -1452,13 +1452,13 @@ const knowledgeArticlesTranslations = {
       id: 12,
       category: 'automotive',
       title: 'الفحوصات الرقمية والقضاء على وصمة "الإصلاح الوهمي"',
-      summary: 'استخدام روابط النصوص الخاصة بالصور والفيديو عالية الدقة بناء شفافية مطلقة.',
+      summary: 'استخدام روابط النصوص الخاصة بالصور والفيديو عالية الدقة لبناء شفافية مطلقة.',
       content: 'إرسال روابط الفحص البصري لتوسادات الفرامل البالية مباشرة للعملاء قبل بدء الإصلاحات.'
     },
     {
       id: 13,
       category: 'financial',
-      title: 'إقاعات التواصل في موسم الضرائب وتحديثات اكتتاب القروض',
+      title: 'إيقاعات التواصل في موسم الضرائب وتحديثات اكتتاب القروض',
       summary: 'منع تجربة العملاء المظلمة من خلال تقارير الحالة الأسبوعية المنظمة.',
       content: 'تنفيذ تحديثات التقدم الأسبوعية الآلية خلال موسم تقديم الضرائب أو اكتتاب القروض.'
     },
@@ -1502,8 +1502,8 @@ const knowledgeArticlesTranslations = {
     {
       id: 3,
       category: 'dental',
-      title: 'لابی میں انتظار کے وقت اور مریضوں کے جذبات کا انتظام (ڈেন্টل)',
-      summary: 'معذرت کے ورک فलो کو خودکار بنانا اور کلینیکل تاخیر 30 منٹ سے زیادہ ہونے پر دوبارہ بکنگ کرنا۔',
+      title: 'لابی میں انتظار کے وقت اور مریضوں کے جذبات کا انتظام (ڈینٹل)',
+      summary: 'معذرت کے ورک فلو کو خودکار بنانا اور کلینیکل تاخیر 30 منٹ سے زیادہ ہونے پر دوبارہ بکنگ کرنا۔',
       content: 'جب لابی کے انتظار کا وقت 30 منٹ سے زیادہ ہو جائے، تو خودکار SMS اطلاعات پارکنگ واؤچر پیش کریں۔'
     },
     {
@@ -1531,13 +1531,13 @@ const knowledgeArticlesTranslations = {
       id: 7,
       category: 'hospitality',
       title: 'خاموش چرن اور ٹیک آؤٹ آرڈر کی غلطیوں کو روکنا',
-      summary: 'مہقین کے واپس آنے سے پہلے غائب ٹیک آؤٹ اشیاء اور طویل میز کے انتظار کے اوقات کو حل کرنا۔',
-      content: 'ترسیل/ٹेक آؤٹ کے لیے ڈبل چیک پیکنگ پروٹوکول نافذ کریں اور مینیجر کے دورے۔'
+      summary: 'مہمانوں کے واپس نہ آنے سے پہلے غائب ٹیک آؤٹ اشیاء اور طویل میز کے انتظار کے اوقات کو حل کرنا۔',
+      content: 'ترسیل/ٹیک آؤٹ کے لیے ڈبل چیک پیکنگ پروٹوکول نافذ کریں اور مینیجر کے دورے۔'
     },
     {
       id: 8,
       category: 'hospitality',
-      title: 'شدید الرجی پروٹوکول اور غذایی حادثے کی بحالی',
+      title: 'شدید الرجی پروٹوکول اور غذائی حادثے کی بحالی',
       summary: 'سروس کے دوران آلودگی یا الرجن کی کوتاہی ہونے پر فوری بحران کا ردعمل۔',
       content: 'فوری باورچی خانے کی جوابدہی، جنرل مینیجر کی براہ راست شمولیت، اور طبی مدد لازمی کریں۔'
     },
@@ -1559,7 +1559,7 @@ const knowledgeArticlesTranslations = {
       id: 11,
       category: 'ecommerce',
       title: 'فعال تکمیل مواصلات اور واپسی فیس کا انتظام',
-      summary: 'کستمر لائف ٹائم ویلیو کی حفاظت کے لیے گھوسٹ ٹریکنگ، ترسیل میں تاخیر، اور واپسی کے رگڑ کو کم کرنا۔',
+      summary: 'کسٹمر لائف ٹائم ویلیو کی حفاظت کے لیے گھوسٹ ٹریکنگ، ترسیل میں تاخیر، اور واپسی کے رگڑ کو کم کرنا۔',
       content: 'جب کیریئرز کو ٹرانزٹ رکاوٹوں کا سامنا کرنا پڑے تو SMS/ای میل کے ذریعے صارفین کو فعال طور پر مطلع کریں۔'
     },
     {
@@ -1573,7 +1573,7 @@ const knowledgeArticlesTranslations = {
       id: 13,
       category: 'financial',
       title: 'ٹیکس سیزن مواصلات کی رفتار اور لون انڈر رائٹنگ اپ ڈیٹس',
-      summary: 'ساختہ ہفتہ وار اسٹیٹ رپورٹنگ کے ذریعے بلیک ہول کل라이언트 کے تجربے کو روکنا۔',
+      summary: 'ساختہ ہفتہ وار اسٹیٹ رپورٹنگ کے ذریعے بلیک ہول کلائنٹ کے تجربے کو روکنا۔',
       content: 'لون انڈر رائٹنگ یا ٹیکس فائلنگ سیزن کے دوران خودکار ہفتہ وار پیش رفت اپ ڈیٹس کو نافذ کریں۔'
     },
     {
@@ -1587,7 +1587,7 @@ const knowledgeArticlesTranslations = {
       id: 15,
       category: 'wellness',
       title: 'نتیجے کے تضادات اور منسوخی فیس کے تنازعات کا انتظام',
-      summary: 'رنگوں کی اصلاح، میڈ-اسپا جلد کے رد عمل، اور منسوخی کی سخت پالیسیوں کو پیشہ ورانه طور پرسنبھالنا۔',
+      summary: 'رنگوں کی اصلاح، میڈ-اسپا جلد کے رد عمل، اور منسوخی کی سخت پالیسیوں کو پیشہ ورانہ طور پر سنبھالنا۔',
       content: 'دستخط شدہ پری ٹریٹمنٹ رضامندی کے فارم اور ہمدردانہ تنازعات کے حل کو برقرار رکھیں۔'
     },
     {
@@ -1600,6 +1600,73 @@ const knowledgeArticlesTranslations = {
   ]
 };
 
+const initialSampleQueue = [
+  {
+    id: 'rev-101',
+    platform: 'Google Business Profile',
+    customer: 'Marcus T.',
+    rating: 2,
+    vertical: 'HVAC & Trades',
+    time: '14 mins ago',
+    text: 'Technician fixed the condenser, but arrived 90 minutes past the window with no text update.',
+    aiDraft: 'Hi Marcus, thank you for letting us know. While we are glad the condenser is running properly, we apologize for the arrival delay and lack of status text. Our dispatch manager would like to make this right—please reply here or check your SMS for a direct resolution link.',
+    status: 'pending'
+  },
+  {
+    id: 'rev-102',
+    platform: 'Yelp',
+    customer: 'Elena R.',
+    rating: 5,
+    vertical: 'Restaurants & Dining',
+    time: '1 hour ago',
+    text: 'Best espresso and fresh croissants in town! Staff was super welcoming even during the morning rush.',
+    aiDraft: 'Thank you so much for the kind words, Elena! We loved having you in during the morning rush and cannot wait to welcome you back for another espresso soon.',
+    status: 'pending'
+  },
+  {
+    id: 'rev-103',
+    platform: 'Facebook',
+    customer: 'David K.',
+    rating: 1,
+    vertical: 'Auto Repair',
+    time: '2 hours ago',
+    text: 'Invoice was $180 higher than the phone estimate and nobody called me before doing the extra alignment.',
+    aiDraft: 'Hello David, we take billing transparency very seriously and apologize that we did not confirm the alignment adjustment with you beforehand. Our shop manager is reaching out privately to review your invoice immediately.',
+    status: 'pending'
+  }
+];
+
+const platformMetadata = [
+  {
+    key: 'google',
+    name: 'Google Business Profile',
+    badge: 'G',
+    badgeBg: 'bg-blue-600/20 text-blue-400 border-blue-500/40',
+    placeholder: 'https://g.page/r/your-business-id or Place ID'
+  },
+  {
+    key: 'yelp',
+    name: 'Yelp Business Page',
+    badge: 'Y',
+    badgeBg: 'bg-red-600/20 text-red-400 border-red-500/40',
+    placeholder: 'https://www.yelp.com/biz/your-business-name'
+  },
+  {
+    key: 'facebook',
+    name: 'Facebook Business Page',
+    badge: 'f',
+    badgeBg: 'bg-indigo-600/20 text-indigo-400 border-indigo-500/40',
+    placeholder: 'https://www.facebook.com/yourbusinesspage'
+  },
+  {
+    key: 'trustpilot',
+    name: 'Trustpilot Business Profile',
+    badge: '★',
+    badgeBg: 'bg-emerald-600/20 text-emerald-400 border-emerald-500/40',
+    placeholder: 'https://www.trustpilot.com/review/yourdomain.com'
+  }
+];
+
 export default function RevPulsePlatform() {
   const [activeTab, setActiveTab] = useState('landing');
   const [selectedVertical, setSelectedVertical] = useState('hvac');
@@ -1609,12 +1676,12 @@ export default function RevPulsePlatform() {
   const [authMode, setAuthMode] = useState('signup');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+
   const [showSituationRoom, setShowSituationRoom] = useState(false);
   const [showConnectModal, setShowConnectModal] = useState(false);
   const [dashboardSubTab, setDashboardSubTab] = useState('overview');
 
-  // Hero Slider State with imported local image variables
+  // Hero Slider State
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroSlides = [
     {
@@ -1651,6 +1718,21 @@ export default function RevPulsePlatform() {
     return () => clearInterval(timer);
   }, [heroSlides.length]);
 
+  // Persist Supabase auth session across page reloads
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setCurrentUser(session.user);
+      }
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setCurrentUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
   const t = translations[selectedLanguage] || translations.en;
   const vt = verticalTranslations[selectedLanguage] || verticalTranslations.en;
   const ct = categoryTranslations[selectedLanguage] || categoryTranslations.en;
@@ -1681,14 +1763,19 @@ export default function RevPulsePlatform() {
     isLive: false
   });
 
+  // Business Profile Integrations State
   const [connectingPlatform, setConnectingPlatform] = useState(null);
   const [credentialInput, setCredentialInput] = useState('');
-  
+
   const [connectedPlatforms, setConnectedPlatforms] = useState({
     google: { connected: true, details: 'Google Business Profile #8821' },
     yelp: { connected: false, details: '' },
-    facebook: { connected: false, details: '' }
+    facebook: { connected: false, details: '' },
+    trustpilot: { connected: false, details: '' }
   });
+
+  // Interactive Dashboard Feedback Queue State
+  const [feedbackQueue, setFeedbackQueue] = useState(initialSampleQueue);
 
   const [chatMessage, setChatMessage] = useState('');
   const [chatLogs, setChatLogs] = useState([
@@ -1698,6 +1785,9 @@ export default function RevPulsePlatform() {
   const [aiResponse, setAiResponse] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+
+  const connectedPlatformList = platformMetadata.filter(p => connectedPlatforms[p.key]?.connected);
+  const pendingFeedbackCount = feedbackQueue.filter(item => item.status === 'pending').length;
 
   const handleGenerateResponse = () => {
     setIsGenerating(true);
@@ -1716,10 +1806,17 @@ export default function RevPulsePlatform() {
 
     try {
       if (authMode === 'signup') {
-        const { error } = await supabase.auth.signUp({ email, password });
+        const { data, error } = await supabase.auth.signUp({ email, password });
         if (error) throw error;
-        alert(`Account created successfully! 📧 Welcome confirmation email sent to ${email}. Your 7-Day Free Trial is now active.`);
-        setAuthMode('signin');
+        if (data?.user && data?.session) {
+          setCurrentUser(data.user);
+          setShowAuthModal(false);
+          setActiveTab('dashboard');
+          alert(`Welcome to RevPulse! Your 7-Day Free Trial is now active.`);
+        } else {
+          alert(`Account created successfully! 📧 Check ${email} to confirm your address, or sign in now to access your 7-Day Free Trial.`);
+          setAuthMode('signin');
+        }
       } else {
         const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
@@ -1740,6 +1837,11 @@ export default function RevPulsePlatform() {
     window.location.href = stripeLinks[planType] || "https://stripe.com";
   };
 
+  const handleOpenPlatformConnect = (platformKey) => {
+    setConnectingPlatform(platformKey);
+    setCredentialInput(connectedPlatforms[platformKey]?.details || '');
+  };
+
   const handleSaveCredentials = (e) => {
     e.preventDefault();
     if (!credentialInput.trim()) {
@@ -1748,10 +1850,27 @@ export default function RevPulsePlatform() {
     }
     setConnectedPlatforms(prev => ({
       ...prev,
-      [connectingPlatform]: { connected: true, details: credentialInput }
+      [connectingPlatform]: { connected: true, details: credentialInput.trim() }
     }));
     setConnectingPlatform(null);
     setCredentialInput('');
+  };
+
+  const handleDisconnectPlatform = (platformKey) => {
+    setConnectedPlatforms(prev => ({
+      ...prev,
+      [platformKey]: { connected: false, details: '' }
+    }));
+  };
+
+  const handleQueueAction = (id, actionType) => {
+    setFeedbackQueue(prev =>
+      prev.map(item =>
+        item.id === id
+          ? { ...item, status: actionType === 'approve' ? 'approved' : 'recovered' }
+          : item
+      )
+    );
   };
 
   const handleRunSandboxTest = (e) => {
@@ -1761,15 +1880,18 @@ export default function RevPulsePlatform() {
 
     setTimeout(() => {
       setIsSandboxRunning(false);
+      const isNegative = Number(sandboxReviewRating) <= 3;
       setSandboxLog({
         status: "SUCCESS (SANDBOX SIMULATION)",
         channel: sandboxChannel.toUpperCase(),
         recipient: sandboxPhone,
         ratingSimulated: `${sandboxReviewRating} Stars`,
         timestamp: new Date().toLocaleTimeString(),
-        payload: sandboxChannel === 'sms' 
-          ? `[Twilio Sandbox] Sent to ${sandboxPhone}: "Hi! We saw your ${sandboxReviewRating}-star feedback. Our manager wants to resolve this privately. Tap to connect: https://revpulse.tools/resolve/sandbox-token"`
-          : `[WhatsApp Sandbox Template] Dispatched to ${sandboxPhone}: Template #REV_RECOVERY_V2 rendered successfully with business variables.`
+        payload: isNegative
+          ? sandboxChannel === 'sms'
+            ? `[Twilio Sandbox] Intercepted ${sandboxReviewRating}-star feedback → Sent private recovery SMS to ${sandboxPhone}: "Hi! We saw your ${sandboxReviewRating}-star feedback. Our manager wants to resolve this privately. Tap to connect: https://revpulse.tools/resolve/sandbox-token"`
+            : `[WhatsApp Sandbox Template] Intercepted ${sandboxReviewRating}-star feedback → Dispatched #REV_RECOVERY_V2 to ${sandboxPhone} with private manager escalation link.`
+          : `[${sandboxChannel.toUpperCase()} Sandbox] Detected ${sandboxReviewRating}-star positive review → Dispatched thank-you & referral invite to ${sandboxPhone}.`
       });
     }, 900);
   };
@@ -1786,14 +1908,16 @@ export default function RevPulsePlatform() {
     const userText = chatMessage;
     setChatLogs(prev => [...prev, { sender: 'user', text: userText }]);
     setChatMessage('');
-    
+
     setTimeout(() => {
-      setChatLogs(prev => [...prev, { 
-        sender: 'kaku', 
-        text: `I've cross-referenced your query across our multi-industry Knowledge Center. Here is the verified operational framework.` 
+      setChatLogs(prev => [...prev, {
+        sender: 'kaku',
+        text: `I've cross-referenced "${userText}" across our multi-industry Knowledge Center. Recommended next step: acknowledge the customer privately within 15 minutes, share transparent documentation, and route a direct resolution link via SMS or WhatsApp.`
       }]);
     }, 700);
   };
+
+  const activePlatformMeta = platformMetadata.find(p => p.key === connectingPlatform);
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100 font-sans relative selection:bg-blue-600 selection:text-white overflow-x-hidden">
@@ -1803,14 +1927,14 @@ export default function RevPulsePlatform() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
           <div className="flex items-center space-x-4 sm:space-x-6">
             <button onClick={() => { setActiveTab('landing'); setMobileMenuOpen(false); }} className="flex items-center space-x-2.5 group py-2 text-left bg-transparent border-none cursor-pointer">
-              <img 
-                src="/logo.png" 
-                alt="RevPulse Logo" 
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-contain shadow-lg border border-purple-500/30 bg-purple-950/40" 
-                onError={(e)=>{
+              <img
+                src="/logo.png"
+                alt="RevPulse Logo"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-contain shadow-lg border border-purple-500/30 bg-purple-950/40"
+                onError={(e) => {
                   e.target.onerror = null;
                   e.target.style.display = 'none';
-                  if(e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
+                  if (e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
                 }}
               />
               <div className="w-10 h-10 rounded-xl bg-purple-600 border border-purple-400/40 items-center justify-center text-white font-bold hidden shadow-md">✨</div>
@@ -1826,10 +1950,10 @@ export default function RevPulsePlatform() {
               <button onClick={() => setActiveTab('legal')} className={`hover:text-white transition bg-transparent border-none cursor-pointer ${activeTab === 'legal' ? 'text-blue-400 font-semibold' : ''}`}>{t.legal}</button>
             </nav>
           </div>
-          
+
           <div className="flex items-center space-x-2.5 sm:space-x-4">
-            <select 
-              value={selectedLanguage} 
+            <select
+              value={selectedLanguage}
               onChange={(e) => setSelectedLanguage(e.target.value)}
               className="bg-gray-900 text-gray-300 text-xs rounded-xl px-2.5 py-2 border border-gray-800 focus:outline-none focus:border-blue-500 cursor-pointer">
               <option value="en">🌐 English</option>
@@ -1842,19 +1966,19 @@ export default function RevPulsePlatform() {
 
             <div className="hidden lg:flex items-center space-x-3">
               {currentUser ? (
-                <button 
+                <button
                   onClick={() => { supabase.auth.signOut(); setCurrentUser(null); setActiveTab('landing'); }}
                   className="text-xs sm:text-sm text-red-400 hover:text-red-300 transition font-medium px-2.5 py-2 bg-transparent border-none cursor-pointer">
                   {t.signOut} ({currentUser.email})
                 </button>
               ) : (
                 <>
-                  <button 
+                  <button
                     onClick={() => { setAuthMode('signin'); setShowAuthModal(true); }}
                     className="text-xs sm:text-sm text-gray-300 hover:text-white transition font-medium px-2.5 py-2 whitespace-nowrap bg-transparent border-none cursor-pointer">
                     {t.signIn}
                   </button>
-                  <button 
+                  <button
                     onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
                     className="px-3.5 py-2 sm:px-4.5 sm:py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold rounded-xl transition shadow-lg shadow-blue-600/25 whitespace-nowrap border-none cursor-pointer">
                     {t.getStarted}
@@ -1864,7 +1988,7 @@ export default function RevPulsePlatform() {
             </div>
 
             {/* Mobile Hamburger Button */}
-            <button 
+            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2 text-gray-300 hover:text-white focus:outline-none bg-gray-900 border border-gray-800 rounded-xl cursor-pointer">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1890,22 +2014,22 @@ export default function RevPulsePlatform() {
               <button onClick={() => { setActiveTab('knowledge'); setMobileMenuOpen(false); }} className="text-left py-2 text-gray-300 hover:text-white bg-transparent border-none cursor-pointer">{t.knowledge}</button>
               <button onClick={() => { setActiveTab('legal'); setMobileMenuOpen(false); }} className="text-left py-2 text-gray-300 hover:text-white bg-transparent border-none cursor-pointer">{t.legal}</button>
             </div>
-            
+
             <div className="pt-4 border-t border-gray-800 flex flex-col space-y-3">
               {currentUser ? (
-                <button 
+                <button
                   onClick={() => { supabase.auth.signOut(); setCurrentUser(null); setActiveTab('landing'); setMobileMenuOpen(false); }}
                   className="text-left text-red-400 hover:text-red-300 font-medium py-2 bg-transparent border-none cursor-pointer">
                   {t.signOut} ({currentUser.email})
                 </button>
               ) : (
                 <>
-                  <button 
+                  <button
                     onClick={() => { setAuthMode('signin'); setShowAuthModal(true); setMobileMenuOpen(false); }}
                     className="text-left text-gray-300 hover:text-white font-medium py-2 bg-transparent border-none cursor-pointer">
                     {t.signIn}
                   </button>
-                  <button 
+                  <button
                     onClick={() => { setAuthMode('signup'); setShowAuthModal(true); setMobileMenuOpen(false); }}
                     className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl text-center shadow-lg border-none cursor-pointer">
                     {t.getStarted}
@@ -1923,42 +2047,42 @@ export default function RevPulsePlatform() {
           <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-blue-500/30 bg-gray-900">
             <div className="relative w-full aspect-[4/3] sm:aspect-[21/9] min-h-[350px] sm:min-h-[500px] bg-gradient-to-br from-gray-900 via-gray-950 to-blue-950">
               {heroSlides.map((slide, index) => (
-                <div 
+                <div
                   key={index}
                   className={`absolute inset-0 transition-opacity duration-1000 ease-in-out flex items-center ${index === currentSlide ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}
                 >
-                  <img 
-                    src={slide.image} 
-                    alt={`RevPulse Hero Slide ${index + 1}`} 
+                  <img
+                    src={slide.image}
+                    alt={`RevPulse Hero Slide ${index + 1}`}
                     className="absolute inset-0 w-full h-full object-cover opacity-70"
                     onError={(e) => {
                       e.target.style.display = 'none';
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/85 to-transparent z-10"></div>
-                  
+
                   <div className="relative z-20 max-w-2xl px-6 sm:px-12 py-8 sm:py-12 space-y-4 sm:space-y-6">
                     <div className="inline-flex items-center space-x-2 px-3 py-1 bg-blue-950/80 border border-blue-800/50 text-blue-300 text-[11px] sm:text-xs font-semibold rounded-full uppercase tracking-wider backdrop-blur-md">
                       <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
                       <span>{slide.badge}</span>
                     </div>
-                    
+
                     <h1 className="text-2xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
                       {slide.title}
                     </h1>
-                    
+
                     <p className="text-xs sm:text-base text-gray-300 leading-relaxed max-w-xl">
                       {slide.subtitle}
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-3 pt-1">
-                      <button 
+                      <button
                         onClick={() => { setAuthMode('signup'); setShowAuthModal(true); }}
                         className="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2 text-xs sm:text-sm border-none cursor-pointer">
                         <span>{t.getStarted}</span>
                         <span>→</span>
                       </button>
-                      <button 
+                      <button
                         onClick={() => setActiveTab('knowledge')}
                         className="px-5 py-3 bg-gray-900/80 hover:bg-gray-800 border border-gray-700 backdrop-blur-md text-gray-200 font-semibold rounded-xl transition flex items-center justify-center space-x-2 text-xs sm:text-sm cursor-pointer">
                         <span>{t.exploreKnowledge}</span>
@@ -2015,11 +2139,11 @@ export default function RevPulsePlatform() {
           <section id="sandbox-demo" className="max-w-4xl mx-auto pt-4">
             <div className="bg-gray-900/90 border border-gray-800/80 rounded-3xl p-6 sm:p-8 shadow-2xl relative mt-8">
               <div className="absolute -top-10 left-6 flex items-center space-x-3 bg-gray-900 border border-blue-500/50 px-4 py-2.5 rounded-2xl shadow-2xl z-20">
-                <img 
-                  src="/kaku-mascot.png" 
-                  alt="Kaku AI Mascot" 
+                <img
+                  src="/kaku-mascot.png"
+                  alt="Kaku AI Mascot"
                   className="w-10 h-10 rounded-xl object-cover shadow-md border border-blue-400/40 bg-gray-950"
-                  onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+                  onError={(e) => { e.target.onerror = null; e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E"; }}
                 />
                 <div>
                   <div className="text-xs font-bold text-white flex items-center space-x-1.5">
@@ -2035,7 +2159,7 @@ export default function RevPulsePlatform() {
                   <h3 className="text-lg font-bold text-white">{t.demoTitle}</h3>
                   <p className="text-xs text-gray-400">{t.demoSubtitle}</p>
                 </div>
-                
+
                 <div className="flex flex-wrap gap-1.5 max-w-full justify-start md:justify-end">
                   {Object.keys(verticalData).map((key) => (
                     <button
@@ -2045,8 +2169,8 @@ export default function RevPulsePlatform() {
                         setAiResponse('');
                       }}
                       className={`px-3 py-1.5 rounded-xl text-[11px] font-semibold transition cursor-pointer ${
-                        selectedVertical === key 
-                          ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' 
+                        selectedVertical === key
+                          ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
                           : 'bg-gray-800 text-gray-400 hover:text-white'
                       }`}
                     >
@@ -2066,7 +2190,7 @@ export default function RevPulsePlatform() {
                   </div>
                 </div>
 
-                <button 
+                <button
                   onClick={handleGenerateResponse}
                   disabled={isGenerating}
                   className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/20 text-xs sm:text-sm border-none cursor-pointer">
@@ -2097,14 +2221,14 @@ export default function RevPulsePlatform() {
           </div>
 
           <div className="bg-gray-900 border border-gray-800 p-6 rounded-3xl space-y-4 shadow-xl">
-            <input 
-              type="text" 
+            <input
+              type="text"
               value={knowledgeSearch}
               onChange={(e) => setKnowledgeSearch(e.target.value)}
               placeholder={t.searchPlaceholder}
               className="w-full bg-gray-950 border border-gray-800 rounded-2xl px-5 py-4 text-xs text-white focus:outline-none focus:border-blue-500 shadow-inner"
             />
-            
+
             <div className="flex flex-wrap gap-2 pt-2">
               {[
                 { id: 'all', label: ct.all },
@@ -2124,8 +2248,8 @@ export default function RevPulsePlatform() {
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
                   className={`px-3 py-1.5 rounded-xl text-[11px] font-semibold transition cursor-pointer ${
-                    selectedCategory === cat.id 
-                      ? 'bg-blue-600 text-white shadow-lg' 
+                    selectedCategory === cat.id
+                      ? 'bg-blue-600 text-white shadow-lg'
                       : 'bg-gray-800 text-gray-400 hover:text-white'
                   }`}
                 >
@@ -2207,25 +2331,25 @@ export default function RevPulsePlatform() {
               <h1 className="text-3xl font-extrabold text-white">Customer & Admin Dashboard</h1>
               <p className="text-sm text-gray-400 mt-1">Welcome back, {currentUser ? currentUser.email : 'Operator'}.</p>
             </div>
-            
+
             <div className="flex flex-wrap gap-2">
-              <button 
-                onClick={() => setDashboardSubTab('overview')} 
+              <button
+                onClick={() => setDashboardSubTab('overview')}
                 className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition border-none cursor-pointer ${dashboardSubTab === 'overview' ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-800 text-gray-300 hover:text-white'}`}>
                 📊 Overview
               </button>
-              <button 
-                onClick={() => setDashboardSubTab('sandbox')} 
+              <button
+                onClick={() => setDashboardSubTab('sandbox')}
                 className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition border-none cursor-pointer ${dashboardSubTab === 'sandbox' ? 'bg-purple-600 text-white shadow-lg' : 'bg-gray-800 text-gray-300 hover:text-white'}`}>
                 🧪 Testing & Sandbox Lab
               </button>
-              <button 
-                onClick={() => setDashboardSubTab('trial-lifecycle')} 
+              <button
+                onClick={() => setDashboardSubTab('trial-lifecycle')}
                 className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition border-none cursor-pointer ${dashboardSubTab === 'trial-lifecycle' ? 'bg-amber-600 text-white shadow-lg' : 'bg-gray-800 text-gray-300 hover:text-white'}`}>
                 📧 Trial & Email Lifecycle
               </button>
-              <button 
-                onClick={() => setDashboardSubTab('settings')} 
+              <button
+                onClick={() => setDashboardSubTab('settings')}
                 className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition border-none cursor-pointer ${dashboardSubTab === 'settings' ? 'bg-indigo-600 text-white shadow-lg' : 'bg-gray-800 text-gray-300 hover:text-white'}`}>
                 ⚙️ Integrations & Gateway
               </button>
@@ -2234,10 +2358,31 @@ export default function RevPulsePlatform() {
 
           {dashboardSubTab === 'overview' && (
             <div className="space-y-8">
-              <div className="flex justify-between items-center bg-gray-900 border border-gray-800 px-6 py-4 rounded-2xl">
-                <div className="text-xs text-gray-300">Need to link more business profiles or test your messaging sequences?</div>
-                <div className="flex space-x-3">
-                  <button onClick={() => setShowConnectModal(true)} className="px-3.5 py-2 bg-purple-600 text-white text-xs font-semibold rounded-xl border-none cursor-pointer">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-gray-900 border border-gray-800 px-6 py-4 rounded-2xl">
+                <div className="space-y-1">
+                  <div className="text-xs font-semibold text-white">Connected Review Channels</div>
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {platformMetadata.map((plat) => {
+                      const isLinked = connectedPlatforms[plat.key]?.connected;
+                      return (
+                        <span
+                          key={plat.key}
+                          className={`px-2.5 py-1 rounded-lg text-[11px] font-medium border ${
+                            isLinked
+                              ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30'
+                              : 'bg-gray-950 text-gray-500 border-gray-800'
+                          }`}
+                        >
+                          {isLinked ? '✓' : '○'} {plat.name}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+                <div className="flex space-x-3 shrink-0">
+                  <button
+                    onClick={() => { setConnectingPlatform(null); setShowConnectModal(true); }}
+                    className="px-4 py-2.5 bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold rounded-xl border-none cursor-pointer shadow-lg transition">
                     🔗 Connect Business Pages
                   </button>
                 </div>
@@ -2245,21 +2390,100 @@ export default function RevPulsePlatform() {
 
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
-                  <div className="text-xs font-semibold text-gray-400 uppercase">Monitored Locations</div>
+                  <div className="text-xs font-semibold text-gray-400 uppercase">Monitored Channels</div>
                   <div className="text-3xl font-extrabold text-white mt-2">
-                    {Object.values(connectedPlatforms).filter(p => p.connected).length} Active
+                    {connectedPlatformList.length} / {platformMetadata.length} Active
                   </div>
-                  <div className="text-xs text-blue-400 mt-2">Google, Yelp & FB Channels Linked</div>
+                  <div className="text-xs text-blue-400 mt-2">
+                    {connectedPlatformList.length > 0
+                      ? connectedPlatformList.map(p => p.name.split(' ')[0]).join(', ') + ' Linked'
+                      : 'No channels linked yet'}
+                  </div>
                 </div>
                 <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
                   <div className="text-xs font-semibold text-gray-400 uppercase">Feedback Items Pending</div>
-                  <div className="text-3xl font-extrabold text-white mt-2">0 Pending</div>
-                  <div className="text-xs text-emerald-400 mt-2">All pipelines protected</div>
+                  <div className="text-3xl font-extrabold text-white mt-2">{pendingFeedbackCount} Pending</div>
+                  <div className="text-xs text-emerald-400 mt-2">
+                    {pendingFeedbackCount === 0 ? 'All pipelines protected' : 'AI drafts ready for human approval'}
+                  </div>
                 </div>
                 <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
                   <div className="text-xs font-semibold text-gray-400 uppercase">Trial Status</div>
                   <div className="text-3xl font-extrabold text-white mt-2">7 Days Free</div>
                   <div className="text-xs text-amber-400 mt-2">Automated email nudges active</div>
+                </div>
+              </div>
+
+              {/* Interactive Review & Recovery Approval Queue */}
+              <div className="bg-gray-900 border border-gray-800 p-6 sm:p-8 rounded-3xl space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider">Human-in-the-Loop Command Desk</span>
+                    <h3 className="text-lg font-bold text-white mt-0.5">Live Feedback Intercept & Recovery Queue</h3>
+                  </div>
+                  <button
+                    onClick={() => setFeedbackQueue(initialSampleQueue)}
+                    className="px-3.5 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-semibold rounded-xl border-none cursor-pointer self-start sm:self-auto">
+                    ↻ Reset Sample Queue
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  {feedbackQueue.map((item) => (
+                    <div key={item.id} className="bg-gray-950 border border-gray-800 rounded-2xl p-5 space-y-4">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <div className="flex items-center space-x-2.5">
+                          <span className="px-2.5 py-1 rounded-lg bg-purple-600/20 text-purple-300 border border-purple-500/30 text-[11px] font-bold">
+                            {item.platform}
+                          </span>
+                          <span className="text-xs font-bold text-white">{item.customer}</span>
+                          <span className="text-xs text-amber-400">{'★'.repeat(item.rating)}{'☆'.repeat(5 - item.rating)}</span>
+                          <span className="text-[11px] text-gray-500">• {item.vertical} • {item.time}</span>
+                        </div>
+                        <span
+                          className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${
+                            item.status === 'pending'
+                              ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                              : item.status === 'approved'
+                              ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                              : 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
+                          }`}
+                        >
+                          {item.status === 'pending'
+                            ? 'Awaiting Human Approval'
+                            : item.status === 'approved'
+                            ? '✓ Public Reply Published'
+                            : '📲 Private Recovery Dispatched'}
+                        </span>
+                      </div>
+
+                      <p className="text-xs text-gray-300 bg-gray-900/90 p-3.5 rounded-xl border border-gray-800/80">
+                        “{item.text}”
+                      </p>
+
+                      <div className="bg-blue-950/20 border border-blue-800/40 rounded-xl p-4 space-y-2">
+                        <div className="text-[11px] font-bold text-blue-400 uppercase tracking-wider">Kaku Suggested Response</div>
+                        <p className="text-xs text-gray-200 leading-relaxed">{item.aiDraft}</p>
+                      </div>
+
+                      {item.status === 'pending' && (
+                        <div className="flex flex-wrap gap-2.5 pt-1">
+                          <button
+                            onClick={() => handleQueueAction(item.id, 'approve')}
+                            className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold rounded-xl border-none cursor-pointer transition">
+                            ✓ Approve & Publish Reply
+                          </button>
+                          {item.rating <= 3 && (
+                            <button
+                              onClick={() => handleQueueAction(item.id, 'recover')}
+                              className="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold rounded-xl border-none cursor-pointer transition">
+                              📲 Trigger Private SMS/WhatsApp Recovery
+                            </button>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -2277,7 +2501,7 @@ export default function RevPulsePlatform() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-xs font-semibold text-gray-400 mb-1">Select Channel to Test</label>
-                    <select 
+                    <select
                       value={sandboxChannel}
                       onChange={(e) => setSandboxChannel(e.target.value)}
                       className="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-purple-500 cursor-pointer">
@@ -2286,16 +2510,28 @@ export default function RevPulsePlatform() {
                     </select>
                   </div>
                   <div>
+                    <label className="block text-xs font-semibold text-gray-400 mb-1">Simulated Review Rating</label>
+                    <select
+                      value={sandboxReviewRating}
+                      onChange={(e) => setSandboxReviewRating(e.target.value)}
+                      className="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-purple-500 cursor-pointer">
+                      <option value="1">★☆☆☆☆ (1 Star — Urgent Recovery)</option>
+                      <option value="2">★★☆☆☆ (2 Stars — Service Friction)</option>
+                      <option value="3">★★★☆☆ (3 Stars — Mixed Feedback)</option>
+                      <option value="5">★★★★★ (5 Stars — Positive Thank-You)</option>
+                    </select>
+                  </div>
+                  <div>
                     <label className="block text-xs font-semibold text-gray-400 mb-1">Test Recipient Phone / SIM</label>
-                    <input 
-                      type="text" 
-                      value={sandboxPhone} 
+                    <input
+                      type="text"
+                      value={sandboxPhone}
                       onChange={(e) => setSandboxPhone(e.target.value)}
                       className="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-purple-500"
                       required
                     />
                   </div>
-                  <button 
+                  <button
                     type="submit"
                     disabled={isSandboxRunning}
                     className="w-full py-3.5 bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold rounded-xl transition shadow-lg border-none cursor-pointer">
@@ -2309,6 +2545,9 @@ export default function RevPulsePlatform() {
                     {sandboxLog ? (
                       <div className="space-y-3 text-xs font-mono">
                         <div className="text-emerald-400 font-bold">{sandboxLog.status}</div>
+                        <div className="text-[11px] text-gray-400">
+                          {sandboxLog.channel} • {sandboxLog.ratingSimulated} • {sandboxLog.timestamp}
+                        </div>
                         <div className="p-3 bg-gray-950 border border-gray-800 rounded-xl text-gray-300 mt-2">
                           {sandboxLog.payload}
                         </div>
@@ -2355,10 +2594,10 @@ export default function RevPulsePlatform() {
               <form onSubmit={handleSaveTwilioConfig} className="grid md:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-gray-400 mb-1">Twilio Account SID</label>
-                  <input 
-                    type="text" 
-                    value={twilioConfig.accountSid} 
-                    onChange={(e) => setTwilioConfig({...twilioConfig, accountSid: e.target.value})} 
+                  <input
+                    type="text"
+                    value={twilioConfig.accountSid}
+                    onChange={(e) => setTwilioConfig({ ...twilioConfig, accountSid: e.target.value })}
                     placeholder="ACxxxxxxxxxxxxxxxx"
                     className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500"
                     required
@@ -2366,10 +2605,10 @@ export default function RevPulsePlatform() {
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-gray-400 mb-1">Twilio Auth Token</label>
-                  <input 
-                    type="password" 
-                    value={twilioConfig.authToken} 
-                    onChange={(e) => setTwilioConfig({...twilioConfig, authToken: e.target.value})} 
+                  <input
+                    type="password"
+                    value={twilioConfig.authToken}
+                    onChange={(e) => setTwilioConfig({ ...twilioConfig, authToken: e.target.value })}
                     placeholder="••••••••••••••••"
                     className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500"
                     required
@@ -2377,10 +2616,10 @@ export default function RevPulsePlatform() {
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-gray-400 mb-1">Twilio Phone Number</label>
-                  <input 
-                    type="text" 
-                    value={twilioConfig.phoneNumber} 
-                    onChange={(e) => setTwilioConfig({...twilioConfig, phoneNumber: e.target.value})} 
+                  <input
+                    type="text"
+                    value={twilioConfig.phoneNumber}
+                    onChange={(e) => setTwilioConfig({ ...twilioConfig, phoneNumber: e.target.value })}
                     placeholder="+1 (321) 000-0000"
                     className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500"
                     required
@@ -2447,14 +2686,14 @@ export default function RevPulsePlatform() {
             <button onClick={() => setShowAuthModal(false)} className="absolute top-6 right-6 text-gray-400 hover:text-white text-sm font-bold bg-transparent border-none cursor-pointer">✕</button>
             <h3 className="text-xl font-bold text-white mb-2">{authMode === 'signin' ? 'Sign In to RevPulse' : 'Start 7-Day Free Trial — No Card Required'}</h3>
             <p className="text-xs text-gray-400 mb-6">Unrestricted workspace access. No payment card required upfront.</p>
-            
+
             <form onSubmit={handleAuthSubmit} className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-gray-400 mb-1">Email Address</label>
-                <input 
-                  type="email" 
-                  value={email} 
-                  onChange={(e) => setEmail(e.target.value)} 
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@company.com"
                   className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500"
                   required
@@ -2462,10 +2701,10 @@ export default function RevPulsePlatform() {
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-400 mb-1">Password</label>
-                <input 
-                  type="password" 
-                  value={password} 
-                  onChange={(e) => setPassword(e.target.value)} 
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500"
                   required
@@ -2475,37 +2714,112 @@ export default function RevPulsePlatform() {
                 {authMode === 'signin' ? 'Sign In' : 'Activate 7-Day Free Trial'}
               </button>
             </form>
+
+            <div className="mt-5 text-center text-xs text-gray-400">
+              {authMode === 'signin' ? (
+                <>
+                  Need an account?{' '}
+                  <button onClick={() => setAuthMode('signup')} className="text-blue-400 hover:text-blue-300 font-semibold bg-transparent border-none cursor-pointer">
+                    Start 7-Day Free Trial
+                  </button>
+                </>
+              ) : (
+                <>
+                  Already have an account?{' '}
+                  <button onClick={() => setAuthMode('signin')} className="text-blue-400 hover:text-blue-300 font-semibold bg-transparent border-none cursor-pointer">
+                    Sign In
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         </div>
       )}
 
       {showConnectModal && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-gray-900 border border-purple-500/40 rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-6">
-            <button onClick={() => setShowConnectModal(false)} className="absolute top-6 right-6 text-gray-400 hover:text-white text-sm font-bold bg-transparent border-none cursor-pointer">✕</button>
+          <div className="bg-gray-900 border border-purple-500/40 rounded-3xl max-w-lg w-full p-8 shadow-2xl relative space-y-6">
+            <button onClick={() => { setShowConnectModal(false); setConnectingPlatform(null); }} className="absolute top-6 right-6 text-gray-400 hover:text-white text-sm font-bold bg-transparent border-none cursor-pointer">✕</button>
             <div>
               <h3 className="text-xl font-bold text-white mb-1">Connect Business Profiles</h3>
-              <p className="text-xs text-gray-400">Link your review channels via secure API token & URL handshake.</p>
+              <p className="text-xs text-gray-400">Connect your review channels to start intercepting and replying to reviews in real time.</p>
             </div>
 
             {connectingPlatform ? (
               <form onSubmit={handleSaveCredentials} className="space-y-4">
-                <input 
-                  type="text"
-                  value={credentialInput}
-                  onChange={(e) => setCredentialInput(e.target.value)}
-                  placeholder={`https://${connectingPlatform}.com/your-business`}
-                  className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-purple-500"
-                  required
-                />
-                <button type="submit" className="w-full py-3 bg-purple-600 text-white text-xs font-semibold rounded-xl border-none cursor-pointer shadow-lg">Verify & Link</button>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-300 mb-1.5">
+                    {activePlatformMeta?.name} URL or Location ID
+                  </label>
+                  <input
+                    type="text"
+                    value={credentialInput}
+                    onChange={(e) => setCredentialInput(e.target.value)}
+                    placeholder={activePlatformMeta?.placeholder || `https://${connectingPlatform}.com/your-business`}
+                    className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-purple-500"
+                    required
+                  />
+                </div>
+                <div className="flex space-x-3">
+                  <button
+                    type="button"
+                    onClick={() => { setConnectingPlatform(null); setCredentialInput(''); }}
+                    className="flex-1 py-3 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-semibold rounded-xl border-none cursor-pointer">
+                    ← Back
+                  </button>
+                  <button
+                    type="submit"
+                    className="flex-1 py-3 bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold rounded-xl border-none cursor-pointer shadow-lg">
+                    Verify & Link
+                  </button>
+                </div>
               </form>
             ) : (
               <div className="space-y-3">
-                <div className="flex items-center justify-between p-4 bg-gray-950 border border-gray-800 rounded-2xl">
-                  <span className="text-xs font-bold text-white">Google Business Profile</span>
-                  <button onClick={() => setConnectingPlatform('google')} className="px-3 py-1.5 text-xs bg-blue-600 text-white rounded-xl border-none cursor-pointer">Connect</button>
-                </div>
+                {platformMetadata.map((platform) => {
+                  const status = connectedPlatforms[platform.key];
+                  return (
+                    <div key={platform.key} className="flex items-center justify-between p-4 bg-gray-950 border border-gray-800 rounded-2xl gap-3">
+                      <div className="flex items-center space-x-3 min-w-0">
+                        <div className={`w-9 h-9 rounded-xl border flex items-center justify-center font-extrabold text-sm shrink-0 ${platform.badgeBg}`}>
+                          {platform.badge}
+                        </div>
+                        <div className="min-w-0">
+                          <div className="text-xs font-bold text-white flex items-center space-x-2">
+                            <span>{platform.name}</span>
+                            {status?.connected && (
+                              <span className="px-2 py-0.5 rounded-full text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                                Connected
+                              </span>
+                            )}
+                          </div>
+                          <div className="text-[11px] text-gray-400 truncate">
+                            {status?.connected ? status.details : 'Not connected yet'}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center space-x-2 shrink-0">
+                        {status?.connected && (
+                          <button
+                            onClick={() => handleDisconnectPlatform(platform.key)}
+                            className="px-2.5 py-1.5 text-[11px] bg-gray-800 hover:bg-red-950/60 text-gray-400 hover:text-red-300 rounded-xl border-none cursor-pointer transition">
+                            Remove
+                          </button>
+                        )}
+                        <button
+                          onClick={() => handleOpenPlatformConnect(platform.key)}
+                          className={`px-3 py-1.5 text-xs font-semibold rounded-xl border-none cursor-pointer transition ${
+                            status?.connected
+                              ? 'bg-gray-800 hover:bg-gray-700 text-blue-300'
+                              : 'bg-blue-600 hover:bg-blue-500 text-white'
+                          }`}>
+                          {status?.connected ? 'Edit' : 'Connect'}
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>
@@ -2517,11 +2831,11 @@ export default function RevPulsePlatform() {
           <div className="bg-gray-900 border border-blue-500/40 rounded-3xl max-w-2xl w-full h-[650px] flex flex-col shadow-2xl relative overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-800 flex items-center justify-between bg-gray-950/60">
               <div className="flex items-center space-x-3">
-                <img 
-                  src="/kaku-mascot.png" 
-                  alt="Kaku" 
-                  className="w-8 h-8 rounded-lg object-cover border border-blue-400/40 bg-gray-950" 
-                  onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+                <img
+                  src="/kaku-mascot.png"
+                  alt="Kaku"
+                  className="w-8 h-8 rounded-lg object-cover border border-blue-400/40 bg-gray-950"
+                  onError={(e) => { e.target.onerror = null; e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E"; }}
                 />
                 <span className="text-sm font-bold text-white">Kaku Assistant & Situation Room</span>
               </div>
@@ -2538,11 +2852,11 @@ export default function RevPulsePlatform() {
             </div>
             <div className="p-4 border-t border-gray-800 bg-gray-950/80">
               <form onSubmit={handleSendChatMessage} className="flex space-x-2">
-                <input 
-                  type="text" 
-                  value={chatMessage} 
+                <input
+                  type="text"
+                  value={chatMessage}
                   onChange={(e) => setChatMessage(e.target.value)}
-                  placeholder="Ask Kaku anything across HVAC, Dental, Legal, Retail, Veterinary..." 
+                  placeholder="Ask Kaku anything across HVAC, Dental, Legal, Retail, Veterinary..."
                   className="flex-1 bg-gray-900 border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-gray-200 focus:outline-none focus:border-blue-500"
                 />
                 <button type="submit" className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition border-none cursor-pointer">Send</button>
@@ -2554,14 +2868,14 @@ export default function RevPulsePlatform() {
 
       {/* Floating Kaku Assistant Button */}
       <div className="fixed bottom-6 right-6 z-40">
-        <button 
+        <button
           onClick={() => setShowSituationRoom(true)}
           className="flex items-center space-x-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-3.5 rounded-2xl shadow-2xl transition transform hover:scale-105 border border-blue-400/40 group cursor-pointer">
-          <img 
-            src="/kaku-mascot.png" 
-            alt="Kaku" 
-            className="w-10 h-10 rounded-xl object-cover border border-white/30 bg-gray-950 shadow-md" 
-            onError={(e)=>{e.target.onerror=null; e.target.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E";}} 
+          <img
+            src="/kaku-mascot.png"
+            alt="Kaku"
+            className="w-10 h-10 rounded-xl object-cover border border-white/30 bg-gray-950 shadow-md"
+            onError={(e) => { e.target.onerror = null; e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239333ea'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E"; }}
           />
           <div className="text-left">
             <div className="text-xs font-extrabold flex items-center space-x-1.5">
