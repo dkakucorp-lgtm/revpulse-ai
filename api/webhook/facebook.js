@@ -1,28 +1,45 @@
 import crypto from 'crypto';
-import https from 'https';
+import http2 from 'http2';
 
-function postSupabaseRest(urlStr, headers, payload) {
+function postSupabaseHttp2(hostname, path, headers, payload) {
   return new Promise((resolve, reject) => {
-    const parsed = new URL(urlStr);
     const bodyStr = JSON.stringify(payload);
-    const req = https.request(
-      {
-        hostname: parsed.hostname,
-        port: 443,
-        path: `${parsed.pathname}${parsed.search}`,
-        method: 'POST',
-        headers: {
-          ...headers,
-          'Content-Length': Buffer.byteLength(bodyStr)
-        }
-      },
-      (res) => {
-        let data = '';
-        res.on('data', (chunk) => (data += chunk));
-        res.on('end', () => resolve({ status: res.statusCode, text: data }));
-      }
-    );
-    req.on('error', reject);
+    const client = http2.connect('https://104.18.38.10:443', {
+      servername: hostname
+    });
+
+    client.on('error', (err) => {
+      client.close();
+      reject(err);
+    });
+
+    const req = client.request({
+      ':method': 'POST',
+      ':path': path,
+      ':authority': hostname,
+      ':scheme': 'https',
+      ...headers,
+      'content-length': Buffer.byteLength(bodyStr)
+    });
+
+    let status = 500;
+    let data = '';
+
+    req.on('response', (resHeaders) => {
+      status = resHeaders[':status'] || 500;
+    });
+
+    req.setEncoding('utf8');
+    req.on('data', (chunk) => (data += chunk));
+    req.on('end', () => {
+      client.close();
+      resolve({ status, text: data });
+    });
+    req.on('error', (err) => {
+      client.close();
+      reject(err);
+    });
+
     req.write(bodyStr);
     req.end();
   });
@@ -131,13 +148,15 @@ export default async function handler(req, res) {
       }
 
       if (recordsToInsert.length > 0) {
-        const result = await postSupabaseRest(
-          `${supabaseUrl}/rest/v1/reviews`,
+        const hostname = new URL(supabaseUrl).hostname;
+        const result = await postSupabaseHttp2(
+          hostname,
+          '/rest/v1/reviews',
           {
-            'Content-Type': 'application/json',
+            'content-type': 'application/json',
             apikey: supabaseKey,
-            Authorization: `Bearer ${supabaseKey}`,
-            Prefer: 'return=minimal'
+            authorization: `Bearer ${supabaseKey}`,
+            prefer: 'return=minimal'
           },
           recordsToInsert
         );
@@ -149,7 +168,7 @@ export default async function handler(req, res) {
 
       return res.status(200).send('EVENT_RECEIVED');
     } catch (err) {
-      return res.status(500).json({ error: err.message, code: err.code || null });
+      return res.status(500).json({ error: err.message });
     }
   }
 
