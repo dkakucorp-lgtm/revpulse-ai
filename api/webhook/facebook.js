@@ -5,32 +5,32 @@ import https from 'https';
 const resolver = new dns.Resolver();
 resolver.setServers(['1.1.1.1', '8.8.8.8']);
 
-function resolveHostWithFallback(hostname) {
-  return new Promise((resolve) => {
-    resolver.resolve4(hostname, (err, addresses) => {
-      if (!err && addresses && addresses.length > 0) {
-        return resolve(addresses[0]);
-      }
-      // Fallback to verified Supabase Cloudflare anycast IP if regional DNS returns ENOTFOUND
-      resolve('104.18.38.10');
-    });
+function customLookup(hostname, options, callback) {
+  if (typeof options === 'function') {
+    callback = options;
+    options = {};
+  }
+  resolver.resolve4(hostname, (err, addresses) => {
+    const ip = !err && addresses && addresses.length > 0 ? addresses[0] : '104.18.38.10';
+    if (options && options.all) {
+      return callback(null, [{ address: ip, family: 4 }]);
+    }
+    return callback(null, ip, 4);
   });
 }
 
-function postJsonWithSni(ip, hostname, path, headers, payload) {
+function postJsonSupabase(hostname, path, headers, payload) {
   return new Promise((resolve, reject) => {
     const bodyStr = JSON.stringify(payload);
     const req = https.request(
       {
-        host: ip,
+        hostname,
         port: 443,
         path,
         method: 'POST',
-        servername: hostname,
+        lookup: customLookup,
         headers: {
           ...headers,
-          Host: hostname,
-          "sb-project-ref": hostname.split(".")[0],
           'Content-Length': Buffer.byteLength(bodyStr)
         }
       },
@@ -150,9 +150,7 @@ export default async function handler(req, res) {
 
       if (recordsToInsert.length > 0) {
         const hostname = new URL(supabaseUrl).hostname;
-        const ip = await resolveHostWithFallback(hostname);
-        const result = await postJsonWithSni(
-          ip,
+        const result = await postJsonSupabase(
           hostname,
           '/rest/v1/reviews',
           {
