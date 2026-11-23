@@ -1,34 +1,16 @@
 import crypto from 'crypto';
-import dns from 'dns';
 import https from 'https';
 
-const resolver = new dns.Resolver();
-resolver.setServers(['1.1.1.1', '8.8.8.8']);
-
-function customLookup(hostname, options, callback) {
-  if (typeof options === 'function') {
-    callback = options;
-    options = {};
-  }
-  resolver.resolve4(hostname, (err, addresses) => {
-    const ip = !err && addresses && addresses.length > 0 ? addresses[0] : '104.18.38.10';
-    if (options && options.all) {
-      return callback(null, [{ address: ip, family: 4 }]);
-    }
-    return callback(null, ip, 4);
-  });
-}
-
-function postJsonSupabase(hostname, path, headers, payload) {
+function postSupabaseRest(urlStr, headers, payload) {
   return new Promise((resolve, reject) => {
+    const parsed = new URL(urlStr);
     const bodyStr = JSON.stringify(payload);
     const req = https.request(
       {
-        hostname,
+        hostname: parsed.hostname,
         port: 443,
-        path,
+        path: `${parsed.pathname}${parsed.search}`,
         method: 'POST',
-        lookup: customLookup,
         headers: {
           ...headers,
           'Content-Length': Buffer.byteLength(bodyStr)
@@ -149,10 +131,8 @@ export default async function handler(req, res) {
       }
 
       if (recordsToInsert.length > 0) {
-        const hostname = new URL(supabaseUrl).hostname;
-        const result = await postJsonSupabase(
-          hostname,
-          '/rest/v1/reviews',
+        const result = await postSupabaseRest(
+          `${supabaseUrl}/rest/v1/reviews`,
           {
             'Content-Type': 'application/json',
             apikey: supabaseKey,
@@ -169,7 +149,7 @@ export default async function handler(req, res) {
 
       return res.status(200).send('EVENT_RECEIVED');
     } catch (err) {
-      return res.status(500).json({ error: err.message });
+      return res.status(500).json({ error: err.message, code: err.code || null });
     }
   }
 
