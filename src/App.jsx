@@ -1788,6 +1788,51 @@ export default function RevPulsePlatform() {
   // Interactive Dashboard Feedback Queue State
   const [feedbackQueue, setFeedbackQueue] = useState(initialSampleQueue);
 
+  useEffect(() => {
+    let isMounted = true;
+    const mapRow = (row) => ({
+      id: row.id,
+      platform: row.platform || "Facebook Business Page",
+      customer: row.reviewer_name || "Customer",
+      rating: row.rating || 3,
+      vertical: row.location_id || "General Inquiry",
+      time: row.created_at ? new Date(row.created_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "Live",
+      text: row.review_text || "",
+      aiDraft: row.ai_private_draft || "Hello! Thank you for reaching out. Our team is reviewing your inquiry and will follow up shortly.",
+      status: row.status || "pending",
+      isLiveDb: true
+    });
+
+    const loadLiveReviews = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("reviews")
+          .select("*")
+          .order("created_at", { ascending: false })
+          .limit(25);
+        if (!error && data && data.length > 0 && isMounted) {
+          setFeedbackQueue([...data.map(mapRow), ...initialSampleQueue]);
+        }
+      } catch (e) {}
+    };
+
+    loadLiveReviews();
+
+    const channel = supabase
+      .channel("public:reviews")
+      .on("postgres_changes", { event: "INSERT", schema: "public", table: "reviews" }, (payload) => {
+        if (payload?.new && isMounted) {
+          setFeedbackQueue((prev) => [mapRow(payload.new), ...prev]);
+        }
+      })
+      .subscribe();
+
+    return () => {
+      isMounted = false;
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
   const [chatMessage, setChatMessage] = useState('');
   const [chatLogs, setChatLogs] = useState([
     { sender: 'kaku', text: 'Hello! I am Kaku, your AI reputation and multi-industry assistant. Ask me anything across HVAC, Medical, Legal, Veterinary, Restaurant, or E-Commerce operations!' }
@@ -1876,14 +1921,18 @@ export default function RevPulsePlatform() {
     });
   };
 
-  const handleQueueAction = (id, actionType) => {
+  const handleQueueAction = async (id, actionType) => {
+    const nextStatus = actionType === "approve" ? "approved" : "recovered";
     setFeedbackQueue(prev =>
       prev.map(item =>
-        item.id === id
-          ? { ...item, status: actionType === 'approve' ? 'approved' : 'recovered' }
-          : item
+        item.id === id ? { ...item, status: nextStatus } : item
       )
     );
+    if (typeof id === "number" || (typeof id === "string" && !id.startsWith("rev-"))) {
+      try {
+        await supabase.from("reviews").update({ status: nextStatus }).eq("id", id);
+      } catch (e) {}
+    }
   };
 
   const handleRunSandboxTest = (e) => {
