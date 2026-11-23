@@ -2475,7 +2475,7 @@ export default function RevPulsePlatform() {
                       </p>
 
                       <div className="bg-blue-950/20 border border-blue-800/40 rounded-xl p-4 space-y-2">
-                        <div className="text-[11px] font-bold text-blue-400 uppercase tracking-wider">Kaku Suggested Response</div>
+                        <div className="text-[11px] font-bold text-blue-400 uppercase tracking-wider">REVPULSE SUGGESTED RESPONSE</div>
                         <p className="text-xs text-gray-200 leading-relaxed">{item.aiDraft}</p>
                       </div>
 
