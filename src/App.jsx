@@ -1659,6 +1659,13 @@ const platformMetadata = [
     placeholder: 'https://www.facebook.com/yourbusinesspage'
   },
   {
+    key: 'instagram',
+    name: 'Instagram Business',
+    badge: 'IG',
+    badgeBg: 'bg-pink-600/20 text-pink-400 border-pink-500/40',
+    placeholder: 'https://www.instagram.com/yourbusinesshandle or @handle'
+  },
+  {
     key: 'trustpilot',
     name: 'Trustpilot Business Profile',
     badge: '★',
@@ -1774,6 +1781,7 @@ export default function RevPulsePlatform() {
     google: { connected: true, details: 'Google Business Profile #8821' },
     yelp: { connected: false, details: '' },
     facebook: { connected: false, details: '' },
+    instagram: { connected: false, details: '' },
     trustpilot: { connected: false, details: '' }
   }), ...JSON.parse(saved) };
     } catch (e) {}
@@ -1781,6 +1789,7 @@ export default function RevPulsePlatform() {
     google: { connected: true, details: 'Google Business Profile #8821' },
     yelp: { connected: false, details: '' },
     facebook: { connected: false, details: '' },
+    instagram: { connected: false, details: '' },
     trustpilot: { connected: false, details: '' }
   };
   });

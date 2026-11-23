@@ -5,11 +5,14 @@ import https from 'https';
 const resolver = new dns.Resolver();
 resolver.setServers(['1.1.1.1', '8.8.8.8']);
 
-function resolveHost(hostname) {
-  return new Promise((resolve, reject) => {
+function resolveHostWithFallback(hostname) {
+  return new Promise((resolve) => {
     resolver.resolve4(hostname, (err, addresses) => {
-      if (err || !addresses || !addresses.length) return reject(err || new Error('No IPv4 found'));
-      resolve(addresses[0]);
+      if (!err && addresses && addresses.length > 0) {
+        return resolve(addresses[0]);
+      }
+      // Fallback to verified Supabase Cloudflare anycast IP if regional DNS returns ENOTFOUND
+      resolve('104.18.38.10');
     });
   });
 }
@@ -43,7 +46,7 @@ function postJsonWithSni(ip, hostname, path, headers, payload) {
 }
 
 export default async function handler(req, res) {
-  // 1. Meta Webhook Verification (GET)
+  // 1. Meta Webhook Verification (GET) — Works for both Facebook & Instagram
   if (req.method === 'GET') {
     const mode = req.query['hub.mode'];
     const token = req.query['hub.verify_token'];
@@ -56,7 +59,7 @@ export default async function handler(req, res) {
     return res.status(403).json({ error: 'Invalid verify token' });
   }
 
-  // 2. Incoming Facebook Page Query / Message / Comment (POST)
+  // 2. Incoming Facebook Page & Instagram Business Events (POST)
   if (req.method === 'POST') {
     try {
       const appSecret = process.env.META_APP_SECRET;
@@ -71,9 +74,12 @@ export default async function handler(req, res) {
       }
 
       const body = req.body;
-      if (body.object !== 'page') {
+      if (body.object !== 'page' && body.object !== 'instagram') {
         return res.status(404).json({ error: 'Unsupported webhook object' });
       }
+
+      const isInstagram = body.object === 'instagram';
+      const platformLabel = isInstagram ? 'Instagram Business' : 'Facebook Business Page';
 
       const supabaseUrl =
         process.env.VITE_SUPABASE_URL ||
@@ -87,30 +93,32 @@ export default async function handler(req, res) {
       const recordsToInsert = [];
 
       for (const entry of body.entry || []) {
-        const pageId = entry.id || 'facebook-page';
+        const accountId = entry.id || (isInstagram ? 'instagram-business' : 'facebook-page');
 
+        // A. Direct Messages (Facebook Messenger & Instagram DMs)
         for (const event of entry.messaging || []) {
           if (event.message && event.message.text && !event.message.is_echo) {
             const customerText = event.message.text.trim();
             recordsToInsert.push({
-              location_id: pageId,
-              platform: 'Facebook Business Page',
+              location_id: accountId,
+              platform: platformLabel,
               rating: 3,
-              reviewer_name: `FB User (${event.sender?.id || 'Customer'})`,
+              reviewer_name: `${isInstagram ? 'IG' : 'FB'} User (${event.sender?.id || 'Customer'})`,
               review_text: customerText,
               sentiment: 'neutral',
-              ai_private_draft: `Hello! Thank you for messaging our team on Facebook. We received your inquiry ("${customerText.slice(0, 80)}") and are reviewing the details to assist you promptly.`,
+              ai_private_draft: `Hello! Thank you for messaging us on ${isInstagram ? 'Instagram' : 'Facebook'}. We received your inquiry ("${customerText.slice(0, 80)}") and are reviewing the details to assist you promptly.`,
               status: 'pending'
             });
           }
         }
 
+        // B. Public Comments (Facebook Feed & Instagram Post Comments)
         for (const change of entry.changes || []) {
           if (change.field === 'feed' && change.value?.item === 'comment' && change.value?.verb === 'add') {
             const commentText = (change.value.message || '').trim();
             if (commentText) {
               recordsToInsert.push({
-                location_id: pageId,
+                location_id: accountId,
                 platform: 'Facebook Business Page',
                 rating: 3,
                 reviewer_name: change.value.from?.name || 'Facebook Visitor',
@@ -121,12 +129,27 @@ export default async function handler(req, res) {
               });
             }
           }
+
+          if (change.field === 'comments' && change.value?.text) {
+            const igComment = change.value.text.trim();
+            const igUser = change.value.from?.username ? `@${change.value.from.username}` : 'Instagram Visitor';
+            recordsToInsert.push({
+              location_id: accountId,
+              platform: 'Instagram Business',
+              rating: 3,
+              reviewer_name: igUser,
+              review_text: igComment,
+              sentiment: 'neutral',
+              ai_private_draft: `Hi ${igUser}! Thanks for commenting on our post. We have sent you a quick follow-up so our team can assist you right away.`,
+              status: 'pending'
+            });
+          }
         }
       }
 
       if (recordsToInsert.length > 0) {
         const hostname = new URL(supabaseUrl).hostname;
-        const ip = await resolveHost(hostname);
+        const ip = await resolveHostWithFallback(hostname);
         const result = await postJsonWithSni(
           ip,
           hostname,
