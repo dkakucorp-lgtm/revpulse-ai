@@ -1603,6 +1603,17 @@ const knowledgeArticlesTranslations = {
 const initialSampleQueue = [
   {
     id: 'rev-101',
+    platform: 'Facebook Business Page',
+    customer: 'ADKA Customer Test',
+    rating: 3,
+    vertical: 'General Contractors',
+    time: 'Just now',
+    text: 'Checked your building materials page—need to confirm fastener stock, delivery schedule, and pricing clarity before placing an order.',
+    aiDraft: 'Hello! Thank you for reaching out to our building materials team. We are reviewing your stock and delivery inquiry right now and will follow up promptly with exact availability and order details.',
+    status: 'pending'
+  },
+  {
+    id: 'rev-102',
     platform: 'Google Business Profile',
     customer: 'Marcus T.',
     rating: 2,
@@ -1613,7 +1624,7 @@ const initialSampleQueue = [
     status: 'pending'
   },
   {
-    id: 'rev-102',
+    id: 'rev-103',
     platform: 'Yelp',
     customer: 'Elena R.',
     rating: 5,
@@ -1621,17 +1632,6 @@ const initialSampleQueue = [
     time: '1 hour ago',
     text: 'Best espresso and fresh croissants in town! Staff was super welcoming even during the morning rush.',
     aiDraft: 'Thank you so much for the kind words, Elena! We loved having you in during the morning rush and cannot wait to welcome you back for another espresso soon.',
-    status: 'pending'
-  },
-  {
-    id: 'rev-103',
-    platform: 'Facebook',
-    customer: 'David K.',
-    rating: 1,
-    vertical: 'Auto Repair',
-    time: '2 hours ago',
-    text: 'Invoice was $180 higher than the phone estimate and nobody called me before doing the extra alignment.',
-    aiDraft: 'Hello David, we take billing transparency very seriously and apologize that we did not confirm the alignment adjustment with you beforehand. Our shop manager is reaching out privately to review your invoice immediately.',
     status: 'pending'
   }
 ];
