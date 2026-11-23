@@ -83,7 +83,6 @@ export default async function handler(req) {
           if (event.message && event.message.text && !event.message.is_echo) {
             const customerText = event.message.text.trim();
             recordsToInsert.push({
-              location_id: accountId,
               platform: platformLabel,
               rating: 3,
               reviewer_name: `${isInstagram ? 'IG' : 'FB'} User (${event.sender?.id || 'Customer'})`,
@@ -101,7 +100,6 @@ export default async function handler(req) {
             const commentText = (change.value.message || '').trim();
             if (commentText) {
               recordsToInsert.push({
-                location_id: accountId,
                 platform: 'Facebook Business Page',
                 rating: 3,
                 reviewer_name: change.value.from?.name || 'Facebook Visitor',
@@ -117,7 +115,6 @@ export default async function handler(req) {
             const igComment = change.value.text.trim();
             const igUser = change.value.from?.username ? `@${change.value.from.username}` : 'Instagram Visitor';
             recordsToInsert.push({
-              location_id: accountId,
               platform: 'Instagram Business',
               rating: 3,
               reviewer_name: igUser,
