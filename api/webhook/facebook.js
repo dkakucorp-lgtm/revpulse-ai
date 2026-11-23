@@ -30,6 +30,7 @@ function postJsonWithSni(ip, hostname, path, headers, payload) {
         headers: {
           ...headers,
           Host: hostname,
+          "sb-project-ref": hostname.split(".")[0],
           'Content-Length': Buffer.byteLength(bodyStr)
         }
       },
