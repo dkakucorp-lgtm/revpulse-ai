@@ -1,81 +1,64 @@
-import crypto from 'crypto';
-import http2 from 'http2';
+export const config = {
+  runtime: 'edge'
+};
 
-function postSupabaseHttp2(hostname, path, headers, payload) {
-  return new Promise((resolve, reject) => {
-    const bodyStr = JSON.stringify(payload);
-    const client = http2.connect('https://104.18.38.10:443', {
-      servername: hostname
-    });
-
-    client.on('error', (err) => {
-      client.close();
-      reject(err);
-    });
-
-    const req = client.request({
-      ':method': 'POST',
-      ':path': path,
-      ':authority': hostname,
-      ':scheme': 'https',
-      ...headers,
-      'content-length': Buffer.byteLength(bodyStr)
-    });
-
-    let status = 500;
-    let data = '';
-
-    req.on('response', (resHeaders) => {
-      status = resHeaders[':status'] || 500;
-    });
-
-    req.setEncoding('utf8');
-    req.on('data', (chunk) => (data += chunk));
-    req.on('end', () => {
-      client.close();
-      resolve({ status, text: data });
-    });
-    req.on('error', (err) => {
-      client.close();
-      reject(err);
-    });
-
-    req.write(bodyStr);
-    req.end();
-  });
+async function verifySignature(rawBody, signatureHeader, appSecret) {
+  if (!appSecret || !signatureHeader) return true;
+  const enc = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    'raw',
+    enc.encode(appSecret),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign']
+  );
+  const sigBuffer = await crypto.subtle.sign('HMAC', key, enc.encode(rawBody));
+  const hex = Array.from(new Uint8Array(sigBuffer))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
+  return signatureHeader === `sha256=${hex}`;
 }
 
-export default async function handler(req, res) {
+export default async function handler(req) {
+  const url = new URL(req.url);
+
   // 1. Meta Webhook Verification (GET) — Works for both Facebook & Instagram
   if (req.method === 'GET') {
-    const mode = req.query['hub.mode'];
-    const token = req.query['hub.verify_token'];
-    const challenge = req.query['hub.challenge'];
+    const mode = url.searchParams.get('hub.mode');
+    const token = url.searchParams.get('hub.verify_token');
+    const challenge = url.searchParams.get('hub.challenge');
     const verifyToken = process.env.META_VERIFY_TOKEN || 'revpulse_fb_verify_2026';
 
     if (mode === 'subscribe' && token === verifyToken) {
-      return res.status(200).send(challenge);
+      return new Response(challenge, { status: 200 });
     }
-    return res.status(403).json({ error: 'Invalid verify token' });
+    return new Response(JSON.stringify({ error: 'Invalid verify token' }), {
+      status: 403,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 
   // 2. Incoming Facebook Page & Instagram Business Events (POST)
   if (req.method === 'POST') {
     try {
+      const rawBody = await req.text();
       const appSecret = process.env.META_APP_SECRET;
-      const signature = req.headers['x-hub-signature-256'];
-      if (appSecret && signature) {
-        const expected =
-          'sha256=' +
-          crypto.createHmac('sha256', appSecret).update(JSON.stringify(req.body)).digest('hex');
-        if (signature !== expected) {
-          return res.status(401).json({ error: 'Invalid X-Hub-Signature-256' });
-        }
+      const signature = req.headers.get('x-hub-signature-256');
+
+      const valid = await verifySignature(rawBody, signature, appSecret);
+      if (!valid) {
+        return new Response(JSON.stringify({ error: 'Invalid X-Hub-Signature-256' }), {
+          status: 401,
+          headers: { 'Content-Type': 'application/json' }
+        });
       }
 
-      const body = req.body;
+      const body = JSON.parse(rawBody);
       if (body.object !== 'page' && body.object !== 'instagram') {
-        return res.status(404).json({ error: 'Unsupported webhook object' });
+        return new Response(JSON.stringify({ error: 'Unsupported webhook object' }), {
+          status: 404,
+          headers: { 'Content-Type': 'application/json' }
+        });
       }
 
       const isInstagram = body.object === 'instagram';
@@ -148,29 +131,37 @@ export default async function handler(req, res) {
       }
 
       if (recordsToInsert.length > 0) {
-        const hostname = new URL(supabaseUrl).hostname;
-        const result = await postSupabaseHttp2(
-          hostname,
-          '/rest/v1/reviews',
-          {
-            'content-type': 'application/json',
+        const supaRes = await fetch(`${supabaseUrl}/rest/v1/reviews`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
             apikey: supabaseKey,
-            authorization: `Bearer ${supabaseKey}`,
-            prefer: 'return=minimal'
+            Authorization: `Bearer ${supabaseKey}`,
+            Prefer: 'return=minimal'
           },
-          recordsToInsert
-        );
+          body: JSON.stringify(recordsToInsert)
+        });
 
-        if (result.status < 200 || result.status >= 300) {
-          return res.status(result.status).json({ error: result.text });
+        if (!supaRes.ok) {
+          const errText = await supaRes.text();
+          return new Response(JSON.stringify({ error: errText }), {
+            status: supaRes.status,
+            headers: { 'Content-Type': 'application/json' }
+          });
         }
       }
 
-      return res.status(200).send('EVENT_RECEIVED');
+      return new Response('EVENT_RECEIVED', { status: 200 });
     } catch (err) {
-      return res.status(500).json({ error: err.message });
+      return new Response(JSON.stringify({ error: err.message }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
   }
 
-  return res.status(405).json({ error: 'Method not allowed' });
+  return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+    status: 405,
+    headers: { 'Content-Type': 'application/json' }
+  });
 }
