@@ -1,5 +1,4 @@
 import crypto from 'crypto';
-import { createClient } from '@supabase/supabase-js';
 
 export default async function handler(req, res) {
   // 1. Meta Webhook Verification (GET)
@@ -18,7 +17,6 @@ export default async function handler(req, res) {
   // 2. Incoming Facebook Page Query / Message / Comment (POST)
   if (req.method === 'POST') {
     try {
-      // Optional HMAC signature verification when META_APP_SECRET is set
       const appSecret = process.env.META_APP_SECRET;
       const signature = req.headers['x-hub-signature-256'];
       if (appSecret && signature) {
@@ -35,9 +33,14 @@ export default async function handler(req, res) {
         return res.status(404).json({ error: 'Unsupported webhook object' });
       }
 
-      const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || "https://teqmjllghmtgxxuadhbt.supabase.co";
-      const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_ANON_KEY || "sb_publishable_iSbDfwSPy9xHCjlYLaygCQ_tMaHhYev";
-      const supabase = createClient(supabaseUrl, supabaseKey);
+      const supabaseUrl =
+        process.env.VITE_SUPABASE_URL ||
+        process.env.SUPABASE_URL ||
+        'https://teqmjllghmtgxxuadhbt.supabase.co';
+      const supabaseKey =
+        process.env.SUPABASE_SERVICE_ROLE_KEY ||
+        process.env.VITE_SUPABASE_ANON_KEY ||
+        'sb_publishable_iSbDfwSPy9xHCjlYLaygCQ_tMaHhYev';
 
       const recordsToInsert = [];
 
@@ -82,17 +85,26 @@ export default async function handler(req, res) {
       }
 
       if (recordsToInsert.length > 0) {
-        const { error } = await supabase.from('reviews').insert(recordsToInsert);
-        if (error) {
-          console.error('Supabase insert error:', error.message);
-          return res.status(500).json({ error: error.message });
+        const response = await fetch(`${supabaseUrl}/rest/v1/reviews`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            apikey: supabaseKey,
+            Authorization: `Bearer ${supabaseKey}`,
+            Prefer: 'return=minimal'
+          },
+          body: JSON.stringify(recordsToInsert)
+        });
+
+        if (!response.ok) {
+          const errText = await response.text();
+          return res.status(response.status).json({ error: errText });
         }
       }
 
       return res.status(200).send('EVENT_RECEIVED');
     } catch (err) {
-      console.error('Facebook webhook error:', err.message);
-      return res.status(500).json({ error: err.message });
+      return res.status(500).json({ error: err.message, cause: err.cause?.message || null });
     }
   }
 
