@@ -1,6 +1,46 @@
-import dns from 'dns';
-dns.setDefaultResultOrder('ipv4first');
 import crypto from 'crypto';
+import dns from 'dns';
+import https from 'https';
+
+const resolver = new dns.Resolver();
+resolver.setServers(['1.1.1.1', '8.8.8.8']);
+
+function resolveHost(hostname) {
+  return new Promise((resolve, reject) => {
+    resolver.resolve4(hostname, (err, addresses) => {
+      if (err || !addresses || !addresses.length) return reject(err || new Error('No IPv4 found'));
+      resolve(addresses[0]);
+    });
+  });
+}
+
+function postJsonWithSni(ip, hostname, path, headers, payload) {
+  return new Promise((resolve, reject) => {
+    const bodyStr = JSON.stringify(payload);
+    const req = https.request(
+      {
+        host: ip,
+        port: 443,
+        path,
+        method: 'POST',
+        servername: hostname,
+        headers: {
+          ...headers,
+          Host: hostname,
+          'Content-Length': Buffer.byteLength(bodyStr)
+        }
+      },
+      (res) => {
+        let data = '';
+        res.on('data', (chunk) => (data += chunk));
+        res.on('end', () => resolve({ status: res.statusCode, text: data }));
+      }
+    );
+    req.on('error', reject);
+    req.write(bodyStr);
+    req.end();
+  });
+}
 
 export default async function handler(req, res) {
   // 1. Meta Webhook Verification (GET)
@@ -49,7 +89,6 @@ export default async function handler(req, res) {
       for (const entry of body.entry || []) {
         const pageId = entry.id || 'facebook-page';
 
-        // A. Messenger customer inquiries
         for (const event of entry.messaging || []) {
           if (event.message && event.message.text && !event.message.is_echo) {
             const customerText = event.message.text.trim();
@@ -66,7 +105,6 @@ export default async function handler(req, res) {
           }
         }
 
-        // B. Public Page wall posts / visitor comments
         for (const change of entry.changes || []) {
           if (change.field === 'feed' && change.value?.item === 'comment' && change.value?.verb === 'add') {
             const commentText = (change.value.message || '').trim();
@@ -87,26 +125,29 @@ export default async function handler(req, res) {
       }
 
       if (recordsToInsert.length > 0) {
-        const response = await fetch(`${supabaseUrl}/rest/v1/reviews`, {
-          method: 'POST',
-          headers: {
+        const hostname = new URL(supabaseUrl).hostname;
+        const ip = await resolveHost(hostname);
+        const result = await postJsonWithSni(
+          ip,
+          hostname,
+          '/rest/v1/reviews',
+          {
             'Content-Type': 'application/json',
             apikey: supabaseKey,
             Authorization: `Bearer ${supabaseKey}`,
             Prefer: 'return=minimal'
           },
-          body: JSON.stringify(recordsToInsert)
-        });
+          recordsToInsert
+        );
 
-        if (!response.ok) {
-          const errText = await response.text();
-          return res.status(response.status).json({ error: errText });
+        if (result.status < 200 || result.status >= 300) {
+          return res.status(result.status).json({ error: result.text });
         }
       }
 
       return res.status(200).send('EVENT_RECEIVED');
     } catch (err) {
-      return res.status(500).json({ error: err.message, cause: err.cause?.message || null });
+      return res.status(500).json({ error: err.message });
     }
   }
 
