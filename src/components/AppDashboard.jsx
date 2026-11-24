@@ -159,18 +159,18 @@ export default function AppDashboard({ user }) {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
             <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Total Intercepted</h4>
-            <div className="text-3xl font-extrabold text-white">24 Reviews</div>
-            <p className="text-xs text-emerald-400 mt-1">↑ 12% increase this month</p>
+            <div className="text-3xl font-extrabold text-white">{reviews.length} {reviews.length === 1 ? "Message" : "Messages"}</div>
+            <p className="text-xs text-emerald-400 mt-1">Live Supabase feed</p>
           </div>
           <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
-            <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Safeguard Success Rate</h4>
-            <div className="text-3xl font-extrabold text-white">94.2%</div>
-            <p className="text-xs text-blue-400 mt-1">Intercepted before public rating drop</p>
+            <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Resolution Rate</h4>
+            <div className="text-3xl font-extrabold text-white">{reviews.length > 0 ? `${Math.round((reviews.filter(r => r.status === "resolved").length / reviews.length) * 100)}%` : "—"}</div>
+            <p className="text-xs text-blue-400 mt-1">{reviews.filter(r => r.status === "resolved").length} of {reviews.length} resolved</p>
           </div>
           <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
-            <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Average Response Time</h4>
-            <div className="text-3xl font-extrabold text-white">1.4 mins</div>
-            <p className="text-xs text-purple-400 mt-1">Automated Kaku AI dispatch</p>
+            <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Pending Approvals</h4>
+            <div className="text-3xl font-extrabold text-white">{reviews.filter(r => r.status !== "resolved").length}</div>
+            <p className="text-xs text-purple-400 mt-1">Awaiting review & dispatch</p>
           </div>
         </div>
       )}

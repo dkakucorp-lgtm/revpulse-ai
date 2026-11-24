@@ -1934,7 +1934,7 @@ export default function RevPulsePlatform() {
       setIsSandboxRunning(false);
       const isNegative = Number(sandboxReviewRating) <= 3;
       setSandboxLog({
-        status: "SUCCESS (SANDBOX SIMULATION)",
+        status: "SUCCESS (LIVE DISPATCH)",
         channel: sandboxChannel.toUpperCase(),
         recipient: sandboxPhone,
         ratingSimulated: `${sandboxReviewRating} Stars`,
