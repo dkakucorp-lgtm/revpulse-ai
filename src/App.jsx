@@ -1600,41 +1600,7 @@ const knowledgeArticlesTranslations = {
   ]
 };
 
-const initialSampleQueue = [
-  {
-    id: 'rev-101',
-    platform: 'Facebook Business Page',
-    customer: 'ADKA Customer Test',
-    rating: 3,
-    vertical: 'General Contractors',
-    time: 'Just now',
-    text: 'Checked your building materials page—need to confirm fastener stock, delivery schedule, and pricing clarity before placing an order.',
-    aiDraft: 'Hello! Thank you for reaching out to our building materials team. We are reviewing your stock and delivery inquiry right now and will follow up promptly with exact availability and order details.',
-    status: 'pending'
-  },
-  {
-    id: 'rev-102',
-    platform: 'Google Business Profile',
-    customer: 'Marcus T.',
-    rating: 2,
-    vertical: 'HVAC & Trades',
-    time: '14 mins ago',
-    text: 'Technician fixed the condenser, but arrived 90 minutes past the window with no text update.',
-    aiDraft: 'Hi Marcus, thank you for letting us know. While we are glad the condenser is running properly, we apologize for the arrival delay and lack of status text. Our dispatch manager would like to make this right—please reply here or check your SMS for a direct resolution link.',
-    status: 'pending'
-  },
-  {
-    id: 'rev-103',
-    platform: 'Yelp',
-    customer: 'Elena R.',
-    rating: 5,
-    vertical: 'Restaurants & Dining',
-    time: '1 hour ago',
-    text: 'Best espresso and fresh croissants in town! Staff was super welcoming even during the morning rush.',
-    aiDraft: 'Thank you so much for the kind words, Elena! We loved having you in during the morning rush and cannot wait to welcome you back for another espresso soon.',
-    status: 'pending'
-  }
-];
+const initialSampleQueue = [];
 
 const platformMetadata = [
   {
@@ -1795,7 +1761,7 @@ export default function RevPulsePlatform() {
   });
 
   // Interactive Dashboard Feedback Queue State
-  const [feedbackQueue, setFeedbackQueue] = useState(initialSampleQueue);
+  const [feedbackQueue, setFeedbackQueue] = useState([]);
 
   useEffect(() => {
     let isMounted = true;
@@ -1820,7 +1786,7 @@ export default function RevPulsePlatform() {
           .order("created_at", { ascending: false })
           .limit(25);
         if (!error && data && data.length > 0 && isMounted) {
-          setFeedbackQueue([...data.map(mapRow), ...initialSampleQueue]);
+          setFeedbackQueue(data.map(mapRow));
         }
       } catch (e) {}
     };
@@ -1850,6 +1816,19 @@ export default function RevPulsePlatform() {
   const [aiResponse, setAiResponse] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+
+  
+  useEffect(() => {
+    const savedMeta = currentUser?.user_metadata?.connected_platforms;
+    if (savedMeta && typeof savedMeta === "object") {
+      setConnectedPlatforms((prev) => {
+        const next = { ...prev, ...savedMeta };
+        try { localStorage.setItem("revpulse_connected_platforms", JSON.stringify(next)); } catch (e) {}
+        supabase.auth.updateUser({ data: { connected_platforms: next } }).catch(() => {});
+        return next;
+      });
+    }
+  }, [currentUser]);
 
   const connectedPlatformList = platformMetadata.filter(p => connectedPlatforms[p.key]?.connected);
   const pendingFeedbackCount = feedbackQueue.filter(item => item.status === 'pending').length;
@@ -1916,6 +1895,7 @@ export default function RevPulsePlatform() {
     setConnectedPlatforms(prev => {
       const next = { ...prev, [connectingPlatform]: { connected: true, details: credentialInput.trim() } };
       try { localStorage.setItem("revpulse_connected_platforms", JSON.stringify(next)); } catch (e) {}
+        supabase.auth.updateUser({ data: { connected_platforms: next } }).catch(() => {});
       return next;
     });
     setConnectingPlatform(null);
@@ -1926,6 +1906,7 @@ export default function RevPulsePlatform() {
     setConnectedPlatforms(prev => {
       const next = { ...prev, [platformKey]: { connected: false, details: "" } };
       try { localStorage.setItem("revpulse_connected_platforms", JSON.stringify(next)); } catch (e) {}
+        supabase.auth.updateUser({ data: { connected_platforms: next } }).catch(() => {});
       return next;
     });
   };
@@ -2492,11 +2473,7 @@ export default function RevPulsePlatform() {
                     <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider">Human-in-the-Loop Command Desk</span>
                     <h3 className="text-lg font-bold text-white mt-0.5">Live Feedback Intercept & Recovery Queue</h3>
                   </div>
-                  <button
-                    onClick={() => setFeedbackQueue(initialSampleQueue)}
-                    className="px-3.5 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-semibold rounded-xl border-none cursor-pointer self-start sm:self-auto">
-                    ↻ Reset Sample Queue
-                  </button>
+                  
                 </div>
 
                 <div className="space-y-4">
