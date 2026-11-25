@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../supabaseClient';
+import { supabase } from './supabaseClient';
+import FaqKakuTrainer from './FaqKakuTrainer';
+import UserManual from './UserManual';
 
 export default function AppDashboard({ user }) {
   const [reviews, setReviews] = useState([]);
@@ -23,29 +25,7 @@ export default function AppDashboard({ user }) {
       setReviews(data || []);
     } catch (err) {
       console.error('Error fetching reviews:', err.message);
-      // Fallback sample data if table is empty or offline
-      setReviews([
-        {
-          id: 1,
-          reviewer_name: 'Sarah Jenkins',
-          platform: 'Google',
-          rating: 1,
-          review_text: 'Technician arrived 2 hours late and left workspace uncleaned.',
-          sentiment: 'negative',
-          ai_private_draft: 'Hello Sarah, we sincerely apologize for the delay and cleanliness oversight. We want to make this right immediately.',
-          status: 'pending'
-        },
-        {
-          id: 2,
-          reviewer_name: 'Michael Chang',
-          platform: 'Yelp',
-          rating: 5,
-          review_text: 'Absolute top-tier service! Fixed our AC unit in under 30 minutes.',
-          sentiment: 'positive',
-          ai_private_draft: null,
-          status: 'resolved'
-        }
-      ]);
+      setReviews([]);
     } finally {
       setLoading(false);
     }
@@ -79,7 +59,7 @@ export default function AppDashboard({ user }) {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex space-x-4 border-b border-gray-800 pb-4">
+      <div className="flex flex-wrap gap-6 border-b border-gray-800 pb-4">
         <button 
           onClick={() => setActiveTab('incoming')}
           className={`text-sm font-semibold pb-2 border-b-2 transition ${
@@ -88,11 +68,25 @@ export default function AppDashboard({ user }) {
           Incoming Reviews ({reviews.length})
         </button>
         <button 
+          onClick={() => setActiveTab('faqs')}
+          className={`text-sm font-semibold pb-2 border-b-2 transition ${
+            activeTab === 'faqs' ? 'border-purple-500 text-white' : 'border-transparent text-gray-400 hover:text-gray-200'
+          }`}>
+          Custom FAQs & Kaku Training
+        </button>
+        <button 
           onClick={() => setActiveTab('analytics')}
           className={`text-sm font-semibold pb-2 border-b-2 transition ${
             activeTab === 'analytics' ? 'border-blue-500 text-white' : 'border-transparent text-gray-400 hover:text-gray-200'
           }`}>
           Sentiment Analytics
+        </button>
+        <button 
+          onClick={() => setActiveTab('manual')}
+          className={`text-sm font-semibold pb-2 border-b-2 transition ${
+            activeTab === 'manual' ? 'border-blue-500 text-white' : 'border-transparent text-gray-400 hover:text-gray-200'
+          }`}>
+          Onboarding Manual (PDF)
         </button>
       </div>
 
@@ -102,8 +96,11 @@ export default function AppDashboard({ user }) {
           {loading ? (
             <div className="text-center py-16 text-gray-400 text-sm">Loading review stream from PostgreSQL database...</div>
           ) : reviews.length === 0 ? (
-            <div className="text-center py-16 bg-gray-900/50 border border-gray-800 rounded-3xl text-gray-400 text-sm">
-              No reviews in queue. Webhooks are active and listening for incoming events!
+            <div className="text-center py-16 px-6 bg-gray-900/50 border border-gray-800 rounded-3xl space-y-2">
+              <p className="text-base font-semibold text-white">No customer messages or reviews yet</p>
+              <p className="text-sm text-gray-400 max-w-xl mx-auto">
+                Your incoming messages, comments, and reviews from connected channels will appear here in real time whenever a customer reaches out.
+              </p>
             </div>
           ) : (
             reviews.map((rev) => (
@@ -155,6 +152,12 @@ export default function AppDashboard({ user }) {
         </div>
       )}
 
+      {/* Custom FAQs & Kaku Training Tab */}
+      {activeTab === 'faqs' && (
+        <FaqKakuTrainer userId={user?.id} />
+      )}
+
+      {/* Sentiment Analytics Tab */}
       {activeTab === 'analytics' && (
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl">
@@ -173,6 +176,11 @@ export default function AppDashboard({ user }) {
             <p className="text-xs text-purple-400 mt-1">Awaiting review & dispatch</p>
           </div>
         </div>
+      )}
+
+      {/* Onboarding Manual (PDF) Tab */}
+      {activeTab === 'manual' && (
+        <UserManual />
       )}
     </div>
   );
