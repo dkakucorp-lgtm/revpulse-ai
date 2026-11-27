@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { supabase } from './components/supabaseClient';
+import { trackDailyVisit } from './utils/trackVisit';
 import slide1Img from './slide1.png';
 import slide2Img from './slide2.png';
 import slide3Img from './slide3.png';
@@ -1600,8 +1602,6 @@ const knowledgeArticlesTranslations = {
   ]
 };
 
-const initialSampleQueue = [];
-
 const platformMetadata = [
   {
     key: 'google',
@@ -1653,6 +1653,11 @@ export default function RevPulsePlatform() {
   const [showSituationRoom, setShowSituationRoom] = useState(false);
   const [showConnectModal, setShowConnectModal] = useState(false);
   const [dashboardSubTab, setDashboardSubTab] = useState('overview');
+
+  // Track unique daily site visits once per browser per day
+  useEffect(() => {
+    trackDailyVisit();
+  }, []);
 
   // Hero Slider State
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -1750,7 +1755,7 @@ export default function RevPulsePlatform() {
     instagram: { connected: false, details: '' },
     trustpilot: { connected: false, details: '' }
   }), ...JSON.parse(saved) };
-    } catch (e) {}
+    } catch (_e) {}
     return {
     google: { connected: true, details: 'Google Business Profile #8821' },
     yelp: { connected: false, details: '' },
@@ -1788,7 +1793,7 @@ export default function RevPulsePlatform() {
         if (!error && data && data.length > 0 && isMounted) {
           setFeedbackQueue(data.map(mapRow));
         }
-      } catch (e) {}
+      } catch (_e) {}
     };
 
     loadLiveReviews();
@@ -1817,13 +1822,12 @@ export default function RevPulsePlatform() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
-  
   useEffect(() => {
     const savedMeta = currentUser?.user_metadata?.connected_platforms;
     if (savedMeta && typeof savedMeta === "object") {
       setConnectedPlatforms((prev) => {
         const next = { ...prev, ...savedMeta };
-        try { localStorage.setItem("revpulse_connected_platforms", JSON.stringify(next)); } catch (e) {}
+        try { localStorage.setItem("revpulse_connected_platforms", JSON.stringify(next)); } catch (_e) {}
         supabase.auth.updateUser({ data: { connected_platforms: next } }).catch(() => {});
         return next;
       });
@@ -1894,8 +1898,8 @@ export default function RevPulsePlatform() {
     }
     setConnectedPlatforms(prev => {
       const next = { ...prev, [connectingPlatform]: { connected: true, details: credentialInput.trim() } };
-      try { localStorage.setItem("revpulse_connected_platforms", JSON.stringify(next)); } catch (e) {}
-        supabase.auth.updateUser({ data: { connected_platforms: next } }).catch(() => {});
+      try { localStorage.setItem("revpulse_connected_platforms", JSON.stringify(next)); } catch (_e) {}
+      supabase.auth.updateUser({ data: { connected_platforms: next } }).catch(() => {});
       return next;
     });
     setConnectingPlatform(null);
@@ -1905,8 +1909,8 @@ export default function RevPulsePlatform() {
   const handleDisconnectPlatform = (platformKey) => {
     setConnectedPlatforms(prev => {
       const next = { ...prev, [platformKey]: { connected: false, details: "" } };
-      try { localStorage.setItem("revpulse_connected_platforms", JSON.stringify(next)); } catch (e) {}
-        supabase.auth.updateUser({ data: { connected_platforms: next } }).catch(() => {});
+      try { localStorage.setItem("revpulse_connected_platforms", JSON.stringify(next)); } catch (_e) {}
+      supabase.auth.updateUser({ data: { connected_platforms: next } }).catch(() => {});
       return next;
     });
   };
@@ -1921,7 +1925,7 @@ export default function RevPulsePlatform() {
     if (typeof id === "number" || (typeof id === "string" && !id.startsWith("rev-"))) {
       try {
         await supabase.from("reviews").update({ status: nextStatus }).eq("id", id);
-      } catch (e) {}
+      } catch (_e) {}
     }
   };
 
@@ -2473,7 +2477,6 @@ export default function RevPulsePlatform() {
                     <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider">Human-in-the-Loop Command Desk</span>
                     <h3 className="text-lg font-bold text-white mt-0.5">Live Feedback Intercept & Recovery Queue</h3>
                   </div>
-                  
                 </div>
 
                 <div className="space-y-4">
@@ -2944,6 +2947,8 @@ export default function RevPulsePlatform() {
         </div>
         <p>{t.footerRights}</p>
       </footer>
+
+      <Analytics />
     </div>
   );
 }
