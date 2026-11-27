@@ -1653,11 +1653,33 @@ export default function RevPulsePlatform() {
   const [showSituationRoom, setShowSituationRoom] = useState(false);
   const [showConnectModal, setShowConnectModal] = useState(false);
   const [dashboardSubTab, setDashboardSubTab] = useState('overview');
+  const [funnelData, setFunnelData] = useState([]);
+  const [funnelLoading, setFunnelLoading] = useState(false);
 
   // Track unique daily site visits once per browser per day
   useEffect(() => {
     trackDailyVisit();
   }, []);
+
+  // Load 14-day traffic & conversion funnel rows when dashboard is active
+  useEffect(() => {
+    if (activeTab !== 'dashboard') return;
+    let isMounted = true;
+    setFunnelLoading(true);
+    supabase
+      .from('daily_conversion_funnel')
+      .select('*')
+      .order('day', { ascending: false })
+      .then(({ data, error }) => {
+        if (!error && data && isMounted) {
+          setFunnelData(data);
+        }
+        if (isMounted) setFunnelLoading(false);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, [activeTab]);
 
   // Hero Slider State
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -2468,6 +2490,71 @@ export default function RevPulsePlatform() {
                   <div className="text-3xl font-extrabold text-white mt-2">7 Days Free</div>
                   <div className="text-xs text-amber-400 mt-2">Automated email nudges active</div>
                 </div>
+              </div>
+
+              {/* 14-Day Traffic & Conversion Rate Funnel */}
+              <div className="bg-gray-900 border border-gray-800 p-6 sm:p-8 rounded-3xl space-y-5">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">Growth &amp; Conversion Analytics</span>
+                    <h3 className="text-lg font-bold text-white mt-0.5">14-Day Traffic → Signup → Channel Funnel</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-3 text-xs">
+                    {(() => {
+                      const totVisitors = funnelData.reduce((acc, r) => acc + (r.unique_visitors || 0), 0);
+                      const totSignups = funnelData.reduce((acc, r) => acc + (r.new_signups || 0), 0);
+                      const totChannels = funnelData.reduce((acc, r) => acc + (r.connected_channels || 0), 0);
+                      const v2s = totVisitors > 0 ? ((totSignups / totVisitors) * 100).toFixed(1) : '0.0';
+                      const s2c = totSignups > 0 ? ((totChannels / totSignups) * 100).toFixed(1) : '0.0';
+                      return (
+                        <>
+                          <span className="px-3 py-1.5 rounded-xl bg-gray-950 border border-gray-800 text-gray-300">
+                            Visitors: <strong className="text-white">{totVisitors}</strong>
+                          </span>
+                          <span className="px-3 py-1.5 rounded-xl bg-gray-950 border border-gray-800 text-gray-300">
+                            Signups: <strong className="text-emerald-400">{totSignups}</strong> ({v2s}%)
+                          </span>
+                          <span className="px-3 py-1.5 rounded-xl bg-gray-950 border border-gray-800 text-gray-300">
+                            Channels: <strong className="text-purple-400">{totChannels}</strong> ({s2c}%)
+                          </span>
+                        </>
+                      );
+                    })()}
+                  </div>
+                </div>
+
+                {funnelLoading ? (
+                  <div className="text-xs text-gray-400 py-6 text-center">Loading 14-day conversion data...</div>
+                ) : (
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse text-xs">
+                      <thead>
+                        <tr className="border-b border-gray-800 text-gray-400 uppercase text-[11px]">
+                          <th className="py-3 pr-4">Date (UTC)</th>
+                          <th className="py-3 px-3">Unique Visitors</th>
+                          <th className="py-3 px-3">New Signups</th>
+                          <th className="py-3 px-3">Visitor → Signup</th>
+                          <th className="py-3 px-3">Connected Channels</th>
+                          <th className="py-3 px-3">Signup → Channel</th>
+                          <th className="py-3 pl-3">Reviews Ingested</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-800/70">
+                        {funnelData.map((row) => (
+                          <tr key={row.day} className="hover:bg-gray-950/60">
+                            <td className="py-2.5 pr-4 font-medium text-white">{row.day}</td>
+                            <td className="py-2.5 px-3 text-gray-200">{row.unique_visitors}</td>
+                            <td className="py-2.5 px-3 text-emerald-400 font-semibold">{row.new_signups}</td>
+                            <td className="py-2.5 px-3 text-blue-300">{row.visitor_to_signup_pct}%</td>
+                            <td className="py-2.5 px-3 text-purple-300 font-semibold">{row.connected_channels}</td>
+                            <td className="py-2.5 px-3 text-amber-300">{row.signup_to_channel_pct}%</td>
+                            <td className="py-2.5 pl-3 text-gray-300">{row.reviews_ingested}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
               </div>
 
               {/* Interactive Review & Recovery Approval Queue */}
